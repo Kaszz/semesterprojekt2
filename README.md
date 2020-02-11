@@ -2,8 +2,8 @@
 
 ### 11/02/2020
 
-- 10:00 | Gruppemøde 
+- 09:00 | Gruppemøde.
 
-- 10:30 | Take-off gennemgået
+- 12:00 | Udkast til vejelederaftale og samarbejdsaftale opstilt.
 
-- 11:30 | Vejledermøde
+- 12:30 | Problemstilling gennemsnakning igangsat.
