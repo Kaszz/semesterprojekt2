@@ -6,4 +6,4 @@
 
 - 12:00 | Udkast til vejelederaftale og samarbejdsaftale opstilt.
 
-- 12:30 | Problemstilling gennemsnakning igangsat.
+- 12:30 | Problemstilling generering igangsat.
