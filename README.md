@@ -6,4 +6,6 @@
 
 - 12:00 | Udkast til vejelederaftale og samarbejdsaftale opstilt.
 
-- 12:30 | Problemstilling generering igangsat.
+- 12:30 | Problemstilling igangsat.
+
+- 15:50 | Projektrammeplan uddybet.
