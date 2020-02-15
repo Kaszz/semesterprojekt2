@@ -9,3 +9,6 @@
 - 12:30 | Problemstilling igangsat.
 
 - 15:50 | Projektrammeplan uddybet.
+
+Udkast til projektidéen blev fremstillet i fællesskab.
+Generelle organisatoriske nødvendigheder blev besluttet og sat op.
