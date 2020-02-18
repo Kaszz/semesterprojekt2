@@ -13,3 +13,17 @@
 Udkast til projektidéen blev fremstillet i fællesskab.
 
 Generelle organisatoriske nødvendigheder blev besluttet og sat op.
+
+### 18/02/2002
+
+- 09:30 Problemformulering og underspørgsmål gennemgang
+
+- 10:30 Afgrænsning gennemgang
+
+- 11:00 Brugsmønsterdiagram
+
+- 12:30 Inceptionsdokument startet
+
+- 12:30 Problemanalyse startet
+
+- 12:30 Programspecifikation startet
