@@ -14,7 +14,7 @@ Udkast til projektidéen blev fremstillet i fællesskab.
 
 Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
-### 18/02/2002
+### 18/02/2020
 
 - 09:30 Problemformulering og underspørgsmål gennemgang
 
