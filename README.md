@@ -27,3 +27,13 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - 12:30 Problemanalyse startet
 
 - 12:30 Programspecifikation startet
+
+### 25/02/2020
+
+- Snakket om ændring af idé til brugergrænseflade for almen bruger
+
+- Udvikling af spørgsmål til TV2
+
+- Udkast til CRC-kort
+
+- Udkast til UML diagram
