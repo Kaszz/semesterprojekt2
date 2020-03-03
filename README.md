@@ -37,3 +37,11 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Udkast til CRC-kort
 
 - Udkast til UML diagram
+
+### 03/03/2020
+
+- Domæne model
+
+- ER Model
+
+- Møde med TV2
