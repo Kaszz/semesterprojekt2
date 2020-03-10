@@ -45,3 +45,13 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - ER Model
 
 - Møde med TV2
+
+### 10/03/2020
+
+- Gennemgang af Krav
+
+- Diskussion af mulige konsekvenser for pendlere angående COVID-19
+
+- Opsætning af poser
+
+- Arbejde på Inceptionsdokument
