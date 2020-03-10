@@ -55,6 +55,8 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Opsætning af poser
 
 - Arbejde på Inceptionsdokument
+
+    - Generel opsætning
   
     - Brugsmønsterdiagram
     
