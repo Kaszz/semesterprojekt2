@@ -65,3 +65,11 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 ### 17/03/2020
 
 - Færdiggørelse af inceptionsdokumentet.
+
+### 24/03/2020
+
+- Opsætning af scrum.
+
+- Konstruering af CRC-Kort.
+
+- Gennemgang og opdatering af UML-klassediagram.
