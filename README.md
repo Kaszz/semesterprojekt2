@@ -61,3 +61,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
     - Brugsmønsterdiagram
     
     - Detaljering
+
+### 17/03/2020
+
+- Færdiggørelse af inceptionsdokumentet.
