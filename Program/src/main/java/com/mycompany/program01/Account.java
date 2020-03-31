@@ -1,5 +1,8 @@
 package com.mycompany.program01;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Year;
 
@@ -16,12 +19,49 @@ public abstract class Account { //TODO implements Login
         this.email = email;
     }
 
-    public void createMovie(String title, String trailerURL, String bio, Year launchYear) {
-        // TODO
-        //  Movie movie = new Movie(title, trailerURL, bio, launchYear);
+    public void addCredit(String title, String fName, String lName, CreditType role) {
+        Credit tempCredit = new Credit(fName, lName, role);
+
+        //Writes the credit to a file
+        File file = new File(title + ".txt");
+
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(file, true);
+            writer.write(fName + ":" + lName + ":" + role);
+            writer.write("\r\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void createLiveShow(String title, String trailerURL, String bio, Year launchYear, String location) {
+
+    public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
+        Movie movie = new Movie(title, trailerURL, bio, launchYear);
+
+        File file = new File(title + ".txt");
+
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(file, true);
+                writer.write(title + ":" + trailerURL + ":" + bio + ":" + launchYear);
+                writer.write("\r\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
         // TODO
         // LiveShow liveShow = new LiveShow(title, trailerURL, bio, launchYear, location);
     }

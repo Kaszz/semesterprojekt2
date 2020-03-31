@@ -28,7 +28,7 @@ public abstract class Broadcast implements Login {
     }
 
     //Method
-    public void addCredit(String fName, String lName, CreditType role) {
+    public void addCredit(String title, String fName, String lName, CreditType role) {
         Credit tempCredit = new Credit(fName, lName, role);
         credits.add(tempCredit);
 
@@ -44,8 +44,6 @@ public abstract class Broadcast implements Login {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     //TODO - This method should search the database for the title, make a temporary broadcast object and return it.

@@ -20,18 +20,13 @@ public class BroadCastTestClass {
 
         Year year = Year.of(2021);
 
-        Movie m = new Movie("Mothers", website, "they be yunging", year);
 
-        m.addCredit("Anders", "Wylardt", CreditType.DIRECTOR);
-        m.addCredit("Christopher", "Kas", CreditType.SUPPORT_CAST);
-        m.addCredit("Mogens", "Johnyboi", CreditType.EXEC_PRODUCER);
+        User s = new User("test", "admin123", "Simon", "simon@simon.com", "2");
+        s.createMovie("Fathers", website, "they be oldin", year);
 
-        ArrayList<Credit> hallihallå = m.getCredits();
-
-        for (int i = 0; i < hallihallå.size(); i++) {
-            System.out.println(hallihallå.get(i).getlName());
-        }
-
+        s.addCredit("Fathers", "Anders", "Wylardt", CreditType.DIRECTOR);
+        s.addCredit("Fathers", "Christopher", "Kas", CreditType.SUPPORT_CAST);
+        s.addCredit("Fathers", "Mogens", "Johnyboi", CreditType.EXEC_PRODUCER);
 
     }
 
