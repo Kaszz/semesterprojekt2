@@ -1,14 +1,14 @@
 package com.mycompany.program01;
 
-public class Account extends BCastObj implements Login{
+import java.net.URL;
+
+public class Account extends Broadcast implements Login{
     public String username;
     public String password;
     public String name;
     protected String email;
 
-    BCastObj bc = new BCastObj();
-
-    public void createBCastObj(title, trailerURL, bio, launchYear) {
+    public void createBCastObj(String title, URL trailerURL, String bio, int launchYear) {
 
     }
 }
