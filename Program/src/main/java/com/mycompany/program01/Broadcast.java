@@ -1,6 +1,6 @@
 package com.mycompany.program01;
 
-public class Broadcast implements Login {
+public abstract class Broadcast implements Login {
     private String title;
     private Credit credits[];
     private String trailerURL;
