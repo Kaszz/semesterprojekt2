@@ -73,3 +73,15 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Konstruering af CRC-Kort.
 
 - Gennemgang og opdatering af UML-klassediagram.
+
+### 31/03/2020
+
+- Udvælgelse af Scrum roller.
+
+- Rettelse af UML-klassediagram.
+
+- Rettelse og udførsel af manglende skitser til design.
+
+- Påbegyndelse af implementering af UI.
+
+- Påbegyndelse af implementeringen af domænelaget. 
