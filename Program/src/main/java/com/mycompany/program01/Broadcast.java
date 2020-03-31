@@ -1,24 +1,64 @@
 package com.mycompany.program01;
 
+import java.io.*;
+import java.lang.reflect.Array;
+import java.net.URL;
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.UUID;
+
 public abstract class Broadcast implements Login {
+    //Attributes
     private String title;
-    private Credit credits[];
-    private String trailerURL;
+    private ArrayList<Credit> credits;
+    private URL trailerURL;
     private String bio;
-    private int launchYear;
-    private String userID;
+    private Year launchYear;
+    private UUID userID;
 
+    //Constructors
+    public Broadcast(String title, URL trailerURL, String bio, Year launchYear) {
+        this.title = title;
+        this.trailerURL = trailerURL;
+        this.bio = bio;
+        this.launchYear = launchYear;
+        //TODO - Add userID so it dynamically grabs from the logged in user.
 
-    public void addCredit(Credit credit, String fName, String lName, String role) {
+        credits = new ArrayList<>();
+    }
+
+    //Method
+    public void addCredit(String fName, String lName, CreditType role) {
+        Credit tempCredit = new Credit(fName, lName, role);
+        credits.add(tempCredit);
+
+        //Writes the credit to a file
+        File file = new File(title + ".txt");
+
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(file, true);
+            writer.write(fName + ":" + lName + ":" + role);
+            writer.write("\r\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
+    //TODO - This method should search the database for the title, make a temporary broadcast object and return it.
     /*public Broadcast getBroadcast(String title) {
-
 
     }*/
 
     public String getTitle() {
         return title;
     }
+
+    public ArrayList<Credit> getCredits() {
+        return credits;
+    }
+
 }

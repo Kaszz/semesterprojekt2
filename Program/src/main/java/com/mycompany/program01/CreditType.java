@@ -10,5 +10,4 @@ public enum CreditType {
         DIRECTOR_PHOTOGRAPHY,
         PRODUCTION_DESIGNER,
         EDITOR
-
 }

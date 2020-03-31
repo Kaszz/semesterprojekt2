@@ -1,12 +1,25 @@
 package com.mycompany.program01;
 
+import java.util.UUID;
+
 public class Credit {
-    private int creditID;
+    //Attributes
+    private UUID creditID;
     private String fName;
     private String lName;
-    //private CreditType role;
+    private CreditType role;
 
-    public int getCreditID() {
+    //Constructors
+    public Credit(String fName, String lName, CreditType role) {
+        creditID = UUID.randomUUID();
+        this.fName = fName;
+        this.lName = lName;
+        this.role = role;
+    }
+
+
+    //Methods
+    public UUID getCreditID() {
         return creditID;
     }
 
