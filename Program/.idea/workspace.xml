@@ -15,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -47,19 +47,36 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Cavra\OneDrive\Dokumenter\Development\2. Semesterprojekt\semesterprojekt2\Program\src\main\java\com\mycompany\program01" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BroadCastTestClass">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.mycompany.program01.App" />
+  <component name="RunManager" selected="Application.TestClass">
+    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Domain.App" />
       <module name="Program 1.0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.mycompany.program01.*" />
+          <option name="PATTERN" value="Domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BroadCastTestClass (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Domain.BroadCastTestClass" />
+      <module name="Program 1.0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -73,6 +90,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.mycompany.program01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Data.TestClass" />
+      <module name="Program 1.0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,9 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestClass" />
+        <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.BroadCastTestClass (1)" />
         <item itemvalue="Application.BroadCastTestClass" />
         <item itemvalue="Application.main" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -131,37 +163,61 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1585654277117">
+    <state x="552" y="178" key="#Notifications" timestamp="1585985662374">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585654277117" />
+    <state x="552" y="178" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585985662374" />
+    <state x="552" y="178" width="1013" height="684" key="#Project_Structure" timestamp="1585984491577">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" width="1013" height="684" key="#Project_Structure/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984491577" />
+    <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585984989090">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984989090" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1585991360032">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585991360032" />
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585641991422">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585641991422" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1585653813569">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1585985633605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585653813569" />
-    <state width="1860" height="282" key="GridCell.Tab.0.bottom" timestamp="1585660569676">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585985633605" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1585998106600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1860" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585660569676" />
-    <state width="1860" height="282" key="GridCell.Tab.0.center" timestamp="1585660569675">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106600" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1585998106600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1860" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585660569675" />
-    <state width="1860" height="282" key="GridCell.Tab.0.left" timestamp="1585660569675">
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106600" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1585998106599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1860" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585660569675" />
-    <state width="1860" height="282" key="GridCell.Tab.0.right" timestamp="1585660569675">
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106599" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1585998106600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1860" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585660569675" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106600" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1585987819638">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585987819638" />
+    <state x="606" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585988858635">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="606" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585988858635" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1585987701862">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585987701862" />
   </component>
 </project>

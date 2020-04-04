@@ -1,8 +1,8 @@
-module com.mycompany.search_and_replace {
+module Domain.creDB {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;
 
-    opens com.mycompany.program01 to javafx.fxml;
-    exports com.mycompany.program01;
+    opens Domain to javafx.fxml;
+    exports Domain;
 }
