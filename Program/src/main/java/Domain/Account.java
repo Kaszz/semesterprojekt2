@@ -3,11 +3,10 @@ package Domain;
 import Data.DataFacade;
 import Interfaces.IReader;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.time.Year;
+import java.util.Scanner;
 
 public abstract class Account { //TODO implements Login
     private String username;
@@ -73,24 +72,57 @@ public abstract class Account { //TODO implements Login
     }
 
     public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
-        // TODO
-        // LiveShow liveShow = new LiveShow(title, trailerURL, bio, launchYear, location);
+        LiveShow liveshow = new LiveShow(title, trailerURL, bio, launchYear, location);
+
+        File file = new File(title + ".txt");
+
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(file, true);
+                writer.write(title + ":" + trailerURL + ":" + bio + ":" + launchYear + ":" + location);
+                writer.write("\r\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void createEpisode(String title, String trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
-        //TODO
-        //Episode episode = new Episode(title, trailerURL, bio, launchYear, location, showName, season, episode);
+    public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
+        Episode ep = new Episode(title, trailerURL, bio, launchYear, showName, season, episode);
+
+        File file = new File(title + ".txt");
+
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(file, true);
+                writer.write(title + ":" + trailerURL + ":" + bio + ":" + launchYear + ":" + showName + ":" + season + ":" + episode);
+                writer.write("\r\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void addCredit(String title, String fname, String lname, String role) {
-        //TODO
-        //Broadcast broadcast;
-        //broadcast = getBroadcast(title); //Skal kunne hente broadcasts fra datalaget... How?
-        //broadcast.add(new Credit(fname, lname, role));
-        //function.saveToFile
-    }
+    public void deleteCredit(String title, int creditID) throws IOException {
 
-    public void deleteCredit(String title, int creditID) {
+        // Vi har ikke assignet creditID til noget som helst
+
         //TODO
         /*
         Broadcast broadcast;
@@ -102,13 +134,29 @@ public abstract class Account { //TODO implements Login
             //Rapporter fejl til præsentationslaget
         }
         */
-    }
 
-    public void deleteBroadcast(String title) {
+        }
+
+
+
+
+    public void deleteBroadcast(String title) throws IOException {
         //TODO
         /*
         //Query database om at slette den række som indeholder den specifikke titel
          */
+
+        File file = new File("./src/txtfiles/broadcasts/" + title + ".txt");
+
+        if(file.delete())
+        {
+            System.out.println("File deleted successfully");
+        }
+        else
+        {
+            System.out.println("Failed to delete the file");
+        }
+
     }
 
 }

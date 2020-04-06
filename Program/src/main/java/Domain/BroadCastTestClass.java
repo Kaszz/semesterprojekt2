@@ -1,13 +1,14 @@
 package Domain;
 
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Year;
 
 public class BroadCastTestClass {
 
-        public static void main(String[] args) {
+        public static void main(String[] args) throws IOException {
         URL website = null;
         {
             try {
@@ -26,6 +27,8 @@ public class BroadCastTestClass {
         s.addCredit("Fathers", "Anders", "Wylardt", CreditType.DIRECTOR);
         s.addCredit("Fathers", "Christopher", "Kas", CreditType.SUPPORT_CAST);
         s.addCredit("Fathers", "Mogens", "Johnyboi", CreditType.EXEC_PRODUCER);
+
+        //s.deleteBroadcast("Fathers");
 
     }
 
