@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <ImageView fitHeight="48.0" fitWidth="238.0" layoutX="230.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/creDB_logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="123.0" layoutY="195.0" text="Username" />
+      <Label layoutX="123.0" layoutY="237.0" text="Password" />
+      <TextField fx:id="usernameTextField" layoutX="233.0" layoutY="190.0" onAction="#usernameAdded" prefHeight="27.0" prefWidth="229.0" />
+      <TextField fx:id="passwordTextField" layoutX="233.0" layoutY="232.0" onAction="#passwordAdded" prefHeight="27.0" prefWidth="229.0" />
+      <Label fx:id="displayErrorMessage" layoutX="261.0" layoutY="358.0" text="Error message" textFill="#fc0202" />
+      <Button fx:id="loginButton" layoutX="276.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginButtonClicked" text="Login" />
+   </children>
+</AnchorPane>
