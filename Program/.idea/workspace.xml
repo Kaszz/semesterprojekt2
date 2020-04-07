@@ -60,15 +60,18 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\git\semesterprojekt2\Program\src\main\java\view" />
+      <recent name="G:\git\semesterprojekt2\Program\src\main\java\controller" />
+      <recent name="G:\git\semesterprojekt2\Program\src\main\resources\Domain" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="C:\Users\Cavra\OneDrive\Dokumenter\Development\2. Semesterprojekt\semesterprojekt2\Program\src\main\java\com\mycompany\program01" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestClass">
+  <component name="RunManager" selected="Application.App (1)">
     <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Domain.App" />
       <module name="Program 1.0" />
@@ -121,12 +124,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.mycompany.program01.main" />
+    <configuration name="main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Domain.main" />
       <module name="Program 1.0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.mycompany.program01.*" />
+          <option name="PATTERN" value="Domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestClass" />
         <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.main (1)" />
         <item itemvalue="Application.BroadCastTestClass (1)" />
+        <item itemvalue="Application.TestClass" />
         <item itemvalue="Application.BroadCastTestClass" />
-        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
@@ -197,34 +200,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585641991422" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1585985633605">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1586258624615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585985633605" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1585998106600">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258624615" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1586258579249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106600" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1585998106600">
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258579249" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1586258579249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106600" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1585998106599">
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258579249" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1586258579249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106599" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1585998106600">
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258579249" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1586258579249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1537" height="202" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585646484140" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585998106600" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1585987819638">
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258579249" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1586258692541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585987819638" />
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258692541" />
     <state x="606" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585988858635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
