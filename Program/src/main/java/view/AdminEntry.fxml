@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminEntryWindowController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminEntryController">
    <children>
       <Button fx:id="editUsersButton" layoutX="240.0" layoutY="152.0" mnemonicParsing="false" onAction="#editUsersButtonClicked" text="Adminitrer brugere" />
       <Button fx:id="editProgramsButton" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#editProgramsButtonClicked" text="Administrer programmer" />
