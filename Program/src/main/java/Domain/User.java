@@ -8,4 +8,8 @@ public class User extends Account implements IUser {
         super(username, password, name, email);
         this.userID = userID;
     }
+
+    public String getUserID() {
+        return userID;
+    }
 }

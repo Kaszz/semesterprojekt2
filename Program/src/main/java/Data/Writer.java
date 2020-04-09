@@ -10,16 +10,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Writer implements IWriter {
-
+        String broadcastDirectory = "broadcasts";
+        String userDirectory = "users";
+        String userFile = "users";
     /**
      * A method for writing strings to files.
      * @param fileName is the name of the file that is writen to.
      * @param text is the string which is written to the file.
      * @return true if successful, otherwise false.
      */
-    private boolean write2file(String fileName, String text, boolean append) {
+    private boolean write2file(String fileName, String text, String directory, boolean append) {
         //Created file object with correct name.
-        File file = new File("./src/txtfiles/broadcasts/" + fileName + ".txt");
+        File file = new File("./src/txtfiles/" + directory + "/" + fileName + ".txt");
 
         //Checks if the file already exists.
         if (file.exists()) {
@@ -53,7 +55,7 @@ public class Writer implements IWriter {
         //Extracts the string "Fathers" from the above example.
         String fileName = broadcast.substring(0, broadcast.indexOf(':'));
         System.out.println(fileName);
-        File file = new File("./src/txtfiles/broadcasts/" + fileName + ".txt");
+        File file = new File("./src/txtfiles/" + broadcastDirectory + "/" + fileName + ".txt");
 
         //The file doesnt exist.
         if (!file.exists()) {
@@ -65,7 +67,7 @@ public class Writer implements IWriter {
             }
 
             //Writes broadcast details to file
-            write2file(fileName, broadcast, true);
+            write2file(fileName, broadcast, broadcastDirectory ,true);
             return true;
         }
 
@@ -79,7 +81,7 @@ public class Writer implements IWriter {
      */
     @Override
     public String deleteBroadcast(String title) {
-        File file = new File("./src/txtfiles/broadcasts/" + title + ".txt");
+        File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
         String returnString = null;
 
         if(file.exists())
@@ -118,7 +120,7 @@ public class Writer implements IWriter {
                 return false;
         }
 
-        return write2file(title, "\r\n" + credit, true);
+        return write2file(title, "\r\n" + credit, broadcastDirectory , true);
     }
 
     /**
@@ -128,7 +130,7 @@ public class Writer implements IWriter {
      */
     @Override
     public String deleteCredit(String title, String credit) {
-        File file = new File("./src/txtfiles/broadcasts/" + title + ".txt");
+        File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
         String tempString = "";
         String returnString = null;
 
@@ -150,7 +152,7 @@ public class Writer implements IWriter {
                 scan.close();
 
                 //Overwrites the file.
-                if (write2file(title, tempString, false))
+                if (write2file(title, tempString,"broadcasts" ,false))
                     returnString = "The credit was succesfully removed.";
                 else
                     returnString = "Could not delete the credit.";
@@ -165,5 +167,109 @@ public class Writer implements IWriter {
             returnString = "The broadcast was not found in the database.";
 
         return returnString;
+    }
+
+    /** Adds a new user to the user txt file.
+     * @param user a string of all elements from a User object seperated with :
+     * @return returns true if user was created, false if the cannot be opened.
+     */
+    public boolean createUser(String user) {
+        File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
+
+        System.out.println(file.exists());
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                write2file(userFile, user, userDirectory, false);
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+        } else {
+            write2file(userFile, "\r\n" + user, userDirectory, true);
+            return true;
+        }
+    }
+
+    public boolean deleteUser(String user) {
+        File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
+        Scanner userTxt;
+        String newText = "";
+
+
+        if (file.exists()) {
+            try {
+                userTxt = new Scanner(file);
+                boolean first = false;
+
+                while(userTxt.hasNextLine()) {
+                    String line = userTxt.nextLine();
+                    if (!line.equals(user)) {
+                        if (first) {
+                            newText = newText + "\r\n" + line;
+                        }
+                        else {
+                            newText += line;
+                            first = true;
+                        }
+
+                        System.out.println(newText);
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            write2file(userFile, newText, userDirectory, false);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean editUser(String user) {
+        File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
+        Scanner userTxt;
+        String newText = "";
+
+        String userID = user.substring(0, user.indexOf(':'));
+
+        if (file.exists()) {
+            try {
+                userTxt = new Scanner(file);
+                boolean first = false;
+
+                while(userTxt.hasNextLine()) {
+                    String line = userTxt.nextLine();
+                    if (!line.substring(0, line.indexOf(':')).equals(userID)) {
+                        if (first) {
+                            newText = newText + "\r\n" + line;
+                        }
+                        else {
+                            newText += line;
+                            first = true;
+                        }
+                    }
+                    else {
+                        if (first) {
+                            newText = newText + "\r\n" + user;
+                        }
+                        else {
+                            newText += user;
+                            first = true;
+                        }
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            write2file(userFile, newText, userDirectory, false);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

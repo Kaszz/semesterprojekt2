@@ -11,8 +11,10 @@ public class AccountTest {
         LiveShow live;
         Episode homer;
 
-        Account mikail = new Admin("mik123", "pass123", "mikail", "mik@themik.gmail.com");
+        Admin mikail = new Admin("mik123", "pass123", "mikail", "mik@themik.gmail.com");
         Credit Simon = new Credit("Simon", "Jessen", CreditType.SUPPORT_CAST);
+        User SimonTheUser = new User("Jessen", "22456", "Simon", "simon@gmail.com", "1");
+        User SimonTheUser2 = new User("Jessen", "pass", "Simone", "simon@gmoil.com", "2");
         try {
             peterplys = new Movie("peterplys",
                     new URL("http://google.com"),
@@ -35,6 +37,9 @@ public class AccountTest {
             //mikail.addCredit(homer.getTitle(), Simon.getfName(), Simon.getlName(), Simon.getRole());
             //mikail.deleteCredit(homer.getTitle(), Simon);
             //mikail.deleteBroadcast(peterplys.getTitle());
+            //mikail.createUser(SimonTheUser2.getUserID(), SimonTheUser.getUsername(), SimonTheUser.getPassword(), SimonTheUser.getName(), SimonTheUser.getEmail());
+            //mikail.deleteUser(SimonTheUser2.getUserID(), SimonTheUser.getUsername(), SimonTheUser.getPassword(), SimonTheUser.getName(), SimonTheUser.getEmail());
+            mikail.editUser(SimonTheUser2.getUserID(), SimonTheUser2.getUsername(), SimonTheUser2.getPassword(), SimonTheUser2.getName(), SimonTheUser2.getEmail());
 
         } catch (
                 MalformedURLException e) {

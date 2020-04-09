@@ -15,7 +15,7 @@ public abstract class Account { //TODO implements Login
     private String name;
     private String email;
     private IReader read;
-    private IWriter write;
+    IWriter write;
 
     public static DataFacade df;
 
@@ -63,5 +63,21 @@ public abstract class Account { //TODO implements Login
 
     public void deleteBroadcast(String title)  {
         write.deleteBroadcast(title);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

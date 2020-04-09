@@ -17,23 +17,22 @@ public class Admin extends Account implements IAdmin {
          */
     }
 
-    public void createUser(String name, String username, String password, String email, String userID) {
+    public void createUser(String username, String password, String name, String email, String userID) {
         //TODO
-        User user = new User(name, username, password, email, userID);
-        //saveUser to file
-
-    }
-    public void deleteUser(String userID) { //TODO implement UUID i stedet for String i userID
-        //TODO
-        //Delete user i fil system med det userID
+        User user = new User(username, password, name, email, userID);
+        String userToCreate = userID + ":" +username + ":" + password + ":" + name + ":" + email ;
+        super.write.createUser(userToCreate);
     }
 
-    public void editUser() {
-        //TODO
-        /*
-        User user = getUser(); //Kommer fra filsystemet
-        user = userPresentation() //Kommer fra præsentationslaget
-        saveUser(); //Gem til filsystemet og erstat tidligere user.
-         */
+    public void deleteUser(String username, String password, String name, String email, String userID) { //TODO implement UUID i stedet for String i userID
+        //TODO Should use User object instead from presentation
+        String userToDelete = userID + ":" + username + ":" + password + ":" + name + ":" + email;
+        super.write.deleteUser(userToDelete);
+    }
+
+    public void editUser(String userID, String username, String password, String name, String email) {
+        //TODO Should use User object instead from presentation
+        String userToEdit = userID + ":" + username + ":" + password + ":" + name + ":" + email;
+        super.write.editUser(userToEdit);
     }
 }

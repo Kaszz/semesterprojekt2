@@ -31,6 +31,7 @@ public abstract class Broadcast implements Login {
         Credit tempCredit = new Credit(fName, lName, role);
         credits.add(tempCredit);
 
+        /*
         //Writes the credit to a file
         File file = new File(title + ".txt");
 
@@ -43,6 +44,7 @@ public abstract class Broadcast implements Login {
         } catch (IOException e) {
             e.printStackTrace();
         }
+         */
     }
 
     //TODO - This method should search the database for the title, make a temporary broadcast object and return it.
