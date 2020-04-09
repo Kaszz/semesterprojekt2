@@ -52,6 +52,7 @@ public class Writer implements IWriter {
         //Ex. Fathers:http://www.google.com:They are old:2021
         //Extracts the string "Fathers" from the above example.
         String fileName = broadcast.substring(0, broadcast.indexOf(':'));
+        System.out.println(fileName);
         File file = new File("./src/txtfiles/broadcasts/" + fileName + ".txt");
 
         //The file doesnt exist.

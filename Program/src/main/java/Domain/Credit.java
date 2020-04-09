@@ -31,4 +31,5 @@ public class Credit {
         return lName;
     }
 
+    public CreditType getRole() { return role; }
 }

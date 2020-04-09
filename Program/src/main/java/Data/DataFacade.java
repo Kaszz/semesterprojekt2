@@ -12,11 +12,11 @@ public class DataFacade {
         reader = new Reader();
     }
 
-    public IWriter getWriter() {
+    public Writer getWriter() {
         return writer;
     }
 
-    public IReader getReader() {
+    public Reader getReader() {
         return reader;
     }
 }

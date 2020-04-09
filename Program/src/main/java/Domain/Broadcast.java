@@ -58,4 +58,15 @@ public abstract class Broadcast implements Login {
         return credits;
     }
 
+    public URL getTrailerURL() {
+        return trailerURL;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public Year getLaunchYear() {
+        return launchYear;
+    }
 }
