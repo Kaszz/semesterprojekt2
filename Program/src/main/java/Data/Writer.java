@@ -169,14 +169,15 @@ public class Writer implements IWriter {
         return returnString;
     }
 
-    /** Adds a new user to the user txt file.
-     * @param user a string of all elements from a User object seperated with :
-     * @return returns true if user was created, false if the cannot be opened.
+    /**
+     * A method to add new users to a text file. Creates a new file if none is found
+     * @param user String with the attributtes of a User object. Colon separated.
+     * @return true if success, false if file not found
      */
     public boolean createUser(String user) {
         File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
 
-        System.out.println(file.exists());
+        //Checks if file already exists. If it doesn't it creates it.
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -188,22 +189,35 @@ public class Writer implements IWriter {
             }
 
         } else {
-            write2file(userFile, "\r\n" + user, userDirectory, true);
-            return true;
+            //If the folder is empty a new line is not made. If it's not a new line is made.
+            if (file.length() == 0) {
+                write2file(userFile, user, userDirectory, true);
+                return true;
+            } else {
+                write2file(userFile, "\r\n" + user, userDirectory, true);
+                return true;
+            }
+
         }
     }
 
+    /**
+     * A method to delete users from a text file.
+     * @param user String with the attributtes of a User object. Colon separated.
+     * @return true if it's a success. false if the found couldn't be found or the file doesn't exist
+     */
     public boolean deleteUser(String user) {
         File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
         Scanner userTxt;
         String newText = "";
 
-
+        //If the file exists code is run, if not the method exits returning a false
         if (file.exists()) {
             try {
                 userTxt = new Scanner(file);
                 boolean first = false;
 
+                //Looks for the identical line to delete. Once found it's not added to the new text.
                 while(userTxt.hasNextLine()) {
                     String line = userTxt.nextLine();
                     if (!line.equals(user)) {
@@ -212,14 +226,13 @@ public class Writer implements IWriter {
                         }
                         else {
                             newText += line;
-                            first = true;
+                            first = true; //The first line cannot have a new line. This is only done once.
                         }
-
-                        System.out.println(newText);
                     }
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                return false;
             }
 
             write2file(userFile, newText, userDirectory, false);
@@ -229,18 +242,27 @@ public class Writer implements IWriter {
         }
     }
 
+    /**
+     * A method to replace one user with another. They must have the same userID
+     * @param user String with the attributtes of a User object. Colon separated.
+     * @return true if a success. False if the file was not found or doesn't exist
+     */
     public boolean editUser(String user) {
         File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
         Scanner userTxt;
         String newText = "";
 
+        //Takes the string from the first start of the string to the first ':'
         String userID = user.substring(0, user.indexOf(':'));
 
+        //If the file exists code is run, if not the method exits returning a false
         if (file.exists()) {
             try {
                 userTxt = new Scanner(file);
                 boolean first = false;
 
+                //Looks through the textfile until it finds a line with the same userID
+                //Once it's find it saves the given user String instead of the line thusly replacing the old line.
                 while(userTxt.hasNextLine()) {
                     String line = userTxt.nextLine();
                     if (!line.substring(0, line.indexOf(':')).equals(userID)) {
@@ -249,7 +271,7 @@ public class Writer implements IWriter {
                         }
                         else {
                             newText += line;
-                            first = true;
+                            first = true; //The first line cannot have a new line. This is only done once.
                         }
                     }
                     else {
@@ -258,12 +280,13 @@ public class Writer implements IWriter {
                         }
                         else {
                             newText += user;
-                            first = true;
+                            first = true; //The first line cannot have a new line. This is only done once.
                         }
                     }
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                return false;
             }
 
             write2file(userFile, newText, userDirectory, false);
