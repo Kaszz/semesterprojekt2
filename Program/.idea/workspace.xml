@@ -2,13 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/EditUsersController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/EditUsers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminEntryWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminEntryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AdminEntryWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AdminEntry.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/DataFacade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/Reader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/TestClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/Writer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/BroadCastTestClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Broadcast.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/BroadcastFacade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/BroadcastType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/ConnectionDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Credit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/CreditType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Episode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/IAdmin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/IGuest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/IUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/LiveShow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Movie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Notification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/PrimaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/SystemFacade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,9 +224,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585641991422" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1586258624615">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1586333484083">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586333484083" />
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258624615" />
     <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1586258579249">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -228,6 +253,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258692541" />
+    <state x="477" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1586333410499">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="240" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586333410499" />
     <state x="606" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585988858635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

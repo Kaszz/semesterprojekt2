@@ -2,6 +2,7 @@ package Domain;
 
 import Data.DataFacade;
 import Interfaces.IReader;
+import Interfaces.IWriter;
 
 import java.io.*;
 import java.net.URL;
@@ -13,13 +14,15 @@ public abstract class Account { //TODO implements Login
     private String password;
     private String name;
     private String email;
-
+    private IReader read;
+    private IWriter write;
 
     public static DataFacade df;
 
     public void init() {
         df = new DataFacade();
-        IReader read = df.getReader();
+        this.read = df.getReader();
+        this.write = df.getWriter();
     }
 
     public Account(String username, String password, String name, String email) {
@@ -30,6 +33,9 @@ public abstract class Account { //TODO implements Login
     }
 
     public void addCredit(String title, String fName, String lName, CreditType role) {
+
+
+        /*
         Credit tempCredit = new Credit(fName, lName, role);
 
         //Writes the credit to a file
@@ -44,12 +50,17 @@ public abstract class Account { //TODO implements Login
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+         */
     }
 
 
     public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
         Movie movie = new Movie(title, trailerURL, bio, launchYear);
 
+        write.createBroadcast(title + bio);
+
+        /*
         File file = new File(title + ".txt");
 
         if (!file.exists()) {
@@ -69,6 +80,8 @@ public abstract class Account { //TODO implements Login
                 e.printStackTrace();
             }
         }
+
+         */
     }
 
     public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
