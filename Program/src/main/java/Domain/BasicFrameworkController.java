@@ -57,13 +57,18 @@ public class BasicFrameworkController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        MenuButton menuButton = new MenuButton("Options");
+
+
         //Creating menu items
         MenuItem users = new MenuItem("Brugere");
         MenuItem programs = new MenuItem("Programmer");
         MenuItem credits = new MenuItem("Kreditteringer");
 
         //Adding menu items to dropdown
-        MenuButton menuButton = new MenuButton("Options");
+
+
+
 
 
 

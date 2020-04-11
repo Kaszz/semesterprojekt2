@@ -38,8 +38,11 @@
       <Line endX="417.0" endY="8.0" layoutX="165.0" layoutY="41.0" opacity="0.17" startX="-147.0" startY="8.0" AnchorPane.topAnchor="50.0" />
       <MenuButton fx:id="menuButton" layoutX="507.0" layoutY="14.0" mnemonicParsing="false" onAction="#menuButtonClicked" prefHeight="17.0" prefWidth="68.0" text="Menu" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem mnemonicParsing="false" text="Hjem" />
+           <MenuItem mnemonicParsing="false" text="Brugere" />
+          <MenuItem mnemonicParsing="false" text="Programmer" />
+           <MenuItem mnemonicParsing="false" text="Krediteringer" />
+
         </items>
       </MenuButton>
    </children>

@@ -1,6 +1,7 @@
 package Domain;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,19 +17,52 @@ import java.util.ResourceBundle;
 public class EntryController implements Initializable {
 
     @FXML
-    void creditsButtonClicked() {
+    void creditsButtonClicked(ActionEvent event) throws IOException {
+    Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditCredits.fxml"));
+    Scene tableViewScene = new Scene(tableViewParent);
+
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+    window.setScene(tableViewScene);
+    window.show();
 
     }
 
     @FXML
-    void programsButtonClicked() {
+    void programsButtonClicked(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditPrograms.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
 
     }
 
     @FXML
-    void usersButtonClicked(ActionEvent event)         {}
+    void usersButtonClicked(ActionEvent event) throws IOException {
 
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditUsers.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
 
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+    @FXML
+    void logoutButtonClicked(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                 window.setScene(tableViewScene);
+                 window.show();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

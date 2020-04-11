@@ -9,6 +9,6 @@
       <Button layoutX="271.0" layoutY="145.0" mnemonicParsing="false" onAction="#usersButtonClicked" text="Brugere" />
       <Button layoutX="261.0" layoutY="187.0" mnemonicParsing="false" onAction="#programsButtonClicked" text="Programmer" />
       <Button layoutX="260.0" layoutY="228.0" mnemonicParsing="false" onAction="#creditsButtonClicked" text="Krediteringer" />
-      <Button layoutX="273.0" layoutY="328.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="logouButton" layoutX="273.0" layoutY="328.0" mnemonicParsing="false" onAction="#logoutButtonClicked" text="Logout" />
    </children>
 </AnchorPane>
