@@ -1,5 +1,7 @@
 package Domain;
 
+import javafx.application.Platform;
+
 public class Admin extends Account implements IAdmin {
     String userID;
 
@@ -18,7 +20,7 @@ public class Admin extends Account implements IAdmin {
     }
 
     public void createUser(String userID, String username, String password, String name, String email) {
-        //TODO
+        //TODO Should use User object instead from presentation
         User user = new User(userID, username, password, name, email);
         String userToCreate = userID + ":" + username + ":" + password + ":" + name + ":" + email + ":" + "true";
         super.write.createUser(userToCreate);
