@@ -1,12 +1,11 @@
 package Domain;
 
-import java.io.*;
 import java.net.URL;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public abstract class Broadcast implements Login {
+public abstract class Broadcast {
     //Attributes
     private String title;
     private ArrayList<Credit> credits;

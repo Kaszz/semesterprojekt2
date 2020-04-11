@@ -24,6 +24,7 @@ public class BroadCastTestClass {
         User s = new User("test", "admin123", "Simon", "simon@simon.com", "2");
         s.createMovie("Fathers", website, "they be oldin", year);
 
+
         s.addCredit("Fathers", "Anders", "Wylardt", CreditType.DIRECTOR);
         s.addCredit("Fathers", "Christopher", "Kas", CreditType.SUPPORT_CAST);
         s.addCredit("Fathers", "Mogens", "Johnyboi", CreditType.EXEC_PRODUCER);

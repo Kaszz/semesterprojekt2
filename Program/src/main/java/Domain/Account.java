@@ -14,8 +14,8 @@ public abstract class Account { //TODO implements Login
     private String password;
     private String name;
     private String email;
-    private IReader read;
-    IWriter write;
+    public static IReader read;
+    public static IWriter write;
 
     public static DataFacade df;
 
@@ -31,6 +31,14 @@ public abstract class Account { //TODO implements Login
         this.name = name;
         this.email = email;
         init();
+    }
+
+    public static IReader getReader() {
+        return read;
+    }
+
+    public static IWriter getWriter() {
+        return write;
     }
 
     public void addCredit(String title, String fName, String lName, CreditType role) {
