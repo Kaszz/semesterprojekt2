@@ -10,6 +10,9 @@ import java.util.ResourceBundle;
 
 public class EditCreditsController implements Initializable {
 
+    //bjabsajbsj
+
+
     @FXML
     private Button deleteCreditButton;
 

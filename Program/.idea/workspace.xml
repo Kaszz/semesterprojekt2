@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/BasicFrameworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/BasicFrameworkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/EditCreditsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/EditCreditsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/EntryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/EntryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/BasicFramework.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/BasicFramework.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/EditCredits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/EditCredits.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/EditPrograms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/EditPrograms.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/EditUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/EditUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/Entry.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/Entry.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/BasicFramework.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/BasicFramework.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/BasicFrameworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/BasicFrameworkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/EditCredits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/EditCredits.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/EditCreditsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/EditCreditsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/EditPrograms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/EditPrograms.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/EditUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/EditUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Entry.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Entry.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/EntryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/EntryController.class" afterDir="false" />
-    </list>
+    <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
