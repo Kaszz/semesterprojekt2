@@ -11,7 +11,8 @@ public class TestClass {
         Writer write = new Writer();
         Reader read = new Reader();
 
-        //System.out.println(write.createBroadcast("Mothers:http://facebook.com:they_cook_food_:2012"));
+        //write.hello();
+        System.out.println(write.createBroadcast("Mothers:http://facebook.com:they_cook_food_:2012"));
         //System.out.println(write.deleteBroadcast("Mothers"));
 
         //System.out.println(write.addCredit("Mothers", "Christopher:Kas:SUPPORT_CAST"));

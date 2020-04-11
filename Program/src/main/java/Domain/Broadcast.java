@@ -1,12 +1,11 @@
 package Domain;
 
-import java.io.*;
 import java.net.URL;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public abstract class Broadcast implements Login {
+public abstract class Broadcast {
     //Attributes
     private String title;
     private ArrayList<Credit> credits;
@@ -31,6 +30,7 @@ public abstract class Broadcast implements Login {
         Credit tempCredit = new Credit(fName, lName, role);
         credits.add(tempCredit);
 
+        /*
         //Writes the credit to a file
         File file = new File(title + ".txt");
 
@@ -43,6 +43,7 @@ public abstract class Broadcast implements Login {
         } catch (IOException e) {
             e.printStackTrace();
         }
+         */
     }
 
     //TODO - This method should search the database for the title, make a temporary broadcast object and return it.
@@ -58,4 +59,15 @@ public abstract class Broadcast implements Login {
         return credits;
     }
 
+    public URL getTrailerURL() {
+        return trailerURL;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public Year getLaunchYear() {
+        return launchYear;
+    }
 }

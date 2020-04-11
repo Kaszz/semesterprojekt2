@@ -2,6 +2,7 @@ package Domain;
 
 import Data.DataFacade;
 import Interfaces.IReader;
+import Interfaces.IWriter;
 
 import java.io.*;
 import java.net.URL;
@@ -13,13 +14,15 @@ public abstract class Account { //TODO implements Login
     private String password;
     private String name;
     private String email;
-
+    public static IReader read;
+    public static IWriter write;
 
     public static DataFacade df;
 
     public void init() {
         df = new DataFacade();
-        IReader read = df.getReader();
+        this.read = df.getReader();
+        this.write = df.getWriter();
     }
 
     public Account(String username, String password, String name, String email) {
@@ -27,136 +30,62 @@ public abstract class Account { //TODO implements Login
         this.password = password;
         this.name = name;
         this.email = email;
+        init();
+    }
+
+    public static IReader getReader() {
+        return read;
+    }
+
+    public static IWriter getWriter() {
+        return write;
     }
 
     public void addCredit(String title, String fName, String lName, CreditType role) {
-        Credit tempCredit = new Credit(fName, lName, role);
-
-        //Writes the credit to a file
-        File file = new File(title + ".txt");
-
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(file, true);
-            writer.write(fName + ":" + lName + ":" + role);
-            writer.write("\r\n");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String credit = fName + ":" + lName + ":" + role.toString();
+        write.addCredit(title, credit);
     }
 
 
     public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
-        Movie movie = new Movie(title, trailerURL, bio, launchYear);
-
-        File file = new File(title + ".txt");
-
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            FileWriter writer = null;
-            try {
-                writer = new FileWriter(file, true);
-                writer.write(title + ":" + trailerURL + ":" + bio + ":" + launchYear);
-                writer.write("\r\n");
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        String broadcast = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString();
+        write.createBroadcast(broadcast);
     }
 
     public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
-        LiveShow liveshow = new LiveShow(title, trailerURL, bio, launchYear, location);
+        String liveShow = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + location;
+        write.createBroadcast(liveShow);
 
-        File file = new File(title + ".txt");
-
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            FileWriter writer = null;
-            try {
-                writer = new FileWriter(file, true);
-                writer.write(title + ":" + trailerURL + ":" + bio + ":" + launchYear + ":" + location);
-                writer.write("\r\n");
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
         Episode ep = new Episode(title, trailerURL, bio, launchYear, showName, season, episode);
-
-        File file = new File(title + ".txt");
-
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            FileWriter writer = null;
-            try {
-                writer = new FileWriter(file, true);
-                writer.write(title + ":" + trailerURL + ":" + bio + ":" + launchYear + ":" + showName + ":" + season + ":" + episode);
-                writer.write("\r\n");
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        String episodeString = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode;
+        write.createBroadcast(episodeString);
     }
 
-    public void deleteCredit(String title, int creditID) throws IOException {
-
-        // Vi har ikke assignet creditID til noget som helst
-
-        //TODO
-        /*
-        Broadcast broadcast;
-        broadcast = getBroadcast(title); //Skal kunne hente broadcasts fra datalaget... How?
-        if (broadcast.credits.indexOf(creditID) > 0) {
-            broadcast.credits.remove(indexOf(creditID));
-        }
-        else {
-            //Rapporter fejl til præsentationslaget
-        }
-        */
-
+    public void deleteCredit(String title, Credit credit) {
+        String creditToDelete = credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole();
+        write.deleteCredit(title, creditToDelete);
         }
 
-
-
-
-    public void deleteBroadcast(String title) throws IOException {
-        //TODO
-        /*
-        //Query database om at slette den række som indeholder den specifikke titel
-         */
-
-        File file = new File("./src/txtfiles/broadcasts/" + title + ".txt");
-
-        if(file.delete())
-        {
-            System.out.println("File deleted successfully");
-        }
-        else
-        {
-            System.out.println("Failed to delete the file");
-        }
-
+    public void deleteBroadcast(String title)  {
+        write.deleteBroadcast(title);
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
