@@ -85,3 +85,15 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Påbegyndelse af implementering af UI.
 
 - Påbegyndelse af implementeringen af domænelaget. 
+
+### 07/04/2020
+
+- Opsætning af Scrum product og sprint backlog.
+
+- Programmering af datalag.
+
+- Påbegyndt programmering af broadcast og account klasserne.
+
+### 14/04/2020
+
+- Implementering af et login-system.
