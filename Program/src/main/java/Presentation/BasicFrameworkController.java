@@ -61,9 +61,8 @@ public class BasicFrameworkController implements Initializable  {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ILogin loginClient = App.domain.getLogin();
 
-        nameLoggedInLabel.setText(loginClient.getUser().getFirstName() + " " + loginClient.getUser().getLastName());
+        nameLoggedInLabel.setText(App.loginClient.getUser().getFirstName() + " " + App.loginClient.getUser().getLastName());
 
         MenuButton menuButton = new MenuButton("Options");
 

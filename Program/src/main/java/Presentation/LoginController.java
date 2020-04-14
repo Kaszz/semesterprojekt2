@@ -38,14 +38,12 @@ public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
 
-    ILogin loginClient = App.domain.getLogin();
-
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
 
         try {
-            loginClient.login(usernameTextField.getText(), passwordTextField.getText());
-            if(loginClient.isloggedIn()) {
+            App.loginClient.login(usernameTextField.getText(), passwordTextField.getText());
+            if(App.loginClient.isloggedIn()) {
                 displayErrorMessage.setText("Logged ind");
                 Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
                 Scene tableViewScene = new Scene(tableViewParent);

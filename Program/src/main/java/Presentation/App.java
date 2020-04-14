@@ -1,6 +1,7 @@
 package Presentation;
 
 import Domain.DomainFacade;
+import Interfaces.ILogin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ public class App extends Application {
 
     private static Scene scene;
     static DomainFacade domain = DomainFacade.getInstance();
+    static ILogin loginClient = domain.getLogin();
 
     @Override
     public void start(Stage stage) throws IOException {
