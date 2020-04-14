@@ -9,5 +9,5 @@ public enum CreditType {
         SUPPORT_CAST,
         DIRECTOR_PHOTOGRAPHY,
         PRODUCTION_DESIGNER,
-        EDITOR
+        EDITOR;
 }

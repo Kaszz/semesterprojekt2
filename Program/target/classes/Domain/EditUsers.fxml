@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Domain.EditUsersController">
+   <children>
+      <fx:include source="BasicFramework.fxml" />
+      <Label layoutX="67.0" layoutY="114.0" text="Fornavn" />
+      <Label layoutX="67.0" layoutY="149.0" text="Efternavn" />
+      <Label layoutX="67.0" layoutY="187.0" text="Email" />
+      <Label layoutX="67.0" layoutY="220.0" text="Password" />
+      <TextField fx:id="userFirstNameTextField" layoutX="172.0" layoutY="109.0" onAction="#userFirstNameEntered" />
+      <TextField fx:id="userLastNameTextField" layoutX="172.0" layoutY="144.0" onAction="#userLastNameEntered" />
+      <TextField fx:id="userEmailTextField" layoutX="172.0" layoutY="180.0" onAction="#userEmailEntered" />
+      <TextField fx:id="userPasswordTextField" layoutX="172.0" layoutY="217.0" onAction="#userPasswordEntered" />
+      <Button fx:id="deleteUserButton" layoutX="162.0" layoutY="287.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" text="Slet" />
+      <Button fx:id="changeUserButton" layoutX="220.0" layoutY="287.0" mnemonicParsing="false" onAction="#changeUserButtonClicked" text="Tilføj" />
+      <Button fx:id="createUserButton" layoutX="283.0" layoutY="287.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Opret" />
+      <ListView fx:id="usersListView" layoutX="362.0" layoutY="83.0" prefHeight="296.0" prefWidth="224.0" />
+      <Label layoutX="233.0" layoutY="14.0" text="Administrer brugere">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

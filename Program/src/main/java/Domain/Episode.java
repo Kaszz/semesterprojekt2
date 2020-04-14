@@ -20,4 +20,15 @@ public class Episode extends Broadcast {
     //Methods
 
 
+    public String getShowName() {
+        return showName;
+    }
+
+    public int getSeason() {
+        return season;
+    }
+
+    public int getEpisode() {
+        return episode;
+    }
 }
