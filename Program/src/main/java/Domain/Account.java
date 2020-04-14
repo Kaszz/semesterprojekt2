@@ -10,18 +10,15 @@ import java.time.Year;
 import java.util.Scanner;
 
 public abstract class Account { //TODO implements Login
-    private String username;
-    private String password;
-    private String name;
-    private String email;
+    private String email, password, firstName, lastName;
 
 
 
-    public Account(String username, String password, String name, String email) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
+    public Account(String email, String password, String firstName, String lastName) {
         this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
 
@@ -58,16 +55,17 @@ public abstract class Account { //TODO implements Login
         main.getWriter().deleteBroadcast(title);
     }
 
-    public String getUsername() {
-        return username;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {

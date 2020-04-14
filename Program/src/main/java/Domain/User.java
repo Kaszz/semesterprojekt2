@@ -4,8 +4,8 @@ public class User extends Account implements IUser {
     private String userID;
     private boolean enabled = true;
 
-    public User(String userID, String username, String password, String name, String email) {
-        super(username, password, name, email);
+    public User(String userID, String email, String password, String firstName, String lastName) {
+        super(email, password, firstName, lastName);
         this.userID = userID;
     }
 

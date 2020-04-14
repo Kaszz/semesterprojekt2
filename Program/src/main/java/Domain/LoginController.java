@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import Domain.AccountTest;
 import Interfaces.IReader;
@@ -40,7 +42,6 @@ public class LoginController extends Login implements Initializable {
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
 
-
         try {
             Login.login(usernameTextField.getText(), passwordTextField.getText());
             if(Login.isloggedIn()) {
@@ -56,6 +57,8 @@ public class LoginController extends Login implements Initializable {
         } catch(IllegalArgumentException e) {
 
         }
+
+
 
     }
 

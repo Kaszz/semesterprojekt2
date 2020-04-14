@@ -1,4 +1,2 @@
-1:Jessen:123:Simon:simon@gmail.com:true
-1:Kas:1234:Christopher:simon@gmail.com:true
-1:Wylardt:1235:Simon:simon@gmail.com:true
-1:Soender:1236:Simon:simon@gmail.com:true
+1:email:password:firstname:lastname:enabled
+1:jakup@gmail.com:1234:Jakup:Karagoz:true

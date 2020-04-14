@@ -2,23 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Domain/UserEntry.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program 1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Program 1.0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/Reader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/AccountTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/BasicFrameworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/BasicFrameworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/EntryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/EntryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Domain/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/loginTEEEEST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/loginTEEEEST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Domain/BasicFramework.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Domain/BasicFramework.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/users/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/txtfiles/users/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Data/Reader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Domain/EditCreditsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/EditCreditsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/BasicFrameworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/BasicFrameworkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Domain/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Domain/loginTEEEEST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/loginTEEEEST.class" afterDir="false" />
     </list>
@@ -188,7 +190,7 @@
       <workItem from="1586267521010" duration="25149000" />
       <workItem from="1586689169592" duration="8866000" />
       <workItem from="1586781175040" duration="1377000" />
-      <workItem from="1586849089480" duration="5682000" />
+      <workItem from="1586849089480" duration="15670000" />
     </task>
     <servers />
   </component>
@@ -229,25 +231,25 @@
     </state>
     <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586551439529" />
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258624615" />
-    <state width="1537" height="202" key="GridCell.Tab.0.bottom" timestamp="1586856344616">
+    <state width="1537" height="202" key="GridCell.Tab.0.bottom" timestamp="1586866518279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="202" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586856344616" />
+    <state width="1537" height="202" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586866518279" />
     <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1537" height="202" key="GridCell.Tab.0.center" timestamp="1586856344616">
+    <state width="1537" height="202" key="GridCell.Tab.0.center" timestamp="1586866518279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="202" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586856344616" />
+    <state width="1537" height="202" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586866518279" />
     <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1537" height="202" key="GridCell.Tab.0.left" timestamp="1586856344615">
+    <state width="1537" height="202" key="GridCell.Tab.0.left" timestamp="1586866518279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="202" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586856344615" />
+    <state width="1537" height="202" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586866518279" />
     <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1537" height="202" key="GridCell.Tab.0.right" timestamp="1586856344616">
+    <state width="1537" height="202" key="GridCell.Tab.0.right" timestamp="1586866518279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="202" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586856344616" />
+    <state width="1537" height="202" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586866518279" />
     <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586429858674">
       <screen x="0" y="0" width="1536" height="824" />
