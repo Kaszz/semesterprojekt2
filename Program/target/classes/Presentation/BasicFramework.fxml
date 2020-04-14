@@ -25,7 +25,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="nameLoggedInLabel" contentDisplay="RIGHT" layoutX="328.0" layoutY="19.0" text="First name + Last name" textAlignment="RIGHT" />
+      <Label fx:id="nameLoggedInLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="328.0" layoutY="19.0" text="First name + Last name" textAlignment="RIGHT" />
       <Button layoutX="421.0" layoutY="15.0" minHeight="17.0" mnemonicParsing="false" onAction="#notificationsButtonClicked" prefHeight="27.0" prefWidth="34.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">

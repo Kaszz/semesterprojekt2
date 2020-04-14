@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditUsersController">
    <children>
       <fx:include source="BasicFramework.fxml" />
@@ -23,9 +22,9 @@
       <Button fx:id="changeUserButton" layoutX="220.0" layoutY="287.0" mnemonicParsing="false" onAction="#changeUserButtonClicked" text="Tilføj" />
       <Button fx:id="createUserButton" layoutX="283.0" layoutY="287.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Opret" />
       <ListView fx:id="usersListView" layoutX="362.0" layoutY="83.0" prefHeight="296.0" prefWidth="224.0" />
-      <Label layoutX="233.0" layoutY="14.0" text="Administrer brugere">
+      <Label layoutX="67.0" layoutY="20.0" text="Administrér brugere" AnchorPane.leftAnchor="70.0">
          <font>
-            <Font size="18.0" />
+            <Font size="16.0" />
          </font>
       </Label>
    </children>

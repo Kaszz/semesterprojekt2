@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditProgramsController">
    <children>
@@ -76,5 +77,10 @@
             <TableColumn prefWidth="59.0" text="Episode" />
         </columns>
       </TableView>
+      <Label layoutX="70.0" layoutY="21.0" text="Administrér programmer" AnchorPane.leftAnchor="70.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
