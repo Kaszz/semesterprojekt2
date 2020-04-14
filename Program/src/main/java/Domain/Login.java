@@ -8,7 +8,7 @@ public class Login {
     static User tempUser;
 
     public static void login(String username, String password) {
-        IReader read = Account.getReader();
+        IReader read = main.getReader();
         String[] info;
         String returnString = read.checkUser(username, password);
         if (returnString.equals("User not found.")) {

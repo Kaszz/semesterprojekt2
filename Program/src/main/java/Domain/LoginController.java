@@ -11,12 +11,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import Domain.AccountTest;
+import Interfaces.IReader;
+import Data.Reader;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController extends Login implements Initializable {
+
+
 
     @FXML
     private TextField usernameTextField;
@@ -30,28 +35,45 @@ public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
 
+
+
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            Login.login(usernameTextField.getText(), passwordTextField.getText());
+            if(Login.isloggedIn()) {
+                displayErrorMessage.setText("Logged ind");
+                Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
+                Scene tableViewScene = new Scene(tableViewParent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(tableViewScene);
+                window.show();
+            } else {
+                displayErrorMessage.setText("Forkert brugernavn eller password");
+            }
+        } catch(IllegalArgumentException e) {
 
-        window.setScene(tableViewScene);
-        window.show();
+        }
 
     }
 
     @FXML
-    void passwordAdded() {
+    public void passwordAdded() {
 
     }
 
     @FXML
-    void usernameAdded() {
+    public void usernameAdded() {
 
     }
+
+    public void checkuserType() {
+
+    }
+
+
 
 
 

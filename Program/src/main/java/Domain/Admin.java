@@ -23,18 +23,21 @@ public class Admin extends Account implements IAdmin {
         //TODO Should use User object instead from presentation
         User user = new User(userID, username, password, name, email);
         String userToCreate = userID + ":" + username + ":" + password + ":" + name + ":" + email + ":" + "true";
-        super.write.createUser(userToCreate);
+        main.getWriter().createUser(userToCreate);
     }
 
     public void deleteUser(String userID, String username, String password, String name, String email, boolean enabled) { //TODO implement UUID i stedet for String i userID
         //TODO Should use User object instead from presentation
         String userToDelete = userID + ":" + username + ":" + password + ":" + name + ":" + email + ":" + enabled;
-        super.write.deleteUser(userToDelete);
+        main.getWriter().deleteUser(userToDelete);
     }
 
     public void editUser(String userID, String username, String password, String name, String email, boolean enabled) {
         //TODO Should use User object instead from presentation
         String userToEdit = userID + ":" + username + ":" + password + ":" + name + ":" + email + ":" + enabled;
-        super.write.editUser(userToEdit);
+        main.getWriter().editUser(userToEdit);
     }
+
+
+
 }

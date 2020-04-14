@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Domain.LoginController">
    <children>
-      <ImageView fitHeight="48.0" fitWidth="238.0" layoutX="230.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="179.05882263183594">
+      <ImageView fitHeight="48.0" fitWidth="238.0" layoutX="205.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="204.05882263183594">
          <image>
             <Image url="@../Images/creDB_logo.png" />
          </image>
@@ -18,7 +18,7 @@
       <Label layoutX="123.0" layoutY="237.0" prefHeight="17.0" prefWidth="67.0" text="Password" AnchorPane.leftAnchor="123.0" />
       <TextField fx:id="usernameTextField" layoutX="210.0" layoutY="190.0" onAction="#usernameAdded" prefHeight="27.0" prefWidth="229.0" AnchorPane.leftAnchor="210.0" />
       <TextField fx:id="passwordTextField" layoutX="211.0" layoutY="232.0" onAction="#passwordAdded" prefHeight="27.0" prefWidth="229.0" AnchorPane.leftAnchor="211.0" />
-      <Label fx:id="displayErrorMessage" layoutX="261.0" layoutY="358.0" text="Error message" textFill="#fc0202" />
+      <Label fx:id="displayErrorMessage" layoutX="185.0" layoutY="356.0" prefHeight="18.0" prefWidth="230.0" textAlignment="CENTER" textFill="#fc0202" />
       <Button fx:id="loginButton" layoutX="276.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginButtonClicked" text="Login" />
    </children>
 </AnchorPane>
