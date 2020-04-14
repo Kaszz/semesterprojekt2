@@ -27,7 +27,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TreeTableView layoutX="355.0" layoutY="71.0" prefHeight="313.0" prefWidth="231.0">
+      <TreeTableView fx:id="usersTreeTableView" layoutX="355.0" layoutY="71.0" prefHeight="313.0" prefWidth="231.0">
         <columns>
           <TreeTableColumn fx:id="nameUserTreeTableView" prefWidth="75.0" text="Navn" />
           <TreeTableColumn fx:id="emailUserTreeTableView" prefWidth="75.0" text="Email" />

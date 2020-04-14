@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
 
-
     @FXML
     private TextField usernameTextField;
 
@@ -41,25 +40,25 @@ public class LoginController implements Initializable {
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
 
+
         try {
             App.loginClient.login(usernameTextField.getText(), passwordTextField.getText());
-            if(App.loginClient.isloggedIn()) {
+            if (App.loginClient.isloggedIn()) {
                 displayErrorMessage.setText("Logged ind");
                 Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
                 Scene tableViewScene = new Scene(tableViewParent);
-                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(tableViewScene);
                 window.show();
             } else {
                 displayErrorMessage.setText("Forkert brugernavn eller password");
             }
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException | IOException e1) {
 
         }
 
-
-
     }
+
 
     @FXML
     public void passwordAdded() {
@@ -74,10 +73,6 @@ public class LoginController implements Initializable {
     public void checkuserType() {
 
     }
-
-
-
-
 
 
     @Override

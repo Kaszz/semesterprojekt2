@@ -1,14 +1,11 @@
 package Presentation;
 
-import Interfaces.IAdmin;
-import Interfaces.ILogin;
-import Interfaces.IUser;
+import Data.Reader;
+import Domain.main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +34,16 @@ public class EditUsersController implements Initializable {
     private Button createUserButton;
 
     @FXML
-    private ListView<?> usersListView;
+    private TreeTableView<?> usersTreeTableView;
+
+    @FXML
+    private TreeTableColumn<?, ?> nameUserTreeTableView;
+
+    @FXML
+    private TreeTableColumn<?, ?> emailUserTreeTableView;
+
+    @FXML
+    private TreeTableColumn<?, ?> passwordUserTreeTableView;
 
     @FXML
     void changeUserButtonClicked(ActionEvent event) {
@@ -76,6 +82,8 @@ public class EditUsersController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        TreeTableColumn<>
 
     }
 }

@@ -2,8 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -21,11 +22,17 @@
       <Button fx:id="deleteUserButton" layoutX="162.0" layoutY="287.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" text="Slet" />
       <Button fx:id="changeUserButton" layoutX="220.0" layoutY="287.0" mnemonicParsing="false" onAction="#changeUserButtonClicked" text="Tilføj" />
       <Button fx:id="createUserButton" layoutX="283.0" layoutY="287.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Opret" />
-      <ListView fx:id="usersListView" layoutX="362.0" layoutY="83.0" prefHeight="296.0" prefWidth="224.0" />
       <Label layoutX="67.0" layoutY="20.0" text="Administrér brugere" AnchorPane.leftAnchor="70.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <TreeTableView fx:id="usersTreeTableView" layoutX="355.0" layoutY="71.0" prefHeight="313.0" prefWidth="231.0">
+        <columns>
+          <TreeTableColumn fx:id="nameUserTreeTableView" prefWidth="75.0" text="Navn" />
+          <TreeTableColumn fx:id="emailUserTreeTableView" prefWidth="75.0" text="Email" />
+            <TreeTableColumn fx:id="passwordUserTreeTableView" text="Password" />
+        </columns>
+      </TreeTableView>
    </children>
 </AnchorPane>
