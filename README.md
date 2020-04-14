@@ -97,3 +97,9 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 ### 14/04/2020
 
 - Implementering af et login-system.
+
+- Knytning af lagdeling færdiggjordt
+
+- Login system inkorporeret i UI.
+
+- Seer interface opstillet med animation af programmer.
