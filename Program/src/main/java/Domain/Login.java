@@ -8,10 +8,11 @@ public class Login {
     static boolean loggedIn;
     static User tempUser;
 
-    public static void login(String username, String password) {
+    public static void login(String email, String password) {
         IReader read = main.getReader();
         String[] info;
-        String returnString = read.checkUser(username, password);
+        String returnString = read.checkUser(email, password);
+
         if (returnString.equals("User not found.")) {
             System.out.println(returnString);
         } else {

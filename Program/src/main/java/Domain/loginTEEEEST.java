@@ -8,7 +8,7 @@ public class loginTEEEEST {
 
         if (Login.isloggedIn()) {
             User test = Login.getUser();
-            System.out.println(test.getName());
+            System.out.println(test.getFirstName() + test.getLastName());
         }
 
     }

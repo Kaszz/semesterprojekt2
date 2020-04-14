@@ -1,6 +1,7 @@
 package Presentation;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BasicFrameworkController implements Initializable {
+public class BasicFrameworkController implements Initializable  {
 
 
     @FXML
@@ -24,6 +25,7 @@ public class BasicFrameworkController implements Initializable {
 
     @FXML
     private MenuButton menuButton;
+
 
 
     @FXML
@@ -41,6 +43,9 @@ public class BasicFrameworkController implements Initializable {
     void menuButtonClicked(ActionEvent event) {
 
     }
+
+
+
     @FXML
     void notificationsButtonClicked(ActionEvent event) throws IOException {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Notifications.fxml"));
@@ -56,6 +61,8 @@ public class BasicFrameworkController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        nameLoggedInLabel.setText(Login.getUser().getFirstName() + " " + Login.getUser().getLastName());
+
         MenuButton menuButton = new MenuButton("Options");
 
 
@@ -64,7 +71,11 @@ public class BasicFrameworkController implements Initializable {
         MenuItem programs = new MenuItem("Programmer");
         MenuItem credits = new MenuItem("Kreditteringer");
 
+
+
         //Adding menu items to dropdown
+
+        //Action to menu items
 
 
 

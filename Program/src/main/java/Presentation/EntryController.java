@@ -53,13 +53,12 @@ public class EntryController implements Initializable {
 
     @FXML
     void logoutButtonClicked(ActionEvent event) throws IOException {
+        Login.loggedIn = false;
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
-
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                 window.setScene(tableViewScene);
-                 window.show();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     @Override

@@ -11,23 +11,24 @@ import java.time.Year;
 import java.util.Scanner;
 
 public abstract class Account implements IAccount {
-    private String username;
-    private String password;
-    private String name;
-    private String email;
+    private String email, password, firstName, lastName;
     private IWriter write = main.getWriter();
 
-    public Account(String username, String password, String name, String email) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
+    public Account(String email, String password, String firstName, String lastName) {
         this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
 
+    public static IWriter getWriter() {
+        return write;
+    }
+
     public void addCredit(String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.toString();
-        write.addCredit(title, credit);
+        main.getWriter().addCredit(title, credit);
     }
 
 
@@ -50,23 +51,24 @@ public abstract class Account implements IAccount {
 
     public void deleteCredit(String title, Credit credit) {
         String creditToDelete = credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole();
-        write.deleteCredit(title, creditToDelete);
+        main.getWriter().deleteCredit(title, creditToDelete);
         }
 
     public void deleteBroadcast(String title)  {
-        write.deleteBroadcast(title);
+        main.getWriter().deleteBroadcast(title);
     }
 
-    public String getUsername() {
-        return username;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
