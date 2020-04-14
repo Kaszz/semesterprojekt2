@@ -9,5 +9,5 @@ public interface IReader {
     public ArrayList<String> getBroadcastCredits(String title);
     public ArrayList<String> getPersonalCredits(String firstName, String lastName);
     public String checkUser(String email, String password);
-    public ObservableList<String> getUsers (String email, String password, String firstName, String lastName);
+    public ObservableList<String> getUsers (String email);
 }

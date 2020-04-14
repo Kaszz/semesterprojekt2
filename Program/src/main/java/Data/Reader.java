@@ -151,7 +151,7 @@ public class Reader implements IReader {
     }
 
     @Override
-    public ObservableList<String> getUsers(String email, String firstName, String lastName, String password) {
+    public ObservableList<String> getUsers(String email) {
         File file = new File("./src/txtfiles/users/users.txt");
         Scanner scan = null;
         ObservableList<String> returnUsers = FXCollections.observableArrayList();
@@ -175,8 +175,10 @@ public class Reader implements IReader {
                 String lName = line.substring(fourthSeparator + 1, line.indexOf (':', fourthSeparator +1));
 
 
+
                 String line2 = scan.nextLine();
                 returnUsers.add(line);
+                returnUsers.addAll(fName, emailAddress, pword, lastName);
             }
 
         } catch (FileNotFoundException e) {

@@ -34,16 +34,16 @@ public class EditUsersController implements Initializable {
     private Button createUserButton;
 
     @FXML
-    private TreeTableView<?> usersTreeTableView;
+    private TreeTableView<String> usersTreeTableView;
 
     @FXML
-    private TreeTableColumn<?, ?> nameUserTreeTableView;
+    private TreeTableColumn<Reader, String> nameUserTreeTableView;
 
     @FXML
-    private TreeTableColumn<?, ?> emailUserTreeTableView;
+    private TreeTableColumn<Reader, String> emailUserTreeTableView;
 
     @FXML
-    private TreeTableColumn<?, ?> passwordUserTreeTableView;
+    private TreeTableColumn<Reader, String> passwordUserTreeTableView;
 
     @FXML
     void changeUserButtonClicked(ActionEvent event) {
@@ -82,8 +82,9 @@ public class EditUsersController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        TreeTableColumn<>
+        usersTreeTableView = new TableView<>()
+        usersTreeTableView.getColumns().addAll(nameUserTreeTableView, emailUserTreeTableView, passwordUserTreeTableView);
+        //nameUserTreeTableView.setCellValueFactory();
 
     }
 }
