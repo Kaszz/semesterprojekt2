@@ -3,6 +3,6 @@ module Domain.creDB {
     requires javafx.fxml;
     requires java.base;
 
-    opens Controllers to javafx.fxml;
-    exports Controllers;
+    opens Presentation to javafx.fxml;
+    exports Presentation;
 }

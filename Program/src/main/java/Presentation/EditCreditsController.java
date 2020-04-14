@@ -1,4 +1,4 @@
-package Controllers;
+package Presentation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
