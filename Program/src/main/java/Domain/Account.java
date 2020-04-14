@@ -15,32 +15,15 @@ public abstract class Account implements IAccount {
     private String password;
     private String name;
     private String email;
-    public static IReader read;
-    public static IWriter write;
-
-    public static DataFacade df;
-
-    public void init() {
-        df = new DataFacade();
-        this.read = df.getReader();
-        this.write = df.getWriter();
-    }
+    private IWriter write = main.getWriter();
 
     public Account(String username, String password, String name, String email) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
-        init();
     }
 
-    public static IReader getReader() {
-        return read;
-    }
-
-    public static IWriter getWriter() {
-        return write;
-    }
 
     public void addCredit(String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.toString();

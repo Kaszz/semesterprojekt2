@@ -1,5 +1,5 @@
 package Interfaces;
 
-public interface ILiveShow {
+public interface ILiveShow extends IBroadcast{
     public String getLocation();
 }

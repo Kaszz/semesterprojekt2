@@ -1,5 +1,6 @@
 package Presentation;
 
+import Domain.DomainFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    static DomainFacade domain = DomainFacade.getInstance();
 
     @Override
     public void start(Stage stage) throws IOException {

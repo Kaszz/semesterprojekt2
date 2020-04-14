@@ -9,14 +9,14 @@ public class Episode extends Broadcast implements IEpisode {
     //Attributes
     private String showName;
     private int season;
-    private int episode;
+    private int episodeNum;
 
     //Constructors
-    public Episode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
+    public Episode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episodeNum) {
         super(title, trailerURL, bio, launchYear);
         this.showName = showName;
         this.season = season;
-        this.episode = episode;
+        this.episodeNum = episodeNum;
     }
 
     //Methods
@@ -30,7 +30,7 @@ public class Episode extends Broadcast implements IEpisode {
         return season;
     }
 
-    public int getEpisode() {
-        return episode;
+    public int getEpisodeNum() {
+        return episodeNum;
     }
 }

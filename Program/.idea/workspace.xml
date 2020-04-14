@@ -2,36 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Domain/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/BasicFrameworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/BasicFrameworkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EditCreditsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditCreditsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EditProgramsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditProgramsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EditUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/EntryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EntryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/NotificationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/NotificationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/BasicFramework.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/BasicFramework.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/EditCredits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/EditCredits.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/EditPrograms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/EditPrograms.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/EditUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/EditUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/Entry.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/Entry.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Controllers/Notifications.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/Notifications.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/BasicFramework.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EditCredits.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EditPrograms.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EditUsers.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/Entry.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/Notifications.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data/DataFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/DataFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/DomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Episode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Episode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IEpisode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IEpisode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ILiveShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ILiveShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IMovie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IMovie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/EditUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/users/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/txtfiles/users/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/BasicFrameworkController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EditCreditsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EditProgramsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EditUsersController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/EntryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/NotificationsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/PrimaryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/DataFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Data/DataFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/DomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Episode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Episode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IEpisode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IEpisode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ILiveShow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/ILiveShow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IMovie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IMovie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/BasicFramework.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/EditCredits.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/EditPrograms.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/EditUsers.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/Entry.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NogetAndet/Notifications.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/images/free-png-home-icon-home-house-icon-logo-home-png-transparent-icon-home-png-840_771.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/free-png-home-icon-home-house-icon-logo-home-png-transparent-icon-home-png-840_771.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,10 +240,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984989090" />
-    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser" timestamp="1586854598613">
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser" timestamp="1586862566390">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586854598613" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586862566390" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586593603449" />
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586856755408">
       <screen x="0" y="0" width="1536" height="824" />
@@ -238,25 +254,25 @@
     </state>
     <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586551439529" />
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258624615" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1586857156676">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1586863873000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586857156676" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586863873000" />
     <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1586857156676">
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1586863873000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586857156676" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586863873000" />
     <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1586857156676">
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1586863873000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586857156676" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586863873000" />
     <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1586857156676">
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1586863873000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586857156676" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586863873000" />
     <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586429858674">
       <screen x="0" y="0" width="1536" height="824" />
@@ -298,14 +314,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Data/Writer.java</url>
-          <line>21</line>
-          <properties class="Data.Writer" method="write2file">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Data/Writer.java</url>
           <line>176</line>

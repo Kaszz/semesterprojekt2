@@ -1,4 +1,4 @@
 package Interfaces;
 
-public interface IMovie {
+public interface IMovie extends IBroadcast {
 }

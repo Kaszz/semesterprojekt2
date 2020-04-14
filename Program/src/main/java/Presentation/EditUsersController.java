@@ -1,5 +1,7 @@
 package Presentation;
 
+import Interfaces.IAdmin;
+import Interfaces.IUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EditUsersController implements Initializable {
+    IAdmin admin = App.domain.createAdmin("Chris", "1234", "Christopher", "chris@chokolade.com");
 
     @FXML
     private TextField userFirstNameTextField;
@@ -43,7 +46,10 @@ public class EditUsersController implements Initializable {
 
     @FXML
     void createUserButtonClicked(ActionEvent event) {
-
+        System.out.println(admin.getName());
+        IUser user = App.domain.createUser("3", userEmailTextField.getText(), userPasswordTextField.getText(), userFirstNameTextField.getText(), userLastNameTextField.getText());
+        System.out.println(user.getName() + user.getEmail() + user.getUserID());
+        admin.createUser("4", userEmailTextField.getText(), userPasswordTextField.getText(), userFirstNameTextField.getText() + userLastNameTextField.getText(), userEmailTextField.getText());
     }
 
     @FXML
