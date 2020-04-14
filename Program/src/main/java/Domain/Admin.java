@@ -23,10 +23,10 @@ public class Admin extends Account implements IAdmin {
          */
     }
 
-    public void createUser(String userID, String email, String password, String firstName, String lastName, boolean enabled) {
+    public void createUser(String userID, String email, String password, String firstName, String lastName) {
         //TODO Should use User object instead from presentation
         User user = new User(userID, password, firstName, lastName, email);
-        String userToCreate = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
+        String userToCreate = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + "true";
         write.createUser(userToCreate);
     }
 
@@ -41,7 +41,4 @@ public class Admin extends Account implements IAdmin {
         String userToEdit = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
         write.editUser(userToEdit);
     }
-
-
-
 }

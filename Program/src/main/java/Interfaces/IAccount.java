@@ -13,8 +13,9 @@ public interface IAccount {
     public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode);
     public void deleteCredit(String title, Credit credit);
     public void deleteBroadcast(String title);
-    public String getUsername();
+
+    public String getFirstName();
+    public String getLastName();
     public String getPassword();
-    public String getName();
     public String getEmail();
 }

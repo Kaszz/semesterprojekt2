@@ -1,14 +1,20 @@
 package Domain;
 
-import Data.DataFacade;
+import Interfaces.ILogin;
 import Interfaces.IReader;
-import Interfaces.IWriter;
 
-public class Login {
+
+public class Login implements ILogin {
+    private static Login instance = new Login();
     static boolean loggedIn;
     static User tempUser;
 
-    public static void login(String email, String password) {
+    private Login() {
+        //Does nothing.
+    }
+
+
+    public void login(String email, String password) {
         IReader read = main.getReader();
         String[] info;
         String returnString = read.checkUser(email, password);
@@ -22,11 +28,20 @@ public class Login {
         }
     }
 
-    public static boolean isloggedIn() {
+    public boolean isloggedIn() {
         return loggedIn;
     }
 
-    public static User getUser() {
-            return tempUser;
+    public User getUser() {
+        return tempUser;
     }
+
+    public static Login getInstance() {
+        return instance;
+    }
+
+    public void logout() {
+        loggedIn = false;
+    }
+
 }

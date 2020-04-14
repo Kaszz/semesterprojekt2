@@ -1,5 +1,6 @@
 package Presentation;
 
+import Interfaces.ILogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EntryController implements Initializable {
+    ILogin loginClient = App.domain.getLogin();
+
 
     @FXML
     void creditsButtonClicked(ActionEvent event) throws IOException {
@@ -53,7 +56,7 @@ public class EntryController implements Initializable {
 
     @FXML
     void logoutButtonClicked(ActionEvent event) throws IOException {
-        Login.loggedIn = false;
+        loginClient.logout();
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

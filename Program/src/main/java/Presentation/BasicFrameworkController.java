@@ -1,5 +1,6 @@
 package Presentation;
 
+import Interfaces.ILogin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -60,8 +61,9 @@ public class BasicFrameworkController implements Initializable  {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ILogin loginClient = App.domain.getLogin();
 
-        nameLoggedInLabel.setText(Login.getUser().getFirstName() + " " + Login.getUser().getLastName());
+        nameLoggedInLabel.setText(loginClient.getUser().getFirstName() + " " + loginClient.getUser().getLastName());
 
         MenuButton menuButton = new MenuButton("Options");
 

@@ -24,8 +24,8 @@
         <option value="Enum" />
         <option value="Class" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -57,7 +57,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../VOP/Module 05 - Binary files + threads/Lesson05TCPThreadExercise/pom.xml" />
+    <property name="last_opened_file_path" value="G:/../../VOP/Module 05 - Binary files + threads/Lesson05TCPThreadExercise/pom.xml" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -148,7 +148,6 @@
         <item itemvalue="Application.loginTEEEEST" />
         <item itemvalue="Application.TestClass" />
         <item itemvalue="Application.AccountTest" />
-        <item itemvalue="Application.BroadCastTestClass (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -205,15 +204,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984989090" />
-    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser" timestamp="1586865743161">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1586869611636">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586865743161" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586593603449" />
-    <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586856755408">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586869611636" />
+    <state x="708" y="376" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586869861945">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1586856755408" />
+    <state x="708" y="376" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586869861945" />
     <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1586551439529">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

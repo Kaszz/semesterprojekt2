@@ -11,22 +11,23 @@ public class DomainFacade {
     private Episode episode;
     private LiveShow liveShow;
     private Movie movie;
+    private Login login;
 
     private DomainFacade() {
-        //NOTHING
+        login = Login.getInstance();
     }
 
     public static DomainFacade getInstance() {
         return instance;
     }
 
-    public User createUser(String userID, String username, String password, String name, String email) {
-        user = new User(userID, username, password, name, email);
+    public User createUser(String userID, String email, String password, String firstName, String lastName) {
+        user = new User(userID, email, password, firstName, lastName);
         return user;
     }
 
-    public Admin createAdmin(String username, String password, String name, String email) {
-        admin = new Admin(username, password, name, email);
+    public Admin createAdmin(String userID, String email, String password, String firstName, String lastName) {
+        admin = new Admin(userID, email, password, firstName, lastName);
         return admin;
     }
 
@@ -49,4 +50,11 @@ public class DomainFacade {
         movie = new Movie(title, trailerURL, bio, launchYear);
         return movie;
     }
+
+    public Login getLogin() {
+        return login;
+    }
+
+
+
 }

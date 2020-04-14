@@ -21,11 +21,6 @@ public abstract class Account implements IAccount {
         this.lastName = lastName;
     }
 
-
-    public static IWriter getWriter() {
-        return write;
-    }
-
     public void addCredit(String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.toString();
         main.getWriter().addCredit(title, credit);
