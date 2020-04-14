@@ -1,9 +1,11 @@
 package Domain;
 
+import Interfaces.IEpisode;
+
 import java.net.URL;
 import java.time.Year;
 
-public class Episode extends Broadcast {
+public class Episode extends Broadcast implements IEpisode {
     //Attributes
     private String showName;
     private int season;

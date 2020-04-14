@@ -1,6 +1,7 @@
 package Domain;
 
 import Data.DataFacade;
+import Interfaces.IAccount;
 import Interfaces.IReader;
 import Interfaces.IWriter;
 
@@ -9,7 +10,7 @@ import java.net.URL;
 import java.time.Year;
 import java.util.Scanner;
 
-public abstract class Account { //TODO implements Login
+public abstract class Account implements IAccount {
     private String username;
     private String password;
     private String name;

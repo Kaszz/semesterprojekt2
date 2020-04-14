@@ -1,8 +1,5 @@
 package Data;
 
-import Interfaces.IReader;
-import Interfaces.IWriter;
-
 public class DataFacade {
     private Writer writer;
     private Reader reader;

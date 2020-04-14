@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NotificationsController">
+   <children>
+      <fx:include source="BasicFramework.fxml" />
+      <TreeTableView layoutX="32.0" layoutY="76.0" prefHeight="256.0" prefWidth="537.0">
+        <columns>
+          <TreeTableColumn fx:id="dateColumnNotifications" prefWidth="51.0" text="Date" />
+          <TreeTableColumn fx:id="userColumnNotifications" prefWidth="131.0" text="User" />
+            <TreeTableColumn fx:id="detailsNotificationsTable" prefWidth="353.0" text="Details" />
+        </columns>
+      </TreeTableView>
+   </children>
+</AnchorPane>

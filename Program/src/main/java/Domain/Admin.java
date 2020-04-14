@@ -1,6 +1,6 @@
 package Domain;
 
-import javafx.application.Platform;
+import Interfaces.IAdmin;
 
 public class Admin extends Account implements IAdmin {
     String userID;

@@ -1,5 +1,7 @@
 package Domain;
 
+import Interfaces.IUser;
+
 public class User extends Account implements IUser {
     private String userID;
     private boolean enabled = true;
