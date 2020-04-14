@@ -28,22 +28,22 @@ public class EditUsersController implements Initializable {
     private Button deleteUserButton;
 
     @FXML
-    private Button changeUserButton;
+    private Button editUserButton;
 
     @FXML
     private Button createUserButton;
 
     @FXML
-    private TreeTableView<String> usersTreeTableView;
+    private TableView<?> usersTableView;
 
     @FXML
-    private TreeTableColumn<Reader, String> nameUserTreeTableView;
+    private TableColumn<?, ?> columnNameTableView;
 
     @FXML
-    private TreeTableColumn<Reader, String> emailUserTreeTableView;
+    private TableColumn<?, ?> columnEmailTableView;
 
     @FXML
-    private TreeTableColumn<Reader, String> passwordUserTreeTableView;
+    private TableColumn<?, ?> columnPasswordTableView;
 
     @FXML
     void changeUserButtonClicked(ActionEvent event) {
