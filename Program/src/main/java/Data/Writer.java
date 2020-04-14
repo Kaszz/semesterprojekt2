@@ -15,7 +15,7 @@ public class Writer implements IWriter {
         String userFile = "users";
     /**
      * A method for writing strings to files.
-     * @param fileName is the name of the file that is writen to.
+     * @param fileName is the name of the file that is written to.
      * @param text is the string which is written to the file.
      * @return true if successful, otherwise false.
      */
@@ -50,8 +50,8 @@ public class Writer implements IWriter {
      */
     @Override
     public boolean createBroadcast(String broadcast) {
-        //Takes substring of the argument by seperating at first ':' to find the filename.
-        //Ex. Fathers:http://www.google.com:They are old:2021
+        //Takes substring of the argument by seperating at first ':' to find the filename. Last element is the type of Broadcast
+        //Ex. Fathers:http://www.google.com:They are old:2021:Movie
         //Extracts the string "Fathers" from the above example.
         String fileName = broadcast.substring(0, broadcast.indexOf(':'));
         System.out.println(fileName);
