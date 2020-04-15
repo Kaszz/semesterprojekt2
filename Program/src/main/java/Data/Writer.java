@@ -295,8 +295,7 @@ public class Writer implements IWriter {
         }
     }
 
-
-
+    @Override
     public void addNotification(boolean seen, String date, String user, String change) {
         File file = new File("./src/txtfiles/notifications/notifications.txt");
 
@@ -310,6 +309,39 @@ public class Writer implements IWriter {
 
     }
 
+    @Override
+    public void unNotify(String notification) {
+        File file = new File("./src/txtfiles/notifications/notifications.txt");
+        Scanner scan;
+        String fullFile = "";
+
+        //If the file exists code is run, if not the method exits returning a false
+        try {
+            scan = new Scanner(file);
+            System.out.println("________");
+            System.out.println(notification);
+            System.out.println("________");
+            scan.nextLine();
+            //Looks through the textfile until it finds a line with the same notification
+            while(scan.hasNextLine()) {
+                String line = scan.nextLine();
+
+                if (line.equals(notification)) {
+                    String newLine =  "true:" + line.substring(line.indexOf(":") + 1);
+                    fullFile += "\r\n"+ newLine;
+                } else {
+                    fullFile += "\r\n" + line;
+                }
+            }
+
+            scan.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        write2file("notifications", fullFile, "notifications", false);
+
+    }
 
 
 }

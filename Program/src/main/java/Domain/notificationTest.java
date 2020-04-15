@@ -24,7 +24,7 @@ public class notificationTest {
 
         User u = new User("17", "email@com.dk", "kodeord", "Christoffer", "Cas");
 
-
+        Notification.unNotify(false, "15/04/2020", "17", "Oprettet en filmen Tester fra året 2021");
 
     }
 }

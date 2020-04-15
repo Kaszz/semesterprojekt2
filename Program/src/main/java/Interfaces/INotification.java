@@ -13,4 +13,6 @@ public interface INotification {
     public static ArrayList<INotification> getNotifications() {
         return null;
     }
+
+    public static void unNotify(boolean seen, String date, String user, String change) {}
 }

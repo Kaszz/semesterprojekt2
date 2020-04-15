@@ -156,7 +156,7 @@ public class Reader implements IReader {
 
         try {
             scan = new Scanner(file);
-
+            scan.nextLine();
             //Add notifications to the list.
             while(scan.hasNextLine()) {
                 String line = scan.nextLine();

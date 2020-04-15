@@ -11,4 +11,5 @@ public interface IWriter {
     public boolean deleteUser(String user);
     public boolean editUser(String user);
     public void addNotification(boolean seen, String date, String user, String change);
+    public void unNotify(String notification);
 }

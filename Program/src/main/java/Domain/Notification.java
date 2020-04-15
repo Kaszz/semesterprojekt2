@@ -30,11 +30,10 @@ public class Notification implements INotification {
 
     public Notification(boolean seen, Date time, String user, String change) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+        this.seen = seen;
         this.date = DateFor.format(time);
-        this.seen = false;
         this.user = user;
         this.change = change;
-        this.seen = false;
     }
 
 
@@ -60,19 +59,20 @@ public class Notification implements INotification {
 
         for (String s: tempList) {
             String[] info = s.split(":");
-
             Date tempDate = new Date();
             try {
                 tempDate = new SimpleDateFormat("dd/MM/yyyy").parse(info[1]);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Notification n = new Notification(Boolean.parseBoolean(info[0]), tempDate, info[2], info[3]);
+            boolean state = Boolean.parseBoolean(info[0]);
+            Notification n = new Notification(state, tempDate, info[2], info[3]);
             notifications.add(n);
         }
 
         ArrayList<INotification> temp;
         temp = new ArrayList<INotification>(notifications);
+        notifications.clear();
 
         return temp;
     }
@@ -80,6 +80,10 @@ public class Notification implements INotification {
     public static void addNotification(Date time, String user, String change) {
         Notification n = new Notification(time, user, change);
         write.addNotification(n.isSeen(), n.getDate(), n.getUser(), n.getChange());
+    }
+
+    public static void unNotify(boolean seen, String date, String user, String change) {
+        write.unNotify(seen + ":" + date  + ":" + user + ":" + change);
     }
 
 }

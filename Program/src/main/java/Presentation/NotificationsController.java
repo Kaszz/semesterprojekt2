@@ -29,17 +29,34 @@ public class NotificationsController implements Initializable {
     private ObservableList<String> userObserve;
     private ObservableList<String> changeObserve;
 
+    ArrayList<INotification> notifications;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ArrayList<INotification> notifications;
-        notifications = App.domain.getNotifications();
-
         dateObserve = FXCollections.observableArrayList();
         userObserve = FXCollections.observableArrayList();
         changeObserve = FXCollections.observableArrayList();
 
+        updateNotifications();
+
+
+
+        //App.domain.unNotify();
+
+    }
+
+    private void updateNotifications() {
+        //Gets notifications from database.
+        notifications = App.domain.getNotifications();
+
+        //Clears lists
+        dateObserve.clear();
+        userObserve.clear();
+        changeObserve.clear();
+
+        //Loops through and adds to the observable lists.
         for (int i = 0; i < notifications.size(); i++) {
-            System.out.println(notifications.get(i).getChange());
+            //System.out.println(notifications.get(i).isSeen() + "  " + notifications.get(i).getChange());
             if (!notifications.get(i).isSeen())
                 dateObserve.add("• " + notifications.get(i).getDate());
             else
@@ -47,7 +64,8 @@ public class NotificationsController implements Initializable {
             userObserve.add(notifications.get(i).getUser());
             changeObserve.add(notifications.get(i).getChange());
         }
-        
+
+        //Adds observable lists to listviews.
         dateView.setItems(dateObserve);
         userView.setItems(userObserve);
         changeView.setItems(changeObserve);
@@ -57,5 +75,13 @@ public class NotificationsController implements Initializable {
     public void handleClickedDate(MouseEvent mouseEvent) {
         userView.getSelectionModel().select(dateView.getSelectionModel().getSelectedIndex());
         changeView.getSelectionModel().select(dateView.getSelectionModel().getSelectedIndex());
+
+        int index = dateView.getSelectionModel().getSelectedIndex();
+        boolean seen = notifications.get(index).isSeen();
+        String date = notifications.get(index).getDate();
+        String user = notifications.get(index).getUser();
+        String change = notifications.get(index).getChange();
+        App.domain.unNotify(seen, date, user, change);
+        updateNotifications();
     }
 }
