@@ -1,3 +1,4 @@
 1:email:password:firstname:lastname:enabled
 1:jakup@gmail.com:1234:Jakup:Karagoz:true
-4:chkas15@student.sdu.dk:123456789:ChristopherKas:chkas15@student.sdu.dk:true
+4:chkas15@student.sdu.dk:123456789:Christopher:Kas.sdu.dk:true
+2:aleksander@gmail.com:1234:Aleksander:Soender:true
