@@ -150,44 +150,6 @@ public class Reader implements IReader {
         return "User not found.";
     }
 
-    @Override
-    public ObservableList<String> getUsers(String email) {
-        File file = new File("./src/txtfiles/users/users.txt");
-        Scanner scan = null;
-        ObservableList<String> returnUsers = FXCollections.observableArrayList();
 
-        try {
-            scan = new Scanner(file);
-            //Skip first line.
-            scan.nextLine();
-
-            //Add users to the list.
-            while(scan.hasNextLine()) {
-
-                String line = scan.nextLine();
-                int firstSeparator = line.indexOf(':') + 1;
-                int secondSeparator = line.indexOf(':', firstSeparator +1);
-                int thirdSeparator = line.indexOf (':', secondSeparator +1);
-                int fourthSeparator = line.indexOf (':', thirdSeparator +1);
-                String emailAddress = line.substring(firstSeparator, line.indexOf(':', secondSeparator));
-                String pword = line.substring(secondSeparator + 1, line.indexOf(':', secondSeparator + 1));
-                String fName = line.substring(thirdSeparator + 1, line.indexOf (':', thirdSeparator +1));
-                String lName = line.substring(fourthSeparator + 1, line.indexOf (':', fourthSeparator +1));
-
-
-
-                String line2 = scan.nextLine();
-                returnUsers.add(line);
-                returnUsers.addAll(fName, emailAddress, pword, lastName);
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            scan.close();
-        }
-
-        return returnUsers;
-    }
 
 }
