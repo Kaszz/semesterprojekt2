@@ -148,4 +148,29 @@ public class Reader implements IReader {
         return "User not found.";
     }
 
+    @Override
+    public ArrayList<String> getNotifications() {
+        File file = new File("./src/txtfiles/notifications/" + "notifications.txt");
+        Scanner scan = null;
+        ArrayList<String> returnList = new ArrayList<String>();
+
+        try {
+            scan = new Scanner(file);
+
+            //Add notifications to the list.
+            while(scan.hasNextLine()) {
+                String line = scan.nextLine();
+                returnList.add(line);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            scan.close();
+        }
+
+        return returnList;
+    }
+
+
 }

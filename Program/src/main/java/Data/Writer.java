@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Writer implements IWriter {
@@ -22,7 +23,6 @@ public class Writer implements IWriter {
     private boolean write2file(String fileName, String text, String directory, boolean append) {
         //Created file object with correct name.
         File file = new File("./src/txtfiles/" + directory + "/" + fileName + ".txt");
-
         //Checks if the file already exists.
         if (file.exists()) {
             //Creates FileWriter
@@ -31,7 +31,6 @@ public class Writer implements IWriter {
                 //Setup FileWriter to append to the file.
                 writer = new FileWriter(file, append);
                 //Writes to the file, makes a newline and closes the FileWriter.
-                //writer.write("\r\n");
                 writer.write(text);
                 writer.close();
                 return true;
@@ -295,5 +294,22 @@ public class Writer implements IWriter {
             return false;
         }
     }
+
+
+
+    public void addNotification(boolean seen, String date, String user, String change) {
+        File file = new File("./src/txtfiles/notifications/notifications.txt");
+
+        if (file.length() == 0) {
+            write2file("notifications", seen + ":" + date + ":" +  user + ":" + change,
+                    "notifications", true);
+        } else {
+            write2file("notifications", "\r\n" + seen + ":" + date + ":" +  user + ":" + change,
+                    "notifications", true);
+        }
+
+    }
+
+
 
 }

@@ -22,14 +22,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
@@ -57,11 +58,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="G:/../../VOP/Module 05 - Binary files + threads/Lesson05TCPThreadExercise/pom.xml" />
+    <property name="last_opened_file_path" value="C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Gluon/SceneBuilder.lnk" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -69,33 +70,20 @@
       <recent name="Domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\git\semesterprojekt2\Program\src\main\java\Presentation" />
       <recent name="$PROJECT_DIR$/src/main/resources/Domain" />
       <recent name="G:\git\semesterprojekt2\Program\src\main\java\view" />
       <recent name="G:\git\semesterprojekt2\Program\src\main\java\controller" />
       <recent name="G:\git\semesterprojekt2\Program\src\main\resources\Domain" />
-      <recent name="$PROJECT_DIR$/src/main/resources/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main">
-    <configuration name="AccountTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Domain.AccountTest" />
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Presentation.App" />
       <module name="Program 1.0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Interfaces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BroadCastTestClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Domain.BroadCastTestClass" />
-      <module name="Program 1.0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Interfaces.*" />
+          <option name="PATTERN" value="Presentation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,12 +130,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="notificationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Domain.notificationTest" />
+      <module name="Program 1.0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
+        <item itemvalue="Application.notificationTest" />
         <item itemvalue="Application.main" />
         <item itemvalue="Application.loginTEEEEST" />
         <item itemvalue="Application.TestClass" />
-        <item itemvalue="Application.AccountTest" />
       </list>
     </recent_temporary>
   </component>
@@ -188,10 +190,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Notifications" timestamp="1586592364688">
+    <state x="552" y="178" key="#Notifications" timestamp="1586948911902">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586592364688" />
+    <state x="552" y="178" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948911902" />
     <state x="552" y="178" width="1013" height="684" key="#Project_Structure" timestamp="1585984491577">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -204,41 +206,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984989090" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1586869611636">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1586949089253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586865743161" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586869611636" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586949089253" />
     <state x="708" y="376" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586869861945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1586856755408" />
     <state x="708" y="376" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586869861945" />
-    <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1586551439529">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1586958617602">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586551439529" />
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258624615" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1586867985825">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586958617602" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1586963133075">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586867985825" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1586867985825">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586963133075" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1586963133075">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586867985825" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1586867985825">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586963133075" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1586963133075">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586867985825" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1586867985825">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586963133075" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1586963133075">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586867985825" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586596703030" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586963133075" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586429858674">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -255,10 +257,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1586434550608" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1586258692541">
+    <state x="461" y="162" key="SettingsEditor" timestamp="1586958695968">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258692541" />
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586958695968" />
     <state x="477" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1586849144686">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -275,10 +277,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585987701862" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1586592217682">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1586950989485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586592217682" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586950989485" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,7 +1,10 @@
 package Domain;
 
+import Interfaces.INotification;
+
 import java.net.URL;
 import java.time.Year;
+import java.util.ArrayList;
 
 public class DomainFacade {
     private static DomainFacade instance = new DomainFacade();
@@ -49,6 +52,10 @@ public class DomainFacade {
     public Movie createMovie(String title, URL trailerURL, String bio, Year launchYear) {
         movie = new Movie(title, trailerURL, bio, launchYear);
         return movie;
+    }
+
+    public ArrayList<INotification> getNotifications() {
+        return Notification.getNotifications();
     }
 
     public Login getLogin() {
