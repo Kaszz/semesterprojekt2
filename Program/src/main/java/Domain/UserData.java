@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class UserData extends Application {
+public class UserData {
 
     StringProperty udEmail = new SimpleStringProperty();
     StringProperty udPassword = new SimpleStringProperty();
@@ -65,16 +65,5 @@ public class UserData extends Application {
 
     public StringProperty udLastNameProperty() {
         return udLastName;
-    }
-
-    @Override
-    public void start(Stage primaryStage)  {
-
-
-
-
-
-
-
     }
 }
