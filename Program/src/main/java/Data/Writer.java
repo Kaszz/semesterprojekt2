@@ -318,9 +318,6 @@ public class Writer implements IWriter {
         //If the file exists code is run, if not the method exits returning a false
         try {
             scan = new Scanner(file);
-            System.out.println("________");
-            System.out.println(notification);
-            System.out.println("________");
             scan.nextLine();
             //Looks through the textfile until it finds a line with the same notification
             while(scan.hasNextLine()) {

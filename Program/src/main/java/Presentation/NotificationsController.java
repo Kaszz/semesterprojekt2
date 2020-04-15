@@ -83,5 +83,9 @@ public class NotificationsController implements Initializable {
         String change = notifications.get(index).getChange();
         App.domain.unNotify(seen, date, user, change);
         updateNotifications();
+
+        dateView.getSelectionModel().select(index);
+        userView.getSelectionModel().select(index);
+        changeView.getSelectionModel().select(index);
     }
 }
