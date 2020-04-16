@@ -2,3 +2,4 @@
 1:jakup@gmail.com:1234:Jakup:Karagoz:true
 4:chkas15@student.sdu.dk:123456789:Christopher:Kas.sdu.dk:true
 2:aleksander@gmail.com:1234:Aleksander:Soender:true
+1:1:1:1:true

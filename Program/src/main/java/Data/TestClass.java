@@ -23,8 +23,6 @@ public class TestClass {
         //System.out.println(write.deleteCredit("Mothers", "Christopher:Kas:SUPPORT_CAST"));
 
 
-        System.out.println(read.getPersonalCredits());
-
         /*
         ArrayList<String> test = new ArrayList<>();
         test = read.getPersonalCredits("Christopher", "Kas");

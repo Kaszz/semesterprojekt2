@@ -1,44 +1,32 @@
 package Domain;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class ProgramsData {
 
-    StringProperty title = new SimpleStringProperty();
-    StringProperty yearMade = new SimpleStringProperty();
-    StringProperty season = new SimpleStringProperty();
-    StringProperty episode = new SimpleStringProperty();
+    SimpleStringProperty title;
+    SimpleStringProperty yearMade;
+    SimpleStringProperty season;
+    SimpleStringProperty episode;
 
-    public void setTitle(String title) {
-        this.title.set(title);
+    public ProgramsData(String title, String yearMade) {
+        this.title = new SimpleStringProperty(title);
+        this.yearMade = new SimpleStringProperty(yearMade);
     }
 
-    public void setYearMade(String yearMade) {
-        this.yearMade.set(yearMade);
-    }
-
-    public void setSeason(String season) {
-        this.season.set(season);
-    }
-
-    public void setEpisode(String episode) {
-        this.episode.set(episode);
-    }
-
-    public String getTitle() {
-        return title.get();
-    }
-
-    public StringProperty titleProperty() {
+    public SimpleStringProperty getTitle() {
         return title;
     }
 
-    public String getYearMade() {
-        return yearMade.get();
+    public SimpleStringProperty titleProperty() {
+        return title;
     }
 
-    public StringProperty yearMadeProperty() {
+    public SimpleStringProperty getYearMade() {
+        return yearMade;
+    }
+
+    public SimpleStringProperty yearMadeProperty() {
         return yearMade;
     }
 
@@ -46,7 +34,7 @@ public class ProgramsData {
         return season.get();
     }
 
-    public StringProperty seasonProperty() {
+    public SimpleStringProperty seasonProperty() {
         return season;
     }
 
@@ -54,7 +42,7 @@ public class ProgramsData {
         return episode.get();
     }
 
-    public StringProperty episodeProperty() {
+    public SimpleStringProperty episodeProperty() {
         return episode;
     }
 }
