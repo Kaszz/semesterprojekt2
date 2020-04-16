@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="" />
+    <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Domain/ProgramsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program 1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Program 1.0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/EditProgramsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditProgramsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/EditUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Presentation/EditPrograms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/EditPrograms.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +29,8 @@
       <list>
         <option value="Enum" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
         <option value="Class" />
       </list>
     </option>
@@ -53,7 +64,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="G:/../../VOP/Module 05 - Binary files + threads/Lesson05TCPThreadExercise/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -177,6 +191,7 @@
       <workItem from="1586781175040" duration="1377000" />
       <workItem from="1586849089480" duration="15670000" />
       <workItem from="1586893248749" duration="1653000" />
+      <workItem from="1587057982120" duration="2996000" />
     </task>
     <servers />
   </component>
@@ -204,10 +219,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984989090" />
-    <state x="-1540" y="-205" key="#com.intellij.ide.util.MemberChooser" timestamp="1586949394998">
+    <state x="-1540" y="-205" key="#com.intellij.ide.util.MemberChooser" timestamp="1587058446688">
       <screen x="-2560" y="-517" width="2560" height="1417" />
     </state>
-    <state x="-1540" y="-205" key="#com.intellij.ide.util.MemberChooser/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1586949394998" />
+    <state x="-1540" y="-205" key="#com.intellij.ide.util.MemberChooser/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1587058446688" />
     <state x="-3210" y="-99" key="#com.intellij.ide.util.MemberChooser/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-3640.-517.1080.1897" timestamp="1586945148380" />
     <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586865743161" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586869611636" />

@@ -3,6 +3,15 @@ package Presentation;
 import Data.Reader;
 import Domain.UserData;
 import Domain.main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.File;
 import java.net.URL;
@@ -38,10 +47,10 @@ public class EditUsersController implements Initializable {
     private Button createUserButton;
 
     @FXML
-    private TableView<Domain.UserData> usersTableView;
+    private TableView<UserData> usersTableView;
 
     @FXML
-    private TableColumn<Domain.UserData, String> columnNameTableView;
+    private TableColumn<UserData, String> columnNameTableView;
 
     @FXML
     private TableColumn<Domain.UserData, String> columnEmailTableView;
@@ -110,7 +119,7 @@ public class EditUsersController implements Initializable {
             e.printStackTrace();
         }
 
-        usersTableView.getColumns().addAll(columnNameTableView, columnEmailTableView, columnPasswordTableView);
+
 
         columnNameTableView.setCellValueFactory(data -> data.getValue().udFirstNameProperty());
         columnEmailTableView.setCellValueFactory(data -> data.getValue().udEmailProperty());

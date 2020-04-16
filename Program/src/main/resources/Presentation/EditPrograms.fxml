@@ -3,9 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -69,18 +69,17 @@
             </ComboBox>
          </children>
       </VBox>
-      <TableView layoutX="356.0" layoutY="78.0" prefHeight="254.0" prefWidth="227.0">
-        <columns>
-          <TableColumn prefWidth="50.0" text="Titel" />
-            <TableColumn prefWidth="58.0" text="Type" />
-          <TableColumn prefWidth="57.0" text="Sæson" />
-            <TableColumn prefWidth="59.0" text="Episode" />
-        </columns>
-      </TableView>
       <Label layoutX="70.0" layoutY="21.0" text="Administrér programmer" AnchorPane.leftAnchor="70.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <TreeTableView fx:id="programTreeTableView" layoutX="325.0" layoutY="78.0" prefHeight="302.0" prefWidth="260.0">
+        <columns>
+          <TreeTableColumn fx:id="titleColumn" prefWidth="85.0" text="Title" />
+          <TreeTableColumn fx:id="subTitleColumn" prefWidth="87.0" text="Subtitle" />
+            <TreeTableColumn fx:id="yearMadeColumn" prefWidth="87.0" text="År" />
+        </columns>
+      </TreeTableView>
    </children>
 </AnchorPane>
