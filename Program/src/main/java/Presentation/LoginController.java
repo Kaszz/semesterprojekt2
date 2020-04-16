@@ -64,25 +64,6 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void onEnter(ActionEvent event) {
-        try {
-            App.loginClient.login(usernameTextField.getText(), passwordTextField.getText());
-            if (App.loginClient.isloggedIn()) {
-                displayErrorMessage.setText("Logged ind");
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
-                Scene tableViewScene = new Scene(tableViewParent);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(tableViewScene);
-                window.show();
-            } else {
-                displayErrorMessage.setText("Forkert brugernavn eller password");
-            }
-        } catch (IllegalArgumentException | IOException e1) {
-
-        }
-    }
-
-    @FXML
     public void usernameAdded() {
 
     }
