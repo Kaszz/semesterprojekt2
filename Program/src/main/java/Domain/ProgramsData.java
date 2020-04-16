@@ -14,6 +14,24 @@ public class ProgramsData {
         this.yearMade = new SimpleStringProperty(yearMade);
     }
 
+    public ProgramsData() {}
+
+    public void setTitle(String title) {
+        this.title.set(title);
+    }
+
+    public void setYearMade(String yearMade) {
+        this.yearMade.set(yearMade);
+    }
+
+    public void setSeason(String season) {
+        this.season.set(season);
+    }
+
+    public void setEpisode(String episode) {
+        this.episode.set(episode);
+    }
+
     public SimpleStringProperty getTitle() {
         return title;
     }

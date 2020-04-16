@@ -2,24 +2,18 @@ package Presentation;
 
 
 import Domain.ProgramsData;
-import Domain.UserData;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.util.Callback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -77,13 +71,12 @@ public class EditProgramsController implements Initializable {
         }
     }
 
-    public void getBroadcastData() {
+    public TreeItem<ProgramsData> getBroadcastData() {
         File directory = new File("./src/txtfiles/broadcasts/");
         //Makes array of files in directory.
         File[] files = directory.listFiles();
         String[] text;
         Scanner scan = null;
-        ArrayList<String> returnList = new ArrayList<String>();
 
         //Iterate through the files in the directory.
         for (File f: files) {
@@ -94,13 +87,10 @@ public class EditProgramsController implements Initializable {
                 String firstLine = scan.nextLine();
 
                 text = firstLine.split(":");
-
-                ProgramsData programsData = new ProgramsData();
-                programsData.setTitle(text[0]);
-                programsData.setYearMade(text[3]);
-                programsData.setSeason(text[5]);
-                programsData.setEpisode(text[6]);
-
+                String title = text[0];
+                String yearMade = text[3];
+                TreeItem<ProgramsData> programsData = new TreeItem<>(new ProgramsData(title,yearMade));
+                return programsData;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } finally {
@@ -108,22 +98,22 @@ public class EditProgramsController implements Initializable {
             }
         }
 
-        //return returnList;
+        return null;
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        TreeItem<ProgramsData> mercedes1 = new TreeItem<>(new ProgramsData("hej", "hej"));
-        TreeItem<ProgramsData> mercedes2 = new TreeItem<>(new ProgramsData("hej", "hej"));
+        //TreeItem<ProgramsData> mercedes1 = new TreeItem<>(new ProgramsData("hej", "hej"));
+        //TreeItem<ProgramsData> mercedes2 = new TreeItem<>(new ProgramsData("hej", "hej"));
 
         TreeItem<ProgramsData> root = new TreeItem<>(new ProgramsData("Title", "YearMade"));
 
         titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
         yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
-        root.getChildren().setAll(mercedes1,mercedes2);
+        root.getChildren().setAll(getBroadcastData());
         programTreeTableView.setRoot(root);
         //programTreeTableView.setShowRoot(false);
 
