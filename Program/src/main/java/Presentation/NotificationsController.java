@@ -1,6 +1,5 @@
 package Presentation;
 
-import Domain.Notification;
 import Interfaces.INotification;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,82 +9,95 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 public class NotificationsController implements Initializable {
 
-    @FXML
-    private ListView dateView;
-    @FXML
-    private ListView changeView;
-    @FXML
-    private ListView userView;
-
-    private ObservableList<String> dateObserve;
-    private ObservableList<String> userObserve;
-    private ObservableList<String> changeObserve;
+    @FXML private TableView<Noti> tableView;
+    @FXML private TableColumn<Noti, String> dateColumn;
+    @FXML private TableColumn<Noti, String> userColumn;
+    @FXML private TableColumn<Noti, String> changeColumn;
 
     ArrayList<INotification> notifications;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dateObserve = FXCollections.observableArrayList();
-        userObserve = FXCollections.observableArrayList();
-        changeObserve = FXCollections.observableArrayList();
+        //Set up the columns in the table
+        dateColumn.setCellValueFactory(new PropertyValueFactory<Noti, String>("date"));
+        userColumn.setCellValueFactory(new PropertyValueFactory<Noti, String>("user"));
+        changeColumn.setCellValueFactory(new PropertyValueFactory<Noti, String>("change"));
 
         updateNotifications();
-
-
-
-        //App.domain.unNotify();
-
     }
 
-    private void updateNotifications() {
-        //Gets notifications from database.
+    //Method that changes the style of rows that have not been marked as seen yet.
+    public void setUnreadStyle(TableColumn currentColumn) {
+        currentColumn.setCellFactory(column -> {
+            return new TableCell<Noti, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    //If the cell is empty
+                    if (item == null || empty) {
+                        setText(null);
+                        setStyle("");
+                    } else { //If the cell is not empty
+                        //Put the String data in the cell
+                        setText(item);
+
+                        //Gets to object of the row.
+                        Noti notif = getTableView().getItems().get(getIndex());
+
+                        //Change style of all lines that havent been seen yet.
+                        if (!notif.isSeen()) {
+                            setStyle("-fx-background-color: #EBEBEB ; -fx-font-weight: bold; "); //The background of the cell in yellow
+                        }
+                    }
+                }
+            };
+        });
+    }
+
+    //Method that fills an observablelist with all the notifications and returns the observablelist.
+    public ObservableList<Noti> getNotifications() {
+        ObservableList<Noti> list = FXCollections.observableArrayList();
         notifications = App.domain.getNotifications();
 
-        //Clears lists
-        dateObserve.clear();
-        userObserve.clear();
-        changeObserve.clear();
+        //Traverses the notifications backwards to get the most recent ones on top.
+        for (int i = notifications.size() - 1; i >= 0; i--)
+            list.add(new Noti(notifications.get(i).isSeen(), notifications.get(i).getDate(),
+                    notifications.get(i).getUser(), notifications.get(i).getChange()));
 
-        //Loops through and adds to the observable lists.
-        for (int i = 0; i < notifications.size(); i++) {
-            //System.out.println(notifications.get(i).isSeen() + "  " + notifications.get(i).getChange());
-            if (!notifications.get(i).isSeen())
-                dateObserve.add("• " + notifications.get(i).getDate());
-            else
-                dateObserve.add(notifications.get(i).getDate());
-            userObserve.add(notifications.get(i).getUser());
-            changeObserve.add(notifications.get(i).getChange());
+        return list;
+    }
+
+    //Method that updates the notifications once a change has happened.
+    public void updateNotifications() {
+        int index = tableView.getSelectionModel().getSelectedIndex();
+
+        //Load the data
+        tableView.setItems(getNotifications());
+
+        //Reselect the clicked row
+        tableView.getSelectionModel().select(index);
+
+        //Styles the rows
+        setUnreadStyle(dateColumn);
+        setUnreadStyle(userColumn);
+        setUnreadStyle(changeColumn);
+
+    }
+
+    //Method that handles deselecting
+    public void handleRowClicked(MouseEvent mouseEvent) {
+        Noti temp = tableView.getSelectionModel().getSelectedItem();
+        if (!temp.isSeen()) {
+            App.domain.unNotify(temp.isSeen(), temp.getDate(), temp.getUser(), temp.getChange());
+            updateNotifications();
         }
-
-        //Adds observable lists to listviews.
-        dateView.setItems(dateObserve);
-        userView.setItems(userObserve);
-        changeView.setItems(changeObserve);
-
     }
 
-    public void handleClickedDate(MouseEvent mouseEvent) {
-        userView.getSelectionModel().select(dateView.getSelectionModel().getSelectedIndex());
-        changeView.getSelectionModel().select(dateView.getSelectionModel().getSelectedIndex());
-
-        int index = dateView.getSelectionModel().getSelectedIndex();
-        boolean seen = notifications.get(index).isSeen();
-        String date = notifications.get(index).getDate();
-        String user = notifications.get(index).getUser();
-        String change = notifications.get(index).getChange();
-        App.domain.unNotify(seen, date, user, change);
-        updateNotifications();
-
-        dateView.getSelectionModel().select(index);
-        userView.getSelectionModel().select(index);
-        changeView.getSelectionModel().select(index);
-    }
 }

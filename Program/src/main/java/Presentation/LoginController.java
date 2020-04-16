@@ -38,6 +38,7 @@ public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
 
+
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
 

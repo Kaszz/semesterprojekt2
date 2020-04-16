@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.NotificationsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <ListView fx:id="dateView" layoutX="19.0" layoutY="72.0" onMouseClicked="#handleClickedDate" prefHeight="277.0" prefWidth="89.0" />
-      <ListView fx:id="changeView" layoutX="209.0" layoutY="72.0" prefHeight="277.0" prefWidth="370.0" />
-      <ListView fx:id="userView" layoutX="114.0" layoutY="72.0" prefHeight="277.0" prefWidth="89.0" />
+      <TableView fx:id="tableView" layoutX="19.0" layoutY="72.0" onMouseClicked="#handleRowClicked" prefHeight="279.0" prefWidth="560.0">
+        <columns>
+          <TableColumn fx:id="dateColumn" editable="false" prefWidth="75.0" resizable="false" sortType="DESCENDING" sortable="false" text="Date" />
+          <TableColumn fx:id="userColumn" editable="false" prefWidth="50.0" resizable="false" sortType="DESCENDING" sortable="false" text="User" />
+            <TableColumn fx:id="changeColumn" editable="false" minWidth="435.0" prefWidth="500.0" sortType="DESCENDING" sortable="false" text="Change" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
