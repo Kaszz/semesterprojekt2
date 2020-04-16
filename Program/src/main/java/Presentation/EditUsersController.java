@@ -3,16 +3,6 @@ package Presentation;
 import Data.Reader;
 import Domain.UserData;
 import Domain.main;
-import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;

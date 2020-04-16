@@ -1,1 +1,1 @@
-homer:http://google.com:doh again and again:1995:Simpson:5:3
+homer:URL:doh again and again:1995:Simpson:5:3

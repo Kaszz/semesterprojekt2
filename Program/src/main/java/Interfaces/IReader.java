@@ -1,6 +1,5 @@
 package Interfaces;
 
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 

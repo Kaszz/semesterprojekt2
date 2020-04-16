@@ -71,8 +71,6 @@ public class Reader implements IReader {
 
     /**
      * A method that allows you to find all the credits for a person in all the broadcasts in the database.
-     * @param firstName persons first name.
-     * @param lastName persons last name.
      * @return a list of all credits to the specified person.
      */
     @Override
