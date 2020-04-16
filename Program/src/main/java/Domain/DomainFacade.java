@@ -1,6 +1,7 @@
 package Domain;
 
 import Interfaces.INotification;
+import Presentation.Noti;
 
 import java.net.URL;
 import java.time.Year;
@@ -66,6 +67,9 @@ public class DomainFacade {
         Notification.unNotify(seen, date, user, change);
     }
 
+    public synchronized int notificationCount() {
+        return Notification.notificationCount();
+    }
 
 
 }

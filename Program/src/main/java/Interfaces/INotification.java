@@ -15,4 +15,8 @@ public interface INotification {
     }
 
     public static void unNotify(boolean seen, String date, String user, String change) {}
+
+    public static int notificationCount() {
+        return 0;
+    }
 }

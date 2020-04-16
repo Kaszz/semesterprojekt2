@@ -88,7 +88,6 @@ public class NotificationsController implements Initializable {
         setUnreadStyle(dateColumn);
         setUnreadStyle(userColumn);
         setUnreadStyle(changeColumn);
-
     }
 
     //Method that handles deselecting

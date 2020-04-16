@@ -149,7 +149,7 @@ public class Reader implements IReader {
     }
 
     @Override
-    public ArrayList<String> getNotifications() {
+    public synchronized ArrayList<String> getNotifications() {
         File file = new File("./src/txtfiles/notifications/" + "notifications.txt");
         Scanner scan = null;
         ArrayList<String> returnList = new ArrayList<String>();

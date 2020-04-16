@@ -54,7 +54,8 @@ public class Notification implements INotification {
         return change;
     }
 
-    public static ArrayList<INotification> getNotifications() {
+    public static synchronized ArrayList<INotification> getNotifications() {
+        notifications.clear();
         ArrayList<String> tempList = read.getNotifications();
 
         for (String s: tempList) {
@@ -72,7 +73,6 @@ public class Notification implements INotification {
 
         ArrayList<INotification> temp;
         temp = new ArrayList<INotification>(notifications);
-        notifications.clear();
 
         return temp;
     }
@@ -85,5 +85,17 @@ public class Notification implements INotification {
     public static void unNotify(boolean seen, String date, String user, String change) {
         write.unNotify(seen + ":" + date  + ":" + user + ":" + change);
     }
+
+    public static synchronized int notificationCount() {
+        getNotifications();
+        int count = 0;
+        for (INotification i : notifications) {
+            if (!i.isSeen())
+                count++;
+        }
+
+        return count;
+    }
+
 
 }
