@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.BasicFrameworkController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.BasicFrameworkController">
    <children>
-      <ImageView fitHeight="21.0" fitWidth="113.0" layoutX="7.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+      <ImageView fitHeight="21.0" fitWidth="113.0" layoutX="7.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
          <image>
             <Image url="@../Images/creDB_logo.png" />
          </image>
@@ -25,8 +25,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="nameLoggedInLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="328.0" layoutY="19.0" text="First name + Last name" textAlignment="RIGHT" />
-      <Button layoutX="421.0" layoutY="15.0" minHeight="17.0" mnemonicParsing="false" onAction="#notificationsButtonClicked" prefHeight="27.0" prefWidth="34.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="15.0">
+      <Label fx:id="nameLoggedInLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="756.0" layoutY="20.0" text="First name + Last name" textAlignment="RIGHT" />
+      <Button layoutX="707.0" layoutY="15.0" minHeight="17.0" mnemonicParsing="false" onAction="#notificationsButtonClicked" prefHeight="27.0" prefWidth="34.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,8 +35,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Line endX="417.0" endY="8.0" layoutX="165.0" layoutY="41.0" opacity="0.17" startX="-147.0" startY="8.0" AnchorPane.topAnchor="50.0" />
-      <MenuButton fx:id="menuButton" layoutX="507.0" layoutY="14.0" mnemonicParsing="false" onAction="#menuButtonClicked" prefHeight="17.0" prefWidth="68.0" text="Menu" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <Line endX="718.0" endY="5.928934097290039" layoutX="165.0" layoutY="41.0" opacity="0.17" startX="-147.0" startY="8.0" AnchorPane.rightAnchor="16.292922973632812" AnchorPane.topAnchor="50.0" />
+      <MenuButton fx:id="menuButton" layoutX="65.0" layoutY="15.0" mnemonicParsing="false" onAction="#menuButtonClicked" prefHeight="27.0" prefWidth="68.0" text="Menu" AnchorPane.rightAnchor="767.0" AnchorPane.topAnchor="15.0">
         <items>
           <MenuItem mnemonicParsing="false" text="Hjem" />
            <MenuItem mnemonicParsing="false" text="Brugere" />

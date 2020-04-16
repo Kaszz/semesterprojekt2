@@ -1,38 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditUsersController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <Label layoutX="67.0" layoutY="114.0" text="Fornavn" />
-      <Label layoutX="67.0" layoutY="149.0" text="Efternavn" />
-      <Label layoutX="67.0" layoutY="187.0" text="Email" />
-      <Label layoutX="67.0" layoutY="220.0" text="Password" />
-      <TextField fx:id="userFirstNameTextField" layoutX="172.0" layoutY="109.0" onAction="#userFirstNameEntered" />
-      <TextField fx:id="userLastNameTextField" layoutX="172.0" layoutY="144.0" onAction="#userLastNameEntered" />
-      <TextField fx:id="userEmailTextField" layoutX="172.0" layoutY="180.0" onAction="#userEmailEntered" />
-      <TextField fx:id="userPasswordTextField" layoutX="172.0" layoutY="217.0" onAction="#userPasswordEntered" />
-      <Button fx:id="deleteUserButton" layoutX="162.0" layoutY="287.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" text="Slet" />
-      <Button fx:id="editUserButton" layoutX="220.0" layoutY="287.0" mnemonicParsing="false" onAction="#changeUserButtonClicked" text="Tilføj" />
-      <Button fx:id="createUserButton" layoutX="283.0" layoutY="287.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Opret" />
-      <Label layoutX="67.0" layoutY="20.0" text="Administrér brugere" AnchorPane.leftAnchor="70.0">
+      <TableView fx:id="usersTableView" layoutX="411.0" layoutY="82.0" prefHeight="480.0" prefWidth="447.0">
+        <columns>
+          <TableColumn fx:id="columnNameTableView" prefWidth="219.0" text="Navn" />
+          <TableColumn fx:id="columnEmailTableView" prefWidth="109.0" text="Email" />
+            <TableColumn fx:id="columnPasswordTableView" prefWidth="118.0" text="Password" />
+        </columns>
+      </TableView>
+      <HBox layoutX="55.0" layoutY="98.0" prefHeight="187.0" prefWidth="323.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Fornavn">
+                     <VBox.margin>
+                        <Insets top="23.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Efternavn">
+                     <VBox.margin>
+                        <Insets top="23.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Email">
+                     <VBox.margin>
+                        <Insets top="23.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Password">
+                     <VBox.margin>
+                        <Insets top="23.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="164.0" prefWidth="189.0">
+               <children>
+                  <TextField fx:id="userFirstNameTextField" onAction="#userFirstNameEntered">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="userLastNameTextField" onAction="#userLastNameEntered">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="userEmailTextField" onAction="#userEmailEntered">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="userPasswordTextField" onAction="#userPasswordEntered">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="deleteUserButton" layoutX="236.0" layoutY="322.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" text="Slet" />
+      <Button fx:id="createUserButton" layoutX="297.0" layoutY="322.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Gem" />
+      <Label layoutX="384.0" layoutY="14.0" text="Administrér brugere">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TableView fx:id="usersTableView" layoutX="350.0" layoutY="80.0" prefHeight="295.0" prefWidth="236.0">
-        <columns>
-          <TableColumn fx:id="columnNameTableView" prefWidth="75.0" text="Navn" />
-          <TableColumn fx:id="columnEmailTableView" prefWidth="75.0" text="Email" />
-            <TableColumn fx:id="columnPasswordTableView" prefWidth="84.0" text="Password" />
-        </columns>
-      </TableView>
    </children>
 </AnchorPane>
