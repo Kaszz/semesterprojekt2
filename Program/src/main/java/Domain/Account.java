@@ -8,6 +8,7 @@ import Interfaces.IWriter;
 import java.io.*;
 import java.net.URL;
 import java.time.Year;
+import java.util.Date;
 import java.util.Scanner;
 
 public abstract class Account implements IAccount {
@@ -23,9 +24,8 @@ public abstract class Account implements IAccount {
 
     public void addCredit(String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.toString();
-        main.getWriter().addCredit(title, credit);
+        write.addCredit(title, credit);
     }
-
 
     public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
         String broadcast = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + "Movie";
@@ -35,7 +35,6 @@ public abstract class Account implements IAccount {
     public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
         String liveShow = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + location + ":" + "LiveShow";
         write.createBroadcast(liveShow);
-
     }
 
     public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {

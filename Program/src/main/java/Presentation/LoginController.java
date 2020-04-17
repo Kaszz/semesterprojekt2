@@ -37,6 +37,7 @@ public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
 
+
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
 
@@ -79,4 +80,5 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 }

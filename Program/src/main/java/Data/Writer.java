@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Writer implements IWriter {
@@ -22,7 +23,6 @@ public class Writer implements IWriter {
     private boolean write2file(String fileName, String text, String directory, boolean append) {
         //Created file object with correct name.
         File file = new File("./src/txtfiles/" + directory + "/" + fileName + ".txt");
-
         //Checks if the file already exists.
         if (file.exists()) {
             //Creates FileWriter
@@ -31,7 +31,6 @@ public class Writer implements IWriter {
                 //Setup FileWriter to append to the file.
                 writer = new FileWriter(file, append);
                 //Writes to the file, makes a newline and closes the FileWriter.
-                //writer.write("\r\n");
                 writer.write(text);
                 writer.close();
                 return true;
@@ -295,5 +294,51 @@ public class Writer implements IWriter {
             return false;
         }
     }
+
+    @Override
+    public void addNotification(boolean seen, String date, String user, String change) {
+        File file = new File("./src/txtfiles/notifications/notifications.txt");
+
+        if (file.length() == 0) {
+            write2file("notifications", seen + ":" + date + ":" +  user + ":" + change,
+                    "notifications", true);
+        } else {
+            write2file("notifications", "\r\n" + seen + ":" + date + ":" +  user + ":" + change,
+                    "notifications", true);
+        }
+
+    }
+
+    @Override
+    public void unNotify(String notification) {
+        File file = new File("./src/txtfiles/notifications/notifications.txt");
+        Scanner scan;
+        String fullFile = "";
+
+        //If the file exists code is run, if not the method exits returning a false
+        try {
+            scan = new Scanner(file);
+            scan.nextLine();
+            //Looks through the textfile until it finds a line with the same notification
+            while(scan.hasNextLine()) {
+                String line = scan.nextLine();
+
+                if (line.equals(notification)) {
+                    String newLine =  "true:" + line.substring(line.indexOf(":") + 1);
+                    fullFile += "\r\n"+ newLine;
+                } else {
+                    fullFile += "\r\n" + line;
+                }
+            }
+
+            scan.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        write2file("notifications", fullFile, "notifications", false);
+
+    }
+
 
 }

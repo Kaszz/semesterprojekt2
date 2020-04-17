@@ -8,4 +8,5 @@ public interface IReader {
     public ArrayList<String> getBroadcastCredits(String title);
     public ArrayList<String> getPersonalCredits(String firstName, String lastName);
     public String checkUser(String email, String password);
+    public ArrayList<String> getNotifications();
 }

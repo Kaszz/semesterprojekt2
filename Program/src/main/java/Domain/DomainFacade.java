@@ -1,7 +1,11 @@
 package Domain;
 
+import Interfaces.INotification;
+import Presentation.Noti;
+
 import java.net.URL;
 import java.time.Year;
+import java.util.ArrayList;
 
 public class DomainFacade {
     private static DomainFacade instance = new DomainFacade();
@@ -51,10 +55,21 @@ public class DomainFacade {
         return movie;
     }
 
+    public ArrayList<INotification> getNotifications() {
+        return Notification.getNotifications();
+    }
+
     public Login getLogin() {
         return login;
     }
 
+    public void unNotify(boolean seen, String date, String user, String change) {
+        Notification.unNotify(seen, date, user, change);
+    }
+
+    public synchronized int notificationCount() {
+        return Notification.notificationCount();
+    }
 
 
 }
