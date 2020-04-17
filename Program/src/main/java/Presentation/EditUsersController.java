@@ -100,7 +100,7 @@ public class EditUsersController implements Initializable {
                     UserData userData = new UserData();
                     userData.setUdEmail(details[1]);
                     userData.setUdPassword(details[2]);
-                    userData.setUdFirstName(details[3]);
+                    userData.setUdFirstName(details[3] + " " + details [4]);
                     userData.setUdLastName(details[4]);
                     return userData;
                 }).collect(Collectors.toList());

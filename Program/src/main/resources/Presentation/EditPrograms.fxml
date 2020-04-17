@@ -74,11 +74,11 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TreeTableView fx:id="programTreeTableView" layoutX="410.0" layoutY="78.0" prefHeight="458.0" prefWidth="455.0">
+      <TreeTableView fx:id="programTreeTableView" layoutX="410.0" layoutY="78.0" prefHeight="485.0" prefWidth="455.0">
         <columns>
-          <TreeTableColumn fx:id="titleColumn" prefWidth="85.0" text="Title" />
-          <TreeTableColumn fx:id="subTitleColumn" prefWidth="87.0" text="Subtitle" />
-            <TreeTableColumn fx:id="yearMadeColumn" prefWidth="87.0" text="År" />
+          <TreeTableColumn fx:id="titleColumn" prefWidth="203.0" text="Title" />
+          <TreeTableColumn fx:id="subTitleColumn" prefWidth="201.0" text="Subtitle" />
+            <TreeTableColumn fx:id="yearMadeColumn" prefWidth="50.0" text="År" />
         </columns>
       </TreeTableView>
    </children>

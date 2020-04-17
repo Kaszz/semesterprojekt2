@@ -16,9 +16,9 @@
       <fx:include source="BasicFramework.fxml" />
       <TableView fx:id="usersTableView" layoutX="411.0" layoutY="82.0" prefHeight="480.0" prefWidth="447.0">
         <columns>
-          <TableColumn fx:id="columnNameTableView" prefWidth="219.0" text="Navn" />
-          <TableColumn fx:id="columnEmailTableView" prefWidth="109.0" text="Email" />
-            <TableColumn fx:id="columnPasswordTableView" prefWidth="118.0" text="Password" />
+          <TableColumn fx:id="columnNameTableView" prefWidth="203.0" text="Navn" />
+          <TableColumn fx:id="columnEmailTableView" prefWidth="153.0" text="Email" />
+            <TableColumn fx:id="columnPasswordTableView" prefWidth="90.0" text="Password" />
         </columns>
       </TableView>
       <HBox layoutX="55.0" layoutY="98.0" prefHeight="187.0" prefWidth="323.0">

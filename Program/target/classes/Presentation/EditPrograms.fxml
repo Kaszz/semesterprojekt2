@@ -13,26 +13,26 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditProgramsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <VBox layoutX="27.0" layoutY="72.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="27.0">
+      <VBox layoutX="28.0" layoutY="121.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="28.0">
          <children>
-            <Label minHeight="33.0" text="Titel" />
-            <Label minHeight="33.0" text="Type" />
-            <Label minHeight="33.0" text="Trailer URL" />
-            <Label minHeight="33.0" text="Beskrivelse" />
-            <Label minHeight="33.0" text="Lancering " />
-            <Label minHeight="33.0" text="Sæson" />
-            <Label minHeight="33.0" text="Episode titel" />
-            <Label minHeight="33.0" prefHeight="33.0" text="Episode nr" />
+            <Label minHeight="32.0" text="Titel" />
+            <Label minHeight="32.0" text="Type" />
+            <Label minHeight="32.0" text="Trailer URL" />
+            <Label minHeight="32.0" text="Beskrivelse" />
+            <Label minHeight="32.0" text="Lancering " />
+            <Label minHeight="32.0" text="Sæson" />
+            <Label minHeight="32.0" text="Episode titel" />
+            <Label minHeight="32.0" prefHeight="33.0" text="Episode nr" />
          </children>
       </VBox>
-      <VBox layoutX="157.0" layoutY="78.0" prefHeight="264.0" prefWidth="153.0">
+      <VBox layoutX="155.0" layoutY="117.0" prefHeight="264.0" prefWidth="224.0">
          <children>
             <TextField minHeight="24.0">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox minHeight="24.0" prefWidth="150.0">
+            <ComboBox minHeight="24.0" prefHeight="27.0" prefWidth="223.0">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
@@ -57,28 +57,28 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox minHeight="24.0" prefWidth="150.0">
+            <ComboBox minHeight="24.0" prefHeight="27.0" prefWidth="222.0">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </ComboBox>
-            <ComboBox minHeight="24.0" prefWidth="150.0">
+            <ComboBox minHeight="24.0" prefHeight="27.0" prefWidth="221.0">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </ComboBox>
          </children>
       </VBox>
-      <Label layoutX="70.0" layoutY="21.0" text="Administrér programmer" AnchorPane.leftAnchor="70.0">
+      <Label layoutX="368.0" layoutY="23.0" text="Administrér programmer" AnchorPane.leftAnchor="368.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TreeTableView fx:id="programTreeTableView" layoutX="325.0" layoutY="78.0" prefHeight="302.0" prefWidth="260.0">
+      <TreeTableView fx:id="programTreeTableView" layoutX="410.0" layoutY="78.0" prefHeight="485.0" prefWidth="455.0">
         <columns>
-          <TreeTableColumn fx:id="titleColumn" prefWidth="85.0" text="Title" />
-          <TreeTableColumn fx:id="subTitleColumn" prefWidth="87.0" text="Subtitle" />
-            <TreeTableColumn fx:id="yearMadeColumn" prefWidth="87.0" text="År" />
+          <TreeTableColumn fx:id="titleColumn" prefWidth="203.0" text="Title" />
+          <TreeTableColumn fx:id="subTitleColumn" prefWidth="201.0" text="Subtitle" />
+            <TreeTableColumn fx:id="yearMadeColumn" prefWidth="50.0" text="År" />
         </columns>
       </TreeTableView>
    </children>
