@@ -1,8 +1,10 @@
 package Domain;
 
+import Interfaces.ICredit;
+
 import java.util.UUID;
 
-public class Credit {
+public class Credit implements ICredit {
     //Attributes
     private UUID creditID;
     private String fName;

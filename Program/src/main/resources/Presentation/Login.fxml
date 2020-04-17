@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.LoginController">
+   <children>
+      <ImageView fitHeight="75.0" fitWidth="220.0" layoutX="343.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="337.0">
+         <image>
+            <Image url="@../Images/creDB_logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="displayErrorMessage" layoutX="418.0" layoutY="326.0" prefHeight="18.0" prefWidth="230.0" textFill="#fc0202" />
+      <Button fx:id="loginButton" layoutX="534.0" layoutY="347.0" mnemonicParsing="false" onAction="#loginButtonClicked" text="Login" />
+      <HBox layoutX="317.0" layoutY="263.0" prefHeight="75.0" prefWidth="266.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label minHeight="10.0" text="Email">
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label minHeight="10.0" prefHeight="17.0" prefWidth="67.0" text="Password">
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="164.0">
+               <children>
+                  <TextField fx:id="usernameTextField" onAction="#usernameAdded" prefHeight="27.0" prefWidth="229.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="passwordTextField" onAction="#passwordAdded" prefHeight="27.0" prefWidth="229.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="331.0" layoutY="569.0" text="Copyright © 2020 creDB. All rights reserved." textFill="#00000076" />
+   </children>
+</AnchorPane>

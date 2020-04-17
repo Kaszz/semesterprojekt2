@@ -1,9 +1,11 @@
 package Domain;
 
+import Interfaces.ILiveShow;
+
 import java.net.URL;
 import java.time.Year;
 
-public class LiveShow extends Broadcast {
+public class LiveShow extends Broadcast implements ILiveShow {
     //Attributes
     String location;
 

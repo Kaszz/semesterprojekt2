@@ -12,17 +12,15 @@ public class TestClass {
         Reader read = new Reader();
 
         //write.hello();
-        System.out.println(write.createBroadcast("Mothers:http://facebook.com:they_cook_food_:2012"));
+        //System.out.println(write.createBroadcast("Mothers:http://facebook.com:they_cook_food_:2012"));
         //System.out.println(write.deleteBroadcast("Mothers"));
 
         //System.out.println(write.addCredit("Mothers", "Christopher:Kas:SUPPORT_CAST"));
-        System.out.println(write.addCredit("Mothers", "Simon:Jessen:ACTOR"));
+        //System.out.println(write.addCredit("Mothers", "Simon:Jessen:ACTOR"));
         //System.out.println(write.addCredit("Mothers", "Anders:Wylard:LIGHTING"));
         //System.out.println(write.addCredit("Mothers", "Aleksander:Soender:CAMERA"));
 
         //System.out.println(write.deleteCredit("Mothers", "Christopher:Kas:SUPPORT_CAST"));
-
-
 
 
         /*

@@ -1,6 +1,8 @@
 package Data;
 
 import Interfaces.IReader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -69,8 +71,6 @@ public class Reader implements IReader {
 
     /**
      * A method that allows you to find all the credits for a person in all the broadcasts in the database.
-     * @param firstName persons first name.
-     * @param lastName persons last name.
      * @return a list of all credits to the specified person.
      */
     @Override
@@ -113,12 +113,12 @@ public class Reader implements IReader {
 
     /**
      * Method that checks if a user exists in the database.
-     * @param username is the username of the user.
+     * @param emailAddress is the username of the user.
      * @param password is the password of the user.
      * @return a boolean statement depending on existance of user with correct params in database.
      */
     @Override
-    public String checkUser(String username, String password) {
+    public String checkUser(String emailAddress, String password) {
         File file = new File("./src/txtfiles/users/users.txt");
         Scanner scan = null;
 
@@ -129,10 +129,10 @@ public class Reader implements IReader {
                 String line = scan.nextLine();
                 int firstSeparator = line.indexOf(':') + 1;
                 int secondSeparator = line.indexOf(':', firstSeparator);
-                String uname = line.substring(firstSeparator, line.indexOf(':', secondSeparator));
+                String email = line.substring(firstSeparator, line.indexOf(':', secondSeparator));
                 String pword = line.substring(secondSeparator + 1, line.indexOf(':', secondSeparator + 1));
 
-                if (uname.equals(username)) {
+                if (email.equals(emailAddress)) {
                     if (pword.equals(password)) {
                         return line;
                     }
@@ -147,6 +147,7 @@ public class Reader implements IReader {
 
         return "User not found.";
     }
+
 
 
 }

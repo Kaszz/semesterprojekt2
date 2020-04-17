@@ -1,6 +1,7 @@
 package Domain;
 
 import Data.DataFacade;
+import Interfaces.IAccount;
 import Interfaces.IReader;
 import Interfaces.IWriter;
 
@@ -9,80 +10,60 @@ import java.net.URL;
 import java.time.Year;
 import java.util.Scanner;
 
-public abstract class Account { //TODO implements Login
-    private String username;
-    private String password;
-    private String name;
-    private String email;
-    public static IReader read;
-    public static IWriter write;
+public abstract class Account implements IAccount {
+    private String email, password, firstName, lastName;
+    private IWriter write = main.getWriter();
 
-    public static DataFacade df;
-
-    public void init() {
-        df = new DataFacade();
-        this.read = df.getReader();
-        this.write = df.getWriter();
-    }
-
-    public Account(String username, String password, String name, String email) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
+    public Account(String email, String password, String firstName, String lastName) {
         this.email = email;
-        init();
-    }
-
-    public static IReader getReader() {
-        return read;
-    }
-
-    public static IWriter getWriter() {
-        return write;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public void addCredit(String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.toString();
-        write.addCredit(title, credit);
+        main.getWriter().addCredit(title, credit);
     }
 
 
     public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
-        String broadcast = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString();
+        String broadcast = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + "Movie";
         write.createBroadcast(broadcast);
     }
 
     public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
-        String liveShow = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + location;
+        String liveShow = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + location + ":" + "LiveShow";
         write.createBroadcast(liveShow);
 
     }
 
     public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
         Episode ep = new Episode(title, trailerURL, bio, launchYear, showName, season, episode);
-        String episodeString = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode;
+        String episodeString = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode + ":" + "Episode";
         write.createBroadcast(episodeString);
     }
 
     public void deleteCredit(String title, Credit credit) {
         String creditToDelete = credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole();
-        write.deleteCredit(title, creditToDelete);
+        main.getWriter().deleteCredit(title, creditToDelete);
         }
 
     public void deleteBroadcast(String title)  {
-        write.deleteBroadcast(title);
+        main.getWriter().deleteBroadcast(title);
     }
 
-    public String getUsername() {
-        return username;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {

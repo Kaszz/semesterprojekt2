@@ -11,7 +11,7 @@ public class AccountTest {
         LiveShow live;
         Episode homer;
 
-        Admin mikail = new Admin("mik123", "pass123", "mikail", "mik@themik.gmail.com");
+        Admin mikail = new Admin("1", "1234", "mikail", "test", "simon@gmail.com");
         Credit Simon = new Credit("Simon", "Jessen", CreditType.SUPPORT_CAST);
         User SimonTheUser = new User("1", "Jessen", "123", "Simon", "simon@gmail.com");
         try {
@@ -36,7 +36,7 @@ public class AccountTest {
             //mikail.addCredit(homer.getTitle(), Simon.getfName(), Simon.getlName(), Simon.getRole());
             //mikail.deleteCredit(homer.getTitle(), Simon);
             //mikail.deleteBroadcast(peterplys.getTitle());
-            mikail.createUser(SimonTheUser.getUserID(), SimonTheUser.getUsername(), SimonTheUser.getPassword(), SimonTheUser.getName(), SimonTheUser.getEmail());
+            //mikail.createUser(SimonTheUser.getUserID(),  SimonTheUser.getEmail(), SimonTheUser.getPassword(), SimonTheUser.getFirstName(), SimonTheUser.getLastName(), SimonTheUser.getEnabled());
             //mikail.deleteUser(SimonTheUser.getUserID(), SimonTheUser.getUsername(), SimonTheUser.getPassword(), SimonTheUser.getName(), SimonTheUser.getEmail(), SimonTheUser.getEnabled());
             //mikail.createUser(SimonTheUser.getUserID(), SimonTheUser.getUsername(), SimonTheUser.getPassword(), SimonTheUser.getName(), SimonTheUser.getEmail());
             //mikail.editUser(SimonTheUser2.getUserID(), SimonTheUser2.getUsername(), SimonTheUser2.getPassword(), SimonTheUser2.getName(), SimonTheUser2.getEmail(), SimonTheUser2.getEnabled());

@@ -1,4 +1,5 @@
-1:Jessen:123:Simon:simon@gmail.com:true
-1:Kas:1234:Christopher:simon@gmail.com:true
-1:Wylardt:1235:Simon:simon@gmail.com:true
-1:Soender:1236:Simon:simon@gmail.com:true
+1:email:password:firstname:lastname:enabled
+1:jakup@gmail.com:1234:Jakup:Karagoz:true
+4:chkas15@student.sdu.dk:123456789:Christopher:Kas.sdu.dk:true
+2:aleksander@gmail.com:1234:Aleksander:Soender:true
+1:1:1:1:true

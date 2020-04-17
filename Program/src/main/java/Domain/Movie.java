@@ -1,9 +1,11 @@
 package Domain;
 
+import Interfaces.IMovie;
+
 import java.net.URL;
 import java.time.Year;
 
-public class Movie extends Broadcast {
+public class Movie extends Broadcast implements IMovie {
     //Attributes
 
     //Constructors

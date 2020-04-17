@@ -1,11 +1,13 @@
 package Domain;
 
+import Interfaces.IBroadcast;
+
 import java.net.URL;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public abstract class Broadcast {
+public abstract class Broadcast implements IBroadcast {
     //Attributes
     private String title;
     private ArrayList<Credit> credits;
@@ -30,26 +32,12 @@ public abstract class Broadcast {
         Credit tempCredit = new Credit(fName, lName, role);
         credits.add(tempCredit);
 
-        /*
-        //Writes the credit to a file
-        File file = new File(title + ".txt");
-
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(file, true);
-            writer.write(fName + ":" + lName + ":" + role);
-            writer.write("\r\n");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-         */
     }
 
-    //TODO - This method should search the database for the title, make a temporary broadcast object and return it.
-    /*public Broadcast getBroadcast(String title) {
+    //TODO - This method should search the database for the title, return a string so that we can make a Broadcast object with it.
+    /*public Broadcast getBroadcast(String title) {}
 
-    }*/
+     */
 
     public String getTitle() {
         return title;
