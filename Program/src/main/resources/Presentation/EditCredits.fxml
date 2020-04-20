@@ -45,11 +45,10 @@
             </ComboBox>
          </children>
       </VBox>
-      <ListView layoutX="359.0" layoutY="82.0" prefHeight="283.0" prefWidth="216.0" />
-      <Button fx:id="deleteCreditButton" layoutX="158.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteCreditButtonClicked" text="Slet" />
-      <Button fx:id="editCreditButton" layoutX="215.0" layoutY="302.0" mnemonicParsing="false" onAction="#editCreditButtonClicked" text="Tilføj" />
-      <Button fx:id="createCreditButton" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#createCreditButtonClicked" text="Opret" />
-      <Label layoutX="73.0" layoutY="21.0" text="Administrér krediteringer" AnchorPane.leftAnchor="70.0">
+      <ListView layoutX="359.0" layoutY="82.0" prefHeight="469.0" prefWidth="507.0" />
+      <Button fx:id="deleteCreditButton" layoutX="225.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteCreditButtonClicked" text="Slet" />
+      <Button fx:id="createCreditButton" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#createCreditButtonClicked" text="Gem" />
+      <Label layoutX="368.0" layoutY="20.0" text="Administrér krediteringer" AnchorPane.leftAnchor="368.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

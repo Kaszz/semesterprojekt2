@@ -1,7 +1,12 @@
 package Domain;
 
 public enum BroadcastType {
-    TVseries,
-    Movie,
-    LiveShow
+
+    SERIE,
+    FILM,
+    LIVE,
+    VEJRET,
+    NYHEDER
 }
+        
+

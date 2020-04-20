@@ -29,10 +29,10 @@
       <Line endX="718.0" endY="5.928934097290039" layoutX="165.0" layoutY="41.0" opacity="0.17" startX="-147.0" startY="8.0" AnchorPane.rightAnchor="16.292922973632812" AnchorPane.topAnchor="50.0" />
       <SplitMenuButton fx:id="spitMenuButton" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#splitMenuButtonClicked" text="Hjem">
         <items>
-          <MenuItem fx:id="usersChoiceClicked" mnemonicParsing="false" onAction="#usersChoiceClicked" text="Brugere" />
-          <MenuItem fx:id="programsChoiceClicked" mnemonicParsing="false" onAction="#programsChoiceClicked" text="Programmer" />
-            <MenuItem fx:id="creditsChoiceClicked" mnemonicParsing="false" onAction="#creditsChoiceClicked" text="Krediteringer" />
-            <MenuItem fx:id="logoutChoiceClicked" mnemonicParsing="false" onAction="#logoutChoiceClicked" text="Log ud" />
+          <MenuItem fx:id="splitMenuButton" mnemonicParsing="false" onAction="#usersChoiceClicked" text="Brugere" />
+          <MenuItem fx:id="splitMenuButton" mnemonicParsing="false" onAction="#programsChoiceClicked" text="Programmer" />
+            <MenuItem fx:id="splitMenuButton" mnemonicParsing="false" onAction="#creditsChoiceClicked" text="Krediteringer" />
+            <MenuItem fx:id="splitMenuButton" mnemonicParsing="false" onAction="#logoutChoiceClicked" text="Log ud" />
         </items>
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableColumn?>
@@ -13,58 +15,61 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditProgramsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <VBox layoutX="28.0" layoutY="121.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="28.0">
+      <VBox layoutX="28.0" layoutY="116.0" prefHeight="291.0" prefWidth="100.0" AnchorPane.leftAnchor="28.0">
          <children>
             <Label minHeight="32.0" text="Titel" />
             <Label minHeight="32.0" text="Type" />
             <Label minHeight="32.0" text="Trailer URL" />
             <Label minHeight="32.0" text="Beskrivelse" />
-            <Label minHeight="32.0" text="Lancering " />
-            <Label minHeight="32.0" text="Sæson" />
-            <Label minHeight="32.0" text="Episode titel" />
-            <Label minHeight="32.0" prefHeight="33.0" text="Episode nr" />
+            <Label minHeight="32.0" text="Lancering ">
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin></Label>
+            <Label minHeight="32.0" text="Episode titel" visible="false" />
+            <Label minHeight="32.0" text="Sæson" visible="false" />
+            <Label minHeight="32.0" prefHeight="33.0" text="Episode nr" visible="false" />
          </children>
       </VBox>
-      <VBox layoutX="155.0" layoutY="117.0" prefHeight="264.0" prefWidth="224.0">
+      <VBox layoutX="155.0" layoutY="117.0" prefHeight="306.0" prefWidth="224.0">
          <children>
-            <TextField minHeight="24.0">
+            <TextField fx:id="titleTextField" minHeight="24.0" onAction="#titleTextFieldOnAction">
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox minHeight="24.0" prefHeight="27.0" prefWidth="223.0">
+            <ComboBox fx:id="broadcastTypeComboBox" minHeight="24.0" prefHeight="27.0" prefWidth="223.0">
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField minHeight="24.0">
+            <TextField fx:id="trailerURLTextField" accessibleText="hhtp://" minHeight="24.0" onAction="#trailerURLTextFieldOnAction" promptText="http::/">
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
-            <TextField minHeight="24.0">
+            <TextField fx:id="descriptionTextField" minHeight="24.0" onAction="#descriptionTextFieldOnAction">
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
-            <TextField minHeight="24.0">
+            <DatePicker fx:id="launchDatePicker" onAction="#launchDatePickerOnAction" prefHeight="27.0" prefWidth="223.0">
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="35.0" />
+               </VBox.margin>
+            </DatePicker>
+            <TextField fx:id="episodeTextField" onAction="#episodeTextFieldOnAction" prefHeight="24.0" visible="false">
+               <VBox.margin>
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
-            <TextField minHeight="24.0">
+            <ComboBox fx:id="seasonComboBox" minHeight="24.0" onAction="#seasonComboBoxOnAction" prefHeight="27.0" prefWidth="222.0" visible="false">
                <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </TextField>
-            <ComboBox minHeight="24.0" prefHeight="27.0" prefWidth="222.0">
-               <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </ComboBox>
-            <ComboBox minHeight="24.0" prefHeight="27.0" prefWidth="221.0">
+            <ComboBox fx:id="episodeNoComboBox" onAction="#episodeNoComboBoxOnAction" prefHeight="27.0" prefWidth="222.0" visible="false">
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="6.0" />
                </VBox.margin>
             </ComboBox>
          </children>
@@ -81,5 +86,7 @@
             <TreeTableColumn fx:id="yearMadeColumn" prefWidth="50.0" text="År" />
         </columns>
       </TreeTableView>
+      <Button layoutX="334.0" layoutY="464.0" mnemonicParsing="false" text="Gem" />
+      <Button layoutX="280.0" layoutY="464.0" mnemonicParsing="false" text="Slet" />
    </children>
 </AnchorPane>
