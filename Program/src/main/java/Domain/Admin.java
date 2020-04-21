@@ -4,6 +4,8 @@ import Interfaces.IAdmin;
 import Interfaces.IReader;
 import Interfaces.IWriter;
 
+import java.util.ArrayList;
+
 public class Admin extends Account implements IAdmin {
     String userID;
     private IReader read = main.getReader();
@@ -40,5 +42,10 @@ public class Admin extends Account implements IAdmin {
         //TODO Should use User object instead from presentation
         String userToEdit = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
         write.editUser(userToEdit);
+    }
+
+    public ArrayList<String> getAllUsers() {
+        ArrayList<String> returnList = read.getAllUsers();
+        return returnList;
     }
 }
