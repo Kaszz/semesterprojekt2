@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -101,55 +102,62 @@ public class EditProgramsController implements Initializable {
 
     }
 
-    public TreeItem<ProgramsData> getBroadcastData() {
+    public void getBroadcastData() {
         File directory = new File("./src/txtfiles/broadcasts/");
         //Makes array of files in directory.
         File[] files = directory.listFiles();
-        String[] text;
         Scanner scan = null;
-
+        TreeItem<ProgramsData> root = null;
+        TreeItem<ProgramsData> programsData = null;
+        ArrayList<TreeItem> treeItems = new ArrayList<>();
         //Iterate through the files in the directory.
         for (File f: files) {
             try {
                 scan = new Scanner(f);
-
+                String[] text;
                 //Get the title name of current file.
                 String firstLine = scan.nextLine();
 
                 text = firstLine.split(":");
                 String title = text[0];
                 String yearMade = text[3];
-                TreeItem<ProgramsData> programsData = new TreeItem<>(new ProgramsData(title,yearMade));
-                return programsData;
+
+                root = new TreeItem<>(new ProgramsData(title, yearMade));
+
+                programsData = new TreeItem<>(new ProgramsData(title, yearMade));
+
+                treeItems.add(programsData);
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } finally {
                 scan.close();
             }
+
         }
 
-        return null;
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        //TreeItem<ProgramsData> mercedes1 = new TreeItem<>(new ProgramsData("hej", "hej"));
-        //TreeItem<ProgramsData> mercedes2 = new TreeItem<>(new ProgramsData("hej", "hej"));
-
-        TreeItem<ProgramsData> root = new TreeItem<>(new ProgramsData("Title", "YearMade"));
 
         titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
         yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
-        root.getChildren().setAll(getBroadcastData());
+        for (int i = 0; i < treeItems.size(); i++) {
+            root.getChildren().add(treeItems.get(i));
+        }
+
         programTreeTableView.setRoot(root);
         //programTreeTableView.setShowRoot(false);
 
 
         //Adding choice options to the broadcast type combobox
         broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
+
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        getBroadcastData();
 
 
 
