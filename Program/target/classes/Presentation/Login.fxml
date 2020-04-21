@@ -42,7 +42,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="passwordTextField" prefHeight="27.0" prefWidth="229.0">
+                  <TextField fx:id="passwordTextField" prefHeight="27.0" onAction="#loginButtonClicked" prefWidth="229.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>

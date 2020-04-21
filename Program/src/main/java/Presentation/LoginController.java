@@ -17,8 +17,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Domain.AccountTest;
-import Interfaces.IReader;
-import Data.Reader;
 
 import java.io.IOException;
 import java.net.URL;

@@ -36,6 +36,36 @@ public class EditProgramsController implements Initializable {
     @FXML
     private TreeTableColumn<ProgramsData, String> yearMadeColumn;
 
+    public TreeItem<ProgramsData> getBroadcastData() {
+        File directory = new File("./src/txtfiles/broadcasts/");
+        //Makes array of files in directory.
+        File[] files = directory.listFiles();
+        String[] text;
+        Scanner scan = null;
+
+        //Iterate through the files in the directory.
+        for (File f: files) {
+            try {
+                scan = new Scanner(f);
+
+                //Get the title name of current file.
+                String firstLine = scan.nextLine();
+
+                text = firstLine.split(":");
+                String title = text[0];
+                String yearMade = text[3];
+                TreeItem<ProgramsData> programsData = new TreeItem<>(new ProgramsData(title,yearMade));
+                return programsData;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                scan.close();
+            }
+        }
+
+        return null;
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,6 +78,7 @@ public class EditProgramsController implements Initializable {
         titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
         yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
+        root.getChildren().setAll(getBroadcastData());
         programTreeTableView.setRoot(root);
         //programTreeTableView.setShowRoot(false);
 
