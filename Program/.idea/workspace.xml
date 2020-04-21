@@ -2,7 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9f09a3e-dc10-4917-8c2d-32130e77d402" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Presentation/CreditTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/txtfiles/broadcasts/UngeMødre.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/TestClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/Broadcast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/Broadcast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/BroadcastType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/BroadcastType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Domain/DomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IBroadcast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IBroadcast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/EditCreditsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/EditCreditsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Presentation/EditCredits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/EditCredits.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/Fathers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/Geeks.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/Mothers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/Tester.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/txtfiles/broadcasts/Tester.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/episodeTesst.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/homer.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/broadcasts/live.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/txtfiles/notifications/notifications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/txtfiles/notifications/notifications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Data/Reader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/TestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Data/TestClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/Broadcast.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/Broadcast.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Domain/DomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IBroadcast.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IBroadcast.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Presentation/EditCredits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Presentation/EditCredits.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Presentation/EditCreditsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Presentation/EditCreditsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/images/free-png-home-icon-home-house-icon-logo-home-png-transparent-icon-home-png-840_771.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/free-png-home-icon-home-house-icon-logo-home-png-transparent-icon-home-png-840_771.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +116,7 @@
       <recent name="G:\git\semesterprojekt2\Program\src\main\resources\Domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestClass">
+  <component name="RunManager" selected="Application.App">
     <configuration name="AccountTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Domain.AccountTest" />
       <module name="Program 1.0" />
@@ -169,9 +197,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.TestClass" />
         <item itemvalue="Application.main" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.AccountTest" />
         <item itemvalue="Application.AppViewer" />
       </list>
@@ -233,12 +261,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="725" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585984989090" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587458058681">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser" timestamp="1587468490317">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1540" y="-205" key="#com.intellij.ide.util.MemberChooser/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1587058446688" />
     <state x="-3210" y="-99" key="#com.intellij.ide.util.MemberChooser/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-3640.-517.1080.1897" timestamp="1586945148380" />
-    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586865743161" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587468490317" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587458058681" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.74.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587069104522" />
     <state x="708" y="376" width="407" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587457970441">
@@ -257,36 +285,36 @@
     <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586551439529" />
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586258624615" />
     <state x="740" y="274" key="FileChooserDialogImpl/1920.74.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587460193821" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1587461452636">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom" timestamp="1587470765327">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1823" height="291" key="GridCell.Tab.0.bottom/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1587414149244" />
     <state width="1012" height="348" key="GridCell.Tab.0.bottom/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-3640.-517.1080.1897" timestamp="1586944280028" />
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587452789061" />
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587470765327" />
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587459004684" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.74.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587461452636" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1587461452636">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center" timestamp="1587470765326">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1823" height="291" key="GridCell.Tab.0.center/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1587414149243" />
     <state width="1012" height="348" key="GridCell.Tab.0.center/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-3640.-517.1080.1897" timestamp="1586944280027" />
-    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587452789061" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587470765326" />
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587459004683" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.74.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587461452636" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1587461452636">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left" timestamp="1587470765326">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1823" height="291" key="GridCell.Tab.0.left/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1587414149242" />
     <state width="1012" height="348" key="GridCell.Tab.0.left/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-3640.-517.1080.1897" timestamp="1586944280026" />
-    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587452789060" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587470765326" />
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587459004682" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.74.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587461452636" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1587461452636">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right" timestamp="1587470765326">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1823" height="291" key="GridCell.Tab.0.right/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-2560.-517.2560.1417" timestamp="1587414149244" />
     <state width="1012" height="348" key="GridCell.Tab.0.right/-2560.-517.2560.1417/0.23.1440.877/-3640.-517.1080.1897@-3640.-517.1080.1897" timestamp="1586944280027" />
-    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587452789061" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587470765326" />
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587459004684" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.74.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587461452636" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586429858674">

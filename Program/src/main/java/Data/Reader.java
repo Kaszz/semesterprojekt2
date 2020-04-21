@@ -135,14 +135,30 @@ public class Reader implements IReader {
         return returnList;
     }
 
-    public void getAllBroadcasts() {
+    public ArrayList<String> getAllBroadcasts() {
         File file = new File("./src/txtfiles/broadcasts/");
-
         File[] filePath = file.listFiles();
+        ArrayList<String> broadcasts = new ArrayList<>();
+        String broadcast;
+
+        Scanner scan = null;
 
         for (int i = 0; i < filePath.length; i++) {
-            
+            file = new File(filePath[i].getPath());
+
+            try {
+                scan = new Scanner(file);
+                //Get the title name of current file.
+                broadcast = scan.nextLine();
+                broadcasts.add(broadcast);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                scan.close();
+            }
         }
+        return broadcasts;
     }
 
 

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditCreditsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditCreditsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
       <VBox layoutX="40.0" layoutY="100.0" prefHeight="153.0" prefWidth="100.0">
@@ -18,7 +24,7 @@
       </VBox>
       <VBox layoutX="168.0" layoutY="100.0" prefHeight="153.0" prefWidth="153.0">
          <children>
-            <ComboBox fx:id="creationCombo" prefHeight="15.0" prefWidth="150.0">
+            <ComboBox fx:id="creationCombo" onAction="#updateCredits" prefHeight="15.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>
@@ -40,7 +46,6 @@
             </ComboBox>
          </children>
       </VBox>
-      <ListView layoutX="359.0" layoutY="82.0" prefHeight="469.0" prefWidth="507.0" />
       <Button fx:id="deleteCreditButton" layoutX="225.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteCreditButtonClicked" text="Slet" />
       <Button fx:id="createCreditButton" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#createCreditButtonClicked" text="Gem" />
       <Label layoutX="368.0" layoutY="20.0" text="Administrér krediteringer" AnchorPane.leftAnchor="368.0">
@@ -48,5 +53,12 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <TableView fx:id="creditsTable" layoutX="406.0" layoutY="77.0" prefHeight="505.0" prefWidth="491.0">
+        <columns>
+          <TableColumn fx:id="columnFirstName" prefWidth="136.0" text="Fornavn" />
+          <TableColumn fx:id="columnLastName" prefWidth="144.0" text="Efternavn" />
+            <TableColumn fx:id="columnRole" prefWidth="210.0" text="Rolle" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
