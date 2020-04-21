@@ -18,7 +18,7 @@ public class Credit implements ICredit {
         this.lName = lName;
         this.role = role;
     }
-
+    //
 
     //Methods
     public UUID getCreditID() {
