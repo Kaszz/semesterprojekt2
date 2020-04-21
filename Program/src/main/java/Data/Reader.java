@@ -1,8 +1,11 @@
 package Data;
 
+import Domain.ProgramsData;
 import Interfaces.IReader;
+import Presentation.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TreeItem;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -134,7 +137,6 @@ public class Reader implements IReader {
 
         return returnList;
     }
-
 
     /**
      * Method that checks if a user exists in the database.

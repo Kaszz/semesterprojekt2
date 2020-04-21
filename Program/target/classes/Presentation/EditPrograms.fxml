@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeTableColumn?>
@@ -25,9 +24,9 @@
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin></Label>
-            <Label minHeight="32.0" text="Episode titel" visible="false" />
-            <Label minHeight="32.0" text="Sæson" visible="false" />
-            <Label minHeight="32.0" prefHeight="33.0" text="Episode nr" visible="false" />
+            <Label fx:id="episodeLabel" minHeight="32.0" text="Episode titel" visible="false" />
+            <Label fx:id="seasonLabel" minHeight="32.0" text="Sæson" visible="false" />
+            <Label fx:id="episodeNumberLabel" minHeight="32.0" prefHeight="33.0" text="Episode nr" visible="false" />
          </children>
       </VBox>
       <VBox layoutX="155.0" layoutY="117.0" prefHeight="306.0" prefWidth="224.0">
@@ -37,7 +36,7 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox fx:id="broadcastTypeComboBox" minHeight="24.0" prefHeight="27.0" prefWidth="223.0">
+            <ComboBox fx:id="broadcastTypeComboBox" minHeight="24.0" onAction="#broadcastTypeComboBoxOnAction" prefHeight="27.0" prefWidth="223.0">
                <VBox.margin>
                   <Insets bottom="6.0" />
                </VBox.margin>
@@ -52,11 +51,7 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
-            <DatePicker fx:id="launchDatePicker" onAction="#launchDatePickerOnAction" prefHeight="27.0" prefWidth="223.0">
-               <VBox.margin>
-                  <Insets bottom="35.0" />
-               </VBox.margin>
-            </DatePicker>
+            <TextField fx:id="launchDatePicker" onAction="#launchDatePickerOnAction" />
             <TextField fx:id="episodeTextField" onAction="#episodeTextFieldOnAction" prefHeight="24.0" visible="false">
                <VBox.margin>
                   <Insets bottom="6.0" />
@@ -86,7 +81,7 @@
             <TreeTableColumn fx:id="yearMadeColumn" prefWidth="50.0" text="År" />
         </columns>
       </TreeTableView>
-      <Button layoutX="334.0" layoutY="464.0" mnemonicParsing="false" text="Gem" />
-      <Button layoutX="280.0" layoutY="464.0" mnemonicParsing="false" text="Slet" />
+      <Button fx:id="saveButton" layoutX="334.0" layoutY="464.0" mnemonicParsing="false" onAction="#saveButtonOnAction" text="Gem" />
+      <Button fx:id="deleteButton" layoutX="280.0" layoutY="464.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" text="Slet" />
    </children>
 </AnchorPane>

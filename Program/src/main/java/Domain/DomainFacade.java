@@ -2,10 +2,13 @@ package Domain;
 
 import Interfaces.INotification;
 import Presentation.Noti;
+import javafx.scene.control.DatePicker;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DomainFacade {
     private static DomainFacade instance = new DomainFacade();
@@ -51,7 +54,9 @@ public class DomainFacade {
         return liveShow;
     }
 
+
     public Movie createMovie(String title, URL trailerURL, String bio, Year launchYear) {
+        main.admin.createMovie(title, trailerURL, bio, launchYear);
         movie = new Movie(title, trailerURL, bio, launchYear);
         return movie;
     }
@@ -74,6 +79,10 @@ public class DomainFacade {
 
     public ArrayList<String> getAllUsers() {
         return main.admin.getAllUsers();
+    }
+
+    public ArrayList<String> getAllPrograms() {
+        return main.admin.getAllPrograms();
     }
 
 }

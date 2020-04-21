@@ -12,14 +12,18 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.util.Callback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.time.Year;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -43,6 +47,15 @@ public class EditProgramsController implements Initializable {
     private TreeTableColumn<ProgramsData, String> yearMadeColumn;
 
     @FXML
+    private Label episodeLabel;
+
+    @FXML
+    private Label seasonLabel;
+
+    @FXML
+    private Label episodeNumberLabel;
+
+    @FXML
     private TextField titleTextField;
 
     @FXML
@@ -55,7 +68,7 @@ public class EditProgramsController implements Initializable {
     private TextField descriptionTextField;
 
     @FXML
-    private DatePicker launchDatePicker;
+    private TextField launchDatePicker;
 
     @FXML
     private TextField episodeTextField;
@@ -65,6 +78,49 @@ public class EditProgramsController implements Initializable {
 
     @FXML
     private ComboBox<?> episodeNoComboBox;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    private Button deleteButton;
+
+
+    @FXML
+    void broadcastTypeComboBoxOnAction(ActionEvent event) {
+        if (broadcastTypeComboBox.getSelectionModel().isSelected(0)) {
+            episodeTextField.setVisible(true); //e
+            episodeLabel.setVisible(true); // e
+            episodeNoComboBox.setVisible(true); // e
+            seasonLabel.setVisible(true); // e
+            seasonComboBox.setVisible(true); // e
+            episodeNoComboBox.setVisible(true); //e
+            episodeNumberLabel.setVisible(true); //e
+        } else {
+            episodeTextField.setVisible(false);
+            episodeLabel.setVisible(false);
+            episodeNoComboBox.setVisible(false);
+            seasonLabel.setVisible(false);
+            seasonComboBox.setVisible(false);
+            episodeNoComboBox.setVisible(false);
+            episodeNumberLabel.setVisible(false);
+        }
+    }
+
+    @FXML
+    void deleteButtonOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveButtonOnAction(ActionEvent event) throws MalformedURLException {
+        trailerURLTextField.getText();
+
+        if(broadcastTypeComboBox.getSelectionModel().isSelected(1)) {
+            App.domain.createMovie(titleTextField.getText(), new URL(trailerURLTextField.getText()), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())));
+        }
+
+    }
 
     @FXML
     void descriptionTextFieldOnAction(ActionEvent event) {
@@ -101,6 +157,14 @@ public class EditProgramsController implements Initializable {
 
     }
 
+    /*
+
+    public void updatePrograms() {
+        int index = updatePrograms().getSelectionModel().getSelectedIndex();
+        programTreeTableView().setItems(getBroadcastData());
+        programTreeTableView().getSelectionModel().select(index);
+    }*/
+
     public TreeItem<ProgramsData> getBroadcastData() {
         File directory = new File("./src/txtfiles/broadcasts/");
         //Makes array of files in directory.
@@ -115,7 +179,6 @@ public class EditProgramsController implements Initializable {
 
                 //Get the title name of current file.
                 String firstLine = scan.nextLine();
-
                 text = firstLine.split(":");
                 String title = text[0];
                 String yearMade = text[3];
@@ -132,6 +195,7 @@ public class EditProgramsController implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -143,17 +207,15 @@ public class EditProgramsController implements Initializable {
         titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
         yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
+        System.out.println(getBroadcastData().getValue().getTitle());
+        System.out.println(getBroadcastData().getValue().getYearMade());
+
         root.getChildren().setAll(getBroadcastData());
         programTreeTableView.setRoot(root);
         //programTreeTableView.setShowRoot(false);
 
-
         //Adding choice options to the broadcast type combobox
         broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
-
-
-
-
 
 
 
