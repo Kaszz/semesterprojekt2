@@ -135,6 +135,16 @@ public class Reader implements IReader {
         return returnList;
     }
 
+    public void getAllBroadcasts() {
+        File file = new File("./src/txtfiles/broadcasts/");
+
+        File[] filePath = file.listFiles();
+
+        for (int i = 0; i < filePath.length; i++) {
+            
+        }
+    }
+
 
     /**
      * Method that checks if a user exists in the database.
