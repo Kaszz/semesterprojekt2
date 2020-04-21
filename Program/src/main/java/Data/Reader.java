@@ -111,6 +111,31 @@ public class Reader implements IReader {
         return returnList;
     }
 
+
+
+    public ArrayList<String> getAllUsers(){
+        File file = new File("./src/txtfiles/users/" + "users.txt");
+        Scanner scan = null;
+        ArrayList<String> returnList = new ArrayList<String>();
+
+        try {
+            scan = new Scanner(file);
+            //Add notifications to the list.
+            while(scan.hasNextLine()) {
+                String line = scan.nextLine();
+                returnList.add(line);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            scan.close();
+        }
+
+        return returnList;
+    }
+
+
     /**
      * Method that checks if a user exists in the database.
      * @param emailAddress is the username of the user.

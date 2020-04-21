@@ -26,6 +26,7 @@ public class DomainFacade {
     }
 
     public User createUser(String userID, String email, String password, String firstName, String lastName) {
+        main.admin.createUser(userID, email, password, firstName, lastName);
         user = new User(userID, email, password, firstName, lastName);
         return user;
     }
@@ -71,5 +72,8 @@ public class DomainFacade {
         return Notification.notificationCount();
     }
 
+    public ArrayList<String> getAllUsers() {
+        return main.admin.getAllUsers();
+    }
 
 }

@@ -8,7 +8,7 @@ public class main {
     static DataFacade df = DataFacade.getInstance();
     public static IReader read = df.getReader();
     public static IWriter write = df.getWriter();
-
+    public static Admin admin = new Admin("admin", "admin", "admin", "admin", "admin");
 
     public static void main(String[] args) {
         Presentation.App.load(args);

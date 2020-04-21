@@ -1,6 +1,7 @@
-1:1:1:1:1:1
-1:email:password:firstname:lastname:enabled
-1:jakup@gmail.com:1234:Jakup:Karagoz:true
-4:chkas15@student.sdu.dk:123456789:Christopher:Kas.sdu.dk:true
-2:aleksander@gmail.com:1234:Aleksander:Soender:true
-1:1:1:1:true
+2:2:2:2:2:true
+1:1:1:1:1:true
+userID_placeholder:3:3:3:3:true
+userID_placeholder:4:4:4:4:true
+userID_placeholder:christopher@kas.net:hahaha:Christopher:Kas:true
+userID_placeholder:andwy@sdasd.dk:456:Anders:Wy:true
+userID_placeholder:sije@student.sdu.dk:passord:Simon:Jessen:true

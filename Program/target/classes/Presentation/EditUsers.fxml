@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditUsersController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditUsersController">
    <children>
       <fx:include source="BasicFramework.fxml" />
       <TableView fx:id="usersTableView" layoutX="411.0" layoutY="82.0" prefHeight="480.0" prefWidth="447.0">
         <columns>
-          <TableColumn fx:id="columnNameTableView" prefWidth="203.0" text="Navn" />
-          <TableColumn fx:id="columnEmailTableView" prefWidth="153.0" text="Email" />
-            <TableColumn fx:id="columnPasswordTableView" prefWidth="90.0" text="Password" />
+          <TableColumn fx:id="columnNameTableView" prefWidth="140.0" text="Navn" />
+          <TableColumn fx:id="columnEmailTableView" prefWidth="172.0" text="Email" />
+            <TableColumn fx:id="columnPasswordTableView" prefWidth="134.0" text="Password" />
         </columns>
       </TableView>
       <HBox layoutX="55.0" layoutY="98.0" prefHeight="187.0" prefWidth="323.0">

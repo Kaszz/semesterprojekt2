@@ -1,6 +1,7 @@
-package Domain;
+package Presentation;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -14,10 +15,17 @@ import java.util.stream.Collectors;
 
 public class UserData {
 
-    StringProperty udEmail = new SimpleStringProperty();
-    StringProperty udPassword = new SimpleStringProperty();
-    StringProperty udFirstName = new SimpleStringProperty();
-    StringProperty udLastName = new SimpleStringProperty();
+    StringProperty udEmail;
+    StringProperty udPassword;
+    StringProperty udFirstName;
+    StringProperty udLastName;
+
+    public UserData(String udEmail, String udPassword, String udFirstName, String udLastName) {
+        this.udEmail = new SimpleStringProperty(udEmail);
+        this.udPassword = new SimpleStringProperty(udPassword);
+        this.udFirstName = new SimpleStringProperty(udFirstName);
+        this.udLastName = new SimpleStringProperty(udLastName);
+    }
 
     public void setUdEmail(String udEmail) {
         this.udEmail.set(udEmail);
