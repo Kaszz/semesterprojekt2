@@ -48,7 +48,6 @@ public class EditProgramsController implements Initializable {
         titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
         yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
-        root.getChildren().setAll(getBroadcastData());
         programTreeTableView.setRoot(root);
         //programTreeTableView.setShowRoot(false);
 
