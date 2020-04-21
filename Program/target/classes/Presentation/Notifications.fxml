@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.NotificationsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.NotificationsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <TableView fx:id="tableView" layoutX="19.0" layoutY="72.0" onMouseClicked="#handleRowClicked" prefHeight="279.0" prefWidth="560.0">
+      <TableView fx:id="tableView" layoutX="19.0" layoutY="72.0" onMouseClicked="#handleRowClicked" prefHeight="459.0" prefWidth="864.0">
         <columns>
           <TableColumn fx:id="dateColumn" editable="false" prefWidth="75.0" resizable="false" sortType="DESCENDING" sortable="false" text="Date" />
           <TableColumn fx:id="userColumn" editable="false" prefWidth="50.0" resizable="false" sortType="DESCENDING" sortable="false" text="User" />
-            <TableColumn fx:id="changeColumn" editable="false" minWidth="435.0" prefWidth="500.0" sortType="DESCENDING" sortable="false" text="Change" />
+            <TableColumn fx:id="changeColumn" editable="false" minWidth="435.0" prefWidth="738.0" sortType="DESCENDING" sortable="false" text="Change" />
         </columns>
       </TableView>
       <Label layoutX="408.0" layoutY="24.0" text="Notifications" AnchorPane.leftAnchor="408.0">
