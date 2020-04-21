@@ -15,16 +15,20 @@ import java.util.stream.Collectors;
 
 public class UserData {
 
+    StringProperty udID;
     StringProperty udEmail;
     StringProperty udPassword;
     StringProperty udFirstName;
     StringProperty udLastName;
+    StringProperty udEnabled;
 
-    public UserData(String udEmail, String udPassword, String udFirstName, String udLastName) {
+    public UserData(String udID, String udEmail, String udPassword, String udFirstName, String udLastName, String udEnabled) {
+        this.udID = new SimpleStringProperty(udID);
         this.udEmail = new SimpleStringProperty(udEmail);
         this.udPassword = new SimpleStringProperty(udPassword);
         this.udFirstName = new SimpleStringProperty(udFirstName);
         this.udLastName = new SimpleStringProperty(udLastName);
+        this.udEnabled = new SimpleStringProperty(udEnabled);
     }
 
     public void setUdEmail(String udEmail) {
@@ -73,5 +77,29 @@ public class UserData {
 
     public StringProperty udLastNameProperty() {
         return udLastName;
+    }
+
+    public String getUdID() {
+        return udID.get();
+    }
+
+    public StringProperty udIDProperty() {
+        return udID;
+    }
+
+    public void setUdID(String udID) {
+        this.udID.set(udID);
+    }
+
+    public String getUdEnabled() {
+        return udEnabled.get();
+    }
+
+    public StringProperty udEnabledProperty() {
+        return udEnabled;
+    }
+
+    public void setUdEnabled(String udEnabled) {
+        this.udEnabled.set(udEnabled);
     }
 }
