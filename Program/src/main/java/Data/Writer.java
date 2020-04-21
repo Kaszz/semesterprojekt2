@@ -260,7 +260,7 @@ public class Writer implements IWriter {
                 userTxt = new Scanner(file);
                 boolean first = false;
 
-                //Looks through the textfile until it finds a line with the same userID
+                //Looks through the text file until it finds a line with the same userID
                 //Once it's find it saves the given user String instead of the line thusly replacing the old line.
                 while(userTxt.hasNextLine()) {
                     String line = userTxt.nextLine();

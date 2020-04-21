@@ -1,13 +1,19 @@
 package Presentation;
 
 
+import Domain.BroadcastType;
 import Domain.ProgramsData;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.util.Callback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,6 +41,65 @@ public class EditProgramsController implements Initializable {
 
     @FXML
     private TreeTableColumn<ProgramsData, String> yearMadeColumn;
+
+    @FXML
+    private TextField titleTextField;
+
+    @FXML
+    private ComboBox<BroadcastType> broadcastTypeComboBox;
+
+    @FXML
+    private TextField trailerURLTextField;
+
+    @FXML
+    private TextField descriptionTextField;
+
+    @FXML
+    private DatePicker launchDatePicker;
+
+    @FXML
+    private TextField episodeTextField;
+
+    @FXML
+    private ComboBox<?> seasonComboBox;
+
+    @FXML
+    private ComboBox<?> episodeNoComboBox;
+
+    @FXML
+    void descriptionTextFieldOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void episodeNoComboBoxOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void episodeTextFieldOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void launchDatePickerOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void seasonComboBoxOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void titleTextFieldOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trailerURLTextFieldOnAction(ActionEvent event) {
+
+    }
 
     public TreeItem<ProgramsData> getBroadcastData() {
         File directory = new File("./src/txtfiles/broadcasts/");
@@ -81,6 +146,10 @@ public class EditProgramsController implements Initializable {
         root.getChildren().setAll(getBroadcastData());
         programTreeTableView.setRoot(root);
         //programTreeTableView.setShowRoot(false);
+
+
+        //Adding choice options to the broadcast type combobox
+        broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
 
 
 

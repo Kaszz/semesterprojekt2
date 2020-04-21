@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.shape.Circle;
+import javafx.scene.control.SplitMenuButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,12 +21,11 @@ import java.util.ResourceBundle;
 
 public class BasicFrameworkController implements Initializable  {
 
+    @FXML
+    private MenuItem usersOptionClicked;
 
     @FXML
-    private Label nameLoggedInLabel;
-
-    @FXML
-    private MenuButton menuButton;
+    private SplitMenuButton spitMenuButton;
 
     @FXML
     private Circle redCircle;
@@ -33,9 +33,10 @@ public class BasicFrameworkController implements Initializable  {
     private Label countLabel;
 
     private Thread threadNotificationUpdate;
-
+    
     @FXML
-    void homeButtonClicked(ActionEvent event) throws IOException {
+    void splitMenuButtonClicked(ActionEvent event) throws IOException {
+
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -43,13 +44,67 @@ public class BasicFrameworkController implements Initializable  {
 
         window.setScene(tableViewScene);
         window.show();
+
     }
 
     @FXML
-    void menuButtonClicked(ActionEvent event) {
+    void usersChoiceClicked(ActionEvent event) throws IOException {
+
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditUsers.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+
 
     }
 
+    @FXML
+    void creditsChoiceClicked(ActionEvent event) throws IOException{
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditCredits.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+    @FXML
+    void programsChoiceClicked(ActionEvent event) throws IOException {
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditPrograms.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+    
+    @FXML
+    void logoutChoiceClicked(ActionEvent event) throws IOException {
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+
+    @FXML
+    private Label nameLoggedInLabel;
 
 
     @FXML
@@ -62,6 +117,8 @@ public class BasicFrameworkController implements Initializable  {
         window.setScene(tableViewScene);
         window.show();
     }
+
+
 
     public void updateNotificationFlag() {
         threadNotificationUpdate = new Thread(new Runnable() {
@@ -98,30 +155,12 @@ public class BasicFrameworkController implements Initializable  {
     }
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         nameLoggedInLabel.setText(App.loginClient.getUser().getFirstName() + " " + App.loginClient.getUser().getLastName());
-
-        MenuButton menuButton = new MenuButton("Options");
-
-
-        //Creating menu items
-        MenuItem users = new MenuItem("Brugere");
-        MenuItem programs = new MenuItem("Programmer");
-        MenuItem credits = new MenuItem("Kreditteringer");
-
-
-
-        //Adding menu items to dropdown
-
-        //Action to menu items
-
         updateNotificationFlag();
-
-
-
-
 
     }
 }
