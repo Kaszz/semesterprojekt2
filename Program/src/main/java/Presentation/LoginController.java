@@ -2,6 +2,7 @@ package Presentation;
 
 import Interfaces.ILogin;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Domain.AccountTest;
 import Interfaces.IReader;
@@ -39,8 +41,10 @@ public class LoginController implements Initializable {
 
 
     @FXML
-    void loginButtonClicked(ActionEvent event) throws IOException {
+    private AnchorPane loginAnchor;
 
+    @FXML
+    void loginButtonClicked(ActionEvent event) throws IOException {
 
         try {
             App.loginClient.login(usernameTextField.getText(), passwordTextField.getText());
@@ -57,12 +61,6 @@ public class LoginController implements Initializable {
         } catch (IllegalArgumentException | IOException e1) {
 
         }
-
-    }
-
-
-    @FXML
-    public void passwordAdded() {
 
     }
 
