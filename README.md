@@ -103,3 +103,13 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Login system inkorporeret i UI.
 
 - Seer interface opstillet med animation af programmer.
+
+### 21/04/2020
+
+- Færdiggørelse af oprettelse og sletning af brugere via UI.
+
+- Delvis implementation af tilføjelse af oprettelse af broadcast objekter i UI.
+
+- Delvis implementation af tilføjelse af krediteringer i UI.
+
+- Demo session.
