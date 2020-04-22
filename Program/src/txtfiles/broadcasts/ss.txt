@@ -1,1 +1,7 @@
 ss:http://www.ss.com:ss:2017:Movie
+
+Simon:Jessen:DIRECTOR
+
+Lars:Larsen:LEAD_CAST
+
+Christopher:Kas:PRODUCER
