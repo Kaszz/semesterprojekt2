@@ -1,7 +1,9 @@
 package Domain;
 
 import Interfaces.IBroadcast;
+import Interfaces.ICredit;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.Year;
 import java.util.ArrayList;
@@ -31,7 +33,10 @@ public abstract class Broadcast implements IBroadcast {
     public void addCredit(String title, String fName, String lName, CreditType role) {
         Credit tempCredit = new Credit(fName, lName, role);
         credits.add(tempCredit);
+    }
 
+    public void addCredit(Credit credit) {
+        credits.add(credit);
     }
 
     //TODO - This method should search the database for the title, return a string so that we can make a Broadcast object with it.
@@ -43,8 +48,10 @@ public abstract class Broadcast implements IBroadcast {
         return title;
     }
 
-    public ArrayList<Credit> getCredits() {
-        return credits;
+    public ArrayList<ICredit> getCredits() {
+        ArrayList<ICredit> iCredits;
+        iCredits = new ArrayList<ICredit>(credits);
+        return iCredits;
     }
 
     public URL getTrailerURL() {
@@ -57,5 +64,10 @@ public abstract class Broadcast implements IBroadcast {
 
     public Year getLaunchYear() {
         return launchYear;
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }

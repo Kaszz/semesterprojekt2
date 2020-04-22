@@ -10,4 +10,5 @@ public interface IReader {
     public String checkUser(String email, String password);
     public ArrayList<String> getAllUsers();
     public ArrayList<String> getNotifications();
+    public ArrayList<String> getAllBroadcasts();
 }

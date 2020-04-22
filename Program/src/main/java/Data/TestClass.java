@@ -22,6 +22,7 @@ public class TestClass {
 
         //System.out.println(write.deleteCredit("Mothers", "Christopher:Kas:SUPPORT_CAST"));
 
+        System.out.println(read.getAllBroadcasts().get(5));
 
         /*
         ArrayList<String> test = new ArrayList<>();

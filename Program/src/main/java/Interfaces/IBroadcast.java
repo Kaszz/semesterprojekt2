@@ -9,9 +9,11 @@ import java.util.ArrayList;
 
 public interface IBroadcast {
     public void addCredit(String title, String fName, String lName, CreditType role);
+    public void addCredit(Credit credit);
     public String getTitle();
-    public ArrayList<Credit> getCredits();
+    public ArrayList<ICredit> getCredits();
     public URL getTrailerURL();
     public String getBio();
     public Year getLaunchYear();
+    public String toString();
 }

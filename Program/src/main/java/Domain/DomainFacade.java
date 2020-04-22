@@ -1,6 +1,9 @@
 package Domain;
 
+import Interfaces.IBroadcast;
+import Interfaces.ICredit;
 import Interfaces.INotification;
+import Interfaces.IReader;
 import Presentation.Noti;
 
 import java.net.URL;
@@ -16,6 +19,7 @@ public class DomainFacade {
     private LiveShow liveShow;
     private Movie movie;
     private Login login;
+    private IReader read = main.getReader();
 
     private DomainFacade() {
         login = Login.getInstance();
@@ -79,5 +83,12 @@ public class DomainFacade {
     public void deleteUser(String userID, String email, String password, String firstName, String lastName, String enabled) {
         main.admin.deleteUser(userID, email, password, firstName, lastName, Boolean.valueOf(enabled));
     }
+
+    public ArrayList<String> getAllBroadcasts() {return read.getAllBroadcasts(); }
+
+    public ArrayList<String> getBroadcastCredits(String title) {return read.getBroadcastCredits(title);}
+
+    public ArrayList<ICredit> getCredits(IBroadcast broadcast) {return broadcast.getCredits();}
+
 
 }
