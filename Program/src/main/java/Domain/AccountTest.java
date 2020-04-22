@@ -43,7 +43,7 @@ public class AccountTest {
 
 
             //mikail.createUser("1", "1", "1", "1", "1");
-
+            mikail.deleteUser("userID_placeholder", "andwy@sdasd.dk", "456", "Anders", "Wy", true);
 
         } catch (
                 MalformedURLException e) {

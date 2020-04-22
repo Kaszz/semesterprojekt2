@@ -39,7 +39,7 @@ public class EditUsersController implements Initializable {
     private Button createUserButton;
 
     @FXML
-    private TableView<UserData> usersTableView;
+    private TableView<UserData> tableView;
 
     @FXML
     private TableColumn<UserData, String> columnNameTableView;
@@ -51,19 +51,16 @@ public class EditUsersController implements Initializable {
     private TableColumn<UserData, String> columnPasswordTableView;
 
     @FXML
-    void changeUserButtonClicked(ActionEvent event) {
-
-    }
-
-    @FXML
     void createUserButtonClicked(ActionEvent event){
-        App.domain.createUser("userID_placeholder", userEmailTextField.getText(), userPasswordTextField.getText(), userFirstNameTextField.getText(), userLastNameTextField.getText());
+        App.domain.createUser("X", userEmailTextField.getText(), userPasswordTextField.getText(), userFirstNameTextField.getText(), userLastNameTextField.getText());
         updateUsers();
     }
 
     @FXML
     void deleteUserButtonClicked(ActionEvent event) {
-
+        UserData temp = tableView.getSelectionModel().getSelectedItem();
+        App.domain.deleteUser(temp.getUdID(), temp.getUdEmail(), temp.getUdPassword(), temp.getUdFirstName(), temp.getUdLastName(), temp.getUdEnabled());
+        updateUsers();
     }
 
     @FXML
@@ -94,22 +91,21 @@ public class EditUsersController implements Initializable {
         String[] data = null;
         for (String s : users) {
             data = s.split(":");
-            details.add(new UserData(data[1], data[2], data[3], data[4]));
+            details.add(new UserData(data[0], data[1], data[2], data[3], data[4], data[5]));
         }
 
         return details;
     }
 
     public void updateUsers() {
-        int index = usersTableView.getSelectionModel().getSelectedIndex();
-        usersTableView.setItems(getUsers());
-        usersTableView.getSelectionModel().select(index);
+        int index = tableView.getSelectionModel().getSelectedIndex();
+        tableView.setItems(getUsers());
+        tableView.getSelectionModel().select(index);
     }
 
 
     @Override
     public void initialize (URL location, ResourceBundle resources) {
-
         columnNameTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udFirstName"));
         columnEmailTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udEmail"));
         columnPasswordTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udPassword"));
