@@ -113,3 +113,13 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Delvis implementation af tilføjelse af krediteringer i UI.
 
 - Demo session.
+
+### 28/04/2020
+
+- ER-diagram lavet.
+
+- Opsætning af tabeller til databasen.
+
+### 03/05/2020
+
+- Snak om nye brugsmønstre og sekvensdiagrammer.
