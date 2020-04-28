@@ -39,7 +39,7 @@
                   <Insets top="6.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox prefHeight="15.0" prefWidth="150.0">
+            <ComboBox fx:id="creditCombo" prefHeight="15.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>

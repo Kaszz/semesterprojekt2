@@ -35,6 +35,10 @@ public abstract class Broadcast implements IBroadcast {
         credits.add(tempCredit);
     }
 
+    public void deleteAllCredits() {
+        credits.clear();
+    }
+
     public void addCredit(Credit credit) {
         credits.add(credit);
     }

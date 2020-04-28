@@ -1,11 +1,10 @@
 package Presentation;
 
 
-import Domain.Broadcast;
+import Domain.BroadcastType;
 import Domain.CreditType;
 import Interfaces.IBroadcast;
 import Interfaces.ICredit;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +15,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Year;
@@ -38,6 +35,9 @@ public class EditCreditsController implements Initializable {
 
     @FXML
     private ComboBox creationCombo;
+
+    @FXML
+    private ComboBox<CreditType> creditCombo;
 
     @FXML
     private TableView<CreditTable> creditsTable;
@@ -67,12 +67,14 @@ public class EditCreditsController implements Initializable {
     }
 
     public void updateCredits() {
+        //Saves the chosen elements index from the ComboBox (drop down menu)
         int index = creditsTable.getSelectionModel().getSelectedIndex();
 
         ArrayList<String> rawCredits;
 
         for (int i = 0; i < broadcasts.size(); i++) {
             rawCredits = App.domain.getBroadcastCredits(broadcasts.get(i).getTitle());
+            broadcasts.get(i).deleteAllCredits();
 
             if (!rawCredits.isEmpty()) {
                 for (int j = 0; j < rawCredits.size(); j++) {
@@ -88,25 +90,26 @@ public class EditCreditsController implements Initializable {
     public ObservableList<CreditTable> getCredits() {
         ObservableList<CreditTable> creditList = FXCollections.observableArrayList();
         IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
-
         ArrayList<ICredit> credits = App.domain.getCredits(broadcast);
+
         for (int i = 0; i < credits.size() ; i++) {
             creditList.add(new CreditTable(credits.get(i).getfName(), credits.get(i).getlName(), credits.get(i).getRole().name()));
         }
+
         return creditList;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<IBroadcast> creation;
+        ObservableList<IBroadcast> creations;
         ArrayList<String> rawBroadcasts;
         broadcasts = new ArrayList<>();
 
         rawBroadcasts = App.domain.getAllBroadcasts();
-        creation = FXCollections.observableArrayList();
+        creations = FXCollections.observableArrayList();
 
         for (int i = 0; i < rawBroadcasts.size(); i++) {
-            String[] broadcast = rawBroadcasts.get(0).split(":");
+            String[] broadcast = rawBroadcasts.get(i).split(":");
 
             if (broadcast.length <= 6) {
                 try {
@@ -136,8 +139,10 @@ public class EditCreditsController implements Initializable {
         columnLastName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("lName"));
         columnRole.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("role"));
 
-        creation.setAll(broadcasts);
-        creationCombo.setItems(creation);
+        creations.setAll(broadcasts);
+        creationCombo.setItems(creations);
+        System.out.println(CreditType.SUPPORT_CAST);
+        creditCombo.getItems().setAll(CreditType.values());
 
         if (!broadcasts.isEmpty()) {
             creationCombo.getSelectionModel().select(0);

@@ -16,4 +16,5 @@ public interface IBroadcast {
     public String getBio();
     public Year getLaunchYear();
     public String toString();
+    public void deleteAllCredits();
 }
