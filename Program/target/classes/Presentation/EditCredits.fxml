@@ -29,12 +29,12 @@
                   <Insets top="6.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField prefHeight="15.0">
+            <TextField fx:id="firstName" prefHeight="15.0">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>
             </TextField>
-            <TextField prefHeight="15.0">
+            <TextField fx:id="lastName" prefHeight="15.0">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>

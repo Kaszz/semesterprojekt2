@@ -10,11 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Year;
@@ -32,6 +31,12 @@ public class EditCreditsController implements Initializable {
 
     @FXML
     private Button createCreditButton;
+
+    @FXML
+    private TextField firstName;
+
+    @FXML
+    private TextField lastName;
 
     @FXML
     private ComboBox creationCombo;
@@ -59,11 +64,13 @@ public class EditCreditsController implements Initializable {
     @FXML
     void deleteCreditButtonClicked(ActionEvent event) {
 
-    }
+        if (creditsTable.getSelectionModel().getSelectedItem() != null) {
+            CreditTable creditTable = creditsTable.getSelectionModel().getSelectedItem();
 
-    @FXML
-    void editCreditButtonClicked(ActionEvent event) {
-
+        }
+        else {
+            
+        }
     }
 
     public void updateCredits() {
