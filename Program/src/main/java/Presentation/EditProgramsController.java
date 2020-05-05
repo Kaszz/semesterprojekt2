@@ -242,7 +242,7 @@ public class EditProgramsController implements Initializable {
                     }
                 }
 
-                //Create a new series if there is none
+                //Create a new season if there is none
                 if (root.getChildren().get(seriesIndex).getChildren().isEmpty()) {
                     root.getChildren().get(seriesIndex).getChildren().add(new TreeItem<>(new ProgramsData(((Episode) b).getSeason(), b.getLaunchYear().toString())));
                     System.out.println("Series is empty, creating new series for: " + b.getTitle());
@@ -266,7 +266,7 @@ public class EditProgramsController implements Initializable {
                         root.getChildren().get(seriesIndex).getChildren().add(new TreeItem<>(new ProgramsData(((Episode) b).getSeason(), b.getLaunchYear().toString())));
 
                         for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
-                            if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(((Episode) b).getSeason())) {
+                            if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(((Episode) b).getSeason()))) {
                                 root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString())));
                                 System.out.println("Added new season and adding " + b.getTitle());
 
