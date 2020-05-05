@@ -4,6 +4,7 @@ package Presentation;
 import Domain.BroadcastType;
 import Domain.Episode;
 import Interfaces.IBroadcast;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -210,19 +211,78 @@ public class EditProgramsController implements Initializable {
         ArrayList<IBroadcast> broadcasts = App.domain.getAllBroadcasts();
 
         for (IBroadcast b : broadcasts) {
+            //Run through the all the series, seasons and episodes. Create any if they haven't already been.
+
             if (b instanceof Episode) {
+                boolean foundSeries = false;
+                int seriesIndex = 0;
+
                 //Run through all series
                 for (int i = 0; i < root.getChildren().size(); i++) {
+                    System.out.println("Size is: " + root.getChildren().size());
                     //If there is a series with the same name as the showName of an episode check to see if its series exists.
-                    if (root.getChildren().get(i).getValue().showName.equals(((Episode) b).getShowName())) {
-                        if (root.getChildren().get(i).getChildren().isEmpty()) {
-                            root.getChildren().get(i).getChildren().add()
-                        }
-                        root.getChildren().get(i).getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString())));
+                    if (root.getChildren().get(i).getValue().getTitle().get().equals(((Episode) b).getShowName())) {
+                        //If there are no seasons add the one contained in b
+                        foundSeries = true;
+                        seriesIndex = i;
+                        System.out.println("Found existing series for " + b.getTitle());
                     }
                 }
-                TreeItem series = new TreeItem<>(new ProgramsData(((Episode) b).getShowName(), b.getLaunchYear().toString()));
 
+                if (!foundSeries) {
+                    root.getChildren().add(new TreeItem<>(new ProgramsData(((Episode) b).getShowName(), "")));
+                    System.out.println(root.getChildren().get(0).getValue().getTitle());
+
+                    for (int i = 0; i < root.getChildren().size(); i++) {
+                        //To convert a SimpleStringProperty to string use .get()
+                        if (root.getChildren().get(i).getValue().getTitle().get().equals(((Episode) b).getShowName())) {
+                            seriesIndex = i;
+                            System.out.println("Creating new series for " + b.getTitle());
+                        }
+                    }
+                }
+
+                //Create a new series if there is none
+                if (root.getChildren().get(seriesIndex).getChildren().isEmpty()) {
+                    root.getChildren().get(seriesIndex).getChildren().add(new TreeItem<>(new ProgramsData(((Episode) b).getSeason(), b.getLaunchYear().toString())));
+                    System.out.println("Series is empty, creating new series for: " + b.getTitle());
+                }
+
+                //Check if there is an existing season
+                if (!root.getChildren().get(seriesIndex).getChildren().isEmpty()) {
+                    boolean foundSeason = false; //Check if any seasons where found
+
+                    for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
+                        if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(((Episode) b).getSeason()))) {
+                            root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString())));
+                            foundSeason = true;
+                            System.out.println("Found season for: " + b.getTitle());
+                        }
+
+                    }
+
+                    //If a matching season weren't found create a new one and add the episode
+                    if (!foundSeason) {
+                        root.getChildren().get(seriesIndex).getChildren().add(new TreeItem<>(new ProgramsData(((Episode) b).getSeason(), b.getLaunchYear().toString())));
+
+                        for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
+                            if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(((Episode) b).getSeason())) {
+                                root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString())));
+                                System.out.println("Added new season and adding " + b.getTitle());
+
+                            }
+                        }
+
+
+                    }
+
+                }
+
+            } else {
+                root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString())));
+            }
+
+                /*
                 root.getChildren().
 
                         //root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
@@ -236,12 +296,7 @@ public class EditProgramsController implements Initializable {
                     root.getChildren().add(treeItems.get(i));
                 }
 
-
-            } else {
-                //root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
-
-
-            }
+                 */
 
             titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
             yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
@@ -252,6 +307,7 @@ public class EditProgramsController implements Initializable {
 
             //Adding choice options to the broadcast type combobox
             broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
+
 
         }
     }

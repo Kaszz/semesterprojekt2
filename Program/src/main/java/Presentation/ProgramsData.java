@@ -15,6 +15,11 @@ public class ProgramsData {
         this.yearMade = new SimpleStringProperty(yearMade);
     }
 
+    public ProgramsData(int season, String yearMade) {
+        this.title = new SimpleStringProperty("Sæson " + season);
+        this.season = new SimpleStringProperty("" + season);
+    }
+
     public ProgramsData() {}
 
     public void setTitle(String title) {
@@ -64,4 +69,9 @@ public class ProgramsData {
     public SimpleStringProperty episodeProperty() {
         return episode;
     }
+
+    public SimpleStringProperty showNameProperty() {return showName;}
+
+    public String getShowName() {return showName.get();}
+
 }
