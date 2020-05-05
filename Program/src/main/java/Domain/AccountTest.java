@@ -7,6 +7,7 @@ import java.time.Year;
 
 public class AccountTest {
     public static void main(String[] args) {
+        /*
         Movie peterplys;
         LiveShow live;
         Episode homer;
@@ -49,5 +50,7 @@ public class AccountTest {
                 MalformedURLException e) {
             e.printStackTrace();
         }
+
+         */
     }
 }

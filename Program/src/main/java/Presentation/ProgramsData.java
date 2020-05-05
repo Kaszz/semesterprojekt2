@@ -1,4 +1,4 @@
-package Domain;
+package Presentation;
 
 import javafx.beans.property.SimpleStringProperty;
 

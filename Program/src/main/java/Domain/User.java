@@ -3,7 +3,6 @@ package Domain;
 import Interfaces.IUser;
 import Interfaces.IWriter;
 
-import java.net.URL;
 import java.time.Year;
 import java.util.Date;
 
@@ -24,20 +23,20 @@ public class User extends Account implements IUser {
     }
 
     @Override
-    public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
-        super.createMovie(title, trailerURL, bio, launchYear);
+    public void createMovie(String title, String bio, Year launchYear) {
+        super.createMovie(title, bio, launchYear);
         Notification.addNotification(new Date(), this.userID, "Oprettet filmen " + title + " fra året " + launchYear);
     }
 
     @Override
-    public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
-        super.createLiveShow(title, trailerURL, bio, launchYear, location);
+    public void createLiveShow(String title, String bio, Year launchYear, String location) {
+        super.createLiveShow(title, bio, launchYear, location);
         Notification.addNotification(new Date(), this.userID, "Oprettet liveshowet " + title + " fra året " + launchYear + " på " + location);
     }
 
     @Override
-    public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
-        super.createEpisode(title, trailerURL, bio, launchYear, showName, season, episode);
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode) {
+        super.createEpisode(title, bio, launchYear, showName, season, episode);
         Notification.addNotification(new Date(), this.userID, "Oprettet episoden " + title + " fra tv-serien " + showName + " sæson " + season + " episode nummer " + episode);
     }
 

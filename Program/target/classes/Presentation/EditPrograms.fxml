@@ -11,14 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditProgramsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditProgramsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
       <VBox layoutX="28.0" layoutY="116.0" prefHeight="291.0" prefWidth="100.0" AnchorPane.leftAnchor="28.0">
          <children>
             <Label minHeight="32.0" text="Titel" />
             <Label minHeight="32.0" text="Type" />
-            <Label minHeight="32.0" text="Trailer URL" />
             <Label minHeight="32.0" text="Beskrivelse" />
             <Label minHeight="32.0" text="Lancering ">
                <VBox.margin>
@@ -41,11 +40,6 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField fx:id="trailerURLTextField" accessibleText="hhtp://" minHeight="24.0" onAction="#trailerURLTextFieldOnAction" promptText="http::/">
-               <VBox.margin>
-                  <Insets bottom="6.0" />
-               </VBox.margin>
-            </TextField>
             <TextField fx:id="descriptionTextField" minHeight="24.0" onAction="#descriptionTextFieldOnAction">
                <VBox.margin>
                   <Insets bottom="6.0" />
@@ -57,6 +51,7 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
             </TextField>
+            <TextField fx:id="locationTextField" visible="false" />
             <ComboBox fx:id="seasonComboBox" minHeight="24.0" onAction="#seasonComboBoxOnAction" prefHeight="27.0" prefWidth="222.0" visible="false">
                <VBox.margin>
                   <Insets bottom="6.0" />
@@ -77,7 +72,6 @@
       <TreeTableView fx:id="programTreeTableView" layoutX="410.0" layoutY="78.0" prefHeight="485.0" prefWidth="455.0">
         <columns>
           <TreeTableColumn fx:id="titleColumn" prefWidth="203.0" text="Title" />
-          <TreeTableColumn fx:id="subTitleColumn" prefWidth="201.0" text="Subtitle" />
             <TreeTableColumn fx:id="yearMadeColumn" prefWidth="50.0" text="År" />
         </columns>
       </TreeTableView>

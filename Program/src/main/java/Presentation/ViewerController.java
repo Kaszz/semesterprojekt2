@@ -38,7 +38,6 @@ public class ViewerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         images = new Image[4];
         String pre = "slide";
         String post = ".png";

@@ -6,7 +6,6 @@ import Interfaces.IReader;
 import Interfaces.IWriter;
 
 import java.io.*;
-import java.net.URL;
 import java.time.Year;
 import java.util.Date;
 import java.util.Scanner;
@@ -27,19 +26,19 @@ public abstract class Account implements IAccount {
         write.addCredit(title, credit);
     }
 
-    public void createMovie(String title, URL trailerURL, String bio, Year launchYear) {
-        String broadcast = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + "Movie";
+    public void createMovie(String title, String bio, Year launchYear) {
+        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + "Movie";
         write.createBroadcast(broadcast);
     }
 
-    public void createLiveShow(String title, URL trailerURL, String bio, Year launchYear, String location) {
-        String liveShow = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + location + ":" + "LiveShow";
+    public void createLiveShow(String title, String bio, Year launchYear, String location) {
+        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + location + ":" + "LiveShow";
         write.createBroadcast(liveShow);
     }
 
-    public void createEpisode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episode) {
-        Episode ep = new Episode(title, trailerURL, bio, launchYear, showName, season, episode);
-        String episodeString = title + ":" + trailerURL.toString() + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode + ":" + "Episode";
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode) {
+        Episode ep = new Episode(title, bio, launchYear, showName, season, episode);
+        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode + ":" + "Episode";
         write.createBroadcast(episodeString);
     }
 

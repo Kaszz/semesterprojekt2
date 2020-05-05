@@ -2,6 +2,7 @@ package Presentation;
 
 
 import Domain.BroadcastType;
+import Domain.Credit;
 import Domain.CreditType;
 import Interfaces.IBroadcast;
 import Interfaces.ICredit;
@@ -66,10 +67,8 @@ public class EditCreditsController implements Initializable {
 
         if (creditsTable.getSelectionModel().getSelectedItem() != null) {
             CreditTable creditTable = creditsTable.getSelectionModel().getSelectedItem();
+            //Credit credit = new Credit(creditTable.getfName(), creditTable.getlName(), creditTable.getRole());
 
-        }
-        else {
-            
         }
     }
 
@@ -109,38 +108,10 @@ public class EditCreditsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<IBroadcast> creations;
-        ArrayList<String> rawBroadcasts;
-        broadcasts = new ArrayList<>();
 
-        rawBroadcasts = App.domain.getAllBroadcasts();
+        broadcasts = App.domain.getAllBroadcasts();
+
         creations = FXCollections.observableArrayList();
-
-        for (int i = 0; i < rawBroadcasts.size(); i++) {
-            String[] broadcast = rawBroadcasts.get(i).split(":");
-
-            if (broadcast.length <= 6) {
-                try {
-                    broadcasts.add(App.domain.createMovie(broadcast[0],new URL(broadcast[1] + ":" + broadcast[2]), broadcast[3],
-                            Year.of(Integer.parseInt(broadcast[4]))));
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-            } else if (broadcast.length == 7) {
-                try {
-                    broadcasts.add(App.domain.createLiveShow(broadcast[0],new URL(broadcast[1] + ":" + broadcast[2]), broadcast[3],
-                            Year.of(Integer.parseInt(broadcast[4])), broadcast[5]));
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-            } else if (broadcast.length >= 8) {
-                try {
-                    broadcasts.add(App.domain.createEpisode(broadcast[0],new URL(broadcast[1] + ":" + broadcast[2]), broadcast[3],
-                            Year.of(Integer.parseInt(broadcast[4])), broadcast[5], Integer.parseInt(broadcast[6]), Integer.parseInt(broadcast[7])));
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
 
         columnFirstName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("fName"));
         columnLastName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("lName"));

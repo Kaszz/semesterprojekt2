@@ -29,6 +29,7 @@ public class BasicFrameworkController implements Initializable  {
 
     @FXML
     private Circle redCircle;
+
     @FXML
     private Label countLabel;
 
