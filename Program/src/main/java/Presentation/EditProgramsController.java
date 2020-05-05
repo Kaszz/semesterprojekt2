@@ -122,7 +122,7 @@ public class EditProgramsController implements Initializable {
     void saveButtonOnAction(ActionEvent event) throws MalformedURLException {
         trailerURLTextField.getText();
 
-        if(broadcastTypeComboBox.getSelectionModel().isSelected(1)) {
+        if (broadcastTypeComboBox.getSelectionModel().isSelected(1)) {
             App.domain.createMovie(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())));
         }
 
@@ -164,31 +164,6 @@ public class EditProgramsController implements Initializable {
     }
 
     public void getBroadcastData() {
-        TreeItem<ProgramsData> root = null;
-        TreeItem<ProgramsData> programsData = null;
-
-        ArrayList<IBroadcast> broadcastTitles = App.domain.getAllBroadcasts();
-
-        for (IBroadcast b: broadcastTitles) {
-            if (b instanceof Episode) {
-                root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
-                ArrayList<TreeItem> treeItems = new ArrayList<>();
-
-                programsData = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
-
-                treeItems.add(programsData);
-
-                for (int i = 0; i < treeItems.size(); i++) {
-                    root.getChildren().add(treeItems.get(i));
-                }
-
-                programTreeTableView.setRoot(root);
-            } else {
-                root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
-
-            }
-
-        }
 
         /*
         File directory = new File("./src/txtfiles/broadcasts/");
@@ -225,33 +200,59 @@ public class EditProgramsController implements Initializable {
 
          */
 
-
-
-
-        titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
-        yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
-
-        //programTreeTableView.setShowRoot(false);
-
-        //Adding choice options to the broadcast type combobox
-        broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
-
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TreeItem<ProgramsData> root = new TreeItem<>();
 
-        getBroadcastData();
+        ArrayList<IBroadcast> broadcasts = App.domain.getAllBroadcasts();
+
+        for (IBroadcast b : broadcasts) {
+            if (b instanceof Episode) {
+                //Run through all series
+                for (int i = 0; i < root.getChildren().size(); i++) {
+                    //If there is a series with the same name as the showName of an episode check to see if its series exists.
+                    if (root.getChildren().get(i).getValue().showName.equals(((Episode) b).getShowName())) {
+                        if (root.getChildren().get(i).getChildren().isEmpty()) {
+                            root.getChildren().get(i).getChildren().add()
+                        }
+                        root.getChildren().get(i).getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString())));
+                    }
+                }
+                TreeItem series = new TreeItem<>(new ProgramsData(((Episode) b).getShowName(), b.getLaunchYear().toString()));
+
+                root.getChildren().
+
+                        //root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
+                        ArrayList < TreeItem > treeItems = new ArrayList<>();
+
+                programsData = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
+
+                treeItems.add(programsData);
+
+                for (int i = 0; i < treeItems.size(); i++) {
+                    root.getChildren().add(treeItems.get(i));
+                }
 
 
+            } else {
+                //root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
 
 
+            }
 
+            titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
+            yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
+            programTreeTableView.setRoot(root);
+            programTreeTableView.setShowRoot(false);
+            //programTreeTableView.setShowRoot(false);
 
+            //Adding choice options to the broadcast type combobox
+            broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
 
-
-
+        }
     }
 }

@@ -8,6 +8,7 @@ public class ProgramsData {
     SimpleStringProperty yearMade;
     SimpleStringProperty season;
     SimpleStringProperty episode;
+    SimpleStringProperty showName;
 
     public ProgramsData(String title, String yearMade) {
         this.title = new SimpleStringProperty(title);
