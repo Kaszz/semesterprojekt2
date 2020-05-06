@@ -123,3 +123,9 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 ### 03/05/2020
 
 - Snak om nye brugsmønstre og sekvensdiagrammer.
+
+### 05/05/2020
+
+- Opsætning af online database
+
+- Fix af problemer fra første iteration.
