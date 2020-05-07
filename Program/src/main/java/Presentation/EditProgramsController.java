@@ -6,6 +6,7 @@ import Domain.Episode;
 import Domain.LiveShow;
 import Domain.Movie;
 import Interfaces.IBroadcast;
+import Interfaces.IEpisode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,6 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class EditProgramsController implements Initializable {
     private Collection<ProgramsData> list;
@@ -275,11 +275,11 @@ public class EditProgramsController implements Initializable {
         for (IBroadcast b : broadcasts) {
 
             //Run through the all the series, seasons and episodes. Create any if they haven't already been. Only done for Episodes
-            if (b instanceof Episode) {
+            if (b instanceof IEpisode) {
                 boolean foundSeries = false;
                 int seriesIndex = 0;
 
-                Episode episode = ((Episode) b);
+                IEpisode episode = ((IEpisode) b);
 
                 //Run through all series and check for existing series
                 for (int i = 0; i < root.getChildren().size(); i++) {
