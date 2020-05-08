@@ -2,7 +2,6 @@ package Domain;
 
 import Interfaces.IEpisode;
 
-import java.net.URL;
 import java.time.Year;
 
 public class Episode extends Broadcast implements IEpisode {
@@ -12,8 +11,8 @@ public class Episode extends Broadcast implements IEpisode {
     private int episodeNum;
 
     //Constructors
-    public Episode(String title, URL trailerURL, String bio, Year launchYear, String showName, int season, int episodeNum) {
-        super(title, trailerURL, bio, launchYear);
+    public Episode(String title, String bio, Year launchYear, String showName, int season, int episodeNum) {
+        super(title, bio, launchYear);
         this.showName = showName;
         this.season = season;
         this.episodeNum = episodeNum;

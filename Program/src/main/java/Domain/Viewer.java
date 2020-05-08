@@ -14,23 +14,14 @@ public class Viewer {
         String[] stringSplit = title.split(":");
 
         if (stringSplit[stringSplit.length-1].equals("Movie")) {
-            try {
-                Movie broadcast = new Movie(stringSplit[0], new URL(stringSplit[1]), stringSplit[2], Year.of((Integer.parseInt(stringSplit[3]))));
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+                Movie broadcast = new Movie(stringSplit[0], stringSplit[1], Year.of((Integer.parseInt(stringSplit[2]))));
+
         } else if (stringSplit[stringSplit.length-1].equals("LiveShow")) {
-            try {
-                LiveShow broadcast = new LiveShow(stringSplit[0], new URL(stringSplit[1]), stringSplit[2], Year.of((Integer.parseInt(stringSplit[3]))), stringSplit[4]);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+                LiveShow broadcast = new LiveShow(stringSplit[0], stringSplit[1], Year.of((Integer.parseInt(stringSplit[2]))), stringSplit[3]);
+
         } else if (stringSplit[stringSplit.length-1].equals("Episode")) {
-            try {
-                Episode broadcast = new Episode(stringSplit[0], new URL(stringSplit[1]), stringSplit[2], Year.of((Integer.parseInt(stringSplit[3]))),stringSplit[4], Integer.parseInt(stringSplit[5]), Integer.parseInt(stringSplit[6]));
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+                Episode broadcast = new Episode(stringSplit[0], stringSplit[1], Year.of((Integer.parseInt(stringSplit[2]))),stringSplit[3], Integer.parseInt(stringSplit[4]), Integer.parseInt(stringSplit[5]));
+
         }
         return broadcast;
 

@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EntryController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EntryController">
    <children>
       <fx:include source="BasicFramework.fxml" />
       <VBox layoutX="400.0" layoutY="174.0" prefHeight="200.0" prefWidth="100.0">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#usersButtonClicked" text="Brugere" />
+                  <Button fx:id="usersButton" mnemonicParsing="false" onAction="#usersButtonClicked" text="Brugere" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">

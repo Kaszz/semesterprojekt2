@@ -14,10 +14,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
 import javafx.event.ActionEvent;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.paint.Color;
 
 import static javafx.scene.input.KeyCode.KP_UP;
 
@@ -32,16 +40,22 @@ public class ViewerController implements Initializable {
     private Label textOverlay;
 
     @FXML
+    private Label titleLabel;
+
+    @FXML
     private TextArea textOverlayArea;
 
     private Thread t1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         images = new Image[4];
         String pre = "slide";
         String post = ".png";
+
+        textOverlay.setStyle("-fx-opacity 1; -fx-background-color: rgb(0, 0, 0, 0.5);");
+        titleLabel.setStyle("-fx-opacity 1; -fx-background-color: rgb(0, 0, 0, 0.5);");
+
         for (int i = 0; i < images.length; i++) {
             images[i] = new Image(new File("src/main/resources/images/" + pre + i + post).toURI().toString());
         }
@@ -50,12 +64,15 @@ public class ViewerController implements Initializable {
         t1.setDaemon(true);
         t1.start();
 
+
+
     }
 
 
     public class SlideRunnable implements Runnable {
 
         private int i;
+        private int j;
         private long sleepTime;
         private boolean running;
         private ImageView iw;
@@ -72,47 +89,53 @@ public class ViewerController implements Initializable {
         @Override
         public void run() {
 
+            File directory = new File("./src/txtfiles/broadcasts/");
+            //Makes array of files in directory.
+            File[] files = directory.listFiles();
 
 
             running = true;
             System.out.println("Thread started: " + Thread.currentThread());
 
             while (running) {
+
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
+                        Scanner scan = null;
 
                         iw.setImage(images[i]);
-                        if (i == 0) {
-                            StringBuilder string = new StringBuilder();
-                            for (int j = 0; j < read.getBroadcastCredits("Fathers").size(); j++) {
-                                string.append(read.getBroadcastCredits("Fathers").get(j)+"\r\n");
-                                String singleString = string.toString();
-                                textOverlay.setText(singleString);
+
+                        try {
+                            scan = new Scanner(files[j]);
+                            String firstLine = "";
+
+                            firstLine = scan.nextLine();
+                            String[] splitString = firstLine.split(":");
+
+                            titleLabel.setText(splitString[0] + " - " + splitString[2]);
+
+                            if (read.getBroadcastCredits(splitString[0]).size() == 0)
+                                textOverlay.setText("Der er ingen kreditering for denne udsendelse.");
+                            else {
+                                StringBuilder string = new StringBuilder();
+                                for (int j = 0; j < read.getBroadcastCredits(splitString[0]).size(); j++) {
+                                    String creditLine = read.getBroadcastCredits(splitString[0]).get(j);
+                                    String[] creditSplit = creditLine.split(":");
+                                    string.append(creditSplit[0] + " " + creditSplit[1] + "                        " + creditSplit[2] + "\r\n");
+
+                                    String singleString = string.toString();
+                                    textOverlay.setText(singleString);
+                                }
                             }
-                        } else if (i == 1) {
-                            StringBuilder string = new StringBuilder();
-                            for (int j = 0; j < read.getBroadcastCredits("Geeks").size(); j++) {
-                                string.append(read.getBroadcastCredits("Geeks").get(j)+"\r\n");
-                                String singleString = string.toString();
-                                textOverlay.setText(singleString);
-                            }
-                        } else if (i == 2) {
-                            StringBuilder string = new StringBuilder();
-                            for (int j = 0; j < read.getBroadcastCredits("homer").size(); j++) {
-                                string.append(read.getBroadcastCredits("homer").get(j)+"\r\n");
-                                String singleString = string.toString();
-                                textOverlay.setText(singleString);
-                            }
-                        } else if (i == 3) {
-                            StringBuilder string = new StringBuilder();
-                            for (int j = 0; j < read.getBroadcastCredits("live").size(); j++) {
-                                string.append(read.getBroadcastCredits("live").get(j)+"\r\n");
-                                String singleString = string.toString();
-                                textOverlay.setText(singleString);
-                            }
+
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
                         }
+
                         i = (i + 1) % images.length;
+                        j = (j + 1) % files.length;
+
                     }
                 });
                 synchronized (this) {

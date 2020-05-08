@@ -1,0 +1,4 @@
+spongebobCooksBurger:Crusty Crab need more burgers:1997:SpongeBob:1:1:Episode
+Sponge:Bob:LEAD_CAST
+Lars:Larsen:LEAD_CAST
+Christopher:Kas:PRODUCER

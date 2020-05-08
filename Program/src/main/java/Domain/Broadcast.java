@@ -4,7 +4,6 @@ import Interfaces.IBroadcast;
 import Interfaces.ICredit;
 
 import java.lang.reflect.Array;
-import java.net.URL;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -13,15 +12,13 @@ public abstract class Broadcast implements IBroadcast {
     //Attributes
     private String title;
     private ArrayList<Credit> credits;
-    private URL trailerURL;
     private String bio;
     private Year launchYear;
     private UUID userID;
 
     //Constructors
-    public Broadcast(String title, URL trailerURL, String bio, Year launchYear) {
+    public Broadcast(String title, String bio, Year launchYear) {
         this.title = title;
-        this.trailerURL = trailerURL;
         this.bio = bio;
         this.launchYear = launchYear;
         //TODO - Add userID so it dynamically grabs from the logged in user.
@@ -33,6 +30,10 @@ public abstract class Broadcast implements IBroadcast {
     public void addCredit(String title, String fName, String lName, CreditType role) {
         Credit tempCredit = new Credit(fName, lName, role);
         credits.add(tempCredit);
+    }
+
+    public void deleteAllCredits() {
+        credits.clear();
     }
 
     public void addCredit(Credit credit) {
@@ -52,10 +53,6 @@ public abstract class Broadcast implements IBroadcast {
         ArrayList<ICredit> iCredits;
         iCredits = new ArrayList<ICredit>(credits);
         return iCredits;
-    }
-
-    public URL getTrailerURL() {
-        return trailerURL;
     }
 
     public String getBio() {

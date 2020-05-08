@@ -9,8 +9,8 @@ public class Movie extends Broadcast implements IMovie {
     //Attributes
 
     //Constructors
-    public Movie(String title, URL trailerURL, String bio, Year launchYear) {
-        super(title, trailerURL, bio, launchYear);
+    public Movie(String title, String bio, Year launchYear) {
+        super(title, bio, launchYear);
     }
 
     //Methods

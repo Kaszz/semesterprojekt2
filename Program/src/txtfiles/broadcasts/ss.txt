@@ -1,7 +1,5 @@
-ss:http://www.ss.com:ss:2017:Movie
-
-Simon:Jessen:DIRECTOR
-
-Lars:Larsen:LEAD_CAST
-
-Christopher:Kas:PRODUCER
+ss:ss testerfil:2015:Movie
+George:Jessen:DIRECTOR
+Lars:Lars:LEAD_CAST
+Kristopher:Kas:PRODUCER
+Valthor:Gudmund:EDITOR

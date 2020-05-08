@@ -8,13 +8,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class EntryController implements Initializable {
+
+    @FXML
+    private Button usersButton;
 
     @FXML
     void creditsButtonClicked(ActionEvent event) throws IOException {
@@ -63,7 +68,9 @@ public class EntryController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void initialize(URL location, ResourceBundle resources) { ;
+        if (!App.domain.isAdmin()) {
+            usersButton.setVisible(false);
+        }
     }
 }

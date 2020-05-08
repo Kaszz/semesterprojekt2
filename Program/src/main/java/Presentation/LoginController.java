@@ -1,5 +1,7 @@
 package Presentation;
 
+import Domain.Admin;
+import Domain.User;
 import Interfaces.ILogin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
