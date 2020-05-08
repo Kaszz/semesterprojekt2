@@ -17,9 +17,9 @@ public class User extends Account implements IUser {
     }
 
     @Override
-    public void addCredit(String title, String fName, String lName, CreditType role) {
-        super.addCredit(title, fName, lName, role);
+    public boolean addCredit(String title, String fName, String lName, CreditType role) {
         Notification.addNotification(new Date(), this.userID,"Tilføjet kreditering for " + fName + " " + lName + " til " + title + " som " + role);
+        return super.addCredit(title, fName, lName, role);
     }
 
     @Override
@@ -41,14 +41,14 @@ public class User extends Account implements IUser {
     }
 
     @Override
-    public void deleteCredit(String title, Credit credit) {
-        super.deleteCredit(title, credit);
+    public String deleteCredit(String title, Credit credit) {
         Notification.addNotification(new Date(), this.userID, "Slettet kreditering for " + credit.getfName() + " " + credit.getlName() + "i  " + title);
+        return super.deleteCredit(title, credit);
     }
 
-    public void deleteBroadcast(String title)  {
-        super.deleteBroadcast(title);
+    public String deleteBroadcast(String title)  {
         Notification.addNotification(new Date(), this.userID, "Slettet udsendelsen " + title);
+        return super.deleteBroadcast(title);
     }
 
 

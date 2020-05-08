@@ -1,14 +1,9 @@
 package Domain;
 
-import Data.DataFacade;
 import Interfaces.IAccount;
-import Interfaces.IReader;
 import Interfaces.IWriter;
 
-import java.io.*;
 import java.time.Year;
-import java.util.Date;
-import java.util.Scanner;
 
 public abstract class Account implements IAccount {
     private String email, password, firstName, lastName;
@@ -21,9 +16,9 @@ public abstract class Account implements IAccount {
         this.lastName = lastName;
     }
 
-    public void addCredit(String title, String fName, String lName, CreditType role) {
-        String credit = fName + ":" + lName + ":" + role.toString();
-        write.addCredit(title, credit);
+    public boolean addCredit(String title, String fName, String lName, CreditType role) {
+        String credit = fName + ":" + lName + ":" + role.name();
+        return write.addCredit(title, credit);
     }
 
     public void createMovie(String title, String bio, Year launchYear) {
@@ -42,13 +37,13 @@ public abstract class Account implements IAccount {
         write.createBroadcast(episodeString);
     }
 
-    public void deleteCredit(String title, Credit credit) {
+    public String deleteCredit(String title, Credit credit) {
         String creditToDelete = credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole();
-        main.getWriter().deleteCredit(title, creditToDelete);
-        }
+        return main.getWriter().deleteCredit(title, creditToDelete);
+    }
 
-    public void deleteBroadcast(String title)  {
-        main.getWriter().deleteBroadcast(title);
+    public String deleteBroadcast(String title)  {
+        return main.getWriter().deleteBroadcast(title);
     }
 
 

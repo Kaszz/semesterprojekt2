@@ -6,12 +6,12 @@ import Domain.CreditType;
 import java.time.Year;
 
 public interface IAccount {
-    public void addCredit(String title, String fName, String lName, CreditType role);
+    public boolean addCredit(String title, String fName, String lName, CreditType role);
     public void createMovie(String title, String bio, Year launchYear);
     public void createLiveShow(String title, String bio, Year launchYear, String location);
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode);
-    public void deleteCredit(String title, Credit credit);
-    public void deleteBroadcast(String title);
+    public String deleteCredit(String title, Credit credit);
+    public String deleteBroadcast(String title);
 
     public String getFirstName();
     public String getLastName();

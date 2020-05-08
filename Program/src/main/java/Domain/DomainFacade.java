@@ -35,20 +35,19 @@ public class DomainFacade {
     }
 
     public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum) {
-        main.admin.createEpisode(title, bio, launchYear, showName, season, episodeNum);
+        login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum);
         IEpisode episode = new Episode(title, bio, launchYear, showName, season, episodeNum);
         return episode;
     }
 
     public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location) {
-        main.admin.createLiveShow(title, bio, launchYear, location);
+        login.getAccount().createLiveShow(title, bio, launchYear, location);
         ILiveShow liveShow = new LiveShow(title, bio, launchYear, location);
         return liveShow;
     }
 
-
     public IMovie createMovie(String title, String bio, Year launchYear) {
-        main.admin.createMovie(title, bio, launchYear);
+        login.getAccount().createMovie(title, bio, launchYear);
         IMovie movie = new Movie(title, bio, launchYear);
         return movie;
     }
@@ -106,15 +105,19 @@ public class DomainFacade {
     public String getBroadcast(String title) {return main.read.getBroadcast(title); } //TODO maybe delete me later
 
     public String deleteBroadcast(String title) {
-        return write.deleteBroadcast(title);
+        return login.getAccount().deleteBroadcast(title);
     }
 
     public boolean addCredit(String title, ICredit credit) {
-        return write.addCredit(title, credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole().name());
+        return login.getAccount().addCredit(title, credit.getfName(), credit.getlName(), credit.getRole());
     }
 
     public String deleteCredit(String title, ICredit credit) {
-        return write.deleteCredit(title, credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole().name());
+        return login.getAccount().deleteCredit(title, (Credit) credit);
+    }
+
+    public boolean isAdmin() {
+        return login.isAdmin();
     }
 
 }

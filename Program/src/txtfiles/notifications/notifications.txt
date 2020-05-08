@@ -3,5 +3,21 @@ true:15/04/2020:17:Tilføjet kreditering for Simon Jessen til Fathers som PRODUC
 true:15/04/2020:17:Oprettet en filmen Tester fra året 2021
 true:15/04/2020:17:Oprettet liveshowet liveTestt fra året 2019 på parken
 true:15/04/2020:17:Oprettet episoden episodeTesst fra tv-serien The Mentalist sæson 3 episode nummer 14
-false:15/04/2020:17:Slettet kreditering for Simon Jessen i  Fathers
-false:15/04/2020:17:Slettet udsendelsen liveTestt
+true:15/04/2020:17:Slettet kreditering for Simon Jessen i  Fathers
+true:15/04/2020:17:Slettet udsendelsen liveTestt
+true:08/05/2020:X:Oprettet filmen asd fra året 123
+true:08/05/2020:X:Oprettet liveshowet asdasd fra året 123 på parken
+true:08/05/2020:X:Oprettet filmen asd fra året 123
+true:08/05/2020:X:Oprettet episoden asdasdasd fra tv-serien testtttt sæson 3 episode nummer 2
+true:08/05/2020:X:Oprettet filmen asd fra året 123
+true:08/05/2020:X:Oprettet filmen asd fra året 123
+true:08/05/2020:X:Oprettet liveshowet asdasd fra året 123 på parken
+true:08/05/2020:X:Oprettet episoden asdasd fra tv-serien asdasdasd sæson 3 episode nummer 1
+true:08/05/2020:X:Oprettet episoden asdasd fra tv-serien asdasdasd sæson 3 episode nummer 1
+true:08/05/2020:X:Oprettet episoden asdasd fra tv-serien asdasdasd sæson 3 episode nummer 1
+true:08/05/2020:X:Oprettet episoden TESTSERIE fra tv-serien testserienavn sæson 2 episode nummer 1
+true:08/05/2020:X:Tilføjet kreditering for Lars Larsen til asdasd som WRITER
+true:08/05/2020:X:Slettet kreditering for Lars Larseni  patrickIsAlone
+true:08/05/2020:X:Slettet udsendelsen asd
+true:08/05/2020:X:Slettet udsendelsen asdasd
+true:08/05/2020:X:Slettet udsendelsen TESTSERIE

@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Domain.User;
+import Domain.Account;
 
 public interface ILogin {
 
@@ -8,9 +8,10 @@ public interface ILogin {
 
     public boolean isloggedIn();
 
-    public User getUser();
+    public Account getAccount();
+
+    public boolean isAdmin();
 
     public void logout();
-
 
 }

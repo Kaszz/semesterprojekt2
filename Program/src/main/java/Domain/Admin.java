@@ -4,6 +4,7 @@ import Interfaces.IAdmin;
 import Interfaces.IReader;
 import Interfaces.IWriter;
 
+import java.time.Year;
 import java.util.ArrayList;
 
 public class Admin extends Account implements IAdmin {
@@ -41,6 +42,36 @@ public class Admin extends Account implements IAdmin {
         String userToEdit = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
         write.editUser(userToEdit);
     }
+
+    @Override
+    public boolean addCredit(String title, String fName, String lName, CreditType role) {
+        return super.addCredit(title, fName, lName, role);
+    }
+
+    @Override
+    public void createMovie(String title, String bio, Year launchYear) {
+        super.createMovie(title, bio, launchYear);
+    }
+
+    @Override
+    public void createLiveShow(String title, String bio, Year launchYear, String location) {
+        super.createLiveShow(title, bio, launchYear, location);
+    }
+
+    @Override
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode) {
+        super.createEpisode(title, bio, launchYear, showName, season, episode);
+    }
+
+    @Override
+    public String deleteCredit(String title, Credit credit) {
+        return super.deleteCredit(title, credit);
+    }
+
+    public String deleteBroadcast(String title)  {
+        return super.deleteBroadcast(title);
+    }
+
 
     public ArrayList<String> getAllUsers() {
         ArrayList<String> returnList = read.getAllUsers();

@@ -1,5 +1,7 @@
 package Presentation;
 
+import Interfaces.IAccount;
+import Interfaces.IUser;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,11 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.shape.Circle;
-import javafx.scene.control.SplitMenuButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,8 +20,6 @@ import java.util.ResourceBundle;
 
 public class BasicFrameworkController implements Initializable  {
 
-    @FXML
-    private MenuItem usersOptionClicked;
 
     @FXML
     private SplitMenuButton spitMenuButton;
@@ -33,7 +30,12 @@ public class BasicFrameworkController implements Initializable  {
     @FXML
     private Label countLabel;
 
+    @FXML
+    private Button notificationButton;
+
     private Thread threadNotificationUpdate;
+
+    boolean status = false;
     
     @FXML
     void splitMenuButtonClicked(ActionEvent event) throws IOException {
@@ -122,46 +124,57 @@ public class BasicFrameworkController implements Initializable  {
 
 
     public void updateNotificationFlag() {
-        threadNotificationUpdate = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
+        if (status) {
+            threadNotificationUpdate = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
 
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            int count = App.domain.notificationCount();
-                            if (count > 0) {
-                                redCircle.setVisible(true);
-                                countLabel.setVisible(true);
-                                countLabel.setText(Integer.toString(count));
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                int count = App.domain.notificationCount();
+                                if (count > 0) {
+                                    redCircle.setVisible(true);
+                                    countLabel.setVisible(true);
+                                    countLabel.setText(Integer.toString(count));
 
-                            } else {
-                                redCircle.setVisible(false);
-                                countLabel.setVisible(false);
+                                } else {
+                                    redCircle.setVisible(false);
+                                    countLabel.setVisible(false);
+                                }
                             }
-                        }
-                    });
+                        });
 
-                    try {
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
-        });
-        threadNotificationUpdate.setDaemon(true);
-        threadNotificationUpdate.start();
+            });
+            threadNotificationUpdate.setDaemon(true);
+            threadNotificationUpdate.start();
+        }
     }
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        status = App.domain.isAdmin();
+        System.out.println("Admin status: " + status);
 
-        nameLoggedInLabel.setText(App.loginClient.getUser().getFirstName() + " " + App.loginClient.getUser().getLastName());
+        if (!status) {
+            redCircle.setVisible(false);
+            countLabel.setVisible(false);
+            notificationButton.setVisible(false);
+            nameLoggedInLabel.setText(App.loginClient.getAccount().getFirstName() + " " + App.loginClient.getAccount().getLastName());
+        }
+        else
+            nameLoggedInLabel.setText("Admin");
+
         updateNotificationFlag();
-
     }
 }
