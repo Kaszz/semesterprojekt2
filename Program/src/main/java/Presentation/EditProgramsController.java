@@ -134,10 +134,6 @@ public class EditProgramsController implements Initializable {
             System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
             update();
         }
-
-
-
-
     }
 
     @FXML
@@ -146,13 +142,17 @@ public class EditProgramsController implements Initializable {
         BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
 
         if (type.name().equals("SERIE")) {
-            App.domain.createEpisode(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())), showNameTextField.getText(), Integer.parseInt(seasonTextField.getText()), Integer.parseInt(episodeTextField.getText()));
+            App.domain.createEpisode(titleTextField.getText(), descriptionTextField.getText(),
+                    Year.of(Integer.parseInt(launchDatePicker.getText())), showNameTextField.getText(),
+                    Integer.parseInt(seasonTextField.getText()), Integer.parseInt(episodeTextField.getText()), App.loginClient.getAccount().getUserID());
         }
         else if (type.name().equals("FILM")) {
-            App.domain.createMovie(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())));
+            App.domain.createMovie(titleTextField.getText(), descriptionTextField.getText(),
+                    Year.of(Integer.parseInt(launchDatePicker.getText())), App.loginClient.getAccount().getUserID());
         }
         else if (type.name().equals("LIVE")) {
-            App.domain.createLiveShow(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())), locationTextField.getText());
+            App.domain.createLiveShow(titleTextField.getText(), descriptionTextField.getText(),
+                    Year.of(Integer.parseInt(launchDatePicker.getText())), locationTextField.getText(), App.loginClient.getAccount().getUserID());
         }
 
         update();
@@ -258,7 +258,10 @@ public class EditProgramsController implements Initializable {
         ArrayList<IBroadcast> broadcasts = App.domain.getAllBroadcasts();
 
         for (IBroadcast b : broadcasts) {
-
+            //Checks if broadcast object belongs to logged in user. Skips if it doesnt.
+            //If logged in as admin it never skips.
+            if (!b.getUserID().equals(App.loginClient.getAccount().getUserID()) && !App.loginClient.isAdmin())
+                continue;
             //Run through the all the series, seasons and episodes. Create any if they haven't already been. Only done for Episodes
             if (b instanceof IEpisode) {
                 boolean foundSeries = false;
@@ -326,9 +329,8 @@ public class EditProgramsController implements Initializable {
                     }
 
                 }
-            //If a broadcast is not an Episode it's simply added.
-            }
-            else if (b instanceof IMovie){
+                //If a broadcast is not an Episode it's simply added.
+            } else if (b instanceof IMovie) {
                 root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio())));
 
             } else if (b instanceof ILiveShow) {

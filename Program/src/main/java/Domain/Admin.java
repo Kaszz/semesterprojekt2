@@ -6,6 +6,7 @@ import Interfaces.IWriter;
 
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Admin extends Account implements IAdmin {
     String userID;
@@ -13,23 +14,16 @@ public class Admin extends Account implements IAdmin {
     private IWriter write = main.getWriter();
 
     public Admin(String userID, String email, String password, String firstName, String lastName) {
-        super(email, password, firstName, lastName);
+        super(userID, email, password, firstName, lastName);
     }
 
-    public void changeUser(int userID, boolean state) { //TODO implement UUID i stedet for String i userID
-        //TODO
-        /*
-        User user;
-        user = getUser(userID);
-        user.setEnabled(false);
-        //saveUser to file
-         */
-    }
 
-    public void createUser(String userID, String email, String password, String firstName, String lastName) {
-        User user = new User(userID, password, firstName, lastName, email);
-        String userToCreate = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + "true";
+    public User createUser(String email, String password, String firstName, String lastName) {
+        UUID id = UUID.randomUUID();
+        User user = new User(id.toString(), password, firstName, lastName, email);
+        String userToCreate = id.toString() + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + "true";
         write.createUser(userToCreate);
+        return user;
     }
 
     //TODO implement UUID i stedet for String i userID
@@ -48,19 +42,20 @@ public class Admin extends Account implements IAdmin {
         return super.addCredit(title, fName, lName, role);
     }
 
+
     @Override
-    public void createMovie(String title, String bio, Year launchYear) {
-        super.createMovie(title, bio, launchYear);
+    public void createMovie(String title, String bio, Year launchYear, String userID) {
+        super.createMovie(title, bio, launchYear, userID);
     }
 
     @Override
-    public void createLiveShow(String title, String bio, Year launchYear, String location) {
-        super.createLiveShow(title, bio, launchYear, location);
+    public void createLiveShow(String title, String bio, Year launchYear, String location, String userID) {
+        super.createLiveShow(title, bio, launchYear, location, userID);
     }
 
     @Override
-    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode) {
-        super.createEpisode(title, bio, launchYear, showName, season, episode);
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, String userID) {
+        super.createEpisode(title, bio, launchYear, showName, season, episode, userID);
     }
 
     @Override

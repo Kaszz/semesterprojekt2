@@ -9,8 +9,8 @@ public class LiveShow extends Broadcast implements ILiveShow {
     String location;
 
     //Constructors
-    public LiveShow(String title, String bio, Year launchYear, String location) {
-        super(title, bio, launchYear);
+    public LiveShow(String title, String bio, Year launchYear, String location, String userID) {
+        super(title, bio, launchYear, userID);
         this.location = location;
     }
 
