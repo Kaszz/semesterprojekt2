@@ -59,16 +59,22 @@ public class EditCreditsController implements Initializable {
 
     @FXML
     void createCreditButtonClicked(ActionEvent event) {
+        ICredit credit = App.domain.createCredit(firstName.getText(), lastName.getText(), creditCombo.getSelectionModel().getSelectedItem());
+        IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
 
+        App.domain.addCredit(broadcast.getTitle(), credit);
+        updateCredits();
     }
 
     @FXML
     void deleteCreditButtonClicked(ActionEvent event) {
-
         if (creditsTable.getSelectionModel().getSelectedItem() != null) {
             CreditTable creditTable = creditsTable.getSelectionModel().getSelectedItem();
-            //Credit credit = new Credit(creditTable.getfName(), creditTable.getlName(), creditTable.getRole());
+            IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
 
+            ICredit credit = App.domain.createCredit(creditTable.getfName(), creditTable.getlName(), creditTable.getRole());
+            App.domain.deleteCredit(broadcast.getTitle(), credit);
+            updateCredits();
         }
     }
 

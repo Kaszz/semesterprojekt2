@@ -7,6 +7,8 @@ import Domain.LiveShow;
 import Domain.Movie;
 import Interfaces.IBroadcast;
 import Interfaces.IEpisode;
+import Interfaces.ILiveShow;
+import Interfaces.IMovie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,13 +44,16 @@ public class EditProgramsController implements Initializable {
     private TreeTableColumn<ProgramsData, String> yearMadeColumn;
 
     @FXML
+    private Label locationLabel;
+
+    @FXML
     private Label episodeLabel;
 
     @FXML
-    private Label seasonLabel;
+    private Label showNameLabel;
 
     @FXML
-    private Label episodeNumberLabel;
+    private Label seasonLabel;
 
     @FXML
     private TextField titleTextField;
@@ -57,10 +62,16 @@ public class EditProgramsController implements Initializable {
     private TextField locationTextField;
 
     @FXML
+    private TextField showNameTextField;
+
+    @FXML
     private ComboBox<BroadcastType> broadcastTypeComboBox;
 
     @FXML
-    private TextField trailerURLTextField;
+    private TextField episodeTextField;
+
+    @FXML
+    private TextField seasonTextField;
 
     @FXML
     private TextField descriptionTextField;
@@ -68,14 +79,6 @@ public class EditProgramsController implements Initializable {
     @FXML
     private TextField launchDatePicker;
 
-    @FXML
-    private TextField episodeTextField;
-
-    @FXML
-    private ComboBox<?> seasonComboBox;
-
-    @FXML
-    private ComboBox<?> episodeNoComboBox;
 
     @FXML
     private Button saveButton;
@@ -87,58 +90,72 @@ public class EditProgramsController implements Initializable {
     @FXML
     void broadcastTypeComboBoxOnAction(ActionEvent event) {
         if (broadcastTypeComboBox.getSelectionModel().isSelected(0)) {
-            episodeLabel.setText("Episode");
-            episodeTextField.setVisible(true); //e
+            locationLabel.setVisible(false);
             episodeLabel.setVisible(true); // e
-            episodeNoComboBox.setVisible(true); // e
             seasonLabel.setVisible(true); // e
-            seasonComboBox.setVisible(true); // e
-            episodeNoComboBox.setVisible(true); //e
-            episodeNumberLabel.setVisible(true); //e
+            showNameLabel.setVisible(true);
+            showNameTextField.setVisible(true);
+            episodeTextField.setVisible(true); // e
+            seasonTextField.setVisible(true); //e
             locationTextField.setVisible(false);
         } else if (broadcastTypeComboBox.getSelectionModel().isSelected(1)) {
-            episodeTextField.setVisible(false);
+            locationLabel.setVisible(false);
             episodeLabel.setVisible(false);
-            episodeNoComboBox.setVisible(false);
             seasonLabel.setVisible(false);
-            seasonComboBox.setVisible(false);
-            episodeNoComboBox.setVisible(false);
-            episodeNumberLabel.setVisible(false);
+            showNameLabel.setVisible(false);
+            showNameTextField.setVisible(false);
+            episodeTextField.setVisible(false);
+            seasonTextField.setVisible(false);
             locationTextField.setVisible(false);
         } else if (broadcastTypeComboBox.getSelectionModel().isSelected(2)) {
-            episodeLabel.setText("Lokation");
-            episodeLabel.setVisible(true);
+            locationLabel.setVisible(true);
+            episodeLabel.setVisible(false);
             locationTextField.setVisible(true);
-            episodeTextField.setVisible(false);
-            episodeNoComboBox.setVisible(false);
+            showNameLabel.setVisible(false);
+            showNameTextField.setVisible(false);
             seasonLabel.setVisible(false);
-            seasonComboBox.setVisible(false);
-            episodeNoComboBox.setVisible(false);
-            episodeNumberLabel.setVisible(false);
+            episodeTextField.setVisible(false);
+            seasonTextField.setVisible(false);
         }
     }
 
     @FXML
-    void deleteButtonOnAction(ActionEvent event) {
-        //See selectProgram method. Some kind of identifier should be saved in ProgramData. This could be broadcastID.
-        //This can be used to find the correct area in the database.
-
-        ProgramsData broadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
-
-        if (broadcast.isMovie() || broadcast.isLiveShow()) {
-            System.out.println(root.getChildren().contains(broadcast));
-            System.out.println("Trying to delete: " + broadcast.getTitle().get());
-            System.out.println(root.getChildren().contains(broadcast));
+    void deleteButtonOnAction(ActionEvent event) { //TODO : change to use ID instead of title
+        //Amount of children on the selected row.
+        int childAmount = programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size();
+        //If the selected row is a whole series or season.
+        if (childAmount != 0) {
+            System.out.println("Cant be deleted");
         }
+        //If the selected row is a broadcast and therefore deletable
+        else {
+            ProgramsData broadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
+            //root.getChildren().remove(programTreeTableView.getSelectionModel().getSelectedIndex());
+            System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
+            update();
+        }
+
+
+
+
     }
 
     @FXML
     void saveButtonOnAction(ActionEvent event) throws MalformedURLException {
-        trailerURLTextField.getText();
 
-        if (broadcastTypeComboBox.getSelectionModel().isSelected(1)) {
+        BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
+
+        if (type.name().equals("SERIE")) {
+            App.domain.createEpisode(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())), showNameTextField.getText(), Integer.parseInt(seasonTextField.getText()), Integer.parseInt(episodeTextField.getText()));
+        }
+        else if (type.name().equals("FILM")) {
             App.domain.createMovie(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())));
         }
+        else if (type.name().equals("LIVE")) {
+            App.domain.createLiveShow(titleTextField.getText(), descriptionTextField.getText(), Year.of(Integer.parseInt(launchDatePicker.getText())), locationTextField.getText());
+        }
+
+        update();
     }
 
     @FXML
@@ -148,11 +165,6 @@ public class EditProgramsController implements Initializable {
 
     @FXML
     void episodeNoComboBoxOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void episodeTextFieldOnAction(ActionEvent event) {
 
     }
 
@@ -192,7 +204,7 @@ public class EditProgramsController implements Initializable {
             if (programTreeTableView.getSelectionModel().getSelectedItem() != null) {
 
                 //Only check selection if target has no children i.e is not a season or series.
-                System.out.println(programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size());
+                //System.out.println(programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size());
                 if (programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size() == 0) {
                     ProgramsData broadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
 
@@ -201,6 +213,9 @@ public class EditProgramsController implements Initializable {
                         broadcastTypeComboBox.getSelectionModel().select(0);
                         descriptionTextField.setText(broadcast.getBio());
                         launchDatePicker.setText(broadcast.getYearMade().get());
+                        showNameTextField.setText(broadcast.getShowName());
+                        episodeTextField.setText(broadcast.getEpisodeNum());
+                        seasonTextField.setText(broadcast.getSeason());
 
                     } else if (broadcast.isMovie()) {
                         titleTextField.setText(broadcast.getTitle().get());
@@ -224,48 +239,18 @@ public class EditProgramsController implements Initializable {
         }
     }
 
-    public void getBroadcastData() {
-
-        /*
-        File directory = new File("./src/txtfiles/broadcasts/");
-        //Makes array of files in directory.
-        File[] files = directory.listFiles();
-        Scanner scan = null;
-        TreeItem<ProgramsData> root = null;
-        TreeItem<ProgramsData> programsData = null;
-        ArrayList<TreeItem> treeItems = new ArrayList<>();
-        //Iterate through the files in the directory.
-        for (File f: files) {
-            try {
-                scan = new Scanner(f);
-                String[] text;
-                //Get the title name of current file.
-                String firstLine = scan.nextLine();
-                text = firstLine.split(":");
-                String title = text[0];
-                String yearMade = text[3];
-
-                root = new TreeItem<>(new ProgramsData(title, yearMade));
-
-                programsData = new TreeItem<>(new ProgramsData(title, yearMade));
-
-                treeItems.add(programsData);
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                scan.close();
-            }
-
-        }
-
-         */
-
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        update();
+
+        //Adding choice options to the broadcast type combobox
+        broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
+        previousIndex = -1;
+    }
+
+
+    void update() {
         //Creates an initial TreeItem which serves as a root. Every new TreeItem should be added to this one.
         root = new TreeItem<>();
 
@@ -341,32 +326,17 @@ public class EditProgramsController implements Initializable {
                     }
 
                 }
-
             //If a broadcast is not an Episode it's simply added.
-            } else if (b instanceof Movie){
+            }
+            else if (b instanceof IMovie){
                 root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio())));
 
-            } else if (b instanceof LiveShow) {
-                root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio(), ((LiveShow) b).getLocation())));
+            } else if (b instanceof ILiveShow) {
+                ILiveShow liveShow = ((ILiveShow) b);
+                root.getChildren().add(new TreeItem<>(new ProgramsData(liveShow.getTitle(), liveShow.getLaunchYear().toString(), liveShow.getBio(), liveShow.getLocation())));
             }
 
-                /*
-                root.getChildren().
-
-                        //root = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
-                        ArrayList < TreeItem > treeItems = new ArrayList<>();
-
-                programsData = new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString()));
-
-                treeItems.add(programsData);
-
-                for (int i = 0; i < treeItems.size(); i++) {
-                    root.getChildren().add(treeItems.get(i));
-                }
-
-                 */
         }
-
         titleColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getTitle());
         yearMadeColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<ProgramsData, String> param) -> param.getValue().getValue().getYearMade());
 
@@ -374,8 +344,6 @@ public class EditProgramsController implements Initializable {
         //Root should not be visible
         programTreeTableView.setShowRoot(false);
 
-        //Adding choice options to the broadcast type combobox
-        broadcastTypeComboBox.getItems().setAll(BroadcastType.values());
-        previousIndex = -1;
     }
+
 }

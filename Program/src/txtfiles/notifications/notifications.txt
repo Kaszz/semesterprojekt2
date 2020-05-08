@@ -1,7 +1,7 @@
 
 true:15/04/2020:17:Tilføjet kreditering for Simon Jessen til Fathers som PRODUCER
-false:15/04/2020:17:Oprettet en filmen Tester fra året 2021
+true:15/04/2020:17:Oprettet en filmen Tester fra året 2021
 true:15/04/2020:17:Oprettet liveshowet liveTestt fra året 2019 på parken
-false:15/04/2020:17:Oprettet episoden episodeTesst fra tv-serien The Mentalist sæson 3 episode nummer 14
+true:15/04/2020:17:Oprettet episoden episodeTesst fra tv-serien The Mentalist sæson 3 episode nummer 14
 false:15/04/2020:17:Slettet kreditering for Simon Jessen i  Fathers
 false:15/04/2020:17:Slettet udsendelsen liveTestt
