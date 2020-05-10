@@ -1,7 +1,15 @@
-﻿
-false:15/04/2020:17:Tilføjet kreditering for Simon Jessen til Fathers som PRODUCER
-false:15/04/2020:17:Oprettet en filmen Tester fra året 2021
-false:15/04/2020:17:Oprettet liveshowet liveTestt fra året 2019 på parken
-false:15/04/2020:17:Oprettet episoden episodeTesst fra tv-serien The Mentalist sæson 3 episode nummer 14
-false:15/04/2020:17:Slettet kreditering for Simon Jessen i  Fathers
-false:15/04/2020:17:Slettet udsendelsen liveTestt
+
+true:15/04/2020:17:Tilføjet kreditering for Simon Jessen til Fathers som PRODUCER
+true:15/04/2020:17:Oprettet en filmen Tester fra året 2021
+true:15/04/2020:17:Oprettet liveshowet liveTestt fra året 2019 på parken
+true:15/04/2020:17:Oprettet episoden episodeTesst fra tv-serien The Mentalist sæson 3 episode nummer 14
+true:15/04/2020:17:Slettet kreditering for Simon Jessen i  Fathers
+true:15/04/2020:17:Slettet udsendelsen liveTestt
+true:08/05/2020:X:Oprettet filmen testBrugerHHAHA fra året 14561
+true:08/05/2020:Y:Oprettet liveshowet ander2test fra året 123123 på parken
+true:08/05/2020:X:Slettet udsendelsen testBrugerHHAHA
+true:08/05/2020:Y:Slettet udsendelsen ander2test
+true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Oprettet filmen testFilmforNYBRUGER fra året 1234
+true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Tilføjet kreditering for anders jessen til testFilmforNYBRUGER som DIRECTOR
+true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Tilføjet kreditering for christoopher asodpk til testFilmforNYBRUGER som DIRECTOR
+true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Slettet kreditering for anders jesseni  testFilmforNYBRUGER

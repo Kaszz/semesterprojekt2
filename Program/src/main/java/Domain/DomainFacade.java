@@ -24,8 +24,7 @@ public class DomainFacade {
     }
 
     public IUser createUser(String userID, String email, String password, String firstName, String lastName) {
-        main.admin.createUser(userID, email, password, firstName, lastName);
-        IUser user = new User(userID, email, password, firstName, lastName);
+        IUser user = main.admin.createUser(email, password, firstName, lastName);
         return user;
     }
 
@@ -34,21 +33,21 @@ public class DomainFacade {
         return credit;
     }
 
-    public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum) {
-        login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum);
-        IEpisode episode = new Episode(title, bio, launchYear, showName, season, episodeNum);
+    public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum, String userID) {
+        login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum, userID);
+        IEpisode episode = new Episode(title, bio, launchYear, showName, season, episodeNum, userID);
         return episode;
     }
 
-    public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location) {
-        login.getAccount().createLiveShow(title, bio, launchYear, location);
-        ILiveShow liveShow = new LiveShow(title, bio, launchYear, location);
+    public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location, String userID) {
+        login.getAccount().createLiveShow(title, bio, launchYear, location, userID);
+        ILiveShow liveShow = new LiveShow(title, bio, launchYear, location, userID);
         return liveShow;
     }
 
-    public IMovie createMovie(String title, String bio, Year launchYear) {
-        login.getAccount().createMovie(title, bio, launchYear);
-        IMovie movie = new Movie(title, bio, launchYear);
+    public IMovie createMovie(String title, String bio, Year launchYear, String userID) {
+        login.getAccount().createMovie(title, bio, launchYear, userID);
+        IMovie movie = new Movie(title, bio, launchYear, userID);
         return movie;
     }
 
@@ -82,13 +81,14 @@ public class DomainFacade {
 
         for (String s: strings) {
             String[] sSplit = s.split(":");
+            System.out.println(sSplit[0]);
 
-            if (sSplit.length == 4) {
-                broadcasts.add(new Movie(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2]))));
-            } else if (sSplit.length == 5) {
-                broadcasts.add(new LiveShow(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3]));
-            } else if (sSplit.length == 7) {
-                broadcasts.add(new Episode(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4]), Integer.parseInt(sSplit[5])));
+            if (sSplit.length == 5) {
+                broadcasts.add(new Movie(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3]));
+            } else if (sSplit.length == 6) {
+                broadcasts.add(new LiveShow(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], sSplit[4]));
+            } else if (sSplit.length == 8) {
+                broadcasts.add(new Episode(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4]), Integer.parseInt(sSplit[5]), sSplit[6]));
             }
         }
 

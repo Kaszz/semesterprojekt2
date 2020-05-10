@@ -1,5 +1,5 @@
 package Domain;
-
+/*
 import Interfaces.IReader;
 
 import java.net.MalformedURLException;
@@ -27,3 +27,4 @@ public class Viewer {
 
     }
 }
+*/

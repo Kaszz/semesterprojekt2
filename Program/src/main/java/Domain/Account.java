@@ -7,9 +7,11 @@ import java.time.Year;
 
 public abstract class Account implements IAccount {
     private String email, password, firstName, lastName;
+    public String userID;
     private IWriter write = main.getWriter();
 
-    public Account(String email, String password, String firstName, String lastName) {
+    public Account(String userID, String email, String password, String firstName, String lastName) {
+        this.userID = userID;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -21,19 +23,18 @@ public abstract class Account implements IAccount {
         return write.addCredit(title, credit);
     }
 
-    public void createMovie(String title, String bio, Year launchYear) {
-        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + "Movie";
+    public void createMovie(String title, String bio, Year launchYear, String userID) {
+        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + userID + ":" + "Movie";
         write.createBroadcast(broadcast);
     }
 
-    public void createLiveShow(String title, String bio, Year launchYear, String location) {
-        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + location + ":" + "LiveShow";
+    public void createLiveShow(String title, String bio, Year launchYear, String location, String userID) {
+        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + location + ":" + userID + ":"  + "LiveShow";
         write.createBroadcast(liveShow);
     }
 
-    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode) {
-        Episode ep = new Episode(title, bio, launchYear, showName, season, episode);
-        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode + ":" + "Episode";
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, String userID) {
+        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + showName + ":" + season + ":" + episode + ":" + userID + ":"  + "Episode";
         write.createBroadcast(episodeString);
     }
 
@@ -62,4 +63,9 @@ public abstract class Account implements IAccount {
     public String getEmail() {
         return email;
     }
+
+    public String getUserID() {
+        return userID;
+    }
+
 }

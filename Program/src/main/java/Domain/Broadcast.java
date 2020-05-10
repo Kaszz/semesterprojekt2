@@ -14,15 +14,14 @@ public abstract class Broadcast implements IBroadcast {
     private ArrayList<Credit> credits;
     private String bio;
     private Year launchYear;
-    private UUID userID;
+    private String userID;
 
     //Constructors
-    public Broadcast(String title, String bio, Year launchYear) {
+    public Broadcast(String title, String bio, Year launchYear, String userID) {
         this.title = title;
         this.bio = bio;
         this.launchYear = launchYear;
-        //TODO - Add userID so it dynamically grabs from the logged in user.
-
+        this.userID = userID;
         credits = new ArrayList<>();
     }
 
@@ -61,6 +60,10 @@ public abstract class Broadcast implements IBroadcast {
 
     public Year getLaunchYear() {
         return launchYear;
+    }
+
+    public String getUserID() {
+        return userID;
     }
 
     @Override

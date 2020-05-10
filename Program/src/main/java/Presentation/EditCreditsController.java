@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditCreditsController implements Initializable {
-    ArrayList<IBroadcast> broadcasts;
+    ArrayList<IBroadcast> allBroadcasts;
+    ArrayList<IBroadcast> myBroadcasts;
 
     @FXML
     private Button deleteCreditButton;
@@ -84,14 +85,14 @@ public class EditCreditsController implements Initializable {
 
         ArrayList<String> rawCredits;
 
-        for (int i = 0; i < broadcasts.size(); i++) {
-            rawCredits = App.domain.getBroadcastCredits(broadcasts.get(i).getTitle());
-            broadcasts.get(i).deleteAllCredits();
+        for (int i = 0; i < myBroadcasts.size(); i++) {
+            rawCredits = App.domain.getBroadcastCredits(myBroadcasts.get(i).getTitle());
+            myBroadcasts.get(i).deleteAllCredits();
 
             if (!rawCredits.isEmpty()) {
                 for (int j = 0; j < rawCredits.size(); j++) {
                     String[] creditSplit = rawCredits.get(j).split(":");
-                    broadcasts.get(i).addCredit(broadcasts.get(i).getTitle(), creditSplit[0], creditSplit[1], CreditType.valueOf(creditSplit[2]));
+                    myBroadcasts.get(i).addCredit(myBroadcasts.get(i).getTitle(), creditSplit[0], creditSplit[1], CreditType.valueOf(creditSplit[2]));
                 }
             }
         }
@@ -115,7 +116,16 @@ public class EditCreditsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<IBroadcast> creations;
 
-        broadcasts = App.domain.getAllBroadcasts();
+        myBroadcasts = new ArrayList<>();
+        allBroadcasts = App.domain.getAllBroadcasts();
+
+        for (IBroadcast b : allBroadcasts) {
+            if (!b.getUserID().equals(App.loginClient.getAccount().getUserID()) && !App.loginClient.isAdmin())
+                continue;
+            myBroadcasts.add(b);
+        }
+
+
 
         creations = FXCollections.observableArrayList();
 
@@ -123,12 +133,12 @@ public class EditCreditsController implements Initializable {
         columnLastName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("lName"));
         columnRole.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("role"));
 
-        creations.setAll(broadcasts);
+        creations.setAll(myBroadcasts);
         creationCombo.setItems(creations);
         System.out.println(CreditType.SUPPORT_CAST);
         creditCombo.getItems().setAll(CreditType.values());
 
-        if (!broadcasts.isEmpty()) {
+        if (!myBroadcasts.isEmpty()) {
             creationCombo.getSelectionModel().select(0);
             updateCredits();
         }
