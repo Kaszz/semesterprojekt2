@@ -9,30 +9,29 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Admin extends Account implements IAdmin {
-    String userID;
+    int userID;
     private IReader read = main.getReader();
     private IWriter write = main.getWriter();
 
-    public Admin(String userID, String email, String password, String firstName, String lastName) {
+    public Admin(int userID, String email, String password, String firstName, String lastName) {
         super(userID, email, password, firstName, lastName);
     }
 
 
     public User createUser(String email, String password, String firstName, String lastName) {
-        UUID id = UUID.randomUUID();
-        User user = new User(id.toString(), password, firstName, lastName, email);
-        String userToCreate = id.toString() + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + "true";
-        write.createUser(userToCreate);
+        String userToCreate = email + ":" + password + ":" + firstName + ":" + lastName + ":" + "true";
+        int id = write.createUser(userToCreate);
+        User user = new User(id, password, firstName, lastName, email);
+
         return user;
     }
 
     //TODO implement UUID i stedet for String i userID
-    public void deleteUser(String userID, String email, String password, String firstName, String lastName, boolean enabled) {
-        String userToDelete = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
-        write.deleteUser(userToDelete);
+    public void deleteUser(int userID) {
+        write.deleteUser(userID);
     }
 
-    public void editUser(String userID, String email, String password, String firstName, String lastName, boolean enabled) {
+    public void editUser(int userID, String email, String password, String firstName, String lastName, boolean enabled) {
         String userToEdit = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
         write.editUser(userToEdit);
     }
@@ -42,19 +41,18 @@ public class Admin extends Account implements IAdmin {
         return super.addCredit(title, fName, lName, role);
     }
 
-
     @Override
-    public void createMovie(String title, String bio, Year launchYear, String userID) {
+    public void createMovie(String title, String bio, Year launchYear, int userID) {
         super.createMovie(title, bio, launchYear, userID);
     }
 
     @Override
-    public void createLiveShow(String title, String bio, Year launchYear, String location, String userID) {
+    public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
         super.createLiveShow(title, bio, launchYear, location, userID);
     }
 
     @Override
-    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, String userID) {
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
         super.createEpisode(title, bio, launchYear, showName, season, episode, userID);
     }
 

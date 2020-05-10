@@ -25,10 +25,9 @@ public class Login implements ILogin {
             info = returnString.split(":");
 
             if (info[0].equals("0"))
-                account = new Admin(info[0], info[1], info[2], info[3], info[4]);
+                account = new Admin(Integer.parseInt(info[0]), info[1], info[2], info[3], info[4]);
             else
-                account = new User(info[0], info[1], info[2], info[3], info[4]);
-
+                account = new User(Integer.parseInt(info[0]), info[1], info[2], info[3], info[4]);
         }
     }
 

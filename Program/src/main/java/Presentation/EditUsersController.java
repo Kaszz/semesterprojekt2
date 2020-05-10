@@ -52,7 +52,7 @@ public class EditUsersController implements Initializable {
 
     @FXML
     void createUserButtonClicked(ActionEvent event){
-        App.domain.createUser("X", userEmailTextField.getText(), userPasswordTextField.getText(), userFirstNameTextField.getText(), userLastNameTextField.getText());
+        App.domain.createUser(userEmailTextField.getText(), userPasswordTextField.getText(), userFirstNameTextField.getText(), userLastNameTextField.getText());
         updateUsers();
     }
 
@@ -91,7 +91,7 @@ public class EditUsersController implements Initializable {
         String[] data = null;
         for (String s : users) {
             data = s.split(":");
-            details.add(new UserData(data[0], data[1], data[2], data[3], data[4], data[5]));
+            details.add(new UserData(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]));
         }
 
         return details;

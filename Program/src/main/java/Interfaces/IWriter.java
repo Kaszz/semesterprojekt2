@@ -7,9 +7,9 @@ public interface IWriter {
     public String deleteBroadcast(String title);
     public boolean addCredit(String title, String credit);
     public String deleteCredit(String title, String credit);
-    public boolean createUser(String user);
-    public boolean deleteUser(String user);
+    public int createUser(String user);
+    public void deleteUser(int userID);
     public boolean editUser(String user);
-    public void addNotification(boolean seen, String date, String user, String change);
+    public void addNotification(boolean seen, String date, int user, String change);
     public void unNotify(String notification);
 }

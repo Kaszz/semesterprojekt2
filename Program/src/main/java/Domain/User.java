@@ -11,7 +11,7 @@ public class User extends Account implements IUser {
     private boolean enabled = true;
     private IWriter write = main.getWriter();
 
-    public User(String userID, String email, String password, String firstName, String lastName) {
+    public User(int userID, String email, String password, String firstName, String lastName) {
         super(userID, email, password, firstName, lastName);
     }
 
@@ -22,19 +22,19 @@ public class User extends Account implements IUser {
     }
 
     @Override
-    public void createMovie(String title, String bio, Year launchYear, String userID) {
+    public void createMovie(String title, String bio, Year launchYear, int userID) {
         super.createMovie(title, bio, launchYear, userID);
         Notification.addNotification(new Date(), this.userID, "Oprettet filmen " + title + " fra året " + launchYear);
     }
 
     @Override
-    public void createLiveShow(String title, String bio, Year launchYear, String location, String userID) {
+    public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
         super.createLiveShow(title, bio, launchYear, location, userID);
         Notification.addNotification(new Date(), this.userID, "Oprettet liveshowet " + title + " fra året " + launchYear + " på " + location);
     }
 
     @Override
-    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, String userID) {
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
         super.createEpisode(title, bio, launchYear, showName, season, episode, userID);
         Notification.addNotification(new Date(), this.userID, "Oprettet episoden " + title + " fra tv-serien " + showName + " sæson " + season + " episode nummer " + episode);
     }

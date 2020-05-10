@@ -14,10 +14,10 @@ public abstract class Broadcast implements IBroadcast {
     private ArrayList<Credit> credits;
     private String bio;
     private Year launchYear;
-    private String userID;
+    private int userID;
 
     //Constructors
-    public Broadcast(String title, String bio, Year launchYear, String userID) {
+    public Broadcast(String title, String bio, Year launchYear, int userID) {
         this.title = title;
         this.bio = bio;
         this.launchYear = launchYear;
@@ -62,7 +62,7 @@ public abstract class Broadcast implements IBroadcast {
         return launchYear;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 

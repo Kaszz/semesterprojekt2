@@ -131,7 +131,7 @@ public class EditProgramsController implements Initializable {
         else {
             ProgramsData broadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
             //root.getChildren().remove(programTreeTableView.getSelectionModel().getSelectedIndex());
-            System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
+            //System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
             update();
         }
     }
@@ -254,13 +254,14 @@ public class EditProgramsController implements Initializable {
         //Creates an initial TreeItem which serves as a root. Every new TreeItem should be added to this one.
         root = new TreeItem<>();
 
+
         //An ArrayList containing all broadcasts
         ArrayList<IBroadcast> broadcasts = App.domain.getAllBroadcasts();
 
         for (IBroadcast b : broadcasts) {
             //Checks if broadcast object belongs to logged in user. Skips if it doesnt.
             //If logged in as admin it never skips.
-            if (!b.getUserID().equals(App.loginClient.getAccount().getUserID()) && !App.loginClient.isAdmin())
+            if (b.getUserID() != App.loginClient.getAccount().getUserID() && !App.loginClient.isAdmin())
                 continue;
             //Run through the all the series, seasons and episodes. Create any if they haven't already been. Only done for Episodes
             if (b instanceof IEpisode) {
@@ -277,7 +278,7 @@ public class EditProgramsController implements Initializable {
                         //If there are no seasons add the one contained in b
                         foundSeries = true;
                         seriesIndex = i;
-                        System.out.println("Found existing series for " + episode.getTitle());
+                        //System.out.println("Found existing series for " + episode.getTitle());
                     }
                 }
 
@@ -288,7 +289,7 @@ public class EditProgramsController implements Initializable {
                     for (int i = 0; i < root.getChildren().size(); i++) {
                         if (root.getChildren().get(i).getValue().getTitle().get().equals(episode.getShowName())) {
                             seriesIndex = i;
-                            System.out.println("Creating new series for " + episode.getTitle());
+                            //System.out.println("Creating new series for " + episode.getTitle());
                         }
                     }
                 }
@@ -296,7 +297,7 @@ public class EditProgramsController implements Initializable {
                 //Create a new season if there is none
                 if (root.getChildren().get(seriesIndex).getChildren().isEmpty()) {
                     root.getChildren().get(seriesIndex).getChildren().add(new TreeItem<>(new ProgramsData(episode.getSeason(), episode.getLaunchYear().toString())));
-                    System.out.println("Series is empty, creating new series for: " + episode.getTitle());
+                    //System.out.println("Series is empty, creating new series for: " + episode.getTitle());
                 }
 
                 //Check if there is an existing season
@@ -308,7 +309,7 @@ public class EditProgramsController implements Initializable {
                             root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(episode.getTitle(), episode.getLaunchYear().toString(),
                                     Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio())));
                             foundSeason = true;
-                            System.out.println("Found season for: " + episode.getTitle());
+                            //System.out.println("Found season for: " + episode.getTitle());
                         }
                     }
 
@@ -320,7 +321,7 @@ public class EditProgramsController implements Initializable {
                             if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(episode.getSeason()))) {
                                 root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(episode.getTitle(), episode.getLaunchYear().toString(),
                                         Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio())));
-                                System.out.println("Added new season and adding " + episode.getTitle());
+                                //System.out.println("Added new season and adding " + episode.getTitle());
 
                             }
                         }

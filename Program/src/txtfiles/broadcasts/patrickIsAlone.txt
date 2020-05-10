@@ -1,3 +1,3 @@
-patrickIsAlone:spongebob is out of town:1999:SpongeBob:2:3:Y:Episode
+patrickIsAlone:spongebob is out of town:1999:SpongeBob:2:3:1:Episode
 patric:starfish:LEAD_CAST
 Christopher:Kas:PRODUCER

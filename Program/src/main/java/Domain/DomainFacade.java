@@ -23,7 +23,7 @@ public class DomainFacade {
         return instance;
     }
 
-    public IUser createUser(String userID, String email, String password, String firstName, String lastName) {
+    public IUser createUser(String email, String password, String firstName, String lastName) {
         IUser user = main.admin.createUser(email, password, firstName, lastName);
         return user;
     }
@@ -33,19 +33,19 @@ public class DomainFacade {
         return credit;
     }
 
-    public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum, String userID) {
+    public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
         login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum, userID);
         IEpisode episode = new Episode(title, bio, launchYear, showName, season, episodeNum, userID);
         return episode;
     }
 
-    public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location, String userID) {
+    public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
         login.getAccount().createLiveShow(title, bio, launchYear, location, userID);
         ILiveShow liveShow = new LiveShow(title, bio, launchYear, location, userID);
         return liveShow;
     }
 
-    public IMovie createMovie(String title, String bio, Year launchYear, String userID) {
+    public IMovie createMovie(String title, String bio, Year launchYear, int userID) {
         login.getAccount().createMovie(title, bio, launchYear, userID);
         IMovie movie = new Movie(title, bio, launchYear, userID);
         return movie;
@@ -59,7 +59,7 @@ public class DomainFacade {
         return login;
     }
 
-    public void unNotify(boolean seen, String date, String user, String change) {
+    public void unNotify(boolean seen, String date, int user, String change) {
         Notification.unNotify(seen, date, user, change);
     }
 
@@ -71,8 +71,8 @@ public class DomainFacade {
         return main.admin.getAllUsers();
     }
 
-    public void deleteUser(String userID, String email, String password, String firstName, String lastName, String enabled) {
-        main.admin.deleteUser(userID, email, password, firstName, lastName, Boolean.valueOf(enabled));
+    public void deleteUser(int userID, String email, String password, String firstName, String lastName, String enabled) {
+        main.admin.deleteUser(userID);
     }
 
     public ArrayList<IBroadcast> getAllBroadcasts() {
@@ -81,14 +81,13 @@ public class DomainFacade {
 
         for (String s: strings) {
             String[] sSplit = s.split(":");
-            System.out.println(sSplit[0]);
 
             if (sSplit.length == 5) {
-                broadcasts.add(new Movie(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3]));
+                broadcasts.add(new Movie(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), Integer.parseInt(sSplit[3])));
             } else if (sSplit.length == 6) {
-                broadcasts.add(new LiveShow(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], sSplit[4]));
+                broadcasts.add(new LiveShow(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4])));
             } else if (sSplit.length == 8) {
-                broadcasts.add(new Episode(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4]), Integer.parseInt(sSplit[5]), sSplit[6]));
+                broadcasts.add(new Episode(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4]), Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6])));
             }
         }
 

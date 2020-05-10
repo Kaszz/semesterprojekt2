@@ -1,2 +1,2 @@
-testFilmforNYBRUGER:asdasdasd:1234:41414d00-f66c-4a36-8950-e36a0c8a3983:Movie
+testFilmforNYBRUGER:asdasdasd:1234:3:Movie
 christoopher:asodpk:DIRECTOR

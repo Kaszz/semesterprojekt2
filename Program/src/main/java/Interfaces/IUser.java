@@ -1,6 +1,6 @@
 package Interfaces;
 
 public interface IUser extends IAccount {
-    public String getUserID();
+    public int getUserID();
     public boolean getEnabled();
 }

@@ -13,7 +13,7 @@ public interface IBroadcast {
     public ArrayList<ICredit> getCredits();
     public String getBio();
     public Year getLaunchYear();
-    public String getUserID();
+    public int getUserID();
     public String toString();
     public void deleteAllCredits();
 }

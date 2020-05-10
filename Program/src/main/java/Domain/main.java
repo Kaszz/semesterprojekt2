@@ -11,7 +11,7 @@ public class main {
     public static IReader read = df.getReader();
     public static IWriter write = df.getWriter();
     public static IConnectionDB cDB = df.getConnectionDB();
-    public static Admin admin = new Admin("admin", "admin", "admin", "admin", "admin");
+    public static Admin admin = new Admin(0, "admin", "admin", "admin", "admin");
 
     public static void main(String[] args) {
         Presentation.App.load(args);

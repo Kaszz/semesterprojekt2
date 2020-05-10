@@ -5,11 +5,32 @@ true:15/04/2020:17:Oprettet liveshowet liveTestt fra året 2019 på parken
 true:15/04/2020:17:Oprettet episoden episodeTesst fra tv-serien The Mentalist sæson 3 episode nummer 14
 true:15/04/2020:17:Slettet kreditering for Simon Jessen i  Fathers
 true:15/04/2020:17:Slettet udsendelsen liveTestt
-true:08/05/2020:X:Oprettet filmen testBrugerHHAHA fra året 14561
-true:08/05/2020:Y:Oprettet liveshowet ander2test fra året 123123 på parken
-true:08/05/2020:X:Slettet udsendelsen testBrugerHHAHA
-true:08/05/2020:Y:Slettet udsendelsen ander2test
-true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Oprettet filmen testFilmforNYBRUGER fra året 1234
-true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Tilføjet kreditering for anders jessen til testFilmforNYBRUGER som DIRECTOR
-true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Tilføjet kreditering for christoopher asodpk til testFilmforNYBRUGER som DIRECTOR
-true:08/05/2020:41414d00-f66c-4a36-8950-e36a0c8a3983:Slettet kreditering for anders jesseni  testFilmforNYBRUGER
+true:08/05/2020:5:Oprettet filmen testBrugerHHAHA fra året 14561
+true:08/05/2020:5:Oprettet liveshowet ander2test fra året 123123 på parken
+true:08/05/2020:5:Slettet udsendelsen testBrugerHHAHA
+true:08/05/2020:5:Slettet udsendelsen ander2test
+true:08/05/2020:3:Oprettet filmen testFilmforNYBRUGER fra året 1234
+true:08/05/2020:3:Tilføjet kreditering for anders jessen til testFilmforNYBRUGER som DIRECTOR
+true:08/05/2020:3:Tilføjet kreditering for christoopher asodpk til testFilmforNYBRUGER som DIRECTOR
+true:08/05/2020:3:Slettet kreditering for anders jesseni  testFilmforNYBRUGER
+false:10/05/2020:1:Oprettet filmen midget prawn fra året 2040
+false:10/05/2020:6:Oprettet filmen midget prawn fra året 2040
+false:10/05/2020:6:Oprettet liveshowet Live fra bremen fra året 2017 på Bremen jo
+false:10/05/2020:6:Oprettet filmen asdasda fra året 123
+false:10/05/2020:6:Oprettet filmen Simon fra året 2007
+false:10/05/2020:19:Oprettet filmen testss fra året 1234
+false:10/05/2020:19:Oprettet liveshowet midget prawn fra året 2019 på the ocean
+false:10/05/2020:19:Oprettet episoden Patrik på tur fra tv-serien Svampebob sæson 2 episode nummer 7
+false:10/05/2020:19:Oprettet episoden Patrik på tur fra tv-serien Svampebob sæson 2 episode nummer 8
+false:10/05/2020:19:Oprettet episoden asdas fra tv-serien asd sæson 1 episode nummer 2
+false:10/05/2020:19:Oprettet episoden dfgdfg fra tv-serien dfgdfgdfg sæson 2 episode nummer 5
+false:10/05/2020:19:Oprettet episoden Patrik på tur fra tv-serien Svampebob sæson 1 episode nummer 3
+false:10/05/2020:19:Oprettet episoden Patrik paa tur fra tv-serien Svampebob sæson 1 episode nummer 3
+false:10/05/2020:19:Oprettet episoden asdas fra tv-serien asdasd sæson 2 episode nummer 5
+false:10/05/2020:19:Oprettet episoden lkjljj fra tv-serien lhjkhj sæson 3 episode nummer 8
+false:10/05/2020:19:Oprettet episoden den her virker fra tv-serien tæææst sæson 2 episode nummer 9
+false:10/05/2020:19:Oprettet episoden svamp fra tv-serien svampebob sæson 1 episode nummer 2
+false:10/05/2020:19:Oprettet episoden aasd fra tv-serien asd sæson 4 episode nummer 5
+false:10/05/2020:19:Oprettet episoden hfgh fra tv-serien dfgdf sæson 6 episode nummer 9
+false:10/05/2020:19:Oprettet episoden mnbmbn fra tv-serien vcbcvb sæson 43 episode nummer 5
+false:10/05/2020:19:Oprettet episoden den her serie virker fra tv-serien perfektion sæson 3 episode nummer 7

@@ -1,23 +1,25 @@
 package Presentation;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import java.time.LocalDate;
 
 public class Noti {
-    private SimpleStringProperty date, user, change;
+    private SimpleStringProperty date, change;
+    private SimpleIntegerProperty user;
     private SimpleBooleanProperty seen;
 
-    public Noti(String date, String user, String change) {
+    public Noti(String date, int user, String change) {
         this.date = new SimpleStringProperty(date);
-        this.user = new SimpleStringProperty(user);
+        this.user = new SimpleIntegerProperty(user);
         this.change = new SimpleStringProperty(change);
     }
 
-    public Noti(Boolean seen, String date, String user, String change) {
+    public Noti(Boolean seen, String date, int user, String change) {
         this.seen = new SimpleBooleanProperty(seen);
         this.date = new SimpleStringProperty(date);
-        this.user = new SimpleStringProperty(user);
+        this.user = new SimpleIntegerProperty(user);
         this.change = new SimpleStringProperty(change);
     }
 
@@ -45,15 +47,15 @@ public class Noti {
         this.date.set(date);
     }
 
-    public String getUser() {
+    public int getUser() {
         return user.get();
     }
 
-    public SimpleStringProperty userProperty() {
+    public SimpleIntegerProperty userProperty() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(int user) {
         this.user.set(user);
     }
 

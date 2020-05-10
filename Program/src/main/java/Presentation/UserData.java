@@ -1,9 +1,7 @@
 package Presentation;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
@@ -15,15 +13,15 @@ import java.util.stream.Collectors;
 
 public class UserData {
 
-    StringProperty udID;
+    IntegerProperty udID;
     StringProperty udEmail;
     StringProperty udPassword;
     StringProperty udFirstName;
     StringProperty udLastName;
     StringProperty udEnabled;
 
-    public UserData(String udID, String udEmail, String udPassword, String udFirstName, String udLastName, String udEnabled) {
-        this.udID = new SimpleStringProperty(udID);
+    public UserData(int udID, String udEmail, String udPassword, String udFirstName, String udLastName, String udEnabled) {
+        this.udID = new SimpleIntegerProperty(udID);
         this.udEmail = new SimpleStringProperty(udEmail);
         this.udPassword = new SimpleStringProperty(udPassword);
         this.udFirstName = new SimpleStringProperty(udFirstName);
@@ -79,15 +77,15 @@ public class UserData {
         return udLastName;
     }
 
-    public String getUdID() {
+    public int getUdID() {
         return udID.get();
     }
 
-    public StringProperty udIDProperty() {
+    public IntegerProperty udIDProperty() {
         return udID;
     }
 
-    public void setUdID(String udID) {
+    public void setUdID(int udID) {
         this.udID.set(udID);
     }
 

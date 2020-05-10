@@ -1,4 +1,4 @@
-ss:ss testerfil:2015:X:Movie
+ss:ss testerfil:2015:2:Movie
 George:Jessen:DIRECTOR
 Lars:Lars:LEAD_CAST
 Kristopher:Kas:PRODUCER
