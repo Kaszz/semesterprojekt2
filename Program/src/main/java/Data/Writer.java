@@ -6,14 +6,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Writer implements IWriter {
-        String broadcastDirectory = "broadcasts";
-        String userDirectory = "users";
-        String userFile = "users";
+       String broadcastDirectory = "broadcasts";
+       String userDirectory = "users";
+       String userFile = "users";
+       Connection connection = ConnectionDB.getConnection();
+
+
     /**
      * A method for writing strings to files.
      * @param fileName is the name of the file that is written to.

@@ -45,8 +45,6 @@ public class Login implements ILogin {
         return account;
     }
 
-
-
     public static Login getInstance() {
         return instance;
     }

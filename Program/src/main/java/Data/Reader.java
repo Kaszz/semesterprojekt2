@@ -4,10 +4,13 @@ import Interfaces.IReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reader implements IReader {
+
+    Connection connection = ConnectionDB.getConnection();
 
     /**
      * Method to get broadcast detail.
