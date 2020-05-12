@@ -18,10 +18,10 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Writer implements IWriter {
-       String broadcastDirectory = "broadcasts";
-       String userDirectory = "users";
-       String userFile = "users";
-       Connection connection = ConnectionDB.getConnection();
+    String broadcastDirectory = "broadcasts";
+    String userDirectory = "users";
+    String userFile = "users";
+    Connection connection = ConnectionDB.getConnection();
 
 
 
@@ -51,21 +51,28 @@ public class Writer implements IWriter {
     @Override
     public boolean createBroadcast(String broadcast) {
         String[] info = broadcast.split(":");
+        int type = 0;
+        if (info.length == 5)
+            type = 2;
+        else if (info.length == 6)
+            type = 3;
+        else
+            type = 1;
 
         //Writes info to broadcasts table.
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO " +
                             "broadcasts " +
-                            "(title, bio, launchyear, account_id, type) " +
+                            "(broadcast_type_id, title, bio, launchyear, account_id) " +
                             "VALUES " +
                             "(?, ?, ?, ?, ?)"
             );
-            insertStatement.setString(1, info[0]);                  //title
-            insertStatement.setString(2, info[1]);                  //bio
-            insertStatement.setInt(3, Integer.parseInt(info[2]));   //launchyear
-            insertStatement.setInt(4, Integer.parseInt(info[3]));   //account_id
-            insertStatement.setString(5, info[info.length-1]);      //type
+            insertStatement.setInt(1, type);                        //broadcast_type_id
+            insertStatement.setString(2, info[0]);                  //title
+            insertStatement.setString(3, info[1]);                  //bio
+            insertStatement.setInt(4, Integer.parseInt(info[2]));   //launchyear
+            insertStatement.setInt(5, Integer.parseInt(info[3]));   //account_id
             insertStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,7 +99,6 @@ public class Writer implements IWriter {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         if (info.length == 5) {
             insertMovie(broadcastID);
@@ -129,13 +135,13 @@ public class Writer implements IWriter {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO " +
-                            "liveshows " +
+                            "liveshow " +
                             "(broadcast_id, location) " +
                             "VALUES " +
                             "(?, ?)"
             );
             insertStatement.setInt(1, id);              //broadcast_id
-            insertStatement.setString(2, location);     //broadcast_id
+            insertStatement.setString(2, location);     //location
             insertStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
