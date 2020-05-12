@@ -34,3 +34,4 @@ false:10/05/2020:19:Oprettet episoden aasd fra tv-serien asd sæson 4 episode nu
 false:10/05/2020:19:Oprettet episoden hfgh fra tv-serien dfgdf sæson 6 episode nummer 9
 false:10/05/2020:19:Oprettet episoden mnbmbn fra tv-serien vcbcvb sæson 43 episode nummer 5
 false:10/05/2020:19:Oprettet episoden den her serie virker fra tv-serien perfektion sæson 3 episode nummer 7
+false:12/05/2020:2:Tilføjet kreditering for test test til howIMeetYourFather som PRODUCER

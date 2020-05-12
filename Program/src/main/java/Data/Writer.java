@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -236,8 +239,7 @@ public class Writer implements IWriter {
 
     }
 
-
-    @Override
+    @Override //TODO - waiting for episode to be correctly implemented so we dont have to rework.
     public String deleteBroadcast(String title) {
         File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
         String returnString = null;
@@ -255,29 +257,31 @@ public class Writer implements IWriter {
         return returnString;
     }
 
+    @Override //TODO needs to add credit to broadcasts_credits (waiting for ID to be readable from database and get it through the broadcast object.
+    public void addCredit(String title, String credit) {
+        String[] info = credit.split(":");
 
-    @Override
-    public boolean addCredit(String title, String credit) {
-        Reader read = new Reader();
-        ArrayList<String> list = read.getBroadcastCredits(title);
-
-        //Short string only containing first and last name of the credit argument.
-        String creditName = credit.substring(0, credit.indexOf(":", credit.indexOf(":") + 1));
-
-        //Iterate through the list of credits for the broadcast.
-        for (String s: list) {
-            //Makes a substring only containing the name of all the crediting.
-            String listName = s.substring(0, s.indexOf(":", s.indexOf(":") + 1));
-            //Compares the name from argument and the ones already in the broadcast.
-            if (listName.equals(creditName))
-                return false;
+        //Writes info to credits table.
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "credits " +
+                            "(first_name, last_name, credit_type) " +
+                            "VALUES " +
+                            "(?, ?, ?)"
+            );
+            insertStatement.setString(1, info[0]);      //first_name
+            insertStatement.setString(2, info[1]);      //last_name
+            insertStatement.setString(3, info[2]);      //credit_type
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        return write2file(title, "\r\n" + credit, broadcastDirectory , true);
+
     }
 
-
-    @Override
+    @Override //TODO - Waiting for creditID and broadcastID to be "gettable" from the objects ie. reader must be implemented first.
     public String deleteCredit(String title, String credit) {
         File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
         String tempString = "";
@@ -317,7 +321,6 @@ public class Writer implements IWriter {
 
         return returnString;
     }
-
 
     public int createUser(String user) {
         //String user = email:password:first_name:last_name
@@ -428,12 +431,6 @@ public class Writer implements IWriter {
         }
     }
 
-
-    /**
-     * A method to replace one user with another. They must have the same userID
-     * @param user String with the attributtes of a User object. Colon separated.
-     * @return true if a success. False if the file was not found or doesn't exist
-     */
     public boolean editUser(String user) {
         File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
         Scanner userTxt;
@@ -483,18 +480,30 @@ public class Writer implements IWriter {
         }
     }
 
+
     @Override
     public void addNotification(boolean seen, String date, int user, String change) {
-        File file = new File("./src/txtfiles/notifications/notifications.txt");
+        //Writes info to notifications table.
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "notifications " +
+                            "(created, change, seen, user_id) " +
+                            "VALUES " +
+                            "(?, ?, ?, ?)"
+            );
+            Date newDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+            java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
+            //java.sql.Date sqlDate = java.sql.Date.valueOf(newDate);
 
-        if (file.length() == 0) {
-            write2file("notifications", seen + ":" + date + ":" +  user + ":" + change,
-                    "notifications", true);
-        } else {
-            write2file("notifications", "\r\n" + seen + ":" + date + ":" +  user + ":" + change,
-                    "notifications", true);
+            insertStatement.setDate(1, sqlDate);        //date
+            insertStatement.setString(2, change);       //change
+            insertStatement.setBoolean(3, seen);        //seen
+            insertStatement.setInt(4, user);            //user_id
+            insertStatement.execute();
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
         }
-
     }
 
     @Override

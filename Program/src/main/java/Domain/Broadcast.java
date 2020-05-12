@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public abstract class Broadcast implements IBroadcast {
     //Attributes
+    private int broadcastID;
     private String title;
     private ArrayList<Credit> credits;
     private String bio;
@@ -22,6 +23,15 @@ public abstract class Broadcast implements IBroadcast {
         this.bio = bio;
         this.launchYear = launchYear;
         this.userID = userID;
+        credits = new ArrayList<>();
+    }
+
+    public Broadcast(String title, String bio, Year launchYear, int userID, int broadcastID) {
+        this.title = title;
+        this.bio = bio;
+        this.launchYear = launchYear;
+        this.userID = userID;
+        this.broadcastID = broadcastID;
         credits = new ArrayList<>();
     }
 

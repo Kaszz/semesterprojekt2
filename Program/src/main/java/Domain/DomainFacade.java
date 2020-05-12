@@ -107,8 +107,8 @@ public class DomainFacade {
         return login.getAccount().deleteBroadcast(title);
     }
 
-    public boolean addCredit(String title, ICredit credit) {
-        return login.getAccount().addCredit(title, credit.getfName(), credit.getlName(), credit.getRole());
+    public void addCredit(String title, ICredit credit) {
+        login.getAccount().addCredit(title, credit.getfName(), credit.getlName(), credit.getRole());
     }
 
     public String deleteCredit(String title, ICredit credit) {

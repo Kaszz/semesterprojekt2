@@ -37,8 +37,8 @@ public class Admin extends Account implements IAdmin {
     }
 
     @Override
-    public boolean addCredit(String title, String fName, String lName, CreditType role) {
-        return super.addCredit(title, fName, lName, role);
+    public void addCredit(String title, String fName, String lName, CreditType role) {
+        super.addCredit(title, fName, lName, role);
     }
 
     @Override
