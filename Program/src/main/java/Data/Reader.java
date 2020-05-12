@@ -5,6 +5,9 @@ import Interfaces.IReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,24 +22,64 @@ public class Reader implements IReader {
      */
     @Override
     public String getBroadcast(String title) {
-        //Defines file and scanner.
-        File file = new File("./src/txtfiles/broadcasts/" + title + ".txt");
-        Scanner scan = null;
-        String returnString;
+        String broadcast;
+        int broadcast_id;
+        String bio;
+        int launchYear;
+        int account_id;
 
         try {
-            //Returns first line in scanner.
-            scan = new Scanner(file);
-            returnString = scan.nextLine();
+            PreparedStatement queryBroadcasts = connection.prepareStatement("SELECT * FROM broadcasts WHERE title = ?");
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            returnString = "File was not found.";
-        } finally {
-            scan.close();
+            queryBroadcasts.setString(1, title);
+
+            ResultSet broadcastResult = queryBroadcasts.executeQuery();
+
+            broadcastResult.next();
+            broadcast_id = broadcastResult.getInt(1);
+            bio = broadcastResult.getString(3);
+            launchYear = broadcastResult.getInt(4);
+            account_id = broadcastResult.getInt(5);
+
+            queryBroadcasts.close();
+            broadcastResult.close();
+
+            PreparedStatement queryType = connection.prepareStatement(
+                    "SELECT liveshow_id, movie_id, series_id FROM broadcasts " +
+                            "LEFT JOIN liveshows ON liveshows.broadcast_id = ? " +
+                            "LEFT JOIN movies ON movies.broadcast_id = ? " +
+                            "LEFT JOIN series ON series.broadcast_id = ?");
+
+            queryType.setInt(1, broadcast_id);
+            queryType.setInt(2, broadcast_id);
+            queryType.setInt(3, broadcast_id);
+
+            ResultSet typeResults = queryType.executeQuery();
+
+            typeResults.next();
+
+            String liveshow = typeResults.getString(1);
+            String movie = typeResults.getString(2);
+            String series = typeResults.getString(3);
+
+            System.out.println(liveshow);
+
+            if (true) {
+                if (liveshow != null) {
+                    System.out.println("I am a liveshow!");
+                } else if (movie != null) {
+                    System.out.println("I am a movie!");
+                } else if (series != null) {
+                    System.out.println("I am a series!");
+                }
+            }
         }
 
-        return returnString;
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return " ";
     }
 
     /**
