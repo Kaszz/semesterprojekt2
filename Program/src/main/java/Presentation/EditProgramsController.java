@@ -140,7 +140,7 @@ public class EditProgramsController implements Initializable {
     void saveButtonOnAction(ActionEvent event) throws MalformedURLException {
 
         BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
-
+        /*
         if (type.name().equals("SERIE")) {
             App.domain.createEpisode(titleTextField.getText(), descriptionTextField.getText(),
                     Year.of(Integer.parseInt(launchDatePicker.getText())), showNameTextField.getText(),
@@ -154,6 +154,8 @@ public class EditProgramsController implements Initializable {
             App.domain.createLiveShow(titleTextField.getText(), descriptionTextField.getText(),
                     Year.of(Integer.parseInt(launchDatePicker.getText())), locationTextField.getText(), App.loginClient.getAccount().getUserID());
         }
+
+         */
 
         update();
     }

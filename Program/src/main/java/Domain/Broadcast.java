@@ -26,7 +26,7 @@ public abstract class Broadcast implements IBroadcast {
         credits = new ArrayList<>();
     }
 
-    public Broadcast(String title, String bio, Year launchYear, int userID, int broadcastID) {
+    public Broadcast(int broadcastID, String title, String bio, Year launchYear, int userID) {
         this.title = title;
         this.bio = bio;
         this.launchYear = launchYear;

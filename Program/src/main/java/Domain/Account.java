@@ -24,17 +24,17 @@ public abstract class Account implements IAccount {
     }
 
     public void createMovie(String title, String bio, Year launchYear, int userID) {
-        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + userID + ":MOVIE";
+        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + userID;
         write.createBroadcast(broadcast);
     }
 
     public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
-        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + location + ":LIVESHOW";
+        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + location;
         write.createBroadcast(liveShow);
     }
 
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
-        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + showName + ":" + season + ":" + episode + ":EPISODE";
+        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + showName + ":" + season + ":" + episode;
         write.createBroadcast(episodeString);
     }
 

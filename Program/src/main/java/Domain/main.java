@@ -14,6 +14,7 @@ public class main {
     public static Admin admin = new Admin(0, "admin", "admin", "admin", "admin");
 
     public static void main(String[] args) {
+        read.getAllBroadcasts();
         Presentation.App.load(args);
     }
 

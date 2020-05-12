@@ -33,21 +33,21 @@ public class DomainFacade {
         return credit;
     }
 
-    public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
-        login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum, userID);
-        IEpisode episode = new Episode(title, bio, launchYear, showName, season, episodeNum, userID);
+    public IEpisode createEpisode(int broadcastID, String title,  String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
+        login.getAccount().createEpisode( title, bio, launchYear, showName, season, episodeNum, userID);
+        IEpisode episode = new Episode(broadcastID , title, bio, launchYear, showName, season, episodeNum, userID);
         return episode;
     }
 
-    public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
+    public ILiveShow createLiveShow(int broadcastID, String title, String bio, Year launchYear, String location, int userID) {
         login.getAccount().createLiveShow(title, bio, launchYear, location, userID);
-        ILiveShow liveShow = new LiveShow(title, bio, launchYear, location, userID);
+        ILiveShow liveShow = new LiveShow(broadcastID, title, bio, launchYear, location, userID);
         return liveShow;
     }
 
-    public IMovie createMovie(String title, String bio, Year launchYear, int userID) {
+    public IMovie createMovie(int broadcastID, String title, String bio, Year launchYear, int userID) {
         login.getAccount().createMovie(title, bio, launchYear, userID);
-        IMovie movie = new Movie(title, bio, launchYear, userID);
+        IMovie movie = new Movie(broadcastID, title, bio, launchYear, userID);
         return movie;
     }
 
@@ -83,11 +83,11 @@ public class DomainFacade {
             String[] sSplit = s.split(":");
 
             if (sSplit.length == 5) {
-                broadcasts.add(new Movie(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), Integer.parseInt(sSplit[3])));
+                broadcasts.add(new Movie(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), Integer.parseInt(sSplit[4])));
             } else if (sSplit.length == 6) {
-                broadcasts.add(new LiveShow(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4])));
-            } else if (sSplit.length == 8) {
-                broadcasts.add(new Episode(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4]), Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6])));
+                broadcasts.add(new LiveShow(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5])));
+            } else {
+                broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6]), Integer.parseInt(sSplit[7])));
             }
         }
 

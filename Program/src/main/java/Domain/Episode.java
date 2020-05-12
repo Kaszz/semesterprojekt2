@@ -12,8 +12,8 @@ public class Episode extends Broadcast implements IEpisode {
 
 
     //Constructors
-    public Episode(String title, String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
-        super(title, bio, launchYear, userID);
+    public Episode(int broadcastID, String title, String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
+        super(broadcastID, title, bio, launchYear, userID);
         this.showName = showName;
         this.season = season;
         this.episodeNum = episodeNum;

@@ -4,10 +4,7 @@ import Interfaces.IReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -180,6 +177,20 @@ public class Reader implements IReader {
     }
 
     public ArrayList<String> getAllBroadcasts() {
+        ArrayList<String> broadcasts = new ArrayList<>();
+
+        broadcasts.addAll(getPartialBroadcastInfo("SELECT broadcast_id, title, bio, launchyear, location, account_id\n" +
+                "FROM liveshow INNER JOIN broadcasts USING (broadcast_id)"));
+        broadcasts.addAll(getPartialBroadcastInfo("SELECT broadcast_id, title, bio, launchyear, show_name, season_no, episode_no, account_id\n" +
+                "FROM episodes INNER JOIN broadcasts USING (broadcast_id)"));
+        broadcasts.addAll(getPartialBroadcastInfo("SELECT broadcast_id, title, bio, launchyear, account_id\n" +
+                "FROM movies INNER JOIN broadcasts USING (broadcast_id)"));
+
+        System.out.println(broadcasts.size());
+
+        /*
+
+
         File file = new File("./src/txtfiles/broadcasts/");
         File[] filePath = file.listFiles();
         ArrayList<String> broadcasts = new ArrayList<>();
@@ -202,7 +213,39 @@ public class Reader implements IReader {
                 scan.close();
             }
         }
+
+         */
         return broadcasts;
+    }
+
+    public ArrayList<String> getPartialBroadcastInfo(String sql) {
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        try {
+            PreparedStatement queryTable = connection.prepareStatement(sql);
+
+            ResultSet tableResult = queryTable.executeQuery();
+            ResultSetMetaData tableMetaData = queryTable.getMetaData();
+
+            while (tableResult.next()) {
+                String string = "";
+                string = string + tableResult.getString(1);
+
+                for (int i = 2; i < tableMetaData.getColumnCount(); i++) {
+                    string = string + ":" + tableResult.getString(i);
+                }
+                arrayList.add(string);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println(arrayList.get(i));
+        }
+
+        return arrayList;
     }
 
 
