@@ -59,38 +59,14 @@ public class Writer implements IWriter {
         else
             type = 1;
 
-        //Writes info to broadcasts table.
-        try {
-            PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO " +
-                            "broadcasts " +
-                            "(broadcast_type_id, title, bio, launchyear, account_id) " +
-                            "VALUES " +
-                            "(?, ?, ?, ?, ?)"
-            );
-            insertStatement.setInt(1, type);                        //broadcast_type_id
-            insertStatement.setString(2, info[0]);                  //title
-            insertStatement.setString(3, info[1]);                  //bio
-            insertStatement.setInt(4, Integer.parseInt(info[2]));   //launchyear
-            insertStatement.setInt(5, Integer.parseInt(info[3]));   //account_id
-            insertStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        //Gets broadcastID
+        //Check if broadcast already exists
         int broadcastID = 0;
         try {
             PreparedStatement queryStatement = connection.prepareStatement("SELECT broadcast_id " +
                     "FROM broadcasts " +
-                    "WHERE title = ? " +
-                    "AND bio = ? " +
-                    "AND launchyear = ?" +
-                    "AND account_id = ?");
+                    "WHERE title = ?");
             queryStatement.setString(1, info[0]);
-            queryStatement.setString(2, info[1]);
-            queryStatement.setInt(3, Integer.parseInt(info[2]));
-            queryStatement.setInt(4, Integer.parseInt(info[3]));
             ResultSet queryResultSet = queryStatement.executeQuery();
 
             while(queryResultSet.next())
@@ -100,16 +76,63 @@ public class Writer implements IWriter {
             e.printStackTrace();
         }
 
-        if (info.length == 5) {
-            insertMovie(broadcastID);
+        if (broadcastID != 0 && type == 1) {
+            insertEpisode(info[4], broadcastID, Integer.parseInt(info[5]), Integer.parseInt(info[6]), true);
         }
-        else if (info.length == 6) {
-            insertLiveShow(broadcastID, info[4]);
+        else if (broadcastID != 0) {
+            System.out.println("Broadcasts already exists.");
         }
         else {
-            insertEpisode(info[4], broadcastID, Integer.parseInt(info[5]), Integer.parseInt(info[6]));
-        }
+            //Writes info to broadcasts table.
+            try {
+                PreparedStatement insertStatement = connection.prepareStatement(
+                        "INSERT INTO " +
+                                "broadcasts " +
+                                "(broadcast_type_id, title, bio, launchyear, account_id) " +
+                                "VALUES " +
+                                "(?, ?, ?, ?, ?)"
+                );
+                insertStatement.setInt(1, type);                        //broadcast_type_id
+                insertStatement.setString(2, info[0]);                  //title
+                insertStatement.setString(3, info[1]);                  //bio
+                insertStatement.setInt(4, Integer.parseInt(info[2]));   //launchyear
+                insertStatement.setInt(5, Integer.parseInt(info[3]));   //account_id
+                insertStatement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
+            //Gets broadcastID
+            broadcastID = 0;
+            try {
+                PreparedStatement queryStatement = connection.prepareStatement("SELECT broadcast_id " +
+                        "FROM broadcasts " +
+                        "WHERE title = ? " +
+                        "AND bio = ? " +
+                        "AND launchyear = ?" +
+                        "AND account_id = ?");
+                queryStatement.setString(1, info[0]);
+                queryStatement.setString(2, info[1]);
+                queryStatement.setInt(3, Integer.parseInt(info[2]));
+                queryStatement.setInt(4, Integer.parseInt(info[3]));
+                ResultSet queryResultSet = queryStatement.executeQuery();
+
+                while (queryResultSet.next())
+                    broadcastID = Integer.parseInt(queryResultSet.getString("broadcast_id"));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            if (info.length == 5) {
+                insertMovie(broadcastID);
+            } else if (info.length == 6) {
+                insertLiveShow(broadcastID, info[4]);
+            } else {
+                insertEpisode(info[4], broadcastID, Integer.parseInt(info[5]), Integer.parseInt(info[6]), false);
+            }
+
+        }
         return true;
     }
 
@@ -148,24 +171,24 @@ public class Writer implements IWriter {
         }
     }
 
-    public void insertEpisode(String showName, int broadcastID, int season, int episode) {
-        //title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + showName + ":" + season + ":" + episode + ":EPISODE";
-        //  0            1                   2                      3               4               5               6           7
+    public void insertEpisode(String epName, int broadcastID, int seaNum, int epiNum, boolean exists) {
 
-        //Writes info to series table.
-        try {
-            PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO " +
-                            "series " +
-                            "(show_name, broadcast_id) " +
-                            "VALUES " +
-                            "(?, ?)"
-            );
-            insertStatement.setString(1, showName);       //showName
-            insertStatement.setInt(2, broadcastID);       //broadcast_id
-            insertStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        //If series doesnt exists
+        if (!exists) {
+            //Writes info to series table.
+            try {
+                PreparedStatement insertStatement = connection.prepareStatement(
+                        "INSERT INTO " +
+                                "series " +
+                                "(broadcast_id) " +
+                                "VALUES " +
+                                "(?)"
+                );
+                insertStatement.setInt(1, broadcastID);       //broadcast_id
+                insertStatement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         //Gets seriesID
@@ -173,10 +196,8 @@ public class Writer implements IWriter {
         try {
             PreparedStatement queryStatement = connection.prepareStatement("SELECT series_id " +
                     "FROM series " +
-                    "WHERE show_name = ? " +
-                    "AND broadcast_id = ?");
-            queryStatement.setString(1, showName);
-            queryStatement.setInt(2, broadcastID);
+                    "WHERE broadcast_id = ?");
+            queryStatement.setInt(1, broadcastID);
             ResultSet queryResultSet = queryStatement.executeQuery();
 
             while(queryResultSet.next())
@@ -186,33 +207,15 @@ public class Writer implements IWriter {
             e.printStackTrace();
         }
 
-
-        //Writes to the seasons table.
-        try {
-            PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO " +
-                            "seasons " +
-                            "(series_id, season_number) " +
-                            "VALUES " +
-                            "(?, ?)"
-            );
-            insertStatement.setInt(1, seriesID);       //series_id
-            insertStatement.setInt(2, season);         //season_number
-            insertStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        //Gets season_id
+        //Check if season already exists
         int seasonID = 0;
         try {
             PreparedStatement queryStatement = connection.prepareStatement("SELECT season_id " +
                     "FROM seasons " +
-                    "WHERE series_id = ? " +
-                    "AND season_number = ?");
-            queryStatement.setInt(1, seriesID);
-            queryStatement.setInt(2, season);
+                    "WHERE broadcast_id = ? " +
+                    "AND season_no = ?");
+            queryStatement.setInt(1, broadcastID);
+            queryStatement.setInt(2, seaNum);
             ResultSet queryResultSet = queryStatement.executeQuery();
 
             while(queryResultSet.next())
@@ -222,26 +225,62 @@ public class Writer implements IWriter {
             e.printStackTrace();
         }
 
+        //If season doesnt exists.
+        if (seasonID == 0) {
+            //Writes to the seasons table.
+            try {
+                PreparedStatement insertStatement = connection.prepareStatement(
+                        "INSERT INTO " +
+                                "seasons " +
+                                "(broadcast_id, season_no) " +
+                                "VALUES " +
+                                "(?, ?)"
+                );
+                insertStatement.setInt(1, broadcastID);       //broadcast_id
+                insertStatement.setInt(2, seaNum);         //season_no
+                insertStatement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-        System.out.println("Kommer vi her til?");
-        System.out.println("episode: " + episode);
-        System.out.println("seasonid: " + seasonID);
+            //Gets season_id
+            seasonID = 0;
+            try {
+                PreparedStatement queryStatement = connection.prepareStatement("SELECT season_id " +
+                        "FROM seasons " +
+                        "WHERE broadcast_id = ? " +
+                        "AND season_no = ?");
+                queryStatement.setInt(1, broadcastID);
+                queryStatement.setInt(2, seaNum);
+                ResultSet queryResultSet = queryStatement.executeQuery();
 
+                while(queryResultSet.next())
+                    seasonID = Integer.parseInt(queryResultSet.getString("season_id"));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        
         //Writes to the episodes table.
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO " +
                             "episodes " +
-                            "(episode_number, season_id) " +
+                            "(season_id, broadcast_id, episode_name, episode_no) " +
                             "VALUES " +
-                            "(?, ?)"
+                            "(?, ?, ?, ?)"
             );
-            insertStatement.setInt(1, episode);       //episode_number
-            insertStatement.setInt(2, seasonID);      //season_id
+            insertStatement.setInt(1, seasonID);        //season_id
+            insertStatement.setInt(2, broadcastID);     //broadcast_id
+            insertStatement.setString(3, epName);       //episode_name
+            insertStatement.setInt(4, epiNum);          //episode_no
             insertStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
     }
 

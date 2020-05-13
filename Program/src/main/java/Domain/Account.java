@@ -34,7 +34,7 @@ public abstract class Account implements IAccount {
     }
 
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
-        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + showName + ":" + season + ":" + episode + ":EPISODE";
+        String episodeString = showName + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + title + ":" + season + ":" + episode + ":EPISODE";
         write.createBroadcast(episodeString);
     }
 
