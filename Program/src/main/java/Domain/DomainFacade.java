@@ -33,22 +33,16 @@ public class DomainFacade {
         return credit;
     }
 
-    public IEpisode createEpisode(int broadcastID, String title,  String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
-        login.getAccount().createEpisode( title, bio, launchYear, showName, season, episodeNum, userID);
-        IEpisode episode = new Episode(broadcastID , title, bio, launchYear, showName, season, episodeNum, userID);
-        return episode;
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
+        login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum, userID);
     }
 
-    public ILiveShow createLiveShow(int broadcastID, String title, String bio, Year launchYear, String location, int userID) {
+    public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
         login.getAccount().createLiveShow(title, bio, launchYear, location, userID);
-        ILiveShow liveShow = new LiveShow(broadcastID, title, bio, launchYear, location, userID);
-        return liveShow;
     }
 
-    public IMovie createMovie(int broadcastID, String title, String bio, Year launchYear, int userID) {
+    public void createMovie(String title, String bio, Year launchYear, int userID) {
         login.getAccount().createMovie(title, bio, launchYear, userID);
-        IMovie movie = new Movie(broadcastID, title, bio, launchYear, userID);
-        return movie;
     }
 
     public ArrayList<INotification> getNotifications() {
@@ -79,11 +73,7 @@ public class DomainFacade {
         ArrayList<String> strings = read.getAllBroadcasts();
         ArrayList<IBroadcast> broadcasts = new ArrayList<>();
 
-        System.out.println("____________");
-
-
         for (String s: strings) {
-            System.out.println(s);
             String[] sSplit = s.split(":");
 
             if (sSplit.length == 5) {
@@ -106,10 +96,6 @@ public class DomainFacade {
         return main.admin.getAllPrograms();
     }
 
-    public String deleteBroadcast(String title) {
-        return login.getAccount().deleteBroadcast(title);
-    }
-
     public void addCredit(String title, ICredit credit) {
         login.getAccount().addCredit(title, credit.getfName(), credit.getlName(), credit.getRole());
     }
@@ -117,6 +103,12 @@ public class DomainFacade {
     public String deleteCredit(String title, ICredit credit) {
         return login.getAccount().deleteCredit(title, (Credit) credit);
     }
+
+    public void deleteMovie(int broadcast_id, String title) {
+        login.getAccount().deleteMovie(broadcast_id, title);};
+
+    public void deleteLiveShow(int broadcast_id, String title) {
+        login.getAccount().deleteLiveShow(broadcast_id, title);};
 
     public boolean isAdmin() {
         return login.isAdmin();

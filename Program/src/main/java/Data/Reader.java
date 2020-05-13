@@ -36,7 +36,6 @@ public class Reader implements IReader {
                 creditLine = queryResultSet.getString("first_name") + ":"
                            + queryResultSet.getString("last_name") + ":"
                            + queryResultSet.getString("credit_type");
-                System.out.println(creditLine);
                 returnList.add(creditLine);
             }
         } catch (SQLException e) {
@@ -60,7 +59,6 @@ public class Reader implements IReader {
                         + queryResultSet.getString("password") + ":"
                         + queryResultSet.getString("first_name") + ":"
                         + queryResultSet.getString("last_name");
-                System.out.println(accountLine);
                 returnList.add(accountLine);
             }
         } catch (SQLException e) {
@@ -73,10 +71,14 @@ public class Reader implements IReader {
 
     public ArrayList<String> getAllBroadcasts() {
         ArrayList<String> broadcasts = new ArrayList<>();
+
+        //Movie
         broadcasts.addAll(getPartialBroadcastInfo("SELECT broadcast_id, title, bio, launchyear, account_id FROM movies INNER JOIN broadcasts USING (broadcast_id);"));
 
+        //Liveshow
         broadcasts.addAll(getPartialBroadcastInfo("SELECT broadcast_id, title, bio, launchyear, location, account_id FROM liveshow INNER JOIN broadcasts USING (broadcast_id);"));
 
+        //Series/seasons/episodes
         broadcasts.addAll(getPartialBroadcastInfo("SELECT episode_id, episode_name, episode_no, season_no, series_id, title, bio, launchyear,  account_id\n" +
                 "FROM episodes\n" +
                 "    INNER JOIN seasons ON episodes.season_id = seasons.season_id\n" +
@@ -107,10 +109,6 @@ public class Reader implements IReader {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        for (int i = 0; i < arrayList.size(); i++) {
-            System.out.println(arrayList.get(i));
         }
 
         return arrayList;
@@ -157,10 +155,7 @@ public class Reader implements IReader {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            PreparedStatement queryTable = connection.prepareStatement("SELECT seen, created, CONCAT_WS (' ', first_name, last_name) as name, change\n" +
-                    "FROM notifications\n" +
-                    "         INNER JOIN users ON notifications.user_id = users.user_id\n" +
-                    "         INNER JOIN accounts ON users.account_id = accounts.account_id;");
+            PreparedStatement queryTable = connection.prepareStatement("SELECT seen, created, user_name, change FROM notifications;");
 
             ResultSet tableResult = queryTable.executeQuery();
 
@@ -172,7 +167,7 @@ public class Reader implements IReader {
 
                 notificationLine = tableResult.getBoolean("seen") + ":"
                                  + dateString + ":"
-                                 + tableResult.getString("name") + ":"
+                                 + tableResult.getString("user_name") + ":"
                                  + tableResult.getString("change");
 
                 returnList.add(notificationLine);

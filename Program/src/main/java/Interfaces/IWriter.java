@@ -4,7 +4,8 @@ import java.util.Date;
 
 public interface IWriter {
     public boolean createBroadcast(String broadcast);
-    public String deleteBroadcast(String title);
+    public void deleteMovie(int broadcast_id);
+    public void deleteLiveShow(int broadcast_id);
     public void addCredit(String title, String credit);
     public String deleteCredit(String title, String credit);
     public int createUser(String user);

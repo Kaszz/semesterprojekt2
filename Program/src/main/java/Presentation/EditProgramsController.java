@@ -129,7 +129,10 @@ public class EditProgramsController implements Initializable {
         }
         //If the selected row is a broadcast and therefore deletable
         else {
-            ProgramsData broadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
+            ProgramsData selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
+
+            //App.domain.deleteLiveShow(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+
             //root.getChildren().remove(programTreeTableView.getSelectionModel().getSelectedIndex());
             //System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
             update();
@@ -140,7 +143,7 @@ public class EditProgramsController implements Initializable {
     void saveButtonOnAction(ActionEvent event) throws MalformedURLException {
 
         BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
-        /*
+
         if (type.name().equals("SERIE")) {
             App.domain.createEpisode(titleTextField.getText(), descriptionTextField.getText(),
                     Year.of(Integer.parseInt(launchDatePicker.getText())), showNameTextField.getText(),
@@ -154,8 +157,6 @@ public class EditProgramsController implements Initializable {
             App.domain.createLiveShow(titleTextField.getText(), descriptionTextField.getText(),
                     Year.of(Integer.parseInt(launchDatePicker.getText())), locationTextField.getText(), App.loginClient.getAccount().getUserID());
         }
-
-         */
 
         update();
     }
@@ -309,7 +310,7 @@ public class EditProgramsController implements Initializable {
                     for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
                         if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(episode.getSeason()))) {
                             root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(episode.getTitle(), episode.getLaunchYear().toString(),
-                                    Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio())));
+                                    Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio(), episode.getBroadcastID())));
                             foundSeason = true;
                             //System.out.println("Found season for: " + episode.getTitle());
                         }
@@ -322,7 +323,7 @@ public class EditProgramsController implements Initializable {
                         for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
                             if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(episode.getSeason()))) {
                                 root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(episode.getTitle(), episode.getLaunchYear().toString(),
-                                        Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio())));
+                                        Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio(), episode.getBroadcastID())));
                                 //System.out.println("Added new season and adding " + episode.getTitle());
 
                             }
@@ -334,11 +335,11 @@ public class EditProgramsController implements Initializable {
                 }
                 //If a broadcast is not an Episode it's simply added.
             } else if (b instanceof IMovie) {
-                root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio())));
+                root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio(), b.getBroadcastID())));
 
             } else if (b instanceof ILiveShow) {
                 ILiveShow liveShow = ((ILiveShow) b);
-                root.getChildren().add(new TreeItem<>(new ProgramsData(liveShow.getTitle(), liveShow.getLaunchYear().toString(), liveShow.getBio(), liveShow.getLocation())));
+                root.getChildren().add(new TreeItem<>(new ProgramsData(liveShow.getTitle(), liveShow.getLaunchYear().toString(), liveShow.getBio(), liveShow.getLocation(), b.getBroadcastID())));
             }
 
         }

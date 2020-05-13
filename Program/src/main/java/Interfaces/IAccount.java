@@ -11,7 +11,8 @@ public interface IAccount {
     public void createLiveShow(String title, String bio, Year launchYear, String location, int userID);
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID);
     public String deleteCredit(String title, Credit credit);
-    public String deleteBroadcast(String title);
+    public void deleteMovie(int broadcast_id, String title);
+    public void deleteLiveShow(int broadcast_id, String title);
 
     public String getFirstName();
     public String getLastName();

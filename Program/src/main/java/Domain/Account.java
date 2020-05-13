@@ -34,7 +34,8 @@ public abstract class Account implements IAccount {
     }
 
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
-        String episodeString = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + showName + ":" + season + ":" + episode;
+        //Switched around showName and title. Hasn't changed argument orders to save time
+        String episodeString = showName + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + title + ":" + season + ":" + episode;
         write.createBroadcast(episodeString);
     }
 
@@ -43,10 +44,8 @@ public abstract class Account implements IAccount {
         return main.getWriter().deleteCredit(title, creditToDelete);
     }
 
-    public String deleteBroadcast(String title)  {
-        return main.getWriter().deleteBroadcast(title);
-    }
-
+    public void deleteMovie(int broadcast_id, String title) {write.deleteMovie(broadcast_id);};
+    public void deleteLiveShow(int broadcast_id, String title) {write.deleteLiveShow(broadcast_id);};
 
     public String getPassword() {
         return password;

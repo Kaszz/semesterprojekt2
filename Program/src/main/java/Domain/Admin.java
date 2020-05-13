@@ -61,10 +61,8 @@ public class Admin extends Account implements IAdmin {
         return super.deleteCredit(title, credit);
     }
 
-    public String deleteBroadcast(String title)  {
-        return super.deleteBroadcast(title);
-    }
-
+    public void deleteMovie(int broadcast_id, String title) {write.deleteMovie(broadcast_id);};
+    public void deleteLiveShow(int broadcast_id, String title) {write.deleteLiveShow(broadcast_id);};
 
     public ArrayList<String> getAllUsers() {
         ArrayList<String> returnList = read.getAllUsers();
