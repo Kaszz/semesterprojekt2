@@ -80,4 +80,8 @@ public abstract class Broadcast implements IBroadcast {
     public String toString() {
         return title;
     }
+
+    public int getBroadcastID() {
+        return broadcastID;
+    }
 }

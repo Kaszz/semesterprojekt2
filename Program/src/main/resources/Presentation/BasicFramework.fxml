@@ -38,7 +38,7 @@
             </ImageView>
          </graphic>
       </SplitMenuButton>
-      <Circle fx:id="redCircle" fill="RED" layoutX="708.0" layoutY="17.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="redCircle" fill="RED" layoutX="708.0" layoutY="17.0" radius="13.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Label fx:id="countLabel" layoutX="698.0" layoutY="8.0" text="123" textAlignment="CENTER" />
    </children>
 </AnchorPane>

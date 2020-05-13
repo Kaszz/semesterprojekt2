@@ -88,7 +88,7 @@ public class ViewerController implements Initializable {
 
         @Override
         public void run() {
-
+            /*
             File directory = new File("./src/txtfiles/broadcasts/");
             //Makes array of files in directory.
             File[] files = directory.listFiles();
@@ -148,7 +148,8 @@ public class ViewerController implements Initializable {
                     }
                 }
             }
+
+             */
         }
     }
-
 }

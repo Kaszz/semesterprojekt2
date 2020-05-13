@@ -17,36 +17,36 @@ public class User extends Account implements IUser {
 
     @Override
     public void addCredit(String title, String fName, String lName, CreditType role) {
-        Notification.addNotification(new Date(), this.userID,"Tilføjet kreditering for " + fName + " " + lName + " til " + title + " som " + role);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(),"Tilføjet kreditering for " + fName + " " + lName + " til " + title + " som " + role);
         super.addCredit(title, fName, lName, role);
     }
 
     @Override
     public void createMovie(String title, String bio, Year launchYear, int userID) {
         super.createMovie(title, bio, launchYear, userID);
-        Notification.addNotification(new Date(), this.userID, "Oprettet filmen " + title + " fra året " + launchYear);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Oprettet filmen " + title + " fra året " + launchYear);
     }
 
     @Override
     public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
         super.createLiveShow(title, bio, launchYear, location, userID);
-        Notification.addNotification(new Date(), this.userID, "Oprettet liveshowet " + title + " fra året " + launchYear + " på " + location);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Oprettet liveshowet " + title + " fra året " + launchYear + " på " + location);
     }
 
     @Override
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
         super.createEpisode(title, bio, launchYear, showName, season, episode, userID);
-        Notification.addNotification(new Date(), this.userID, "Oprettet episoden " + title + " fra tv-serien " + showName + " sæson " + season + " episode nummer " + episode);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Oprettet episoden " + title + " fra tv-serien " + showName + " sæson " + season + " episode nummer " + episode);
     }
 
     @Override
     public String deleteCredit(String title, Credit credit) {
-        Notification.addNotification(new Date(), this.userID, "Slettet kreditering for " + credit.getfName() + " " + credit.getlName() + "i  " + title);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Slettet kreditering for " + credit.getfName() + " " + credit.getlName() + "i  " + title);
         return super.deleteCredit(title, credit);
     }
 
     public String deleteBroadcast(String title)  {
-        Notification.addNotification(new Date(), this.userID, "Slettet udsendelsen " + title);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Slettet udsendelsen " + title);
         return super.deleteBroadcast(title);
     }
 

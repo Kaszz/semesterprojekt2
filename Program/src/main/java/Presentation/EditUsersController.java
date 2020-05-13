@@ -91,7 +91,7 @@ public class EditUsersController implements Initializable {
         String[] data = null;
         for (String s : users) {
             data = s.split(":");
-            details.add(new UserData(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]));
+            details.add(new UserData(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4]));
         }
 
         return details;
@@ -106,7 +106,7 @@ public class EditUsersController implements Initializable {
 
     @Override
     public void initialize (URL location, ResourceBundle resources) {
-        columnNameTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udFirstName"));
+        columnNameTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udFullName"));
         columnEmailTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udEmail"));
         columnPasswordTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udPassword"));
 

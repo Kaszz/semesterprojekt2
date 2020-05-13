@@ -13,14 +13,14 @@ public class Notification implements INotification {
     //Attributes
     private boolean seen;
     private String date;
-    private int user;
+    private String user;
     private String change;
     private static ArrayList<Notification> notifications = new ArrayList<>();
     private static IWriter write = main.getWriter();
     private static IReader read = main.getReader();
 
     //Constructors
-    public Notification(Date time, int user, String change) {
+    public Notification(Date time, String user, String change) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         this.date = DateFor.format(time);
         this.seen = false;
@@ -28,7 +28,7 @@ public class Notification implements INotification {
         this.change = change;
     }
 
-    public Notification(boolean seen, Date time, int user, String change) {
+    public Notification(boolean seen, Date time, String user, String change) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         this.seen = seen;
         this.date = DateFor.format(time);
@@ -46,7 +46,7 @@ public class Notification implements INotification {
         return date;
     }
 
-    public int getUser() {
+    public String getUser() {
         return user;
     }
 
@@ -67,7 +67,7 @@ public class Notification implements INotification {
                 e.printStackTrace();
             }
             boolean state = Boolean.parseBoolean(info[0]);
-            Notification n = new Notification(state, tempDate, Integer.parseInt(info[2]), info[3]);
+            Notification n = new Notification(state, tempDate, info[2], info[3]);
             notifications.add(n);
         }
 
@@ -77,12 +77,12 @@ public class Notification implements INotification {
         return temp;
     }
 
-    public static void addNotification(Date time, int user, String change) {
+    public static void addNotification(Date time, String user, String change) {
         Notification n = new Notification(time, user, change);
         write.addNotification(n.isSeen(), n.getDate(), n.getUser(), n.getChange());
     }
 
-    public static void unNotify(boolean seen, String date, int user, String change) {
+    public static void unNotify(boolean seen, String date, String user, String change) {
         write.unNotify(seen + ":" + date  + ":" + user + ":" + change);
     }
 

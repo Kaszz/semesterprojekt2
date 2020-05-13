@@ -19,14 +19,15 @@ public class UserData {
     StringProperty udFirstName;
     StringProperty udLastName;
     StringProperty udEnabled;
+    StringProperty udFullName;
 
-    public UserData(int udID, String udEmail, String udPassword, String udFirstName, String udLastName, String udEnabled) {
+    public UserData(int udID, String udEmail, String udPassword, String udFirstName, String udLastName) {
         this.udID = new SimpleIntegerProperty(udID);
         this.udEmail = new SimpleStringProperty(udEmail);
         this.udPassword = new SimpleStringProperty(udPassword);
         this.udFirstName = new SimpleStringProperty(udFirstName);
         this.udLastName = new SimpleStringProperty(udLastName);
-        this.udEnabled = new SimpleStringProperty(udEnabled);
+        this.udFullName =  new SimpleStringProperty(udFirstName + " " + udLastName);
     }
 
     public void setUdEmail(String udEmail) {
@@ -99,5 +100,17 @@ public class UserData {
 
     public void setUdEnabled(String udEnabled) {
         this.udEnabled.set(udEnabled);
+    }
+
+    public String getUdFullName() {
+        return udFullName.get();
+    }
+
+    public StringProperty udFullNameProperty() {
+        return udFullName;
+    }
+
+    public void setUdFullName(String udFullName) {
+        this.udFullName.set(udFullName);
     }
 }

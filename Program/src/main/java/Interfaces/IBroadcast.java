@@ -16,4 +16,5 @@ public interface IBroadcast {
     public int getUserID();
     public String toString();
     public void deleteAllCredits();
+    public int getBroadcastID();
 }

@@ -59,7 +59,7 @@ public class DomainFacade {
         return login;
     }
 
-    public void unNotify(boolean seen, String date, int user, String change) {
+    public void unNotify(boolean seen, String date, String user, String change) {
         Notification.unNotify(seen, date, user, change);
     }
 
@@ -79,7 +79,11 @@ public class DomainFacade {
         ArrayList<String> strings = read.getAllBroadcasts();
         ArrayList<IBroadcast> broadcasts = new ArrayList<>();
 
+        System.out.println("____________");
+
+
         for (String s: strings) {
+            System.out.println(s);
             String[] sSplit = s.split(":");
 
             if (sSplit.length == 5) {
@@ -87,21 +91,20 @@ public class DomainFacade {
             } else if (sSplit.length == 6) {
                 broadcasts.add(new LiveShow(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5])));
             } else {
-                broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6]), Integer.parseInt(sSplit[7])));
+                //broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6]), Integer.parseInt(sSplit[7])));
+                broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[6], Year.of(Integer.parseInt(sSplit[7])), sSplit[5], Integer.parseInt(sSplit[3]), Integer.parseInt(sSplit[2]), Integer.parseInt(sSplit[8])));
             }
         }
 
         return broadcasts; }
 
-    public ArrayList<String> getBroadcastCredits(String title) {return read.getBroadcastCredits(title);}
+    public ArrayList<String> getBroadcastCredits(int broadcastID) {return read.getBroadcastCredits(broadcastID);}
 
     public ArrayList<ICredit> getCredits(IBroadcast broadcast) {return broadcast.getCredits();}
 
     public ArrayList<String> getAllPrograms() {
         return main.admin.getAllPrograms();
     }
-
-    public String getBroadcast(String title) {return main.read.getBroadcast(title); } //TODO maybe delete me later
 
     public String deleteBroadcast(String title) {
         return login.getAccount().deleteBroadcast(title);

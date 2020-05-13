@@ -86,7 +86,7 @@ public class EditCreditsController implements Initializable {
         ArrayList<String> rawCredits;
 
         for (int i = 0; i < myBroadcasts.size(); i++) {
-            rawCredits = App.domain.getBroadcastCredits(myBroadcasts.get(i).getTitle());
+            rawCredits = App.domain.getBroadcastCredits(myBroadcasts.get(i).getBroadcastID());
             myBroadcasts.get(i).deleteAllCredits();
 
             if (!rawCredits.isEmpty()) {
