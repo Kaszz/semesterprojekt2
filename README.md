@@ -129,3 +129,9 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Opsætning af online database
 
 - Fix af problemer fra første iteration.
+
+### 12/05/2020
+
+- Tilpasning af tabeller i databasen.
+
+- Generel implementering af databasen.
