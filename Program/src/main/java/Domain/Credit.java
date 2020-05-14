@@ -18,6 +18,11 @@ public class Credit implements ICredit {
         this.role = role;
     }
 
+    public Credit(String fName, String lName) {
+        this.fName = fName;
+        this.lName = lName;
+    }
+
     public Credit(int creditID, String fName, String lName, CreditType role) {
         this.creditID = creditID;
         this.fName = fName;
@@ -38,5 +43,7 @@ public class Credit implements ICredit {
         return lName;
     }
 
-    public CreditType getRole() { return role; }
+    public CreditType getRole() {
+        return role;
+    }
 }

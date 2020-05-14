@@ -33,6 +33,11 @@ public class DomainFacade {
         return credit;
     }
 
+    public ICredit createCreditPerson(String fName, String lName) {
+        ICredit credit = new Credit(fName, lName);
+        return credit;
+    }
+
     public ICredit createCredit(int creditID, String fName, String lName, CreditType role) {
         ICredit credit = new Credit(creditID, fName, lName, role);
         return credit;
@@ -69,6 +74,9 @@ public class DomainFacade {
     public ArrayList<String> getAllUsers() {
         return main.admin.getAllUsers();
     }
+    public ArrayList<String> getAllPersons() {
+        return main.read.getAllPersons();
+    }
 
     public void deleteUser(int userID, String email, String password, String firstName, String lastName, String enabled) {
         main.admin.deleteUser(userID);
@@ -92,9 +100,13 @@ public class DomainFacade {
 
         return broadcasts; }
 
-    public ArrayList<String> getBroadcastCredits(int broadcastID) {return read.getBroadcastCredits(broadcastID);}
+    public ArrayList<String> getBroadcastCredits(int broadcastID) {
+        return read.getBroadcastCredits(broadcastID);
+    }
 
-    public ArrayList<ICredit> getCredits(IBroadcast broadcast) {return broadcast.getCredits();}
+    public ArrayList<ICredit> getCredits(IBroadcast broadcast) {
+        return broadcast.getCredits();
+    }
 
     public void addCredit(int broadcastID, String title, ICredit credit) {
         login.getAccount().addCredit(broadcastID, title, credit.getfName(), credit.getlName(), credit.getRole());

@@ -1,5 +1,6 @@
 package Data;
 
+import Interfaces.ICredit;
 import Interfaces.IReader;
 
 import java.io.File;
@@ -69,6 +70,30 @@ public class Reader implements IReader {
 
         return returnList;
     }
+
+    public ArrayList<String> getAllPersons(){
+        ArrayList<String> returnList = new ArrayList<String>();
+        String personLine = "";
+
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT person_id, credit_id, first_name, last_name FROM persons;");
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            while (queryResultSet.next()) {
+                personLine = queryResultSet.getString("person_id") + ":"
+                        + queryResultSet.getString("credit_id") + ":"
+                        + queryResultSet.getString("first_name") + ":"
+                        + queryResultSet.getString("last_name");
+                returnList.add(personLine);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return returnList;
+    }
+
 
     public ArrayList<String> getAllBroadcasts() {
         ArrayList<String> broadcasts = new ArrayList<>();

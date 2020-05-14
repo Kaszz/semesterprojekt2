@@ -412,6 +412,66 @@ public class Writer implements IWriter {
 
         return accountID;
     }
+    public int createPerson(String person) {
+        //String user = email:password:first_name:last_name
+        String[] info = person.split(":");
+
+        //Writes info to account table.
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "persons " +
+                            "(credit_id, first_name, last_name) " +
+                            "VALUES " +
+                            "(?, ?, ?, ?)"
+            );
+            insertStatement.setString(1, info[0]);      //email
+            insertStatement.setString(2, info[1]);      //password
+            insertStatement.setString(3, info[2]);      //first_name
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Gets accountID
+        int personID = 0;
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT person_id " +
+                    "FROM persons " +
+                    "WHERE credit_id = ? " +
+                    "AND first_name = ?" +
+                    "AND last_name = ?");
+            queryStatement.setString(1, info[0]);
+            queryStatement.setString(2, info[1]);
+            queryStatement.setString(3, info[2]);
+//            queryStatement.setString(4, info[3]);
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            while(queryResultSet.next())
+                personID = Integer.parseInt(queryResultSet.getString("person_id"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Writes info to users table.
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "persons " +
+                            "(person_id) " +
+                            "VALUES " +
+                            "(?)"
+            );
+            insertStatement.setInt(1, personID);      //account_id
+
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return personID;
+    }
 
     public void deleteUser(int userID) {
         //Delete from broadcasts table.

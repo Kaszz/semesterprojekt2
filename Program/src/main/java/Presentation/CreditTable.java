@@ -20,6 +20,11 @@ public class CreditTable {
         this.role = CreditType.valueOf(role);
     }
 
+    public CreditTable(String fName, String lName) {
+        this.fName = new SimpleStringProperty(fName);
+        this.lName = new SimpleStringProperty(lName);
+    }
+
     //Used to create movies
     public CreditTable(int creditID, String fName, String lName, String role) {
         this.creditID = new SimpleIntegerProperty(creditID);

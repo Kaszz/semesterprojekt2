@@ -10,6 +10,7 @@ public interface IWriter {
     public void deleteCredit(int creditID);
     public int createUser(String user);
     public void deleteUser(int userID);
+    public int createPerson(String person);
     public boolean editUser(String user);
     public void addNotification(boolean seen, String date, String user, String change);
     public void unNotify(String notification);

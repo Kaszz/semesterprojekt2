@@ -24,15 +24,31 @@ import java.util.ResourceBundle;
 public class EditCreditsController implements Initializable {
     ArrayList<IBroadcast> allBroadcasts;
     ArrayList<IBroadcast> myBroadcasts;
+    ArrayList<ICredit> allPersons;
 
     @FXML
     private Button deleteCreditButton;
 
     @FXML
-    private Button editCreditButton;
+    private ComboBox personCombo;
 
     @FXML
-    private Button createCreditButton;
+    private Label firstNameLabel;
+
+    @FXML
+    private Label lastNameLabel;
+
+    @FXML
+    private Button connectBroadcastToCreditButtonconnectBroadcastToCreditButton;
+
+    @FXML
+    private Button deleteBroadcastToCreditConnectionButton;
+
+    //@FXML
+    //private Button editCreditButton;
+
+    //@FXML
+    //private Button createCreditButton;
 
     @FXML
     private TextField firstName;
@@ -44,28 +60,44 @@ public class EditCreditsController implements Initializable {
     private ComboBox creationCombo;
 
     @FXML
+    private Label changeUserTitleLabel;
+
+    @FXML
     private ComboBox<CreditType> creditCombo;
 
     @FXML
     private TableView<CreditTable> creditsTable;
 
     @FXML
-    private TableColumn<CreditTable, String> columnFirstName;
+    private TableColumn<CreditTable, String> columnCreditTypes;
 
     @FXML
-    private TableColumn<CreditTable, String> columnLastName;
+    private TableColumn<CreditTable, String> columnFullName;
+
+    //@FXML
+    //private TableColumn<CreditTable, String> columnFirstName;
+
+    //@FXML
+    //private TableColumn<CreditTable, String> columnLastName;
+
+    //@FXML
+    //private TableColumn<CreditTable, String> columnRole;
 
     @FXML
-    private TableColumn<CreditTable, String> columnRole;
+    private Hyperlink opretPersonHyperlink;
 
     @FXML
+    private Button saveCreditButton;
+
+
+    /*@FXML
     void createCreditButtonClicked(ActionEvent event) {
         ICredit credit = App.domain.createCredit(firstName.getText(), lastName.getText(), creditCombo.getSelectionModel().getSelectedItem());
         IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
 
         App.domain.addCredit(broadcast.getBroadcastID(), broadcast.getTitle(), credit);
         updateCredits();
-    }
+    }*/
 
     @FXML
     void deleteCreditButtonClicked(ActionEvent event) {
@@ -120,9 +152,13 @@ public class EditCreditsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<IBroadcast> creations;
+        ObservableList<ICredit> personCreations;
 
         myBroadcasts = new ArrayList<>();
+        allPersons = new ArrayList<>();
         allBroadcasts = App.domain.getAllBroadcasts();
+
+        allPersons = App.domain.getAllPersons();
 
         for (IBroadcast b : allBroadcasts) {
             if (b.getUserID() != App.loginClient.getAccount().getUserID() && !App.loginClient.isAdmin())
@@ -131,20 +167,66 @@ public class EditCreditsController implements Initializable {
         }
 
         creations = FXCollections.observableArrayList();
+        personCreations = FXCollections.observableArrayList();
 
-        columnFirstName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("fName"));
-        columnLastName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("lName"));
-        columnRole.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("role"));
+        columnFullName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("fName" + "lName"));
+        //columnLastName.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("lName"));
+        columnCreditTypes.setCellValueFactory(new PropertyValueFactory<CreditTable, String>("role"));
 
         creations.setAll(myBroadcasts);
         creationCombo.setItems(creations);
         creditCombo.getItems().setAll(CreditType.values());
 
+
+        personCreations.setAll(allPersons);
+        personCombo.setItems(personCreations);
+        personCombo.getItems().setAll(CreditType.values());
+
         if (!myBroadcasts.isEmpty()) {
             creationCombo.getSelectionModel().select(0);
             updateCredits();
         }
+
     }
+
+    @FXML
+    void connectBroadcastToCreditButtonClicked(ActionEvent event) {
+        ICredit credit = App.domain.createCredit(firstName.getText(), lastName.getText(), creditCombo.getSelectionModel().getSelectedItem());
+        IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
+
+        App.domain.addCredit(broadcast.getBroadcastID(), broadcast.getTitle(), credit);
+        updateCredits();
+    }
+
+    @FXML
+    void deleteBroadcastToCreditConnectionButtonClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionOpretPersonHyperLink(ActionEvent event) {
+        changeUserTitleLabel.setVisible(true);
+        firstNameLabel.setVisible(true);
+        lastNameLabel.setVisible(true);
+        firstName.setVisible(true);
+        lastName.setVisible(true);
+        saveCreditButton.setVisible(true);
+        deleteCreditButton.setVisible(true);
+
+    }
+
+    @FXML
+    void deleteCreditPersonButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveCreditButtonOnAction(ActionEvent event) {
+        ICredit credit = App.domain.createCreditPerson(firstName.getText(), lastName.getText());
+        updateCredits();
+
+    }
+
 }
 
 
