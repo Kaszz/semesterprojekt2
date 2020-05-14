@@ -9,14 +9,19 @@
     <children>
         <ImageView fx:id="spin1" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
         </ImageView>
-      <Label fx:id="titleLabel" layoutX="48.0" layoutY="51.0" prefHeight="45.0" prefWidth="505.0" text="Medvirkende" textFill="WHITE">
+      <Label fx:id="titleLabel" layoutX="47.0" layoutY="51.0" prefHeight="45.0" prefWidth="504.0" text="Titel" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="textOverlay" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="96.0" prefHeight="259.0" prefWidth="505.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label fx:id="textName" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="96.0" prefHeight="259.0" prefWidth="314.0" text="Label" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
+      <Label fx:id="textRole" alignment="CENTER" contentDisplay="CENTER" layoutX="361.0" layoutY="96.0" prefHeight="259.0" prefWidth="190.0" text="Label" textAlignment="RIGHT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

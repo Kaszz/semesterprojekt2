@@ -96,10 +96,6 @@ public class DomainFacade {
 
     public ArrayList<ICredit> getCredits(IBroadcast broadcast) {return broadcast.getCredits();}
 
-    public ArrayList<String> getAllPrograms() {
-        return main.admin.getAllPrograms();
-    }
-
     public void addCredit(int broadcastID, String title, ICredit credit) {
         login.getAccount().addCredit(broadcastID, title, credit.getfName(), credit.getlName(), credit.getRole());
     }

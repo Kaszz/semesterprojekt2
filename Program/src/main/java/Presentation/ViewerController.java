@@ -1,6 +1,11 @@
 package Presentation;
 
 import Data.Reader;
+import Domain.Episode;
+import Domain.LiveShow;
+import Domain.Movie;
+import Domain.main;
+import Interfaces.IBroadcast;
 import Interfaces.IReader;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -17,6 +22,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Year;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -37,7 +44,10 @@ public class ViewerController implements Initializable {
     private ImageView spin1;
 
     @FXML
-    private Label textOverlay;
+    private Label textName;
+
+    @FXML
+    private Label textRole;
 
     @FXML
     private Label titleLabel;
@@ -53,7 +63,8 @@ public class ViewerController implements Initializable {
         String pre = "slide";
         String post = ".png";
 
-        textOverlay.setStyle("-fx-opacity 1; -fx-background-color: rgb(0, 0, 0, 0.5);");
+        textName.setStyle("-fx-opacity 1; -fx-background-color: rgb(0, 0, 0, 0.5);");
+        textRole.setStyle("-fx-opacity 1; -fx-background-color: rgb(0, 0, 0, 0.5);");
         titleLabel.setStyle("-fx-opacity 1; -fx-background-color: rgb(0, 0, 0, 0.5);");
 
         for (int i = 0; i < images.length; i++) {
@@ -63,9 +74,6 @@ public class ViewerController implements Initializable {
         t1 = new Thread(b1);
         t1.setDaemon(true);
         t1.start();
-
-
-
     }
 
 
@@ -85,15 +93,9 @@ public class ViewerController implements Initializable {
         }
 
 
-
         @Override
         public void run() {
-            /*
-            File directory = new File("./src/txtfiles/broadcasts/");
-            //Makes array of files in directory.
-            File[] files = directory.listFiles();
-
-
+            ArrayList<String> broadcasts = read.getAllBroadcasts();
             running = true;
             System.out.println("Thread started: " + Thread.currentThread());
 
@@ -102,45 +104,40 @@ public class ViewerController implements Initializable {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        Scanner scan = null;
-
                         iw.setImage(images[i]);
+                        String[] splitString = broadcasts.get(j).split(":");
 
-                        try {
-                            scan = new Scanner(files[j]);
-                            String firstLine = "";
+                        titleLabel.setText(splitString[1] + " - " + splitString[3]);
 
-                            firstLine = scan.nextLine();
-                            String[] splitString = firstLine.split(":");
+                        ArrayList<String> credits = read.getBroadcastCredits(Integer.parseInt(splitString[0]));
 
-                            titleLabel.setText(splitString[0] + " - " + splitString[2]);
 
-                            if (read.getBroadcastCredits(splitString[0]).size() == 0)
-                                textOverlay.setText("Der er ingen kreditering for denne udsendelse.");
-                            else {
-                                StringBuilder string = new StringBuilder();
-                                for (int j = 0; j < read.getBroadcastCredits(splitString[0]).size(); j++) {
-                                    String creditLine = read.getBroadcastCredits(splitString[0]).get(j);
-                                    String[] creditSplit = creditLine.split(":");
-                                    string.append(creditSplit[0] + " " + creditSplit[1] + "                        " + creditSplit[2] + "\r\n");
-
-                                    String singleString = string.toString();
-                                    textOverlay.setText(singleString);
-                                }
+                        if (credits.isEmpty()) {
+                            textName.setText("Der er ingen kreditering for denne udsendelse.");
+                            textRole.setText("");
+                        }
+                        else {
+                            StringBuilder nameString = new StringBuilder();
+                            StringBuilder roleString = new StringBuilder();
+                            for (String s : credits) {
+                                String[] creditSplit = s.split(":");
+                                nameString.append(creditSplit[1] + " " + creditSplit[2] + "\r\n");
+                                roleString.append(creditSplit[3] + "\r\n");
+                                String tempName = nameString.toString();
+                                String tempRole = roleString.toString();
+                                textName.setText(tempName);
+                                textRole.setText(tempRole);
                             }
-
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
                         }
 
+
                         i = (i + 1) % images.length;
-                        j = (j + 1) % files.length;
+                        j = (j + 1) % broadcasts.size();
 
                     }
                 });
                 synchronized (this) {
                     try {
-                        //Thread.sleep(sleepTime);
                         wait(sleepTime);
                     } catch (InterruptedException ex) {
                         System.out.println("Interrupted: " + Thread.currentThread());
@@ -149,7 +146,7 @@ public class ViewerController implements Initializable {
                 }
             }
 
-             */
+
         }
     }
 }

@@ -69,8 +69,4 @@ public class Admin extends Account implements IAdmin {
         return returnList;
     }
 
-    public ArrayList<String> getAllPrograms() {
-        ArrayList<String> returnList = read.getAllUsers();
-        return returnList;
-    }
 }
