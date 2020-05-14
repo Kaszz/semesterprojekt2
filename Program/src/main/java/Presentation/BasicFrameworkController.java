@@ -123,13 +123,14 @@ public class BasicFrameworkController implements Initializable  {
 
 
 
+
     public void updateNotificationFlag() {
+
         if (status) {
             threadNotificationUpdate = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     while (true) {
-
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
@@ -147,7 +148,7 @@ public class BasicFrameworkController implements Initializable  {
                         });
 
                         try {
-                            Thread.sleep(200);
+                            Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -172,9 +173,9 @@ public class BasicFrameworkController implements Initializable  {
             notificationButton.setVisible(false);
             nameLoggedInLabel.setText(App.loginClient.getAccount().getFirstName() + " " + App.loginClient.getAccount().getLastName());
         }
-        else
+        else {
             nameLoggedInLabel.setText("Admin");
-
-        updateNotificationFlag();
+            updateNotificationFlag();
+        }
     }
 }

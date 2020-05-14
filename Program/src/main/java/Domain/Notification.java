@@ -57,7 +57,6 @@ public class Notification implements INotification {
     public static synchronized ArrayList<INotification> getNotifications() {
         notifications.clear();
         ArrayList<String> tempList = read.getNotifications();
-
         for (String s: tempList) {
             String[] info = s.split(":");
             Date tempDate = new Date();
