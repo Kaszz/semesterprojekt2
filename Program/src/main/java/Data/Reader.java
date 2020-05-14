@@ -24,16 +24,17 @@ public class Reader implements IReader {
         String creditLine = "";
 
         try {
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT first_name, last_name, credit_type\n" +
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT credit_id, first_name, last_name, credit_type\n" +
                     "FROM credits\n" +
-                    "         INNER JOIN broadcasts_credits bc on credits.credit_id = bc.credit_id\n" +
-                    "         INNER JOIN broadcasts b on bc.broadcast_id = b.broadcast_id\n" +
-                    "WHERE b.broadcast_id = ?;");
+                    "INNER JOIN broadcasts_credits USING(credit_id)\n" +
+                    "INNER JOIN broadcasts USING(broadcast_id)\n" +
+                    "WHERE broadcast_id = ?;");
             queryStatement.setInt(1, broadcastID);
             ResultSet queryResultSet = queryStatement.executeQuery();
 
             while (queryResultSet.next()) {
-                creditLine = queryResultSet.getString("first_name") + ":"
+                creditLine = queryResultSet.getString("credit_id") + ":"
+                           + queryResultSet.getString("first_name") + ":"
                            + queryResultSet.getString("last_name") + ":"
                            + queryResultSet.getString("credit_type");
                 returnList.add(creditLine);

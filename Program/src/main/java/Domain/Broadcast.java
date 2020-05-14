@@ -36,8 +36,8 @@ public abstract class Broadcast implements IBroadcast {
     }
 
     //Method
-    public void addCredit(String title, String fName, String lName, CreditType role) {
-        Credit tempCredit = new Credit(fName, lName, role);
+    public void addCredit(int creditID, String title, String fName, String lName, CreditType role) {
+        Credit tempCredit = new Credit(creditID, fName, lName, role);
         credits.add(tempCredit);
     }
 

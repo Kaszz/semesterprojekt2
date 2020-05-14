@@ -34,14 +34,12 @@ public abstract class Account implements IAccount {
     }
 
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
-        //Switched around showName and title. Hasn't changed argument orders to save time
         String episodeString = showName + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + title + ":" + season + ":" + episode;
         write.createBroadcast(episodeString);
     }
 
-    public String deleteCredit(String title, Credit credit) {
-        String creditToDelete = credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole();
-        return main.getWriter().deleteCredit(title, creditToDelete);
+    public void deleteCredit(int creditID, Credit credit) {
+        main.getWriter().deleteCredit(creditID);
     }
 
     public void deleteBroadcast(int broadcast_id, String title) {

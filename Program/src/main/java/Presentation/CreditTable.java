@@ -2,13 +2,16 @@ package Presentation;
 
 import Domain.Credit;
 import Domain.CreditType;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
 public class CreditTable {
-    private StringProperty fName;
-    private StringProperty lName;
+    private SimpleIntegerProperty creditID;
+    private SimpleStringProperty fName;
+    private SimpleStringProperty lName;
     private CreditType role;
 
     public CreditTable(String fName, String lName, String role) {
@@ -17,11 +20,31 @@ public class CreditTable {
         this.role = CreditType.valueOf(role);
     }
 
+    //Used to create movies
+    public CreditTable(int creditID, String fName, String lName, String role) {
+        this.creditID = new SimpleIntegerProperty(creditID);
+        this.fName = new SimpleStringProperty(fName);
+        this.lName = new SimpleStringProperty(lName);
+        this.role = CreditType.valueOf(role);
+    }
+
+    public int getCreditID() {
+        return creditID.get();
+    }
+
+    public SimpleIntegerProperty creditIDProperty() {
+        return creditID;
+    }
+
+    public void setCreditID(int creditID) {
+        this.creditID.set(creditID);
+    }
+
     public String getfName() {
         return fName.get();
     }
 
-    public StringProperty fNameProperty() {
+    public SimpleStringProperty fNameProperty() {
         return fName;
     }
 
@@ -33,7 +56,7 @@ public class CreditTable {
         return lName.get();
     }
 
-    public StringProperty lNameProperty() {
+    public SimpleStringProperty lNameProperty() {
         return lName;
     }
 
@@ -45,7 +68,7 @@ public class CreditTable {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = CreditType.valueOf(role);
+    public void setRole(CreditType role) {
+        this.role = role;
     }
 }

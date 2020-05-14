@@ -40,9 +40,9 @@ public class User extends Account implements IUser {
     }
 
     @Override
-    public String deleteCredit(String title, Credit credit) {
+    public void deleteCredit(Credit credit, String title) {
         Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Slettet kreditering for " + credit.getfName() + " " + credit.getlName() + "i  " + title);
-        return super.deleteCredit(title, credit);
+        super.deleteCredit(credit.getCreditID(), credit);
     }
 
     public void deleteBroadcast(int broadcast_id, String title) {

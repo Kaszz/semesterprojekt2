@@ -73,8 +73,8 @@ public class EditCreditsController implements Initializable {
             CreditTable creditTable = creditsTable.getSelectionModel().getSelectedItem();
             IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
 
-            ICredit credit = App.domain.createCredit(creditTable.getfName(), creditTable.getlName(), creditTable.getRole());
-            App.domain.deleteCredit(broadcast.getTitle(), credit);
+            ICredit credit = App.domain.createCredit(creditTable.getCreditID(), creditTable.getfName(), creditTable.getlName(), creditTable.getRole());
+            App.domain.deleteCredit(credit, broadcast.getTitle());
             updateCredits();
         }
     }
@@ -82,24 +82,26 @@ public class EditCreditsController implements Initializable {
     public void updateCredits() {
         //Saves the chosen elements index from the ComboBox (drop down menu)
         int index = creditsTable.getSelectionModel().getSelectedIndex();
-
         ArrayList<String> rawCredits;
 
-        //slow code start
+        IBroadcast selectedBroadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
+        rawCredits = App.domain.getBroadcastCredits(selectedBroadcast.getBroadcastID());
+
+        //Clears credits
         for (int i = 0; i < myBroadcasts.size(); i++) {
-
-            System.out.println(i);
-            rawCredits = App.domain.getBroadcastCredits(myBroadcasts.get(i).getBroadcastID());
             myBroadcasts.get(i).deleteAllCredits();
+        }
 
-            if (!rawCredits.isEmpty()) {
-                for (int j = 0; j < rawCredits.size(); j++) {
-                    String[] creditSplit = rawCredits.get(j).split(":");
-                    myBroadcasts.get(i).addCredit(myBroadcasts.get(i).getTitle(), creditSplit[0], creditSplit[1], CreditType.valueOf(creditSplit[2]));
+        //Adds credit to selected broadcast.
+        for (int j = 0; j < rawCredits.size(); j++) {
+            String[] creditSplit = rawCredits.get(j).split(":");
+            for (int i = 0; i < myBroadcasts.size(); i++) {
+                if (myBroadcasts.get(i) == selectedBroadcast) {
+                    myBroadcasts.get(i).addCredit(Integer.parseInt(creditSplit[0]), myBroadcasts.get(i).getTitle(), creditSplit[1], creditSplit[2], CreditType.valueOf(creditSplit[3]));
                 }
             }
         }
-        //slow code end
+
         creditsTable.setItems(getCredits());
         creditsTable.getSelectionModel().select(index);
     }
@@ -110,7 +112,7 @@ public class EditCreditsController implements Initializable {
         ArrayList<ICredit> credits = App.domain.getCredits(broadcast);
 
         for (int i = 0; i < credits.size() ; i++) {
-            creditList.add(new CreditTable(credits.get(i).getfName(), credits.get(i).getlName(), credits.get(i).getRole().name()));
+            creditList.add(new CreditTable(credits.get(i).getCreditID() ,credits.get(i).getfName(), credits.get(i).getlName(), credits.get(i).getRole().name()));
         }
         return creditList;
     }
@@ -127,8 +129,6 @@ public class EditCreditsController implements Initializable {
                 continue;
             myBroadcasts.add(b);
         }
-
-
 
         creations = FXCollections.observableArrayList();
 

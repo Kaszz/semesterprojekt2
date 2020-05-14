@@ -57,8 +57,8 @@ public class Admin extends Account implements IAdmin {
     }
 
     @Override
-    public String deleteCredit(String title, Credit credit) {
-        return super.deleteCredit(title, credit);
+    public void deleteCredit(Credit credit, String title) {
+        super.deleteCredit(credit.getCreditID(), credit);
     }
 
     public void deleteBroadcast(int broadcast_id, String title) {write.deleteBroadcast(broadcast_id);};

@@ -340,48 +340,15 @@ public class Writer implements IWriter {
     }
 
     @Override //TODO - Waiting for creditID and broadcastID to be "gettable" from the objects ie. reader must be implemented first.
-    public String deleteCredit(String title, String credit) {
-
-        File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
-        String tempString = "";
-        String returnString = null;
-
-        /*
-        //Checks if file exists.
-        if (file.exists()) {
-            try {
-                //Opens scanner.
-                Scanner scan = new Scanner(file);
-
-                //Iterates through file line for line.
-                while(scan.hasNextLine()) {
-                    String line = scan.nextLine();
-                    //Saves the correct credits into tempString.
-                    if (!line.equals(credit)) {
-                        tempString += line + "\r\n";
-                    }
-
-                }
-                scan.close();
-
-                //Overwrites the file.
-                if (write2file(title, tempString,"broadcasts" ,false))
-                    returnString = "The credit was succesfully removed.";
-                else
-                    returnString = "Could not delete the credit.";
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                returnString = "The broadcast was not found in the database.";
-                return returnString;
-            }
+    public void deleteCredit(int creditID) {
+        System.out.println("Deleting credit: " + creditID);
+        try {
+            PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM credits WHERE credit_id = ?;");
+            queryBroadcast.setInt(1, creditID);
+            queryBroadcast.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        else
-            returnString = "The broadcast was not found in the database.";
-
-
-         */
-        return returnString;
     }
 
     public int createUser(String user) {
