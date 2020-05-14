@@ -70,7 +70,7 @@
       </VBox>
       <Label layoutX="368.0" layoutY="23.0" text="Administrér programmer" AnchorPane.leftAnchor="368.0">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
       <TreeTableView fx:id="programTreeTableView" layoutX="410.0" layoutY="78.0" onMouseClicked="#selectProgram" prefHeight="485.0" prefWidth="455.0">

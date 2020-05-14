@@ -26,7 +26,6 @@ public class Admin extends Account implements IAdmin {
         return user;
     }
 
-    //TODO implement UUID i stedet for String i userID
     public void deleteUser(int userID) {
         write.deleteUser(userID);
     }

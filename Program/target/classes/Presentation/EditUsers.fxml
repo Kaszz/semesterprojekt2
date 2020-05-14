@@ -74,7 +74,7 @@
       <Button fx:id="createUserButton" layoutX="297.0" layoutY="322.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Gem" />
       <Label layoutX="384.0" layoutY="14.0" text="Administrér brugere">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
    </children>

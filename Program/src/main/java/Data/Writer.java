@@ -339,7 +339,6 @@ public class Writer implements IWriter {
 
     }
 
-    @Override //TODO - Waiting for creditID and broadcastID to be "gettable" from the objects ie. reader must be implemented first.
     public void deleteCredit(int creditID) {
         System.out.println("Deleting credit: " + creditID);
         try {
@@ -538,33 +537,7 @@ public class Writer implements IWriter {
 
     @Override
     public void unNotify(String notification) {
-        File file = new File("./src/txtfiles/notifications/notifications.txt");
-        Scanner scan;
-        String fullFile = "";
-        /*
-        //If the file exists code is run, if not the method exits returning a false
-        try {
-            scan = new Scanner(file);
-            scan.nextLine();
-            //Looks through the textfile until it finds a line with the same notification
-            while(scan.hasNextLine()) {
-                String line = scan.nextLine();
 
-                if (line.equals(notification)) {
-                    String newLine =  "true:" + line.substring(line.indexOf(":") + 1);
-                    fullFile += "\r\n"+ newLine;
-                } else {
-                    fullFile += "\r\n" + line;
-                }
-            }
-
-            scan.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        write2file("notifications", fullFile, "notifications", false);
-        */
     }
 
 

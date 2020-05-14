@@ -49,11 +49,6 @@ public abstract class Broadcast implements IBroadcast {
         credits.add(credit);
     }
 
-    //TODO - This method should search the database for the title, return a string so that we can make a Broadcast object with it.
-    /*public Broadcast getBroadcast(String title) {}
-
-     */
-
     public String getTitle() {
         return title;
     }

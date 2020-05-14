@@ -120,7 +120,7 @@ public class EditProgramsController implements Initializable {
     }
 
     @FXML
-    void deleteButtonOnAction(ActionEvent event) { //TODO : change to use ID instead of title
+    void deleteButtonOnAction(ActionEvent event) {
         //Amount of children on the selected row.
         int childAmount = programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size();
         //If the selected row is a whole series or season.
