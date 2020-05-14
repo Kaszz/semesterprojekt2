@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ViewerController">
+    <children>
+        <ImageView fx:id="spin1" fitHeight="339.0" fitWidth="700.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+        </ImageView>
+      <Label fx:id="textOverlay2" layoutX="112.0" layoutY="60.0" prefHeight="45.0" prefWidth="414.0" text="Medvirkende" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="textOverlay" layoutX="92.0" layoutY="96.0" prefHeight="96.0" prefWidth="414.0" text="Label" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+    </children>
+</AnchorPane>

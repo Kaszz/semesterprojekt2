@@ -11,24 +11,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditCreditsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditCreditsController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <VBox layoutX="40.0" layoutY="100.0" prefHeight="153.0" prefWidth="100.0">
+      <VBox layoutX="40.0" layoutY="121.0" prefHeight="116.0" prefWidth="100.0">
          <children>
             <Label prefHeight="34.0" text="Værk" />
-            <Label prefHeight="34.0" text="Fornavn" />
-            <Label prefHeight="34.0" text="Efternavn" />
-            <Label prefHeight="34.0" text="Kreditering" />
+            <Label prefHeight="34.0" text="Krediteringstype" />
+            <Label prefHeight="34.0" text="Person" />
          </children>
       </VBox>
-      <VBox layoutX="168.0" layoutY="100.0" prefHeight="153.0" prefWidth="153.0">
+      <VBox layoutX="168.0" layoutY="122.0" prefHeight="98.0" prefWidth="153.0">
          <children>
             <ComboBox fx:id="creationCombo" onAction="#updateCredits" prefHeight="15.0" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>
             </ComboBox>
+            <ComboBox fx:id="creditCombo" prefHeight="15.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="6.0" />
+               </VBox.margin>
+            </ComboBox>
+            <ComboBox fx:id="personCombo" prefHeight="15.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="6.0" />
+               </VBox.margin>
+            </ComboBox>
+         </children>
+      </VBox>
+      <Button fx:id="deleteBroadcastToCreditConnectionButton" layoutX="221.0" layoutY="232.0" mnemonicParsing="false" onAction="#deleteBroadcastToCreditConnectionButtonClicked" text="Slet" />
+      <Button fx:id="connectBroadcastToCreditButtonconnectBroadcastToCreditButton" layoutX="272.0" layoutY="232.0" mnemonicParsing="false" onAction="#connectBroadcastToCreditButtonClicked" text="Gem" />
+      <Label layoutX="368.0" layoutY="20.0" text="Administrér krediteringer" AnchorPane.leftAnchor="368.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="creditsTable" layoutX="383.0" layoutY="77.0" prefHeight="492.0" prefWidth="491.0">
+        <columns>
+          <TableColumn fx:id="columnFullName" minWidth="0.0" prefWidth="128.0" text="Navn" />
+            <TableColumn fx:id="columnCreditTypes" prefWidth="169.33331298828125" text="Krediteringstype" />
+            <TableColumn fx:id="columnBroadcastTitles" prefWidth="192.66668701171875" text="Værker" />
+        </columns>
+      </TableView>
+      <Label layoutX="40.0" layoutY="89.0" text="Forbind krediteringsberretigede personer til værker">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <VBox layoutX="40.0" layoutY="361.0" prefHeight="80.0" prefWidth="100.0">
+         <children>
+            <Label prefHeight="34.0" text="Fornavn" />
+            <Label prefHeight="34.0" text="Efternavn" />
+         </children>
+      </VBox>
+      <VBox layoutX="171.0" layoutY="360.0" prefHeight="88.0" prefWidth="150.0">
+         <children>
             <TextField fx:id="firstName" prefHeight="15.0">
                <VBox.margin>
                   <Insets top="6.0" />
@@ -39,26 +77,14 @@
                   <Insets top="6.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox fx:id="creditCombo" prefHeight="15.0" prefWidth="150.0">
-               <VBox.margin>
-                  <Insets top="6.0" />
-               </VBox.margin>
-            </ComboBox>
          </children>
       </VBox>
-      <Button fx:id="deleteCreditButton" layoutX="225.0" layoutY="303.0" mnemonicParsing="false" onAction="#deleteCreditButtonClicked" text="Slet" />
-      <Button fx:id="createCreditButton" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#createCreditButtonClicked" text="Gem" />
-      <Label layoutX="368.0" layoutY="20.0" text="Administrér krediteringer" AnchorPane.leftAnchor="368.0">
+      <Label layoutX="40.0" layoutY="324.0" text="Administrér krediteringsberretigede personer">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="creditsTable" layoutX="406.0" layoutY="77.0" prefHeight="505.0" prefWidth="491.0">
-        <columns>
-          <TableColumn fx:id="columnFirstName" prefWidth="136.0" text="Fornavn" />
-          <TableColumn fx:id="columnLastName" prefWidth="144.0" text="Efternavn" />
-            <TableColumn fx:id="columnRole" prefWidth="210.0" text="Rolle" />
-        </columns>
-      </TableView>
+      <Button fx:id="saveCreditButton" layoutX="277.0" layoutY="438.0" mnemonicParsing="false" text="Gem" />
+      <Button fx:id="deleteCreditButton" layoutX="226.0" layoutY="438.0" mnemonicParsing="false" text="Slet" />
    </children>
 </AnchorPane>
