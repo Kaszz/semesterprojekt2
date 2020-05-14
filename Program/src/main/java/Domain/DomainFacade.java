@@ -81,7 +81,6 @@ public class DomainFacade {
             } else if (sSplit.length == 6) {
                 broadcasts.add(new LiveShow(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5])));
             } else {
-                //broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6]), Integer.parseInt(sSplit[7])));
                 broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[6], Year.of(Integer.parseInt(sSplit[7])), sSplit[5], Integer.parseInt(sSplit[3]), Integer.parseInt(sSplit[2]), Integer.parseInt(sSplit[8])));
             }
         }
@@ -104,11 +103,11 @@ public class DomainFacade {
         return login.getAccount().deleteCredit(title, (Credit) credit);
     }
 
-    public void deleteMovie(int broadcast_id, String title) {
-        login.getAccount().deleteMovie(broadcast_id, title);};
+    public void deleteBroadcast(int broadcast_id, String title) {
+        login.getAccount().deleteBroadcast(broadcast_id, title);};
 
-    public void deleteLiveShow(int broadcast_id, String title) {
-        login.getAccount().deleteLiveShow(broadcast_id, title);};
+    public void deleteEpisode(int episode_id, String title) {
+        login.getAccount().deleteEpisode(episode_id, title);};
 
     public boolean isAdmin() {
         return login.isAdmin();

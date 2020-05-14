@@ -45,14 +45,14 @@ public class User extends Account implements IUser {
         return super.deleteCredit(title, credit);
     }
 
-    public void deleteMovie(int broadcast_id, String title) {
+    public void deleteBroadcast(int broadcast_id, String title) {
         Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Slettet udsendelsen " + title);
-        super.deleteMovie(broadcast_id, title);
+        super.deleteBroadcast(broadcast_id, title);
     }
 
-    public void deleteLiveShow(int broadcast_id, String title) {
+    public void deleteEpisode(int episode_id, String title) {
         Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Slettet udsendelsen " + title);
-        super.deleteLiveShow(broadcast_id, title);
+        super.deleteEpisode(episode_id, title);
     }
 
     public boolean getEnabled() {

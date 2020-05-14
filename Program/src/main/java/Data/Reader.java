@@ -84,7 +84,6 @@ public class Reader implements IReader {
                 "    INNER JOIN seasons ON episodes.season_id = seasons.season_id\n" +
                 "    INNER JOIN series ON series.broadcast_id = seasons.broadcast_id\n" +
                 "    INNER JOIN broadcasts ON series.broadcast_id = broadcasts.broadcast_id;"));
-
         return broadcasts;
     }
 
@@ -106,7 +105,6 @@ public class Reader implements IReader {
                 }
                 arrayList.add(string);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -114,12 +112,6 @@ public class Reader implements IReader {
         return arrayList;
     }
 
-    /**
-     * Method that checks if a user exists in the database.
-     * @param emailAddress is the username of the user.
-     * @param password is the password of the user.
-     * @return a boolean statement depending on existance of user with correct params in database.
-     */
     @Override
     public String checkUser(String emailAddress, String password) {
         String returnString = "";

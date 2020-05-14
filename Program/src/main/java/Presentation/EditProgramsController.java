@@ -131,10 +131,13 @@ public class EditProgramsController implements Initializable {
         else {
             ProgramsData selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
 
-            //App.domain.deleteLiveShow(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+            if (!selectedBroadcast.isEpisode()) {
+                App.domain.deleteBroadcast(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+            }
+            else {
+                App.domain.deleteEpisode(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+            }
 
-            //root.getChildren().remove(programTreeTableView.getSelectionModel().getSelectedIndex());
-            //System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
             update();
         }
     }

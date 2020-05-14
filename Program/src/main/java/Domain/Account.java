@@ -44,8 +44,13 @@ public abstract class Account implements IAccount {
         return main.getWriter().deleteCredit(title, creditToDelete);
     }
 
-    public void deleteMovie(int broadcast_id, String title) {write.deleteMovie(broadcast_id);};
-    public void deleteLiveShow(int broadcast_id, String title) {write.deleteLiveShow(broadcast_id);};
+    public void deleteBroadcast(int broadcast_id, String title) {
+        write.deleteBroadcast(broadcast_id);
+    };
+
+    public void deleteEpisode(int episode_id, String title) {
+        write.deleteEpisode(episode_id);
+    };
 
     public String getPassword() {
         return password;

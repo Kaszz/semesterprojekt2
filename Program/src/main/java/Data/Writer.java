@@ -284,55 +284,25 @@ public class Writer implements IWriter {
 
     //TODO - Remove deleteBroadcast???, episodes need implementation
     public void deleteBroadcast(int broadcast_id) {
-        System.out.println("Trying to delete broadcast: " + broadcast_id);
-        try {
-            PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM broadcasts_credits WHERE broadcast_id = ?");
-            queryBroadcast.setInt(1, broadcast_id);
-
-            queryBroadcast.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        System.out.println("Deleting broadcast: " + broadcast_id);
         try {
             PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM broadcasts WHERE broadcast_id = ?");
             queryBroadcast.setInt(1, broadcast_id);
-
             queryBroadcast.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteMovie(int broadcast_id) {
-        System.out.println("Trying to delete movie");
-        try {
-            PreparedStatement queryMovies = connection.prepareStatement("DELETE FROM movies WHERE broadcast_id = ?");
-            queryMovies.setInt(1, broadcast_id);
-
-            queryMovies.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        deleteBroadcast(broadcast_id);
-    }
-
-    public void deleteLiveShow(int broadcast_id) {
-        try {
-            PreparedStatement queryLiveShows = connection.prepareStatement("DELETE FROM liveshow WHERE broadcast_id = ?");
-            queryLiveShows.setInt(1, broadcast_id);
-
-            queryLiveShows.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        deleteBroadcast(broadcast_id);
-    }
-
     public void deleteEpisode(int episode_id) {
-
+        System.out.println("Deleting episode: " + episode_id);
+        try {
+            PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM episodes WHERE episode_id = ?");
+            queryBroadcast.setInt(1, episode_id);
+            queryBroadcast.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override //TODO needs to add credit to broadcasts_credits (waiting for ID to be readable from database and get it through the broadcast object.
