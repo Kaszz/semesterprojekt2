@@ -18,9 +18,9 @@ public abstract class Account implements IAccount {
         this.lastName = lastName;
     }
 
-    public void addCredit(String title, String fName, String lName, CreditType role) {
+    public void addCredit(int broadcastID, String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.name();
-        write.addCredit(title, credit);
+        write.addCredit(broadcastID, credit);
     }
 
     public void createMovie(String title, String bio, Year launchYear, int userID) {

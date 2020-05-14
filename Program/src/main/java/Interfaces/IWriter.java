@@ -6,7 +6,7 @@ public interface IWriter {
     public boolean createBroadcast(String broadcast);
     public void deleteBroadcast(int broadcast_id);
     public void deleteEpisode(int episode_id);
-    public void addCredit(String title, String credit);
+    public void addCredit(int broadcastID, String credit);
     public String deleteCredit(String title, String credit);
     public int createUser(String user);
     public void deleteUser(int userID);

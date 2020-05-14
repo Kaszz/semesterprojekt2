@@ -23,29 +23,6 @@ public class Writer implements IWriter {
     String userFile = "users";
     Connection connection = ConnectionDB.getConnection();
 
-    private boolean write2file(String fileName, String text, String directory, boolean append) {
-        //Created file object with correct name.
-        File file = new File("./src/txtfiles/" + directory + "/" + fileName + ".txt");
-        //Checks if the file already exists.
-        if (file.exists()) {
-            //Creates FileWriter
-            FileWriter writer = null;
-            try {
-                //Setup FileWriter to append to the file.
-                writer = new FileWriter(file, append);
-                //Writes to the file, makes a newline and closes the FileWriter.
-                writer.write(text);
-                writer.close();
-                return true;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-        return false;
-    }
-
-
     @Override
     public boolean createBroadcast(String broadcast) {
         String[] info = broadcast.split(":");
@@ -282,7 +259,6 @@ public class Writer implements IWriter {
 
     }
 
-    //TODO - Remove deleteBroadcast???, episodes need implementation
     public void deleteBroadcast(int broadcast_id) {
         System.out.println("Deleting broadcast: " + broadcast_id);
         try {
@@ -305,8 +281,7 @@ public class Writer implements IWriter {
         }
     }
 
-    @Override //TODO needs to add credit to broadcasts_credits (waiting for ID to be readable from database and get it through the broadcast object.
-    public void addCredit(String title, String credit) {
+    public void addCredit(int broadcastID, String credit) {
         String[] info = credit.split(":");
 
         //Writes info to credits table.
@@ -326,15 +301,52 @@ public class Writer implements IWriter {
             e.printStackTrace();
         }
 
+        //Gets creditID
+        int creditID = 0;
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT credit_id " +
+                    "FROM credits " +
+                    "WHERE first_name = ? " +
+                    "AND last_name = ? " +
+                    "AND credit_type = ?;");
+            queryStatement.setString(1, info[0]);
+            queryStatement.setString(2, info[1]);
+            queryStatement.setString(3, info[2]);
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            while(queryResultSet.next())
+                creditID = Integer.parseInt(queryResultSet.getString("credit_id"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Writes info to broadcasts_credits table.
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "broadcasts_credits " +
+                            "(broadcast_id, credit_id) " +
+                            "VALUES " +
+                            "(?, ?)"
+            );
+            insertStatement.setInt(1, broadcastID);     //broadcast_id
+            insertStatement.setInt(2, creditID);        //credit_id
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override //TODO - Waiting for creditID and broadcastID to be "gettable" from the objects ie. reader must be implemented first.
     public String deleteCredit(String title, String credit) {
+
         File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
         String tempString = "";
         String returnString = null;
 
+        /*
         //Checks if file exists.
         if (file.exists()) {
             try {
@@ -367,6 +379,8 @@ public class Writer implements IWriter {
         else
             returnString = "The broadcast was not found in the database.";
 
+
+         */
         return returnString;
     }
 
@@ -395,7 +409,6 @@ public class Writer implements IWriter {
         //Gets accountID
         int accountID = 0;
         try {
-            //PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM broadcasts WHERE " + variable +  " = ?");
             PreparedStatement queryStatement = connection.prepareStatement("SELECT account_id " +
                     "FROM accounts " +
                     "WHERE email = ? " +
@@ -435,8 +448,6 @@ public class Writer implements IWriter {
     }
 
     public void deleteUser(int userID) {
-        //String user = email:password:first_name:last_name
-
         //Delete from broadcasts table.
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
@@ -483,7 +494,7 @@ public class Writer implements IWriter {
         File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
         Scanner userTxt;
         String newText = "";
-
+        /*
         //Takes the string from the first start of the string to the first ':'
         String userID = user.substring(0, user.indexOf(':'));
 
@@ -526,8 +537,10 @@ public class Writer implements IWriter {
         } else {
             return false;
         }
-    }
 
+         */
+        return false;
+    }
 
     @Override
     public void addNotification(boolean seen, String date, String user, String change) {
@@ -561,7 +574,7 @@ public class Writer implements IWriter {
         File file = new File("./src/txtfiles/notifications/notifications.txt");
         Scanner scan;
         String fullFile = "";
-
+        /*
         //If the file exists code is run, if not the method exits returning a false
         try {
             scan = new Scanner(file);
@@ -584,7 +597,7 @@ public class Writer implements IWriter {
         }
 
         write2file("notifications", fullFile, "notifications", false);
-
+        */
     }
 
 

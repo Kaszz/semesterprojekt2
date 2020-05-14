@@ -16,9 +16,9 @@ public class User extends Account implements IUser {
     }
 
     @Override
-    public void addCredit(String title, String fName, String lName, CreditType role) {
+    public void addCredit(int broadcastID, String title, String fName, String lName, CreditType role) {
         Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(),"Tilføjet kreditering for " + fName + " " + lName + " til " + title + " som " + role);
-        super.addCredit(title, fName, lName, role);
+        super.addCredit(broadcastID, title, fName, lName, role);
     }
 
     @Override

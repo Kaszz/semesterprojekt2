@@ -63,7 +63,7 @@ public class EditCreditsController implements Initializable {
         ICredit credit = App.domain.createCredit(firstName.getText(), lastName.getText(), creditCombo.getSelectionModel().getSelectedItem());
         IBroadcast broadcast = (IBroadcast) creationCombo.getSelectionModel().getSelectedItem();
 
-        App.domain.addCredit(broadcast.getTitle(), credit);
+        App.domain.addCredit(broadcast.getBroadcastID(), broadcast.getTitle(), credit);
         updateCredits();
     }
 
@@ -85,7 +85,10 @@ public class EditCreditsController implements Initializable {
 
         ArrayList<String> rawCredits;
 
+        //slow code start
         for (int i = 0; i < myBroadcasts.size(); i++) {
+
+            System.out.println(i);
             rawCredits = App.domain.getBroadcastCredits(myBroadcasts.get(i).getBroadcastID());
             myBroadcasts.get(i).deleteAllCredits();
 
@@ -96,6 +99,7 @@ public class EditCreditsController implements Initializable {
                 }
             }
         }
+        //slow code end
         creditsTable.setItems(getCredits());
         creditsTable.getSelectionModel().select(index);
     }
@@ -108,7 +112,6 @@ public class EditCreditsController implements Initializable {
         for (int i = 0; i < credits.size() ; i++) {
             creditList.add(new CreditTable(credits.get(i).getfName(), credits.get(i).getlName(), credits.get(i).getRole().name()));
         }
-
         return creditList;
     }
 
@@ -135,14 +138,12 @@ public class EditCreditsController implements Initializable {
 
         creations.setAll(myBroadcasts);
         creationCombo.setItems(creations);
-        System.out.println(CreditType.SUPPORT_CAST);
         creditCombo.getItems().setAll(CreditType.values());
 
         if (!myBroadcasts.isEmpty()) {
             creationCombo.getSelectionModel().select(0);
             updateCredits();
         }
-
     }
 }
 

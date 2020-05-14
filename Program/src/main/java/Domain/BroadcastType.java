@@ -4,7 +4,5 @@ public enum BroadcastType {
 
     SERIE,
     FILM,
-    LIVE,
-    VEJRET,
-    NYHEDER
+    LIVE
 }

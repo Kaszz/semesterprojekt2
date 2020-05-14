@@ -95,8 +95,8 @@ public class DomainFacade {
         return main.admin.getAllPrograms();
     }
 
-    public void addCredit(String title, ICredit credit) {
-        login.getAccount().addCredit(title, credit.getfName(), credit.getlName(), credit.getRole());
+    public void addCredit(int broadcastID, String title, ICredit credit) {
+        login.getAccount().addCredit(broadcastID, title, credit.getfName(), credit.getlName(), credit.getRole());
     }
 
     public String deleteCredit(String title, ICredit credit) {
