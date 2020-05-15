@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public class Noti {
     private SimpleStringProperty date, change, user;
     private SimpleBooleanProperty seen;
+    private int broadcastID;
 
     public Noti(String date, String user, String change) {
         this.date = new SimpleStringProperty(date);
@@ -15,11 +16,12 @@ public class Noti {
         this.change = new SimpleStringProperty(change);
     }
 
-    public Noti(Boolean seen, String date, String user, String change) {
+    public Noti(int broadcastID, Boolean seen, String date, String user, String change) {
         this.seen = new SimpleBooleanProperty(seen);
         this.date = new SimpleStringProperty(date);
         this.user = new SimpleStringProperty(user);
         this.change = new SimpleStringProperty(change);
+        this.broadcastID = broadcastID;
     }
 
     public boolean isSeen() {
@@ -69,5 +71,7 @@ public class Noti {
     public void setChange(String change) {
         this.change.set(change);
     }
+
+    public int getBroadcastID() {return this.broadcastID;}
 
 }

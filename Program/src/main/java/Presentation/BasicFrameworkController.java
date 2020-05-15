@@ -18,10 +18,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 
 public class BasicFrameworkController implements Initializable  {
-
 
     @FXML
     private SplitMenuButton splitMenu;
@@ -48,9 +46,12 @@ public class BasicFrameworkController implements Initializable  {
     static boolean started = false;
 
     boolean status = false;
+    ExecutorService executor = Executors.newFixedThreadPool(1);
+    int tester = 0;
     
     @FXML
     void splitMenuButtonClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -63,6 +64,7 @@ public class BasicFrameworkController implements Initializable  {
 
     @FXML
     void usersChoiceClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditUsers.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -77,6 +79,7 @@ public class BasicFrameworkController implements Initializable  {
 
     @FXML
     void creditsChoiceClicked(ActionEvent event) throws IOException{
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditCredits.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -90,6 +93,7 @@ public class BasicFrameworkController implements Initializable  {
 
     @FXML
     void programsChoiceClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditPrograms.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -104,6 +108,7 @@ public class BasicFrameworkController implements Initializable  {
     
     @FXML
     void logoutChoiceClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -115,10 +120,10 @@ public class BasicFrameworkController implements Initializable  {
 
     }
 
-
     @FXML
     void notificationsButtonClicked(ActionEvent event) throws IOException {
 
+        NotificationsController.stopUpdateSeenThread();
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Notifications.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 

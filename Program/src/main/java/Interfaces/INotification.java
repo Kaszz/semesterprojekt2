@@ -9,6 +9,7 @@ public interface INotification {
     public String getDate();
     public String getUser();
     public String getChange();
+    public int getNotificationID();
 
     public static ArrayList<INotification> getNotifications() {
         return null;

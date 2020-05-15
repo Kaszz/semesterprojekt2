@@ -596,7 +596,16 @@ public class Writer implements IWriter {
     }
 
     @Override
-    public void unNotify(String notification) {
+    public void unNotify(int broadcastID) {
+        try {
+            PreparedStatement queryUpdateNotification = connection.prepareStatement("UPDATE notifications SET seen = true WHERE notification_id = ?;");
+
+            queryUpdateNotification.setInt(1, broadcastID);
+            queryUpdateNotification.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

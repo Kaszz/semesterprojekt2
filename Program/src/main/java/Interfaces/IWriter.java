@@ -16,5 +16,5 @@ public interface IWriter {
     public void deleteUser(int userID);
     public void editUser(int userID, String email, String password, String fName, String lName);
     public void addNotification(boolean seen, String date, String user, String change);
-    public void unNotify(String notification);
+    public void unNotify(int notificationID);
 }
