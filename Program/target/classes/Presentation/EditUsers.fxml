@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.EditUsersController">
    <children>
       <fx:include source="BasicFramework.fxml" />
-      <TableView fx:id="tableView" layoutX="411.0" layoutY="82.0" prefHeight="480.0" prefWidth="447.0">
+      <TableView fx:id="tableView" layoutX="411.0" layoutY="82.0" onMouseClicked="#selectUser" prefHeight="480.0" prefWidth="447.0">
         <columns>
           <TableColumn fx:id="columnNameTableView" prefWidth="140.0" text="Navn" />
           <TableColumn fx:id="columnEmailTableView" prefWidth="172.0" text="Email" />
@@ -70,12 +70,13 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="deleteUserButton" layoutX="236.0" layoutY="322.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" text="Slet" />
-      <Button fx:id="createUserButton" layoutX="297.0" layoutY="322.0" mnemonicParsing="false" onAction="#createUserButtonClicked" text="Gem" />
+      <Button fx:id="deleteUserButton" layoutX="264.0" layoutY="481.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Slet" />
+      <Button fx:id="createUserButton" layoutX="264.0" layoutY="537.0" mnemonicParsing="false" onAction="#createUserButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Gem" />
       <Label layoutX="384.0" layoutY="14.0" text="Administrér brugere">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <Button fx:id="editUserButton" layoutX="264.0" layoutY="509.0" mnemonicParsing="false" onAction="#editUserButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Rediger" />
    </children>
 </AnchorPane>

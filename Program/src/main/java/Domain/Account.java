@@ -50,6 +50,18 @@ public abstract class Account implements IAccount {
         write.deleteEpisode(episode_id);
     };
 
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
+        write.editMovie(broadcast_id, title, bio, launchYear);
+    }
+
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
+        write.editLiveShow(broadcast_id, title, bio, launchYear, location);
+    }
+
+    public void editEpisode(int broadcast_id, String title, String bio, int launchYear, int seaNum, int epiNum, String oldTitle) {
+        write.editEpisode(broadcast_id, title, bio, launchYear, seaNum, epiNum);
+    }
+
     public String getPassword() {
         return password;
     }

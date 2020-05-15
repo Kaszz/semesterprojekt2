@@ -47,13 +47,12 @@ public class BasicFrameworkController implements Initializable  {
 
         window.setScene(tableViewScene);
         window.show();
-
     }
 
     @FXML
     void usersChoiceClicked(ActionEvent event) throws IOException {
 
-
+        System.out.println("YEET");
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditUsers.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -120,7 +119,6 @@ public class BasicFrameworkController implements Initializable  {
         window.setScene(tableViewScene);
         window.show();
     }
-
 
 
 

@@ -50,6 +50,18 @@ public class DomainFacade {
         login.getAccount().createMovie(title, bio, launchYear, userID);
     }
 
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
+        login.getAccount().editMovie(broadcast_id, title, bio, launchYear, oldTitle);
+    }
+
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
+        login.getAccount().editLiveShow(broadcast_id, title, bio, launchYear, location, oldTitle);
+    }
+
+    public void editEpisode(int episodeID, String title, String bio, int launchYear, int seaNum, int epiNum, String oldTitle) {
+        login.getAccount().editEpisode(episodeID, title, bio, launchYear, seaNum, epiNum, oldTitle);
+    }
+
     public ArrayList<INotification> getNotifications() {
         return Notification.getNotifications();
     }
@@ -70,8 +82,12 @@ public class DomainFacade {
         return main.admin.getAllUsers();
     }
 
-    public void deleteUser(int userID, String email, String password, String firstName, String lastName, String enabled) {
+    public void deleteUser(int userID, String email, String password, String firstName, String lastName) {
         main.admin.deleteUser(userID);
+    }
+
+    public void editUser(int userID, String email, String password, String fName, String lName) {
+        main.admin.editUser(userID, email, password, fName, lName);
     }
 
     public ArrayList<IBroadcast> getAllBroadcasts() {

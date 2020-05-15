@@ -18,7 +18,6 @@ public class UserData {
     StringProperty udPassword;
     StringProperty udFirstName;
     StringProperty udLastName;
-    StringProperty udEnabled;
     StringProperty udFullName;
 
     public UserData(int udID, String udEmail, String udPassword, String udFirstName, String udLastName) {
@@ -88,18 +87,6 @@ public class UserData {
 
     public void setUdID(int udID) {
         this.udID.set(udID);
-    }
-
-    public String getUdEnabled() {
-        return udEnabled.get();
-    }
-
-    public StringProperty udEnabledProperty() {
-        return udEnabled;
-    }
-
-    public void setUdEnabled(String udEnabled) {
-        this.udEnabled.set(udEnabled);
     }
 
     public String getUdFullName() {

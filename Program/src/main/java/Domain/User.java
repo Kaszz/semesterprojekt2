@@ -40,6 +40,24 @@ public class User extends Account implements IUser {
     }
 
     @Override
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
+        super.editMovie(broadcast_id, title, bio, launchYear, oldTitle);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i filmen: " + oldTitle + " til :" + title + " fra året " + launchYear);
+    }
+
+    @Override
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
+        super.editLiveShow(broadcast_id, title, bio, launchYear, location, oldTitle);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i liveshowet: " + oldTitle + " til :" + title + " fra året " + launchYear + " på " + location);
+    }
+
+    @Override
+    public void editEpisode(int broadcast_id, String title, String bio, int launchYear, int seaNum, int epiNum, String oldTitle) {
+        super.editEpisode(broadcast_id, title, bio, launchYear, seaNum, epiNum, oldTitle);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i episoden " + oldTitle);
+    }
+
+    @Override
     public void deleteCredit(Credit credit, String title) {
         Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Slettet kreditering for " + credit.getfName() + " " + credit.getlName() + "i  " + title);
         super.deleteCredit(credit.getCreditID(), credit);
