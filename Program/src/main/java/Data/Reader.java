@@ -148,7 +148,7 @@ public class Reader implements IReader {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            PreparedStatement queryTable = connection.prepareStatement("SELECT seen, created, user_name, change FROM notifications;");
+            PreparedStatement queryTable = connection.prepareStatement("SELECT notification_id, seen, created, user_name, change FROM notifications ORDER BY notification_id DESC LIMIT 20;");
 
             ResultSet tableResult = queryTable.executeQuery();
 
@@ -158,7 +158,8 @@ public class Reader implements IReader {
                 String dateString = formatter.format(utilDate);
 
 
-                notificationLine = tableResult.getBoolean("seen") + ":"
+                notificationLine = tableResult.getInt("notification_id") + ":"
+                                 + tableResult.getBoolean("seen") + ":"
                                  + dateString + ":"
                                  + tableResult.getString("user_name") + ":"
                                  + tableResult.getString("change");

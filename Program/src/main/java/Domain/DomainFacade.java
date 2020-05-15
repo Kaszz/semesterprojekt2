@@ -58,8 +58,8 @@ public class DomainFacade {
         return login;
     }
 
-    public void unNotify(boolean seen, String date, String user, String change) {
-        Notification.unNotify(seen, date, user, change);
+    public void unNotify(int notificationID) {
+        Notification.unNotify(notificationID);
     }
 
     public synchronized int notificationCount() {
