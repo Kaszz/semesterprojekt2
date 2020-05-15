@@ -160,7 +160,8 @@ public class EditProgramsController implements Initializable {
         String bio = descriptionTextField.getText();
         int year = Integer.parseInt(launchDatePicker.getText());
 
-        if (type.name().equals("SERIE") && selectedBroadcast.isEpisode()  && selectedBroadcast.getShowName().equals(showNameTextField.getText())) {
+
+        if (type.name().equals("SERIE") && selectedBroadcast.isEpisode() && selectedBroadcast.getShowName().equals(showNameTextField.getText())) {
             int seaNum = Integer.parseInt(seasonTextField.getText());
             int epiNum = Integer.parseInt(episodeTextField.getText());
             App.domain.editEpisode(broadcastID, title, bio, year, seaNum, epiNum, oldTitle);
@@ -176,7 +177,6 @@ public class EditProgramsController implements Initializable {
             errorLabel.setVisible(true);
             errorLabel.setText("Hvis du vil ændre typen eller serienavn bedes du istedet" + "\r\n" + "slette den nuværende udsendelse og oprette den på ny.");
         }
-
 
         update();
     }

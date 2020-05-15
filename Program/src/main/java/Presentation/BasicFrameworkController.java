@@ -22,7 +22,10 @@ public class BasicFrameworkController implements Initializable  {
 
 
     @FXML
-    private SplitMenuButton spitMenuButton;
+    private SplitMenuButton splitMenu;
+
+    @FXML
+    private MenuItem splitMenuUsers, splitMenuPrograms, splitMenuCredits, splitMenuLogOut;
 
     @FXML
     private Circle redCircle;
@@ -52,11 +55,10 @@ public class BasicFrameworkController implements Initializable  {
     @FXML
     void usersChoiceClicked(ActionEvent event) throws IOException {
 
-        System.out.println("YEET");
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditUsers.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -70,7 +72,7 @@ public class BasicFrameworkController implements Initializable  {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditCredits.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -83,7 +85,7 @@ public class BasicFrameworkController implements Initializable  {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditPrograms.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -97,7 +99,7 @@ public class BasicFrameworkController implements Initializable  {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -166,12 +168,14 @@ public class BasicFrameworkController implements Initializable  {
         System.out.println("Admin status: " + status);
 
         if (!status) {
+            splitMenuUsers.setVisible(false);
             redCircle.setVisible(false);
             countLabel.setVisible(false);
             notificationButton.setVisible(false);
             nameLoggedInLabel.setText(App.loginClient.getAccount().getFirstName() + " " + App.loginClient.getAccount().getLastName());
         }
         else {
+            splitMenuUsers.setVisible(true);
             nameLoggedInLabel.setText("Admin");
             updateNotificationFlag();
         }

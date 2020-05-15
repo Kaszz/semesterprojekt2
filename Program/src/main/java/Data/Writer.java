@@ -316,7 +316,6 @@ public class Writer implements IWriter {
         }
     }
 
-
     public void editEpisode(int episodeID, String title, String bio, int launchYear, int seaNum, int epiNum) {
         int broadcastID = 0;
         try {
@@ -370,13 +369,10 @@ public class Writer implements IWriter {
             queryEpisode.setInt(4, episodeID);
             queryEpisode.execute();
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-
 
     public void addCredit(int broadcastID, String credit) {
         String[] info = credit.split(":");
