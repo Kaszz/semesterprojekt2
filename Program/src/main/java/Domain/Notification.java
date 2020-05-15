@@ -13,14 +13,15 @@ public class Notification implements INotification {
     //Attributes
     private boolean seen;
     private String date;
-    private int user;
+    private String user;
     private String change;
+    int notificationID;
     private static ArrayList<Notification> notifications = new ArrayList<>();
     private static IWriter write = main.getWriter();
     private static IReader read = main.getReader();
 
     //Constructors
-    public Notification(Date time, int user, String change) {
+    public Notification(Date time, String user, String change) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         this.date = DateFor.format(time);
         this.seen = false;
@@ -28,12 +29,13 @@ public class Notification implements INotification {
         this.change = change;
     }
 
-    public Notification(boolean seen, Date time, int user, String change) {
+    public Notification(int notificationID, boolean seen, Date time, String user, String change) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         this.seen = seen;
         this.date = DateFor.format(time);
         this.user = user;
         this.change = change;
+        this.notificationID = notificationID;
     }
 
 
@@ -46,9 +48,11 @@ public class Notification implements INotification {
         return date;
     }
 
-    public int getUser() {
+    public String getUser() {
         return user;
     }
+
+    public int getNotificationID() {return notificationID;}
 
     public String getChange() {
         return change;
@@ -62,12 +66,12 @@ public class Notification implements INotification {
             String[] info = s.split(":");
             Date tempDate = new Date();
             try {
-                tempDate = new SimpleDateFormat("dd/MM/yyyy").parse(info[1]);
+                tempDate = new SimpleDateFormat("dd/MM/yyyy").parse(info[2]);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            boolean state = Boolean.parseBoolean(info[0]);
-            Notification n = new Notification(state, tempDate, Integer.parseInt(info[2]), info[3]);
+            boolean state = Boolean.parseBoolean(info[1]);
+            Notification n = new Notification(Integer.parseInt(info[0]), state, tempDate, info[3], info[4]);
             notifications.add(n);
         }
 
@@ -77,13 +81,13 @@ public class Notification implements INotification {
         return temp;
     }
 
-    public static void addNotification(Date time, int user, String change) {
+    public static void addNotification(Date time, String user, String change) {
         Notification n = new Notification(time, user, change);
         write.addNotification(n.isSeen(), n.getDate(), n.getUser(), n.getChange());
     }
 
-    public static void unNotify(boolean seen, String date, int user, String change) {
-        write.unNotify(seen + ":" + date  + ":" + user + ":" + change);
+    public static void unNotify(int notificationID) {
+        write.unNotify(notificationID);
     }
 
     public static synchronized int notificationCount() {

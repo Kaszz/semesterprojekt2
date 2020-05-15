@@ -6,21 +6,27 @@ import java.util.UUID;
 
 public class Credit implements ICredit {
     //Attributes
-    private UUID creditID;
+    private int creditID;
     private String fName;
     private String lName;
     private CreditType role;
 
     //Constructors
     public Credit(String fName, String lName, CreditType role) {
-        creditID = UUID.randomUUID();
+        this.fName = fName;
+        this.lName = lName;
+        this.role = role;
+    }
+
+    public Credit(int creditID, String fName, String lName, CreditType role) {
+        this.creditID = creditID;
         this.fName = fName;
         this.lName = lName;
         this.role = role;
     }
 
     //Methods
-    public UUID getCreditID() {
+    public int getCreditID() {
         return creditID;
     }
 

@@ -33,22 +33,33 @@ public class DomainFacade {
         return credit;
     }
 
-    public IEpisode createEpisode(String title,  String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
+    public ICredit createCredit(int creditID, String fName, String lName, CreditType role) {
+        ICredit credit = new Credit(creditID, fName, lName, role);
+        return credit;
+    }
+
+    public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episodeNum, int userID) {
         login.getAccount().createEpisode(title, bio, launchYear, showName, season, episodeNum, userID);
-        IEpisode episode = new Episode(title, bio, launchYear, showName, season, episodeNum, userID);
-        return episode;
     }
 
-    public ILiveShow createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
+    public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
         login.getAccount().createLiveShow(title, bio, launchYear, location, userID);
-        ILiveShow liveShow = new LiveShow(title, bio, launchYear, location, userID);
-        return liveShow;
     }
 
-    public IMovie createMovie(String title, String bio, Year launchYear, int userID) {
+    public void createMovie(String title, String bio, Year launchYear, int userID) {
         login.getAccount().createMovie(title, bio, launchYear, userID);
-        IMovie movie = new Movie(title, bio, launchYear, userID);
-        return movie;
+    }
+
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
+        login.getAccount().editMovie(broadcast_id, title, bio, launchYear, oldTitle);
+    }
+
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
+        login.getAccount().editLiveShow(broadcast_id, title, bio, launchYear, location, oldTitle);
+    }
+
+    public void editEpisode(int episodeID, String title, String bio, int launchYear, int seaNum, int epiNum, String oldTitle) {
+        login.getAccount().editEpisode(episodeID, title, bio, launchYear, seaNum, epiNum, oldTitle);
     }
 
     public ArrayList<INotification> getNotifications() {
@@ -59,8 +70,8 @@ public class DomainFacade {
         return login;
     }
 
-    public void unNotify(boolean seen, String date, int user, String change) {
-        Notification.unNotify(seen, date, user, change);
+    public void unNotify(int notificationID) {
+        Notification.unNotify(notificationID);
     }
 
     public synchronized int notificationCount() {
@@ -71,8 +82,12 @@ public class DomainFacade {
         return main.admin.getAllUsers();
     }
 
-    public void deleteUser(int userID, String email, String password, String firstName, String lastName, String enabled) {
+    public void deleteUser(int userID, String email, String password, String firstName, String lastName) {
         main.admin.deleteUser(userID);
+    }
+
+    public void editUser(int userID, String email, String password, String fName, String lName) {
+        main.admin.editUser(userID, email, password, fName, lName);
     }
 
     public ArrayList<IBroadcast> getAllBroadcasts() {
@@ -83,37 +98,33 @@ public class DomainFacade {
             String[] sSplit = s.split(":");
 
             if (sSplit.length == 5) {
-                broadcasts.add(new Movie(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), Integer.parseInt(sSplit[3])));
+                broadcasts.add(new Movie(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), Integer.parseInt(sSplit[4])));
             } else if (sSplit.length == 6) {
-                broadcasts.add(new LiveShow(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4])));
-            } else if (sSplit.length == 8) {
-                broadcasts.add(new Episode(sSplit[0], sSplit[1], Year.of(Integer.parseInt(sSplit[2])), sSplit[3], Integer.parseInt(sSplit[4]), Integer.parseInt(sSplit[5]), Integer.parseInt(sSplit[6])));
+                broadcasts.add(new LiveShow(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5])));
+            } else {
+                broadcasts.add(new Episode(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[6], Year.of(Integer.parseInt(sSplit[7])), sSplit[5], Integer.parseInt(sSplit[3]), Integer.parseInt(sSplit[2]), Integer.parseInt(sSplit[8])));
             }
         }
 
         return broadcasts; }
 
-    public ArrayList<String> getBroadcastCredits(String title) {return read.getBroadcastCredits(title);}
+    public ArrayList<String> getBroadcastCredits(int broadcastID) {return read.getBroadcastCredits(broadcastID);}
 
     public ArrayList<ICredit> getCredits(IBroadcast broadcast) {return broadcast.getCredits();}
 
-    public ArrayList<String> getAllPrograms() {
-        return main.admin.getAllPrograms();
+    public void addCredit(int broadcastID, String title, ICredit credit) {
+        login.getAccount().addCredit(broadcastID, title, credit.getfName(), credit.getlName(), credit.getRole());
     }
 
-    public String getBroadcast(String title) {return main.read.getBroadcast(title); } //TODO maybe delete me later
-
-    public String deleteBroadcast(String title) {
-        return login.getAccount().deleteBroadcast(title);
+    public void deleteCredit(ICredit credit, String title) {
+        login.getAccount().deleteCredit((Credit) credit, title);
     }
 
-    public void addCredit(String title, ICredit credit) {
-        login.getAccount().addCredit(title, credit.getfName(), credit.getlName(), credit.getRole());
-    }
+    public void deleteBroadcast(int broadcast_id, String title) {
+        login.getAccount().deleteBroadcast(broadcast_id, title);};
 
-    public String deleteCredit(String title, ICredit credit) {
-        return login.getAccount().deleteCredit(title, (Credit) credit);
-    }
+    public void deleteEpisode(int episode_id, String title) {
+        login.getAccount().deleteEpisode(episode_id, title);};
 
     public boolean isAdmin() {
         return login.isAdmin();

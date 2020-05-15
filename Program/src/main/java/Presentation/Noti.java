@@ -6,21 +6,22 @@ import javafx.beans.property.SimpleStringProperty;
 import java.time.LocalDate;
 
 public class Noti {
-    private SimpleStringProperty date, change;
-    private SimpleIntegerProperty user;
+    private SimpleStringProperty date, change, user;
     private SimpleBooleanProperty seen;
+    private int broadcastID;
 
-    public Noti(String date, int user, String change) {
+    public Noti(String date, String user, String change) {
         this.date = new SimpleStringProperty(date);
-        this.user = new SimpleIntegerProperty(user);
+        this.user = new SimpleStringProperty(user);
         this.change = new SimpleStringProperty(change);
     }
 
-    public Noti(Boolean seen, String date, int user, String change) {
+    public Noti(int broadcastID, Boolean seen, String date, String user, String change) {
         this.seen = new SimpleBooleanProperty(seen);
         this.date = new SimpleStringProperty(date);
-        this.user = new SimpleIntegerProperty(user);
+        this.user = new SimpleStringProperty(user);
         this.change = new SimpleStringProperty(change);
+        this.broadcastID = broadcastID;
     }
 
     public boolean isSeen() {
@@ -47,15 +48,15 @@ public class Noti {
         this.date.set(date);
     }
 
-    public int getUser() {
+    public String getUser() {
         return user.get();
     }
 
-    public SimpleIntegerProperty userProperty() {
+    public SimpleStringProperty userProperty() {
         return user;
     }
 
-    public void setUser(int user) {
+    public void setUser(String user) {
         this.user.set(user);
     }
 
@@ -70,5 +71,7 @@ public class Noti {
     public void setChange(String change) {
         this.change.set(change);
     }
+
+    public int getBroadcastID() {return this.broadcastID;}
 
 }

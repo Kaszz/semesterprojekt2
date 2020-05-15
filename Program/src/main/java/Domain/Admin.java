@@ -26,19 +26,19 @@ public class Admin extends Account implements IAdmin {
         return user;
     }
 
-    //TODO implement UUID i stedet for String i userID
+    @Override
     public void deleteUser(int userID) {
         write.deleteUser(userID);
     }
 
-    public void editUser(int userID, String email, String password, String firstName, String lastName, boolean enabled) {
-        String userToEdit = userID + ":" + email + ":" + password + ":" + firstName + ":" + lastName + ":" + enabled;
-        write.editUser(userToEdit);
+    @Override
+    public void editUser(int userID, String email, String password, String fName, String lName) {
+        write.editUser(userID, email, password, fName, lName);
     }
 
     @Override
-    public void addCredit(String title, String fName, String lName, CreditType role) {
-        super.addCredit(title, fName, lName, role);
+    public void addCredit(int broadcastID, String title, String fName, String lName, CreditType role) {
+        super.addCredit(broadcastID, title, fName, lName, role);
     }
 
     @Override
@@ -57,22 +57,31 @@ public class Admin extends Account implements IAdmin {
     }
 
     @Override
-    public String deleteCredit(String title, Credit credit) {
-        return super.deleteCredit(title, credit);
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
+        super.editMovie(broadcast_id, title, bio, launchYear, oldTitle);
     }
 
-    public String deleteBroadcast(String title)  {
-        return super.deleteBroadcast(title);
+    @Override
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
+        super.editLiveShow(broadcast_id, title, bio, launchYear, location, oldTitle);
     }
 
+    @Override
+    public void editEpisode(int broadcast_id, String title, String bio, int launchYear, int seaNum, int epiNum, String oldTitle) {
+        super.editEpisode(broadcast_id, title, bio, launchYear, seaNum, epiNum, oldTitle);
+    }
+
+    @Override
+    public void deleteCredit(Credit credit, String title) {
+        super.deleteCredit(credit.getCreditID(), credit);
+    }
+
+    public void deleteBroadcast(int broadcast_id, String title) {write.deleteBroadcast(broadcast_id);};
+    public void deleteEpisode(int episode_id, String title) {write.deleteEpisode(episode_id);};
 
     public ArrayList<String> getAllUsers() {
         ArrayList<String> returnList = read.getAllUsers();
         return returnList;
     }
 
-    public ArrayList<String> getAllPrograms() {
-        ArrayList<String> returnList = read.getAllUsers();
-        return returnList;
-    }
 }

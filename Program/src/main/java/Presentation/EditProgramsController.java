@@ -86,6 +86,11 @@ public class EditProgramsController implements Initializable {
     @FXML
     private Button deleteButton;
 
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private Label errorLabel;
 
     @FXML
     void broadcastTypeComboBoxOnAction(ActionEvent event) {
@@ -120,25 +125,67 @@ public class EditProgramsController implements Initializable {
     }
 
     @FXML
-    void deleteButtonOnAction(ActionEvent event) { //TODO : change to use ID instead of title
+    void deleteButtonOnAction(ActionEvent event) {
+        errorLabel.setVisible(false);
         //Amount of children on the selected row.
-        int childAmount = programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size();
-        //If the selected row is a whole series or season.
-        if (childAmount != 0) {
-            System.out.println("Cant be deleted");
+        if (programTreeTableView.getSelectionModel().getSelectedItem() != null) {
+            int childAmount = programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size();
+            //If the selected row is a whole series or season.
+            if (childAmount != 0) {
+                System.out.println("Cant be deleted");
+            }
+            //If the selected row is a broadcast and therefore deletable
+            else {
+                ProgramsData selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
+
+                if (!selectedBroadcast.isEpisode()) {
+                    App.domain.deleteBroadcast(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+                } else {
+                    App.domain.deleteEpisode(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+                }
+
+                update();
+            }
         }
-        //If the selected row is a broadcast and therefore deletable
-        else {
-            ProgramsData broadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
-            //root.getChildren().remove(programTreeTableView.getSelectionModel().getSelectedIndex());
-            //System.out.println(App.domain.deleteBroadcast(broadcast.getTitle().get()));
+    }
+
+    @FXML
+    void editButtonOnAction(ActionEvent event) {
+        errorLabel.setVisible(false);
+        ProgramsData selectedBroadcast = null;
+        if (programTreeTableView.getSelectionModel().getSelectedItem() != null)
+            selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
+        BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
+
+        if (selectedBroadcast != null && type != null) {
+            int broadcastID = selectedBroadcast.broadcastID;
+            String oldTitle = selectedBroadcast.getTitle().get();
+            String title = titleTextField.getText();
+            String bio = descriptionTextField.getText();
+            int year = Integer.parseInt(launchDatePicker.getText());
+
+
+            if (type.name().equals("SERIE") && selectedBroadcast.isEpisode() && selectedBroadcast.getShowName().equals(showNameTextField.getText())) {
+                int seaNum = Integer.parseInt(seasonTextField.getText());
+                int epiNum = Integer.parseInt(episodeTextField.getText());
+                App.domain.editEpisode(broadcastID, title, bio, year, seaNum, epiNum, oldTitle);
+            } else if (type.name().equals("FILM") && selectedBroadcast.isMovie()) {
+                App.domain.editMovie(broadcastID, title, bio, year, oldTitle);
+            } else if (type.name().equals("LIVE") && selectedBroadcast.isLiveShow()) {
+                String location = locationTextField.getText();
+                App.domain.editLiveShow(broadcastID, title, bio, year, location, oldTitle);
+            } else {
+                errorLabel.setVisible(true);
+                errorLabel.setText("Hvis du vil ændre typen eller serienavn bedes du istedet" + "\r\n" + "slette den nuværende udsendelse og oprette den på ny.");
+            }
+
             update();
         }
     }
 
     @FXML
     void saveButtonOnAction(ActionEvent event) throws MalformedURLException {
-
+        errorLabel.setVisible(false);
         BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
 
         if (type.name().equals("SERIE")) {
@@ -242,6 +289,7 @@ public class EditProgramsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        errorLabel.setVisible(false);
         update();
 
         //Adding choice options to the broadcast type combobox
@@ -307,7 +355,7 @@ public class EditProgramsController implements Initializable {
                     for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
                         if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(episode.getSeason()))) {
                             root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(episode.getTitle(), episode.getLaunchYear().toString(),
-                                    Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio())));
+                                    Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio(), episode.getBroadcastID())));
                             foundSeason = true;
                             //System.out.println("Found season for: " + episode.getTitle());
                         }
@@ -320,7 +368,7 @@ public class EditProgramsController implements Initializable {
                         for (int j = 0; j < root.getChildren().get(seriesIndex).getChildren().size(); j++) {
                             if (root.getChildren().get(seriesIndex).getChildren().get(j).getValue().getSeason().equals(Integer.toString(episode.getSeason()))) {
                                 root.getChildren().get(seriesIndex).getChildren().get(j).getChildren().add(new TreeItem<>(new ProgramsData(episode.getTitle(), episode.getLaunchYear().toString(),
-                                        Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio())));
+                                        Integer.toString(episode.getSeason()), Integer.toString(episode.getEpisodeNum()), episode.getShowName(), episode.getBio(), episode.getBroadcastID())));
                                 //System.out.println("Added new season and adding " + episode.getTitle());
 
                             }
@@ -332,11 +380,11 @@ public class EditProgramsController implements Initializable {
                 }
                 //If a broadcast is not an Episode it's simply added.
             } else if (b instanceof IMovie) {
-                root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio())));
+                root.getChildren().add(new TreeItem<>(new ProgramsData(b.getTitle(), b.getLaunchYear().toString(), b.getBio(), b.getBroadcastID())));
 
             } else if (b instanceof ILiveShow) {
                 ILiveShow liveShow = ((ILiveShow) b);
-                root.getChildren().add(new TreeItem<>(new ProgramsData(liveShow.getTitle(), liveShow.getLaunchYear().toString(), liveShow.getBio(), liveShow.getLocation())));
+                root.getChildren().add(new TreeItem<>(new ProgramsData(liveShow.getTitle(), liveShow.getLaunchYear().toString(), liveShow.getBio(), liveShow.getLocation(), b.getBroadcastID())));
             }
 
         }

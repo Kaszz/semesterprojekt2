@@ -18,35 +18,49 @@ public abstract class Account implements IAccount {
         this.lastName = lastName;
     }
 
-    public void addCredit(String title, String fName, String lName, CreditType role) {
+    public void addCredit(int broadcastID, String title, String fName, String lName, CreditType role) {
         String credit = fName + ":" + lName + ":" + role.name();
-        write.addCredit(title, credit);
+        write.addCredit(broadcastID, credit);
     }
 
     public void createMovie(String title, String bio, Year launchYear, int userID) {
-        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + userID + ":MOVIE";
+        String broadcast = title + ":" +  bio + ":" + launchYear.toString() + ":" + userID;
         write.createBroadcast(broadcast);
     }
 
     public void createLiveShow(String title, String bio, Year launchYear, String location, int userID) {
-        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + location + ":LIVESHOW";
+        String liveShow = title + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + location;
         write.createBroadcast(liveShow);
     }
 
     public void createEpisode(String title, String bio, Year launchYear, String showName, int season, int episode, int userID) {
-        String episodeString = showName + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + title + ":" + season + ":" + episode + ":EPISODE";
+        String episodeString = showName + ":" + bio + ":" + launchYear.toString() + ":" + userID + ":" + title + ":" + season + ":" + episode;
         write.createBroadcast(episodeString);
     }
 
-    public String deleteCredit(String title, Credit credit) {
-        String creditToDelete = credit.getfName() + ":" + credit.getlName() + ":" + credit.getRole();
-        return main.getWriter().deleteCredit(title, creditToDelete);
+    public void deleteCredit(int creditID, Credit credit) {
+        main.getWriter().deleteCredit(creditID);
     }
 
-    public String deleteBroadcast(String title)  {
-        return main.getWriter().deleteBroadcast(title);
+    public void deleteBroadcast(int broadcast_id, String title) {
+        write.deleteBroadcast(broadcast_id);
+    };
+
+    public void deleteEpisode(int episode_id, String title) {
+        write.deleteEpisode(episode_id);
+    };
+
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
+        write.editMovie(broadcast_id, title, bio, launchYear);
     }
 
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
+        write.editLiveShow(broadcast_id, title, bio, launchYear, location);
+    }
+
+    public void editEpisode(int broadcast_id, String title, String bio, int launchYear, int seaNum, int epiNum, String oldTitle) {
+        write.editEpisode(broadcast_id, title, bio, launchYear, seaNum, epiNum);
+    }
 
     public String getPassword() {
         return password;

@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,9 +60,32 @@ public class EditUsersController implements Initializable {
     @FXML
     void deleteUserButtonClicked(ActionEvent event) {
         UserData temp = tableView.getSelectionModel().getSelectedItem();
-        App.domain.deleteUser(temp.getUdID(), temp.getUdEmail(), temp.getUdPassword(), temp.getUdFirstName(), temp.getUdLastName(), temp.getUdEnabled());
+        App.domain.deleteUser(temp.getUdID(), temp.getUdEmail(), temp.getUdPassword(), temp.getUdFirstName(), temp.getUdLastName());
         updateUsers();
     }
+
+    @FXML
+    void editUserButtonClicked(ActionEvent event){
+        UserData selectedUser = tableView.getSelectionModel().getSelectedItem();
+        String email = userEmailTextField.getText();
+        String password = userPasswordTextField.getText();
+        String firstName = userFirstNameTextField.getText();
+        String lastName = userLastNameTextField.getText();
+        App.domain.editUser(selectedUser.getUdID(), email, password, firstName, lastName);
+        updateUsers();
+    }
+
+    @FXML
+    public void selectUser(MouseEvent mouseEvent) {
+        UserData selectedUser = tableView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            userEmailTextField.setText(selectedUser.getUdEmail());
+            userPasswordTextField.setText(selectedUser.getUdPassword());
+            userFirstNameTextField.setText(selectedUser.getUdFirstName());
+            userLastNameTextField.setText(selectedUser.getUdLastName());
+        }
+    }
+
 
     @FXML
     void userEmailEntered(ActionEvent event) {
@@ -91,7 +115,7 @@ public class EditUsersController implements Initializable {
         String[] data = null;
         for (String s : users) {
             data = s.split(":");
-            details.add(new UserData(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]));
+            details.add(new UserData(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4]));
         }
 
         return details;
@@ -106,12 +130,11 @@ public class EditUsersController implements Initializable {
 
     @Override
     public void initialize (URL location, ResourceBundle resources) {
-        columnNameTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udFirstName"));
+        columnNameTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udFullName"));
         columnEmailTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udEmail"));
         columnPasswordTableView.setCellValueFactory(new PropertyValueFactory<UserData, String>("udPassword"));
 
         updateUsers();
     }
-
 
 }

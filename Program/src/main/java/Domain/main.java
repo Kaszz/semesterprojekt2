@@ -14,6 +14,7 @@ public class main {
     public static Admin admin = new Admin(0, "admin", "admin", "admin", "admin");
 
     public static void main(String[] args) {
+        write.editMovie(21, "Stoneman", "he is made of stone like real woman", 1987);
         Presentation.App.load(args);
     }
 

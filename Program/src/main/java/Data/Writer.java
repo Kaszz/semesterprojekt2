@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -23,42 +24,17 @@ public class Writer implements IWriter {
     String userFile = "users";
     Connection connection = ConnectionDB.getConnection();
 
-
-
-    private boolean write2file(String fileName, String text, String directory, boolean append) {
-        //Created file object with correct name.
-        File file = new File("./src/txtfiles/" + directory + "/" + fileName + ".txt");
-        //Checks if the file already exists.
-        if (file.exists()) {
-            //Creates FileWriter
-            FileWriter writer = null;
-            try {
-                //Setup FileWriter to append to the file.
-                writer = new FileWriter(file, append);
-                //Writes to the file, makes a newline and closes the FileWriter.
-                writer.write(text);
-                writer.close();
-                return true;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-        return false;
-    }
-
-
     @Override
     public boolean createBroadcast(String broadcast) {
         String[] info = broadcast.split(":");
         int type = 0;
-        if (info.length == 5)
-            type = 2;
-        else if (info.length == 6)
-            type = 3;
-        else
-            type = 1;
 
+        if (info.length == 4)
+            type = 2; //Movie
+        else if (info.length == 5)
+            type = 3; //LiveShow
+        else
+            type = 1; //Episode
 
         //Check if broadcast already exists
         int broadcastID = 0;
@@ -93,7 +69,7 @@ public class Writer implements IWriter {
                                 "(?, ?, ?, ?, ?)"
                 );
                 insertStatement.setInt(1, type);                        //broadcast_type_id
-                insertStatement.setString(2, info[0]);                  //title
+                insertStatement.setString(2, info[0]);                  //title (showName for createEpisode)
                 insertStatement.setString(3, info[1]);                  //bio
                 insertStatement.setInt(4, Integer.parseInt(info[2]));   //launchyear
                 insertStatement.setInt(5, Integer.parseInt(info[3]));   //account_id
@@ -124,9 +100,9 @@ public class Writer implements IWriter {
                 e.printStackTrace();
             }
 
-            if (info.length == 5) {
+            if (info.length == 4) {
                 insertMovie(broadcastID);
-            } else if (info.length == 6) {
+            } else if (info.length == 5) {
                 insertLiveShow(broadcastID, info[4]);
             } else {
                 insertEpisode(info[4], broadcastID, Integer.parseInt(info[5]), Integer.parseInt(info[6]), false);
@@ -262,7 +238,7 @@ public class Writer implements IWriter {
             }
         }
 
-        
+
         //Writes to the episodes table.
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
@@ -284,26 +260,121 @@ public class Writer implements IWriter {
 
     }
 
-    @Override //TODO - waiting for episode to be correctly implemented so we dont have to rework.
-    public String deleteBroadcast(String title) {
-        File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
-        String returnString = null;
-
-        if(file.exists())
-        {
-            if (file.delete())
-                returnString = file.getName() + " was succesfully removed.";
-            else
-                returnString = file.getName() + " could not be removed.";
+    public void deleteBroadcast(int broadcast_id) {
+        System.out.println("Deleting broadcast: " + broadcast_id);
+        try {
+            PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM broadcasts WHERE broadcast_id = ?");
+            queryBroadcast.setInt(1, broadcast_id);
+            queryBroadcast.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        else
-            returnString = file.getName() + " could not be found in the database.";
-
-        return returnString;
     }
 
-    @Override //TODO needs to add credit to broadcasts_credits (waiting for ID to be readable from database and get it through the broadcast object.
-    public void addCredit(String title, String credit) {
+    public void deleteEpisode(int episode_id) {
+        System.out.println("Deleting episode: " + episode_id);
+        try {
+            PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM episodes WHERE episode_id = ?");
+            queryBroadcast.setInt(1, episode_id);
+            queryBroadcast.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editMovie(int broadcast_id, String title, String bio, int launchYear) {
+        try {
+            PreparedStatement queryBroadcast = connection.prepareStatement("UPDATE broadcasts SET title = ?, bio = ?, launchyear = ? WHERE broadcast_id = ?;");
+
+            queryBroadcast.setString(1, title);
+            queryBroadcast.setString(2, bio);
+            queryBroadcast.setInt(3, launchYear);
+            queryBroadcast.setInt(4, broadcast_id);
+            queryBroadcast.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location) {
+        try {
+            //Updates broadcast table
+            PreparedStatement queryBroadcast = connection.prepareStatement("UPDATE broadcasts SET title = ?, bio = ?, launchyear = ? WHERE broadcast_id = ?;");
+            queryBroadcast.setString(1, title);
+            queryBroadcast.setString(2, bio);
+            queryBroadcast.setInt(3, launchYear);
+            queryBroadcast.setInt(4, broadcast_id);
+            queryBroadcast.execute();
+
+            //Updates liveshow table
+            PreparedStatement queryLiveShow = connection.prepareStatement("UPDATE liveshow SET location = ? WHERE broadcast_id = ?;");
+            queryLiveShow.setString(1, location);
+            queryLiveShow.setInt(2, broadcast_id);
+            queryLiveShow.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editEpisode(int episodeID, String title, String bio, int launchYear, int seaNum, int epiNum) {
+        int broadcastID = 0;
+        try {
+            //Get broadcastID through episode table
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT broadcast_id FROM episodes WHERE episode_id = ?;");
+            queryStatement.setInt(1, episodeID);
+            ResultSet queryResultSet = queryStatement.executeQuery();
+            while(queryResultSet.next())
+                broadcastID = Integer.parseInt(queryResultSet.getString("broadcast_id"));
+
+
+            //Change, bio, launchyear in broadcast table
+            PreparedStatement queryBroadcast = connection.prepareStatement("UPDATE broadcasts SET bio = ?, launchyear = ? WHERE broadcast_id = ?;");
+            queryBroadcast.setString(1, bio);
+            queryBroadcast.setInt(2, launchYear);
+            queryBroadcast.setInt(3, broadcastID);
+            queryBroadcast.execute();
+
+
+            //Check season table for broadcastID and season number
+            int seasonID = 0;
+            PreparedStatement querySeason = connection.prepareStatement("SELECT season_id FROM seasons WHERE broadcast_id = ? AND season_no = ?;");
+            querySeason.setInt(1, broadcastID);
+            querySeason.setInt(2, seaNum);
+            ResultSet querySeasonResult = querySeason.executeQuery();
+            while(querySeasonResult.next())
+                seasonID = Integer.parseInt(querySeasonResult.getString("season_id"));
+
+
+            //If the season doesnt already exist.
+            if (seasonID == 0) {
+                PreparedStatement queryNewSeason = connection.prepareStatement("INSERT INTO seasons (broadcast_id, season_no) VALUES (?, ?);");
+                queryNewSeason.setInt(1, broadcastID);
+                queryNewSeason.setInt(2, seaNum);
+                queryNewSeason.execute();
+
+                //Get the new seasonID
+                PreparedStatement querySeason2 = connection.prepareStatement("SELECT season_id FROM seasons WHERE broadcast_id = ? AND season_no = ?;");
+                querySeason2.setInt(1, broadcastID);
+                querySeason2.setInt(2, seaNum);
+                ResultSet querySeasonResult2 = querySeason.executeQuery();
+                while(querySeasonResult2.next())
+                    seasonID = Integer.parseInt(querySeasonResult2.getString("season_id"));
+            }
+
+            //Update episode table with season_id, title, episode number
+            PreparedStatement queryEpisode = connection.prepareStatement("UPDATE episodes SET season_id = ?, episode_name = ?, episode_no = ? WHERE episode_id = ?;");
+            queryEpisode.setInt(1, seasonID);
+            queryEpisode.setString(2, title);
+            queryEpisode.setInt(3, epiNum);
+            queryEpisode.setInt(4, episodeID);
+            queryEpisode.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addCredit(int broadcastID, String credit) {
         String[] info = credit.split(":");
 
         //Writes info to credits table.
@@ -323,48 +394,53 @@ public class Writer implements IWriter {
             e.printStackTrace();
         }
 
+        //Gets creditID
+        int creditID = 0;
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT credit_id " +
+                    "FROM credits " +
+                    "WHERE first_name = ? " +
+                    "AND last_name = ? " +
+                    "AND credit_type = ?;");
+            queryStatement.setString(1, info[0]);
+            queryStatement.setString(2, info[1]);
+            queryStatement.setString(3, info[2]);
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            while(queryResultSet.next())
+                creditID = Integer.parseInt(queryResultSet.getString("credit_id"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Writes info to broadcasts_credits table.
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "broadcasts_credits " +
+                            "(broadcast_id, credit_id) " +
+                            "VALUES " +
+                            "(?, ?)"
+            );
+            insertStatement.setInt(1, broadcastID);     //broadcast_id
+            insertStatement.setInt(2, creditID);        //credit_id
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    @Override //TODO - Waiting for creditID and broadcastID to be "gettable" from the objects ie. reader must be implemented first.
-    public String deleteCredit(String title, String credit) {
-        File file = new File("./src/txtfiles/"+ broadcastDirectory +"/" + title + ".txt");
-        String tempString = "";
-        String returnString = null;
-
-        //Checks if file exists.
-        if (file.exists()) {
-            try {
-                //Opens scanner.
-                Scanner scan = new Scanner(file);
-
-                //Iterates through file line for line.
-                while(scan.hasNextLine()) {
-                    String line = scan.nextLine();
-                    //Saves the correct credits into tempString.
-                    if (!line.equals(credit)) {
-                        tempString += line + "\r\n";
-                    }
-
-                }
-                scan.close();
-
-                //Overwrites the file.
-                if (write2file(title, tempString,"broadcasts" ,false))
-                    returnString = "The credit was succesfully removed.";
-                else
-                    returnString = "Could not delete the credit.";
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                returnString = "The broadcast was not found in the database.";
-                return returnString;
-            }
+    public void deleteCredit(int creditID) {
+        System.out.println("Deleting credit: " + creditID);
+        try {
+            PreparedStatement queryBroadcast = connection.prepareStatement("DELETE FROM credits WHERE credit_id = ?;");
+            queryBroadcast.setInt(1, creditID);
+            queryBroadcast.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        else
-            returnString = "The broadcast was not found in the database.";
-
-        return returnString;
     }
 
     public int createUser(String user) {
@@ -392,7 +468,6 @@ public class Writer implements IWriter {
         //Gets accountID
         int accountID = 0;
         try {
-            //PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM broadcasts WHERE " + variable +  " = ?");
             PreparedStatement queryStatement = connection.prepareStatement("SELECT account_id " +
                     "FROM accounts " +
                     "WHERE email = ? " +
@@ -432,8 +507,6 @@ public class Writer implements IWriter {
     }
 
     public void deleteUser(int userID) {
-        //String user = email:password:first_name:last_name
-
         //Delete from broadcasts table.
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
@@ -476,64 +549,33 @@ public class Writer implements IWriter {
         }
     }
 
-    public boolean editUser(String user) {
-        File file = new File("./src/txtfiles/"+ userDirectory+"/" + userFile + ".txt");
-        Scanner userTxt;
-        String newText = "";
-
-        //Takes the string from the first start of the string to the first ':'
-        String userID = user.substring(0, user.indexOf(':'));
-
-        //If the file exists code is run, if not the method exits returning a false
-        if (file.exists()) {
-            try {
-                userTxt = new Scanner(file);
-                boolean first = false;
-
-                //Looks through the text file until it finds a line with the same userID
-                //Once it's find it saves the given user String instead of the line thusly replacing the old line.
-                while(userTxt.hasNextLine()) {
-                    String line = userTxt.nextLine();
-                    if (!line.substring(0, line.indexOf(':')).equals(userID)) {
-                        if (first) {
-                            newText = newText + "\r\n" + line;
-                        }
-                        else {
-                            newText += line;
-                            first = true; //The first line cannot have a new line. This is only done once.
-                        }
-                    }
-                    else {
-                        if (first) {
-                            newText = newText + "\r\n" + user;
-                        }
-                        else {
-                            newText += user;
-                            first = true; //The first line cannot have a new line. This is only done once.
-                        }
-                    }
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                return false;
-            }
-
-            write2file(userFile, newText, userDirectory, false);
-            return true;
-        } else {
-            return false;
+    public void editUser(int userID, String email, String password, String fName, String lName) {
+        System.out.println(userID);
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println(fName);
+        System.out.println(lName);
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("UPDATE accounts SET email = ?, password = ?, first_name = ?, last_name = ? WHERE account_id = ?;");
+            insertStatement.setString(1, email);        //email
+            insertStatement.setString(2, password);     //password
+            insertStatement.setString(3, fName);        //first_name
+            insertStatement.setString(4, lName);        //last_name
+            insertStatement.setInt(5, userID);       //account_id
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-
     @Override
-    public void addNotification(boolean seen, String date, int user, String change) {
+    public void addNotification(boolean seen, String date, String user, String change) {
         //Writes info to notifications table.
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO " +
                             "notifications " +
-                            "(created, change, seen, user_id) " +
+                            "(created, change, seen, user_name) " +
                             "VALUES " +
                             "(?, ?, ?, ?)"
             );
@@ -541,10 +583,12 @@ public class Writer implements IWriter {
             java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
             //java.sql.Date sqlDate = java.sql.Date.valueOf(newDate);
 
+            //SELECT seen, created, user_name, change FROM notifications;
+
             insertStatement.setDate(1, sqlDate);        //date
             insertStatement.setString(2, change);       //change
             insertStatement.setBoolean(3, seen);        //seen
-            insertStatement.setInt(4, user);            //user_id
+            insertStatement.setString(4, user);         //user
             insertStatement.execute();
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
@@ -552,33 +596,16 @@ public class Writer implements IWriter {
     }
 
     @Override
-    public void unNotify(String notification) {
-        File file = new File("./src/txtfiles/notifications/notifications.txt");
-        Scanner scan;
-        String fullFile = "";
-
-        //If the file exists code is run, if not the method exits returning a false
+    public void unNotify(int broadcastID) {
         try {
-            scan = new Scanner(file);
-            scan.nextLine();
-            //Looks through the textfile until it finds a line with the same notification
-            while(scan.hasNextLine()) {
-                String line = scan.nextLine();
+            PreparedStatement queryUpdateNotification = connection.prepareStatement("UPDATE notifications SET seen = true WHERE notification_id = ?;");
 
-                if (line.equals(notification)) {
-                    String newLine =  "true:" + line.substring(line.indexOf(":") + 1);
-                    fullFile += "\r\n"+ newLine;
-                } else {
-                    fullFile += "\r\n" + line;
-                }
-            }
+            queryUpdateNotification.setInt(1, broadcastID);
+            queryUpdateNotification.execute();
 
-            scan.close();
-        } catch (FileNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        write2file("notifications", fullFile, "notifications", false);
 
     }
 

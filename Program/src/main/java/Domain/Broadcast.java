@@ -26,7 +26,7 @@ public abstract class Broadcast implements IBroadcast {
         credits = new ArrayList<>();
     }
 
-    public Broadcast(String title, String bio, Year launchYear, int userID, int broadcastID) {
+    public Broadcast(int broadcastID, String title, String bio, Year launchYear, int userID) {
         this.title = title;
         this.bio = bio;
         this.launchYear = launchYear;
@@ -36,8 +36,8 @@ public abstract class Broadcast implements IBroadcast {
     }
 
     //Method
-    public void addCredit(String title, String fName, String lName, CreditType role) {
-        Credit tempCredit = new Credit(fName, lName, role);
+    public void addCredit(int creditID, String title, String fName, String lName, CreditType role) {
+        Credit tempCredit = new Credit(creditID, fName, lName, role);
         credits.add(tempCredit);
     }
 
@@ -48,11 +48,6 @@ public abstract class Broadcast implements IBroadcast {
     public void addCredit(Credit credit) {
         credits.add(credit);
     }
-
-    //TODO - This method should search the database for the title, return a string so that we can make a Broadcast object with it.
-    /*public Broadcast getBroadcast(String title) {}
-
-     */
 
     public String getTitle() {
         return title;
@@ -79,5 +74,9 @@ public abstract class Broadcast implements IBroadcast {
     @Override
     public String toString() {
         return title;
+    }
+
+    public int getBroadcastID() {
+        return broadcastID;
     }
 }

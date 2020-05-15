@@ -3,6 +3,7 @@ package Presentation;
 import Interfaces.IAccount;
 import Interfaces.IUser;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,11 @@ import java.util.ResourceBundle;
 
 public class BasicFrameworkController implements Initializable  {
 
+    @FXML
+    private SplitMenuButton splitMenu;
 
     @FXML
-    private SplitMenuButton spitMenuButton;
+    private MenuItem splitMenuUsers;
 
     @FXML
     private Circle redCircle;
@@ -33,12 +36,22 @@ public class BasicFrameworkController implements Initializable  {
     @FXML
     private Button notificationButton;
 
-    private Thread threadNotificationUpdate;
+    @FXML
+    private Label nameLoggedInLabel;
+
+    private static Thread notificationThread;
+
+    static int count = 0;
+
+    static boolean started = false;
 
     boolean status = false;
+
+    int tester = 0;
     
     @FXML
     void splitMenuButtonClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Entry.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -47,17 +60,16 @@ public class BasicFrameworkController implements Initializable  {
 
         window.setScene(tableViewScene);
         window.show();
-
     }
 
     @FXML
     void usersChoiceClicked(ActionEvent event) throws IOException {
-
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditUsers.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -67,11 +79,12 @@ public class BasicFrameworkController implements Initializable  {
 
     @FXML
     void creditsChoiceClicked(ActionEvent event) throws IOException{
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditCredits.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -80,11 +93,12 @@ public class BasicFrameworkController implements Initializable  {
 
     @FXML
     void programsChoiceClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("EditPrograms.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
@@ -94,24 +108,22 @@ public class BasicFrameworkController implements Initializable  {
     
     @FXML
     void logoutChoiceClicked(ActionEvent event) throws IOException {
+        NotificationsController.stopUpdateSeenThread();
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
-        Stage window = (Stage)spitMenuButton.getScene().getWindow();
+        Stage window = (Stage)splitMenu.getScene().getWindow();
 
         window.setScene(tableViewScene);
         window.show();
 
     }
 
-
-    @FXML
-    private Label nameLoggedInLabel;
-
-
     @FXML
     void notificationsButtonClicked(ActionEvent event) throws IOException {
+
+        NotificationsController.stopUpdateSeenThread();
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Notifications.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -122,18 +134,22 @@ public class BasicFrameworkController implements Initializable  {
     }
 
 
-
     public void updateNotificationFlag() {
+        //If admin is logged in
         if (status) {
-            threadNotificationUpdate = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
+            started = true;
 
+            //Defines task the thread shall run
+            Task task = new Task<Void>() {
+                @Override
+                public Void call() throws Exception {
+                    while (true) {
                         Platform.runLater(new Runnable() {
                             @Override
+                            //The actual run method which the thread will run.
                             public void run() {
-                                int count = App.domain.notificationCount();
+                                //Updates notification count.
+                                count = App.domain.notificationCount();
                                 if (count > 0) {
                                     redCircle.setVisible(true);
                                     countLabel.setVisible(true);
@@ -145,17 +161,15 @@ public class BasicFrameworkController implements Initializable  {
                                 }
                             }
                         });
-
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        Thread.sleep(1000);
                     }
                 }
-            });
-            threadNotificationUpdate.setDaemon(true);
-            threadNotificationUpdate.start();
+            };
+            //gives task to thread, sets it daemon and starts it.
+            notificationThread = new Thread(task);
+            notificationThread.setDaemon(true);
+            notificationThread.start();
+
         }
     }
 
@@ -165,16 +179,23 @@ public class BasicFrameworkController implements Initializable  {
     public void initialize(URL location, ResourceBundle resources) {
         status = App.domain.isAdmin();
         System.out.println("Admin status: " + status);
+        
+        if (started) {
+            notificationThread.interrupt();
+            started = false;
+        }
 
         if (!status) {
+            splitMenuUsers.setVisible(false);
             redCircle.setVisible(false);
             countLabel.setVisible(false);
             notificationButton.setVisible(false);
             nameLoggedInLabel.setText(App.loginClient.getAccount().getFirstName() + " " + App.loginClient.getAccount().getLastName());
         }
-        else
+        else {
+            splitMenuUsers.setVisible(true);
             nameLoggedInLabel.setText("Admin");
-
-        updateNotificationFlag();
+            updateNotificationFlag();
+        }
     }
 }

@@ -36,10 +36,8 @@ public class Login implements ILogin {
     }
 
     public Account getAccount() {
-        if (isAdmin()) {
+        if (isAdmin())
             account = (Admin) account;
-            System.out.println(account.getFirstName());
-        }
 
         return account;
     }
@@ -49,7 +47,7 @@ public class Login implements ILogin {
     }
 
     public boolean isAdmin() {
-        if (account.getEmail().equals("admin")) //TODO make this work only for userID, not email.
+        if (account.getUserID() == 0)
             return true;
         return false;
     }

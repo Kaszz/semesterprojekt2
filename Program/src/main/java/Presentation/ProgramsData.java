@@ -14,6 +14,7 @@ public class ProgramsData {
     boolean episode = false;
     boolean liveShow = false;
     boolean movie = false;
+    int broadcastID;
 
     //Used to create series
     public ProgramsData(String title, String yearMade) {
@@ -28,7 +29,7 @@ public class ProgramsData {
     }
 
     //Used to create episodes
-    public ProgramsData(String title, String yearMade, String season, String episodeNum, String showName, String bio) {
+    public ProgramsData(String title, String yearMade, String season, String episodeNum, String showName, String bio, int broadcastID) {
         this.title = new SimpleStringProperty(title);
         this.yearMade = new SimpleStringProperty(yearMade);
         this.season = new SimpleStringProperty(season);
@@ -36,23 +37,26 @@ public class ProgramsData {
         this.showName = new SimpleStringProperty(showName);
         this.bio = bio;
         this.episode = true;
+        this.broadcastID = broadcastID;
     }
 
     //Used to create liveShows
-    public ProgramsData(String title, String yearMade, String bio, String location) {
+    public ProgramsData(String title, String yearMade, String bio, String location, int broadcastID) {
         this.title = new SimpleStringProperty(title);
         this.yearMade = new SimpleStringProperty(yearMade);
         this.bio = bio;
         this.location = location;
         this.liveShow = true;
+        this.broadcastID = broadcastID;
     }
 
     //Used to create movies
-    public ProgramsData(String title, String yearMade, String bio) {
+    public ProgramsData(String title, String yearMade, String bio, int broadcastID) {
         this.title = new SimpleStringProperty(title);
         this.yearMade = new SimpleStringProperty(yearMade);
         this.bio = bio;
         this.movie = true;
+        this.broadcastID = broadcastID;
     }
 
 
