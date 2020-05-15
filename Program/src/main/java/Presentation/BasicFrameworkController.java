@@ -46,7 +46,7 @@ public class BasicFrameworkController implements Initializable  {
     static boolean started = false;
 
     boolean status = false;
-    ExecutorService executor = Executors.newFixedThreadPool(1);
+
     int tester = 0;
     
     @FXML

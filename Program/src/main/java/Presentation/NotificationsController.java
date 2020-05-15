@@ -4,18 +4,13 @@ import Interfaces.INotification;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -32,7 +27,6 @@ public class NotificationsController implements Initializable {
 
     ArrayList<INotification> notifications;
     static Thread threadSeenUpdate;
-    static int iterator = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,15 +48,12 @@ public class NotificationsController implements Initializable {
                                 setUnreadStyle(dateColumn);
                                 setUnreadStyle(userColumn);
                                 setUnreadStyle(changeColumn);
-                                System.out.println(iterator);
-                                iterator++;
                             }
                         });
 
                         try {
                             Thread.sleep(150);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
                             threadRun = false;
                         }
                     }

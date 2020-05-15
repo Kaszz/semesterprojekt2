@@ -128,57 +128,59 @@ public class EditProgramsController implements Initializable {
     void deleteButtonOnAction(ActionEvent event) {
         errorLabel.setVisible(false);
         //Amount of children on the selected row.
-        int childAmount = programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size();
-        //If the selected row is a whole series or season.
-        if (childAmount != 0) {
-            System.out.println("Cant be deleted");
-        }
-        //If the selected row is a broadcast and therefore deletable
-        else {
-            ProgramsData selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
-
-            if (!selectedBroadcast.isEpisode()) {
-                App.domain.deleteBroadcast(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+        if (programTreeTableView.getSelectionModel().getSelectedItem() != null) {
+            int childAmount = programTreeTableView.getSelectionModel().getSelectedItem().getChildren().size();
+            //If the selected row is a whole series or season.
+            if (childAmount != 0) {
+                System.out.println("Cant be deleted");
             }
+            //If the selected row is a broadcast and therefore deletable
             else {
-                App.domain.deleteEpisode(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
-            }
+                ProgramsData selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
 
-            update();
+                if (!selectedBroadcast.isEpisode()) {
+                    App.domain.deleteBroadcast(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+                } else {
+                    App.domain.deleteEpisode(selectedBroadcast.broadcastID, selectedBroadcast.getTitle().get());
+                }
+
+                update();
+            }
         }
     }
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
         errorLabel.setVisible(false);
-        ProgramsData selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
+        ProgramsData selectedBroadcast = null;
+        if (programTreeTableView.getSelectionModel().getSelectedItem() != null)
+            selectedBroadcast = programTreeTableView.getSelectionModel().getSelectedItem().getValue();
         BroadcastType type = broadcastTypeComboBox.getSelectionModel().getSelectedItem();
 
-        int broadcastID = selectedBroadcast.broadcastID;
-        String oldTitle = selectedBroadcast.getTitle().get();
-        String title = titleTextField.getText();
-        String bio = descriptionTextField.getText();
-        int year = Integer.parseInt(launchDatePicker.getText());
+        if (selectedBroadcast != null && type != null) {
+            int broadcastID = selectedBroadcast.broadcastID;
+            String oldTitle = selectedBroadcast.getTitle().get();
+            String title = titleTextField.getText();
+            String bio = descriptionTextField.getText();
+            int year = Integer.parseInt(launchDatePicker.getText());
 
 
-        if (type.name().equals("SERIE") && selectedBroadcast.isEpisode() && selectedBroadcast.getShowName().equals(showNameTextField.getText())) {
-            int seaNum = Integer.parseInt(seasonTextField.getText());
-            int epiNum = Integer.parseInt(episodeTextField.getText());
-            App.domain.editEpisode(broadcastID, title, bio, year, seaNum, epiNum, oldTitle);
-        }
-        else if (type.name().equals("FILM") && selectedBroadcast.isMovie()) {
-            App.domain.editMovie(broadcastID, title, bio, year, oldTitle);
-        }
-        else if (type.name().equals("LIVE") && selectedBroadcast.isLiveShow()) {
-            String location = locationTextField.getText();
-            App.domain.editLiveShow(broadcastID, title, bio, year, location, oldTitle);
-        }
-        else {
-            errorLabel.setVisible(true);
-            errorLabel.setText("Hvis du vil ændre typen eller serienavn bedes du istedet" + "\r\n" + "slette den nuværende udsendelse og oprette den på ny.");
-        }
+            if (type.name().equals("SERIE") && selectedBroadcast.isEpisode() && selectedBroadcast.getShowName().equals(showNameTextField.getText())) {
+                int seaNum = Integer.parseInt(seasonTextField.getText());
+                int epiNum = Integer.parseInt(episodeTextField.getText());
+                App.domain.editEpisode(broadcastID, title, bio, year, seaNum, epiNum, oldTitle);
+            } else if (type.name().equals("FILM") && selectedBroadcast.isMovie()) {
+                App.domain.editMovie(broadcastID, title, bio, year, oldTitle);
+            } else if (type.name().equals("LIVE") && selectedBroadcast.isLiveShow()) {
+                String location = locationTextField.getText();
+                App.domain.editLiveShow(broadcastID, title, bio, year, location, oldTitle);
+            } else {
+                errorLabel.setVisible(true);
+                errorLabel.setText("Hvis du vil ændre typen eller serienavn bedes du istedet" + "\r\n" + "slette den nuværende udsendelse og oprette den på ny.");
+            }
 
-        update();
+            update();
+        }
     }
 
     @FXML

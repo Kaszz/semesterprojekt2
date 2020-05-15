@@ -42,13 +42,13 @@ public class User extends Account implements IUser {
     @Override
     public void editMovie(int broadcast_id, String title, String bio, int launchYear, String oldTitle) {
         super.editMovie(broadcast_id, title, bio, launchYear, oldTitle);
-        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i filmen: " + oldTitle + " til :" + title + " fra året " + launchYear);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i filmen " + oldTitle + " til " + title + " fra året " + launchYear);
     }
 
     @Override
     public void editLiveShow(int broadcast_id, String title, String bio, int launchYear, String location, String oldTitle) {
         super.editLiveShow(broadcast_id, title, bio, launchYear, location, oldTitle);
-        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i liveshowet: " + oldTitle + " til :" + title + " fra året " + launchYear + " på " + location);
+        Notification.addNotification(new Date(), this.getFirstName() + " " + this.getLastName(), "Ændrede i liveshowet " + oldTitle + " til " + title + " fra året " + launchYear + " på " + location);
     }
 
     @Override
