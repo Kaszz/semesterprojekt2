@@ -3,6 +3,7 @@ package Presentation;
 import Interfaces.IAccount;
 import Interfaces.IUser;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 public class BasicFrameworkController implements Initializable  {
 
@@ -25,7 +27,7 @@ public class BasicFrameworkController implements Initializable  {
     private SplitMenuButton splitMenu;
 
     @FXML
-    private MenuItem splitMenuUsers, splitMenuPrograms, splitMenuCredits, splitMenuLogOut;
+    private MenuItem splitMenuUsers;
 
     @FXML
     private Circle redCircle;
@@ -36,7 +38,14 @@ public class BasicFrameworkController implements Initializable  {
     @FXML
     private Button notificationButton;
 
-    private Thread threadNotificationUpdate;
+    @FXML
+    private Label nameLoggedInLabel;
+
+    private static Thread notificationThread;
+
+    static int count = 0;
+
+    static boolean started = false;
 
     boolean status = false;
     
@@ -108,11 +117,8 @@ public class BasicFrameworkController implements Initializable  {
 
 
     @FXML
-    private Label nameLoggedInLabel;
-
-
-    @FXML
     void notificationsButtonClicked(ActionEvent event) throws IOException {
+
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Notifications.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -123,18 +129,22 @@ public class BasicFrameworkController implements Initializable  {
     }
 
 
-
     public void updateNotificationFlag() {
-
+        //If admin is logged in
         if (status) {
-            threadNotificationUpdate = new Thread(new Runnable() {
+            started = true;
+
+            //Defines task the thread shall run
+            Task task = new Task<Void>() {
                 @Override
-                public void run() {
+                public Void call() throws Exception {
                     while (true) {
                         Platform.runLater(new Runnable() {
                             @Override
+                            //The actual run method which the thread will run.
                             public void run() {
-                                int count = App.domain.notificationCount();
+                                //Updates notification count.
+                                count = App.domain.notificationCount();
                                 if (count > 0) {
                                     redCircle.setVisible(true);
                                     countLabel.setVisible(true);
@@ -146,17 +156,15 @@ public class BasicFrameworkController implements Initializable  {
                                 }
                             }
                         });
-
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        Thread.sleep(1000);
                     }
                 }
-            });
-            threadNotificationUpdate.setDaemon(true);
-            threadNotificationUpdate.start();
+            };
+            //gives task to thread, sets it daemon and starts it.
+            notificationThread = new Thread(task);
+            notificationThread.setDaemon(true);
+            notificationThread.start();
+
         }
     }
 
@@ -166,6 +174,11 @@ public class BasicFrameworkController implements Initializable  {
     public void initialize(URL location, ResourceBundle resources) {
         status = App.domain.isAdmin();
         System.out.println("Admin status: " + status);
+        
+        if (started) {
+            notificationThread.interrupt();
+            started = false;
+        }
 
         if (!status) {
             splitMenuUsers.setVisible(false);

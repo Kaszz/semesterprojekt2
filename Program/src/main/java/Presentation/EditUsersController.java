@@ -78,10 +78,12 @@ public class EditUsersController implements Initializable {
     @FXML
     public void selectUser(MouseEvent mouseEvent) {
         UserData selectedUser = tableView.getSelectionModel().getSelectedItem();
-        userEmailTextField.setText(selectedUser.getUdEmail());
-        userPasswordTextField.setText(selectedUser.getUdPassword());
-        userFirstNameTextField.setText(selectedUser.getUdFirstName());
-        userLastNameTextField.setText(selectedUser.getUdLastName());
+        if (selectedUser != null) {
+            userEmailTextField.setText(selectedUser.getUdEmail());
+            userPasswordTextField.setText(selectedUser.getUdPassword());
+            userFirstNameTextField.setText(selectedUser.getUdFirstName());
+            userLastNameTextField.setText(selectedUser.getUdLastName());
+        }
     }
 
 
