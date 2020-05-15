@@ -31,8 +31,8 @@ public class NotificationsController implements Initializable {
     private TableColumn<Noti, String> changeColumn;
 
     ArrayList<INotification> notifications;
-    Thread threadSeenUpdate;
-    static boolean runThreadSeen;
+    static Thread threadSeenUpdate;
+    static int iterator = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,22 +40,22 @@ public class NotificationsController implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<Noti, String>("date"));
         userColumn.setCellValueFactory(new PropertyValueFactory<Noti, String>("user"));
         changeColumn.setCellValueFactory(new PropertyValueFactory<Noti, String>("change"));
-        runThreadSeen = true;
 
         updateNotifications();
-
-        //TODO INDSÆT EN BREAK??? LAV EN CONDITION TIL WHILE()
 
         threadSeenUpdate = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (runThreadSeen) {
+                boolean threadRun = true;
+                while (threadRun) {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
                                 setUnreadStyle(dateColumn);
                                 setUnreadStyle(userColumn);
                                 setUnreadStyle(changeColumn);
+                                System.out.println(iterator);
+                                iterator++;
                             }
                         });
 
@@ -63,14 +63,13 @@ public class NotificationsController implements Initializable {
                             Thread.sleep(150);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
-                            threadSeenUpdate.interrupt();
+                            threadRun = false;
                         }
                     }
                 }
             });
             threadSeenUpdate.setDaemon(true);
             threadSeenUpdate.start();
-
     }
 
     //Method that changes the style of rows that have not been marked as seen yet.
@@ -141,6 +140,11 @@ public class NotificationsController implements Initializable {
     }
 
     public static void stopUpdateSeenThread() {
-        runThreadSeen = false;
+        if (threadSeenUpdate != null) {
+            threadSeenUpdate.interrupt();
+        } else {
+            System.out.println("No thread yet!");
+        }
+
     }
 }

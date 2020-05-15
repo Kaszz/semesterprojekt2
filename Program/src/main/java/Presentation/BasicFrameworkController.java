@@ -17,6 +17,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class BasicFrameworkController implements Initializable  {
 
@@ -35,6 +39,8 @@ public class BasicFrameworkController implements Initializable  {
     private Thread threadNotificationUpdate;
 
     boolean status = false;
+    ExecutorService executor = Executors.newFixedThreadPool(1);
+    int tester = 0;
     
     @FXML
     void splitMenuButtonClicked(ActionEvent event) throws IOException {
@@ -127,38 +133,38 @@ public class BasicFrameworkController implements Initializable  {
 
 
     public void updateNotificationFlag() {
-        if (status) {
-            threadNotificationUpdate = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                int count = App.domain.notificationCount();
-                                if (count > 0) {
-                                    redCircle.setVisible(true);
-                                    countLabel.setVisible(true);
-                                    countLabel.setText(Integer.toString(count));
+        threadNotificationUpdate = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            int count = App.domain.notificationCount();
+                            System.out.println(tester);
+                            tester++;
+                            if (count > 0) {
+                                redCircle.setVisible(true);
+                                countLabel.setVisible(true);
+                                countLabel.setText(Integer.toString(count));
 
-                                } else {
-                                    redCircle.setVisible(false);
-                                    countLabel.setVisible(false);
-                                }
+                            } else {
+                                redCircle.setVisible(false);
+                                countLabel.setVisible(false);
                             }
-                        });
-
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
                         }
+                    });
+
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
-            });
-            threadNotificationUpdate.setDaemon(true);
-            threadNotificationUpdate.start();
-        }
+            }
+        });
+        threadNotificationUpdate.setDaemon(true);
+
     }
 
 
