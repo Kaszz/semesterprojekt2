@@ -135,3 +135,13 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 - Tilpasning af tabeller i databasen.
 
 - Generel implementering af databasen.
+
+### 15/05/2020
+
+- Program færdigudviklet.
+
+### 18/05/2020
+
+- Oversigt over manglende elementer i rapport lavet.
+
+- Uddeling og start på færdiggørelse af rapporteringen.
