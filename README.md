@@ -1,6 +1,6 @@
 # Logbog Semesterprojekt (F20), gruppe nr. 5.
 
-### 11/02/2020
+### Uge 7 - 11/02/2020
 
 - 09:00 | Gruppemøde.
 
@@ -14,7 +14,7 @@ Udkast til projektidéen blev fremstillet i fællesskab.
 
 Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
-### 18/02/2020
+### Uge 8 - 18/02/2020
 
 - 09:30 Problemformulering og underspørgsmål gennemgang
 
@@ -28,7 +28,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - 12:30 Programspecifikation startet
 
-### 25/02/2020
+### Uge 9 - 25/02/2020
 
 - Snakket om ændring af idé til brugergrænseflade for almen bruger
 
@@ -38,7 +38,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Udkast til UML diagram
 
-### 03/03/2020
+### Uge 10 - 03/03/2020
 
 - Domæne model
 
@@ -46,7 +46,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Møde med TV2
 
-### 10/03/2020
+### Uge 11 - 10/03/2020
 
 - Gennemgang af Krav
 
@@ -62,11 +62,11 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
     
     - Detaljering
 
-### 17/03/2020
+### Uge 12 - 17/03/2020
 
 - Færdiggørelse af inceptionsdokumentet.
 
-### 24/03/2020
+### Uge 13 - 24/03/2020
 
 - Opsætning af scrum.
 
@@ -74,7 +74,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Gennemgang og opdatering af UML-klassediagram.
 
-### 31/03/2020
+### Uge 14 - 31/03/2020
 
 - Udvælgelse af Scrum roller.
 
@@ -86,7 +86,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Påbegyndelse af implementeringen af domænelaget. 
 
-### 07/04/2020
+### Uge 15 - 07/04/2020
 
 - Opsætning af Scrum product og sprint backlog.
 
@@ -94,7 +94,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Påbegyndt programmering af broadcast og account klasserne.
 
-### 14/04/2020
+### Uge 16 - 14/04/2020
 
 - Implementering af et login-system.
 
@@ -104,7 +104,7 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Seer interface opstillet med animation af programmer.
 
-### 21/04/2020
+### Uge 17 - 21/04/2020
 
 - Færdiggørelse af oprettelse og sletning af brugere via UI.
 
@@ -114,33 +114,33 @@ Generelle organisatoriske nødvendigheder blev besluttet og sat op.
 
 - Demo session.
 
-### 28/04/2020
+### Uge 18 - 28/04/2020
 
 - ER-diagram lavet.
 
 - Opsætning af tabeller til databasen.
 
-### 03/05/2020
+### Uge 18 - 03/05/2020
 
 - Snak om nye brugsmønstre og sekvensdiagrammer.
 
-### 05/05/2020
+### Uge 19 - 05/05/2020
 
 - Opsætning af online database
 
 - Fix af problemer fra første iteration.
 
-### 12/05/2020
+### Uge 20 - 12/05/2020
 
 - Tilpasning af tabeller i databasen.
 
 - Generel implementering af databasen.
 
-### 15/05/2020
+### Uge 20 - 15/05/2020
 
 - Program færdigudviklet.
 
-### 18/05/2020
+### Uge 21 - 18/05/2020
 
 - Oversigt over manglende elementer i rapport lavet.
 
