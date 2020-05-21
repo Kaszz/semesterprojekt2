@@ -80,7 +80,7 @@ public class Reader implements IReader {
         broadcasts.addAll(getPartialBroadcastInfo("SELECT broadcast_id, title, bio, launchyear, location, account_id FROM liveshow INNER JOIN broadcasts USING (broadcast_id);"));
 
         //Series/seasons/episodes
-        broadcasts.addAll(getPartialBroadcastInfo("SELECT episode_id, episode_name, episode_no, season_no, series_id, title, bio, launchyear,  account_id\n" +
+        broadcasts.addAll(getPartialBroadcastInfo("SELECT episode_id, episode_name, episode_no, season_no, series_id, title, bio, launchyear, account_id, series.broadcast_id\n" +
                 "FROM episodes\n" +
                 "    INNER JOIN seasons ON episodes.season_id = seasons.season_id\n" +
                 "    INNER JOIN series ON series.broadcast_id = seasons.broadcast_id\n" +

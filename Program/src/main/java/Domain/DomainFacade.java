@@ -108,6 +108,33 @@ public class DomainFacade {
 
         return broadcasts; }
 
+    public ArrayList<IBroadcast> getAllBroadcastsCredit() {
+        ArrayList<String> strings = read.getAllBroadcasts();
+        ArrayList<IBroadcast> broadcasts = new ArrayList<>();
+
+        for (String s: strings) {
+            String[] sSplit = s.split(":");
+
+            if (sSplit.length == 5) {
+                broadcasts.add(new Movie(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), Integer.parseInt(sSplit[4])));
+            } else if (sSplit.length == 6) {
+                broadcasts.add(new LiveShow(Integer.parseInt(sSplit[0]), sSplit[1], sSplit[2], Year.of(Integer.parseInt(sSplit[3])), sSplit[4], Integer.parseInt(sSplit[5])));
+            } else {
+                boolean duplicateSpotted = false;
+                for (IBroadcast b : broadcasts){
+                    if (b.getTitle().equals(sSplit[5])) {
+                        duplicateSpotted = true;
+                        break;
+                    }
+                }
+                if (!duplicateSpotted)
+                    broadcasts.add(new Movie(Integer.parseInt(sSplit[9]), sSplit[5], sSplit[6], Year.of(Integer.parseInt(sSplit[7])), Integer.parseInt(sSplit[8])));
+
+            }
+        }
+
+        return broadcasts; }
+
     public ArrayList<String> getBroadcastCredits(int broadcastID) {return read.getBroadcastCredits(broadcastID);}
 
     public ArrayList<ICredit> getCredits(IBroadcast broadcast) {return broadcast.getCredits();}

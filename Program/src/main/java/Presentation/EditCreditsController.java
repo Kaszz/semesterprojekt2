@@ -122,7 +122,7 @@ public class EditCreditsController implements Initializable {
         ObservableList<IBroadcast> creations;
 
         myBroadcasts = new ArrayList<>();
-        allBroadcasts = App.domain.getAllBroadcasts();
+        allBroadcasts = App.domain.getAllBroadcastsCredit();
 
         for (IBroadcast b : allBroadcasts) {
             if (b.getUserID() != App.loginClient.getAccount().getUserID() && !App.loginClient.isAdmin())
